@@ -1,0 +1,26 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ParallelJ Diagram Validation
+Bundle-SymbolicName: org.parallelj.designer.validation;singleton:=true
+Bundle-Version: 0.7.0.qualifier
+Bundle-Activator: org.parallelj.designer.validation.DiagramValidationPlugin
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.ui.ide;bundle-version="3.5.0",
+ org.eclipse.gmf.runtime.diagram.ui.properties;bundle-version="1.2.0",
+ org.eclipse.gmf.runtime.diagram.ui.resources.editor;bundle-version="1.2.0",
+ org.parallelj.designer.extension;bundle-version="0.7.0",
+ org.eclipse.jdt.core;bundle-version="3.5.0",
+ org.eclipse.jdt.launching;bundle-version="3.5.0",
+ org.eclipse.debug.ui;bundle-version="3.5.0",
+ org.parallelj.codegen;bundle-version="0.7.0"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: org.parallelj.designer.validation,
+ org.parallelj.designer.validation.actions,
+ org.parallelj.designer.validation.builder;uses:="org.eclipse.core.resources,org.eclipse.core.runtime",
+ org.parallelj.designer.validation.constraints,
+ org.parallelj.designer.validation.nature;uses:="org.eclipse.jface.viewers,org.eclipse.core.resources",
+ org.parallelj.designer.validation.providers
+Bundle-Vendor: Atos Worldline
+Import-Package: org.eclipse.gmf.runtime.notation,
+ org.eclipse.ui.navigator.resources

@@ -1,0 +1,43 @@
+wizard InsertPipeline {
+
+	// if selected element is Link then only execute the wizard 
+	guard : self.isKindOf(Link)
+
+	// sub-menu title
+	title : 'Insert Pipeline'
+
+	do{
+	
+		// asking user to enter name for new Pipeline
+		var newName : String;
+		var message : String := 'Please provide a name for new Pipeline';
+		newName := UserInput.prompt(message);
+		
+		// storing old Pipeline ( which is currently destination for selected link )for further use
+		var oldDestination = self.destination;
+		
+		// don't create Pipeline if name enter is empty
+		if(newName = ''){return;}
+		
+		// creating new Pipeline object and giving name which is enter by user 
+		var pipelineClass = self.eClass().ePackage.getEClassifier('Pipeline');
+		var pipelineObject = self.eClass().ePackage.eFactoryInstance.create(pipelineClass);
+		pipelineObject.name := newName;
+		
+		// doing link connection rearrangement
+		self.destination := pipelineObject;
+		pipelineObject.inputLinks.add(self);
+		
+		// creating new link
+		var linkClass = self.eClass().ePackage.getEClassifier('Link');
+		var linkObject = self.eClass().ePackage.eFactoryInstance.create(linkClass);
+		
+		// connecting newly created link between newly created Pipeline and older one 
+		pipelineObject.outputLinks.add(linkObject);
+		linkObject.destination := oldDestination;
+		oldDestination.inputLinks.add(linkObject);
+		
+		// adding to new object to container 
+		self.eContainer.eContainer.elements.add(pipelineObject);
+	}
+}

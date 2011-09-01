@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eef-components="http://www.eclipse.org/emf/eef/components/1.0.0" xmlns:eef-views="http://www.eclipse.org/emf/eef/views/1.0.0">
+  <eef-components:PropertiesEditionContext xmi:id="_rC17gPIzEd-CGO24tymZ5g" documentation="Edition Context for parallelj GenPackage">
+    <categories xmi:id="_rC17gfIzEd-CGO24tymZ5g" documentation="" name="parallelj">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_rC17gvIzEd-CGO24tymZ5g" name="Program" views="_rC17xfIzEd-CGO24tymZ5g">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_rC17h_IzEd-CGO24tymZ5g" name="name" views="_rC17y_IzEd-CGO24tymZ5g">
+          <model xsi:type="ecore:EAttribute" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//NamedElement/name"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_VYbh4BlhEeCS7JE2QnwydQ" documentation="" name="capacity" views="_OwfkkRlhEeCS7JE2QnwydQ" helpID="">
+          <model xsi:type="ecore:EAttribute" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//Program/capacity"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_7Q-EgBjWEeCXYqby1qwmjw" documentation="" name="description" views="_4qWnkBjWEeCXYqby1qwmjw" helpID="">
+          <model xsi:type="ecore:EAttribute" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//NamedElement/description"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//Program"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_rC17ivIzEd-CGO24tymZ5g" name="InputCondition" views="_rC17z_IzEd-CGO24tymZ5g">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_rC17jfIzEd-CGO24tymZ5g" name="description" views="_rC170_IzEd-CGO24tymZ5g">
+          <model xsi:type="ecore:EAttribute" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//NamedElement/description"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//InputCondition"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_rC17jvIzEd-CGO24tymZ5g" name="OutputCondition" views="_rC171PIzEd-CGO24tymZ5g">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_rC17kfIzEd-CGO24tymZ5g" name="description" views="_rC172PIzEd-CGO24tymZ5g">
+          <model xsi:type="ecore:EAttribute" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//NamedElement/description"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//OutputCondition"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_rC17kvIzEd-CGO24tymZ5g" name="Predicate" views="_rC172fIzEd-CGO24tymZ5g">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_rC17k_IzEd-CGO24tymZ5g" name="name" views="_rC172_IzEd-CGO24tymZ5g">
+          <model xsi:type="ecore:EAttribute" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//NamedElement/name"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//Predicate"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_rC17lPIzEd-CGO24tymZ5g" name="Condition" views="_rC173PIzEd-CGO24tymZ5g">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_rC17lfIzEd-CGO24tymZ5g" name="name" views="_rC173vIzEd-CGO24tymZ5g">
+          <model xsi:type="ecore:EAttribute" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//NamedElement/name"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_rC17l_IzEd-CGO24tymZ5g" name="description" views="_rC174PIzEd-CGO24tymZ5g">
+          <model xsi:type="ecore:EAttribute" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//NamedElement/description"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//Condition"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_rC17mPIzEd-CGO24tymZ5g" name="Link" views="_rC174fIzEd-CGO24tymZ5g">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_rC17mfIzEd-CGO24tymZ5g" name="predicate" views="_rC174_IzEd-CGO24tymZ5g">
+          <model xsi:type="ecore:EReference" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//Link/predicate"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_C8K1oBjXEeCXYqby1qwmjw" documentation="" name="description" views="_BDVrwBjXEeCXYqby1qwmjw" helpID="">
+          <model xsi:type="ecore:EAttribute" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//NamedElement/description"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//Link"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_rC17n_IzEd-CGO24tymZ5g" name="Procedure" views="_rC176vIzEd-CGO24tymZ5g">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_rC17oPIzEd-CGO24tymZ5g" name="name" views="_rC177PIzEd-CGO24tymZ5g">
+          <model xsi:type="ecore:EAttribute" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//NamedElement/name"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_rC17ovIzEd-CGO24tymZ5g" name="description" views="_rC177vIzEd-CGO24tymZ5g">
+          <model xsi:type="ecore:EAttribute" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//NamedElement/description"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_rC17o_IzEd-CGO24tymZ5g" documentation="" name="executable" views="_pJaF8PI5Ed-CGO24tymZ5g" helpID="">
+          <model xsi:type="ecore:EAttribute" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//Procedure/executable"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_rC17pPIzEd-CGO24tymZ5g" name="join" views="_rC178PIzEd-CGO24tymZ5g">
+          <model xsi:type="ecore:EAttribute" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//Procedure/join"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_rC17pfIzEd-CGO24tymZ5g" name="split" views="_rC178fIzEd-CGO24tymZ5g">
+          <model xsi:type="ecore:EAttribute" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//Procedure/split"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_NpI48Bl3EeCS7JE2QnwydQ" documentation="" name="capacity" views="_Hcty8Bl3EeCS7JE2QnwydQ" helpID="">
+          <model xsi:type="ecore:EAttribute" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//Procedure/capacity"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//Procedure"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_rC17pvIzEd-CGO24tymZ5g" name="ForEachLoop" views="_rC178vIzEd-CGO24tymZ5g">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_rC17p_IzEd-CGO24tymZ5g" name="name" views="_rC179PIzEd-CGO24tymZ5g">
+          <model xsi:type="ecore:EAttribute" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//NamedElement/name"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_rC17qfIzEd-CGO24tymZ5g" name="description" views="_rC179vIzEd-CGO24tymZ5g">
+          <model xsi:type="ecore:EAttribute" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//NamedElement/description"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_rC17qvIzEd-CGO24tymZ5g" name="executable" views="_rC179_IzEd-CGO24tymZ5g">
+          <model xsi:type="ecore:EAttribute" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//Procedure/executable"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_rC17q_IzEd-CGO24tymZ5g" name="join" views="_rC17-PIzEd-CGO24tymZ5g">
+          <model xsi:type="ecore:EAttribute" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//Procedure/join"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_rC17rPIzEd-CGO24tymZ5g" name="split" views="_rC17-fIzEd-CGO24tymZ5g">
+          <model xsi:type="ecore:EAttribute" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//Procedure/split"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_NRCiABl3EeCS7JE2QnwydQ" documentation="" name="capacity" views="_Hcty8Bl3EeCS7JE2QnwydQ" helpID="">
+          <model xsi:type="ecore:EAttribute" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//Procedure/capacity"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//ForEachLoop"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_rC17rfIzEd-CGO24tymZ5g" name="WhileLoop" views="_rC17-vIzEd-CGO24tymZ5g">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_rC17rvIzEd-CGO24tymZ5g" name="name" views="_rC17_PIzEd-CGO24tymZ5g">
+          <model xsi:type="ecore:EAttribute" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//NamedElement/name"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_rC17sPIzEd-CGO24tymZ5g" name="description" views="_rC17_vIzEd-CGO24tymZ5g">
+          <model xsi:type="ecore:EAttribute" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//NamedElement/description"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_rC17sfIzEd-CGO24tymZ5g" name="executable" views="_rC17__IzEd-CGO24tymZ5g">
+          <model xsi:type="ecore:EAttribute" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//Procedure/executable"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_NJ1akPPXEd-Uv-3Gsiaj1g" documentation="" name="predicate" views="_RZxlwPPXEd-Uv-3Gsiaj1g" helpID="">
+          <model xsi:type="ecore:EReference" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//WhileLoop/predicate"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_rC17svIzEd-CGO24tymZ5g" name="join" views="_rC18APIzEd-CGO24tymZ5g">
+          <model xsi:type="ecore:EAttribute" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//Procedure/join"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_rC17s_IzEd-CGO24tymZ5g" name="split" views="_rC18AfIzEd-CGO24tymZ5g">
+          <model xsi:type="ecore:EAttribute" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//Procedure/split"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_NBaxoBl3EeCS7JE2QnwydQ" documentation="" name="capacity" views="_Hcty8Bl3EeCS7JE2QnwydQ" helpID="">
+          <model xsi:type="ecore:EAttribute" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//Procedure/capacity"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//WhileLoop"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_rC17tfIzEd-CGO24tymZ5g" name="Data" views="_rC18A_IzEd-CGO24tymZ5g">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_rC17tvIzEd-CGO24tymZ5g" name="name" views="_rC18BfIzEd-CGO24tymZ5g">
+          <model xsi:type="ecore:EAttribute" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//NamedElement/name"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_rC17t_IzEd-CGO24tymZ5g" name="type" views="_rC18BvIzEd-CGO24tymZ5g">
+          <model xsi:type="ecore:EAttribute" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//Data/type"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Ma9rUBjXEeCXYqby1qwmjw" documentation="" name="description" views="_G8R1EBjXEeCXYqby1qwmjw" helpID="">
+          <model xsi:type="ecore:EAttribute" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//NamedElement/description"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//Data"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_rC17u_IzEd-CGO24tymZ5g" name="Handler" views="_rC18C_IzEd-CGO24tymZ5g">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_rC17vPIzEd-CGO24tymZ5g" name="name" views="_rC18DfIzEd-CGO24tymZ5g">
+          <model xsi:type="ecore:EAttribute" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//NamedElement/name"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_rC17vvIzEd-CGO24tymZ5g" name="description" views="_rC18D_IzEd-CGO24tymZ5g">
+          <model xsi:type="ecore:EAttribute" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//NamedElement/description"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_rC17v_IzEd-CGO24tymZ5g" name="executable" views="_rC18EPIzEd-CGO24tymZ5g">
+          <model xsi:type="ecore:EAttribute" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//Procedure/executable"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_rC17wfIzEd-CGO24tymZ5g" name="split" views="_rC18EvIzEd-CGO24tymZ5g">
+          <model xsi:type="ecore:EAttribute" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//Procedure/split"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_MmphMBl3EeCS7JE2QnwydQ" documentation="" name="capacity" views="_Hcty8Bl3EeCS7JE2QnwydQ" helpID="">
+          <model xsi:type="ecore:EAttribute" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//Procedure/capacity"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//Handler"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_x4dqewdVEeCxfK9O-3gNMw" documentation="" name="Pipeline" views="_x4dq3AdVEeCxfK9O-3gNMw" helpID="">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_x4dqfAdVEeCxfK9O-3gNMw" name="name" views="_x4dq3gdVEeCxfK9O-3gNMw">
+          <model xsi:type="ecore:EAttribute" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//NamedElement/name"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_x4dqfgdVEeCxfK9O-3gNMw" name="description" views="_x4dq4AdVEeCxfK9O-3gNMw">
+          <model xsi:type="ecore:EAttribute" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//NamedElement/description"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_x4dqgAdVEeCxfK9O-3gNMw" name="join" views="_x4dq4gdVEeCxfK9O-3gNMw">
+          <model xsi:type="ecore:EAttribute" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//Procedure/join"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_x4dqgQdVEeCxfK9O-3gNMw" name="split" views="_x4dq4wdVEeCxfK9O-3gNMw">
+          <model xsi:type="ecore:EAttribute" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//Procedure/split"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Gk-VgAdWEeCxfK9O-3gNMw" documentation="" name="procedures" views="_9eNlUAdVEeCxfK9O-3gNMw" helpID="">
+          <model xsi:type="ecore:EReference" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//Pipeline/procedures"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_J8oK8Bl3EeCS7JE2QnwydQ" documentation="" name="capacity" views="_Hcty8Bl3EeCS7JE2QnwydQ" helpID="">
+          <model xsi:type="ecore:EAttribute" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//Procedure/capacity"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.ecore#//Pipeline"/>
+      </bindings>
+    </categories>
+    <model href="file:/C:/ParallelJ/WS/eclipse/trunk/org.parallelj.model/model/parallelj.genmodel#//parallelj"/>
+  </eef-components:PropertiesEditionContext>
+  <eef-views:ViewsRepository xmi:id="_rC17w_IzEd-CGO24tymZ5g" documentation="Views repository for parallelj GenPackage" name="parallelj">
+    <RepositoryKind>SWT</RepositoryKind>
+    <RepositoryKind>Form</RepositoryKind>
+    <categories xmi:id="_rC17xPIzEd-CGO24tymZ5g" documentation="" name="parallelj">
+      <views xmi:id="_rC17xfIzEd-CGO24tymZ5g" documentation="" name="Program">
+        <elements xsi:type="eef-views:Container" xmi:id="_rC17xvIzEd-CGO24tymZ5g" documentation="" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_rC17y_IzEd-CGO24tymZ5g" documentation="Enter the Program Name" name="name">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_OwfkkRlhEeCS7JE2QnwydQ" documentation="" name="capacity">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_4qWnkBjWEeCXYqby1qwmjw" documentation="" name="description">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.2"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_rC17z_IzEd-CGO24tymZ5g" name="InputCondition">
+        <elements xsi:type="eef-views:Container" xmi:id="_rC170PIzEd-CGO24tymZ5g" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_rC170_IzEd-CGO24tymZ5g" documentation="Enter the Description related to Input condition" name="description">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.2"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_rC171PIzEd-CGO24tymZ5g" name="OutputCondition">
+        <elements xsi:type="eef-views:Container" xmi:id="_rC171fIzEd-CGO24tymZ5g" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_rC172PIzEd-CGO24tymZ5g" documentation="Enter the Description related to Output Condition" name="description">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.2"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_rC172fIzEd-CGO24tymZ5g" name="Predicate">
+        <elements xsi:type="eef-views:Container" xmi:id="_rC172vIzEd-CGO24tymZ5g" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_rC172_IzEd-CGO24tymZ5g" documentation="" name="name">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_rC173PIzEd-CGO24tymZ5g" name="Condition">
+        <elements xsi:type="eef-views:Container" xmi:id="_rC173fIzEd-CGO24tymZ5g" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_rC173vIzEd-CGO24tymZ5g" documentation="" name="name">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_rC174PIzEd-CGO24tymZ5g" documentation="" name="description">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.2"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_rC174fIzEd-CGO24tymZ5g" name="Link">
+        <elements xsi:type="eef-views:Container" xmi:id="_rC174vIzEd-CGO24tymZ5g" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_rC174_IzEd-CGO24tymZ5g" documentation="" name="predicate">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.6"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_BDVrwBjXEeCXYqby1qwmjw" documentation="" name="description">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.2"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_rC176vIzEd-CGO24tymZ5g" name="Procedure">
+        <elements xsi:type="eef-views:Container" xmi:id="_rC176_IzEd-CGO24tymZ5g" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_rC177PIzEd-CGO24tymZ5g" name="name">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_55DZoBl2EeCS7JE2QnwydQ" documentation="" name="capacity">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_rC177vIzEd-CGO24tymZ5g" documentation="" name="description">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.2"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_pJaF8PI5Ed-CGO24tymZ5g" documentation="" name="executable">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_rC178PIzEd-CGO24tymZ5g" documentation="" name="join">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_rC178fIzEd-CGO24tymZ5g" documentation="" name="split">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_rC178vIzEd-CGO24tymZ5g" name="ForEachLoop">
+        <elements xsi:type="eef-views:Container" xmi:id="_rC178_IzEd-CGO24tymZ5g" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_rC179PIzEd-CGO24tymZ5g" name="name">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_AF6kgBl3EeCS7JE2QnwydQ" documentation="" name="capacity">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_rC179vIzEd-CGO24tymZ5g" documentation="" name="description">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.2"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_rC179_IzEd-CGO24tymZ5g" documentation="" name="executable">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_rC17-PIzEd-CGO24tymZ5g" name="join">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_rC17-fIzEd-CGO24tymZ5g" name="split">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_rC17-vIzEd-CGO24tymZ5g" name="WhileLoop">
+        <elements xsi:type="eef-views:Container" xmi:id="_rC17-_IzEd-CGO24tymZ5g" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_rC17_PIzEd-CGO24tymZ5g" name="name">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_CozYABl3EeCS7JE2QnwydQ" documentation="" name="capacity">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_rC17_vIzEd-CGO24tymZ5g" documentation="" name="description">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.2"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_rC17__IzEd-CGO24tymZ5g" name="executable">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_RZxlwPPXEd-Uv-3Gsiaj1g" documentation="" name="predicate">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.6"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_rC18APIzEd-CGO24tymZ5g" name="join">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_rC18AfIzEd-CGO24tymZ5g" name="split">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_rC18A_IzEd-CGO24tymZ5g" name="Data">
+        <elements xsi:type="eef-views:Container" xmi:id="_rC18BPIzEd-CGO24tymZ5g" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_rC18BfIzEd-CGO24tymZ5g" documentation="" name="name">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_rC18BvIzEd-CGO24tymZ5g" documentation="" name="type">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_G8R1EBjXEeCXYqby1qwmjw" documentation="" name="description">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.2"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_rC18C_IzEd-CGO24tymZ5g" name="Handler">
+        <elements xsi:type="eef-views:Container" xmi:id="_rC18DPIzEd-CGO24tymZ5g" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_rC18DfIzEd-CGO24tymZ5g" name="name">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_FGCPcBl3EeCS7JE2QnwydQ" documentation="" name="capacity">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_rC18D_IzEd-CGO24tymZ5g" documentation="" name="description">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.2"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_rC18EPIzEd-CGO24tymZ5g" documentation="" name="executable">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_rC18EvIzEd-CGO24tymZ5g" name="split">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
+          </elements>
+        </elements>
+      </views>
+      <views xmi:id="_x4dq3AdVEeCxfK9O-3gNMw" name="Pipeline">
+        <elements xsi:type="eef-views:Container" xmi:id="_x4dq3QdVEeCxfK9O-3gNMw" name="properties">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_x4dq3gdVEeCxfK9O-3gNMw" name="name">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_Hcty8Bl3EeCS7JE2QnwydQ" documentation="" name="capacity">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_x4dq4AdVEeCxfK9O-3gNMw" documentation="" name="description">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.2"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_x4dq4gdVEeCxfK9O-3gNMw" name="join">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_x4dq4wdVEeCxfK9O-3gNMw" name="split">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_9eNlUAdVEeCxfK9O-3gNMw" documentation="" name="procedures">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
+          </elements>
+        </elements>
+      </views>
+    </categories>
+  </eef-views:ViewsRepository>
+</xmi:XMI>

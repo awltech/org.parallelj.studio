@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension point="org.eclipse.gmf.runtime.common.ui.services.markerNavigationProviders" id="markers-navigation">
+      <?gmfgen generated="true"?>
+      <MarkerNavigationProvider class="org.parallelj.designer.validation.providers.MarkerNavigationProvider">
+         <MarkerType name="org.parallelj.designer.validation.diagnostic"/>
+         <Priority name="Highest"/>
+      </MarkerNavigationProvider>
+   </extension>
+	<extension id="diagnostic" name="ParallelJ Diagram Problem" point="org.eclipse.core.resources.markers">
+      <?gmfgen generated="true"?>
+      <super type="org.eclipse.core.resources.problemmarker"/>
+      <super type="org.eclipse.gmf.runtime.common.ui.services.marker"/>
+      <persistent value="true"/>      
+   </extension>
+
+<extension point="org.eclipse.emf.validation.constraintProviders">
+      <?gmfgen generated="true"?>
+            <category
+                  id="org.parallelj.diagramDefaultCtx"
+                  mandatory="false"
+                  name="ParallelJ Constraints Container">
+         <![CDATA[]]>
+      </category>
+      <constraintProvider cache="true">
+         <package namespaceUri="http://www.parallelj.org/0.5.0"/>
+               <constraints categories="org.parallelj.diagramDefaultCtx">
+         	<constraint id="DataTypeConstraint"
+            lang="Java" class="org.parallelj.designer.validation.constraints.DataTypeConstraint"
+            name="DataTypeConstraint"
+            mode="Live"
+            severity="ERROR" statusCode="200">
+            <description><![CDATA[]]></description>
+            <message>Type is missing or empty for {0} "{1}".</message>
+            <target class="Data"/>
+         		</constraint>
+         		
+         	<constraint id="ProcedureSplitTwoLinksConstraint"
+            lang="Java" class="org.parallelj.designer.validation.constraints.ProcedureSplitTwoLinksConstraint"
+            name="ProcedureSplitTwoLinksConstraint"
+            mode="Live"
+            severity="ERROR" statusCode="200">
+            <description><![CDATA[]]></description>
+            <message>{0} &quot;{1}&quot; is a {2}-Split {0}. {3}.</message>
+            <target class="Procedure"/>
+         		</constraint>	
+         		
+         	<constraint id="ProcedureOutgoingLinkConstraint"
+            lang="Java" class="org.parallelj.designer.validation.constraints.ProcedureOutgoingLinkConstraint"
+            name="ProcedureOutgoingLinkConstraint"
+            mode="Live"
+            severity="ERROR" statusCode="200">
+            <description><![CDATA[]]></description>
+            <message>{0} &quot;{1}&quot; must have at least one outgoing link</message>
+            <target class="Procedure"/>
+         		</constraint>	         		
+         		
+         	<constraint id="ProcedureIncomingLinkConstraint"
+            lang="Java" class="org.parallelj.designer.validation.constraints.ProcedureIncomingLinkConstraint"
+            name="ProcedureIncomingLinkConstraint"
+            mode="Live"
+            severity="ERROR" statusCode="200">
+            <description><![CDATA[]]></description>
+            <message>{0} &quot;{1}&quot; must have at least one incoming link</message>
+            <target class="Procedure"/>
+         		</constraint>	
+         		
+         	<constraint id="LinkToInputConditionConstraint"
+            lang="Java" class="org.parallelj.designer.validation.constraints.LinkToInputConditionConstraint"
+            name="LinkToInputConditionConstraint"
+            mode="Live"
+            severity="ERROR" statusCode="200">
+            <description><![CDATA[]]></description>
+            <message>Link must not have any InputCondition as its destination.</message>
+            <target class="Link"/>
+         		</constraint>
+         		
+         	<constraint id="OutputConditionLinkConstraint"
+            lang="Java" class="org.parallelj.designer.validation.constraints.OutputConditionLinkConstraint"
+            name="OutputConditionLinkConstraint"
+            mode="Live"
+            severity="ERROR" statusCode="200">
+            <description><![CDATA[]]></description>
+            <message>OutputCondition must have zero outputLinks.</message>
+            <target class="OutputCondition"/>
+         		</constraint>
+         		
+         	<constraint id="WhileLoopExecutableConstraint"
+            lang="Java" class="org.parallelj.designer.validation.constraints.WhileLoopExecutableConstraint"
+            name="WhileLoopExecutableConstraint"
+            mode="Live"
+            severity="ERROR" statusCode="200">
+            <description><![CDATA[]]></description>
+            <message>WhileLoop &quot;{0}&quot; must have one executable.</message>
+            <target class="WhileLoop"/>
+         		</constraint>
+         		
+			<constraint id="WhileLoopPredicateConstraint"
+            lang="Java" class="org.parallelj.designer.validation.constraints.WhileLoopPredicateConstraint"
+            name="WhileLoopPredicateConstraint"
+            mode="Live"
+            severity="ERROR" statusCode="200">
+            <description><![CDATA[]]></description>
+            <message>WhileLoop &quot;{0}&quot; must have one predicate.</message>
+            <target class="WhileLoop"/>
+         		</constraint>         		
+         		         		
+         	<constraint id="ForEachLoopExecutableConstraint"
+            lang="Java" class="org.parallelj.designer.validation.constraints.ForEachLoopExecutableConstraint"
+            name="ForEachLoopExecutableConstraint"
+            mode="Live"
+            severity="ERROR" statusCode="200">
+            <description><![CDATA[]]></description>
+            <message>ForEachLoop must have one executable.</message>
+            <target class="ForEachLoop"/>
+         		</constraint>
+          <constraint
+                class="org.parallelj.designer.validation.constraints.DataNameDuplicationConstraint"
+                id="DataNameDuplicationConstraint"
+                lang="Java"
+                mode="Live"
+                name="DataNameDuplicationConstraint"
+                severity="ERROR"
+                statusCode="200">
+             <message>
+                Two or more Data elements cannot have same name (&quot;{0}&quot;)
+             </message>
+             <description>
+                description body text
+             </description>
+             <target
+                   class="Data"></target>
+          </constraint>
+          <constraint
+                class="org.parallelj.designer.validation.constraints.ProcedureNameDuplicationConstraint"
+                id="ProcedureNameDuplicationConstraint"
+                lang="Java"
+                mode="Live"
+                name="ProcedureNameDuplicationConstraint"
+                severity="ERROR"
+                statusCode="200">
+             <message>
+                Two or more {0}s cannot have same name (&quot;{1}&quot;)
+             </message>
+             <description>
+                description body text
+             </description>
+             <target
+                   class="Procedure">
+             </target>
+          </constraint>
+          <constraint
+                class="org.parallelj.designer.validation.constraints.PredicateNameDuplicationConstraint"
+                id="PredicateNameDuplicationConstraint"
+                lang="Java"
+                mode="Live"
+                name="PredicateNameDuplicationConstraint"
+                severity="ERROR"
+                statusCode="200">
+             <message>
+                Two or more Predicates cannot have same name (&quot;{0}&quot;)
+             </message>
+             <description>
+                description body text
+             </description>
+             <target
+                   class="Predicate">
+             </target>
+          </constraint>
+          <constraint
+                class="org.parallelj.designer.validation.constraints.PipelineProcedureConstraint"
+                id="PipelineProcedureConstraint"
+                lang="Java"
+                mode="Live"
+                name="PipelineProcedureConstraint"
+                severity="ERROR"
+                statusCode="200">
+             <message>
+                A Pipeline  must contain at least one Procedure.
+             </message>
+             <description>
+                description body text
+             </description>
+             <target
+                   class="Pipeline">
+             </target>
+          </constraint>
+          <constraint
+                class="org.parallelj.designer.validation.constraints.ProgramNameDuplicationConstraint"
+                id="ProgramNameDuplicationConstraint"
+                lang="Java"
+                mode="Live"
+                name="ProgramNameDuplicationConstraint"
+                severity="ERROR"
+                statusCode="200">
+             <message>
+                Two or more Programs cannot have same name (&quot;{0}&quot;)
+             </message>
+             <description>
+                description body text
+             </description>
+             <target
+                   class="Program">
+             </target>
+          </constraint>
+          <constraint
+                class="org.parallelj.designer.validation.constraints.ProgramNameConstraint"
+                id="ProgramNameConstraint"
+                lang="Java"
+                mode="Live"
+                name="ProgramNameConstraint"
+                severity="ERROR"
+                statusCode="200">
+             <message>
+                A Program &quot;{0}&quot; cannot have &quot;Program&quot; as its short name.
+             </message>
+             <description>
+                description body text
+             </description>
+             <target
+                   class="Program">
+             </target>
+          </constraint>
+          <constraint
+                class="org.parallelj.designer.validation.constraints.ForEachLoopIterableConstraint"
+                id="ForEachLoopIterableConstraint"
+                lang="Java"
+                mode="Live"
+                name="ForEachLoopIterableConstraint"
+                severity="ERROR"
+                statusCode="200">
+             <message>
+                ForEachLoop &quot;{0}&quot; must specify a Data as its iterable.
+             </message>
+             <description>
+                description body text
+             </description>
+             <target
+                   class="ForEachLoop">
+             </target>
+          </constraint>
+          
+          <constraint
+                class="org.parallelj.designer.validation.constraints.ConditionIncomingLinkConstraint"
+                id="ConditionIncomingLinkConstraint"
+                lang="Java"
+                mode="Live"
+                name="ConditionIncomingLinkConstraint"
+                severity="ERROR"
+                statusCode="200">
+             <message>
+                {0} must have at least one incoming Link.
+             </message>
+             <description>
+                description body text
+             </description>
+             <target
+                   class="Condition">
+             </target>
+          </constraint>
+          <constraint
+                class="org.parallelj.designer.validation.constraints.ConditionOutgoingLinkConstraint"
+                id="ConditionOutgoingLinkConstraint"
+                lang="Java"
+                mode="Live"
+                name="ConditionOutgoingLinkConstraint"
+                severity="ERROR"
+                statusCode="200">
+             <message>
+                {0} must have at least one outgoing Link.
+             </message>
+             <description>
+                description body text
+             </description>
+             <target
+                   class="Condition">
+             </target>
+          </constraint>
+          <constraint
+                class="org.parallelj.designer.validation.constraints.ElementNameConstraint"
+                id="ElementNameConstraint"
+                lang="Java"
+                mode="Live"
+                name="ElementNameConstraint"
+                severity="ERROR"
+                statusCode="200">
+             <message>
+                {0} cannot be named as &quot;begin&quot; nor as &quot;end&quot;.
+             </message>
+             <description>
+                description body text
+             </description>
+             <target
+                   class="Element">
+             </target>
+          </constraint>
+          
+          <!-- Path Computing Constraints -->
+          <constraint
+                class="org.parallelj.designer.validation.constraints.ProcedureLoopingLinksConstraint"
+                id="ProcedureLoopingLinksConstraint"
+                lang="Java"
+                mode="Live"
+                name="ProcedureLoopingLinksConstraint"
+                severity="ERROR"
+                statusCode="200">
+             <message>
+                {0} is involved in an infinite loop.
+             </message>
+             <description>
+                description body text
+             </description>
+             <target
+                   class="Procedure">
+             </target>
+          </constraint>
+          <constraint
+                class="org.parallelj.designer.validation.constraints.ProcedureOutgoingPathsConsistenceConstraint"
+                id="ProcedureOutgoingPathsConsistenceConstraint"
+                lang="Java"
+                mode="Live"
+                name="ProcedureOutgoingPathsConsistenceConstraint"
+                severity="WARNING"
+                statusCode="200">
+             <message>
+                {0}
+             </message>
+             <description>
+                description body text
+             </description>
+             <target
+                   class="Procedure">
+             </target>
+          </constraint>
+          <!-- Java Naming Convention Constraint -->
+          <constraint
+                class="org.parallelj.designer.validation.constraints.NamedElementJavaConventionsConstraint"
+                id="NamedElementJavaConventionsConstraint"
+                lang="Java"
+                mode="Live"
+                name="NamedElementJavaConventionsConstraint"
+                severity="ERROR"
+                statusCode="200">
+             <message>
+                {0}
+             </message>
+             <description>
+                description body text
+             </description>
+             <target class="Program"/>
+             <target class="Procedure"/>
+             <target class="Data"/>
+             <target class="Predicate"/>
+             <target class="Condition"/>
+          </constraint>
+         		
+            </constraints>
+      </constraintProvider>
+   </extension>
+
+<extension point="org.eclipse.emf.validation.constraintBindings">
+      <?gmfgen generated="true"?>
+      <clientContext default="false" id="org.parallelj.diagramDefaultCtx">
+         <selector class="org.parallelj.designer.validation.providers.ValidationProvider$DefaultCtx"/>
+      </clientContext>
+      <binding context="org.parallelj.diagramDefaultCtx">
+         <constraint ref="org.parallelj.designer.validation.DataTypeConstraint"/>
+         <constraint ref="org.parallelj.designer.validation.ProcedureSplitTwoLinksConstraint"/>
+         <constraint ref="org.parallelj.designer.validation.ProcedureOutgoingLinkConstraint"/>
+         <constraint ref="org.parallelj.designer.validation.ProcedureIncomingLinkConstraint"/>
+         <constraint ref="org.parallelj.designer.validation.LinkToInputConditionConstraint"/>
+         <constraint ref="org.parallelj.designer.validation.OutputConditionLinkConstraint"/>
+         <constraint ref="org.parallelj.designer.validation.WhileLoopExecutableConstraint"/>
+         <constraint ref="org.parallelj.designer.validation.WhileLoopPredicateConstraint"/>
+         <constraint ref="org.parallelj.designer.validation.ForEachLoopExecutableConstraint"/>
+         <constraint
+               ref="org.parallelj.designer.validation.DataNameDuplicationConstraint">
+         </constraint>
+         <constraint
+               ref="org.parallelj.designer.validation.ProcedureNameDuplicationConstraint">
+         </constraint>
+         <constraint
+               ref="org.parallelj.designer.validation.PredicateNameDuplicationConstraint">
+         </constraint>
+         <constraint
+               ref="org.parallelj.designer.validation.ProgramNameDuplicationConstraint">
+         </constraint>
+         <constraint
+               ref="org.parallelj.designer.validation.PipelineProcedureConstraint">
+         </constraint>
+         <constraint
+               ref="org.parallelj.designer.validation.ProgramNameConstraint">
+         </constraint>
+         <constraint
+               ref="org.parallelj.designer.validation.ForEachLoopIterableConstraint">
+         </constraint>
+         <constraint
+               ref="org.parallelj.designer.validation.NamedElementJavaConventionsConstraint">
+         </constraint>
+         <constraint
+               ref="org.parallelj.designer.validation.ConditionIncomingLinkConstraint">
+         </constraint>
+         <constraint
+               ref="org.parallelj.designer.validation.ConditionOutgoingLinkConstraint">
+         </constraint>
+         <constraint
+               ref="org.parallelj.designer.validation.ElementNameConstraint">
+         </constraint>
+         <constraint
+               ref="org.parallelj.designer.validation.ProcedureLoopingLinksConstraint">
+         </constraint>
+         <constraint
+               ref="org.parallelj.designer.validation.ProcedureOutgoingPathsConsistenceConstraint">
+         </constraint>
+     </binding>
+   </extension>
+	<extension id="ValidationDecoratorProvider" name="ValidationDecorations" point="org.eclipse.gmf.runtime.diagram.ui.decoratorProviders">
+      <decoratorProvider class="org.parallelj.designer.validation.providers.ValidationDecoratorProvider">
+         <Priority name="Highest"/>
+         <object class="org.eclipse.gmf.runtime.diagram.ui.editparts.IPrimaryEditPart(org.eclipse.gmf.runtime.diagram.ui)" id="PRIMARY_VIEW"/>
+         <context decoratorTargets="PRIMARY_VIEW"/>
+      </decoratorProvider>
+   </extension>
+    <extension
+       point="org.eclipse.ui.popupMenus">
+    <objectContribution
+          id="org.parallelj.diagram.validation.contribution1"
+          objectClass="org.parallelj.designer.edit.parts.SpecificationEditPart">
+       <menu
+             id="org.eclipse.emf.validationMenuID"
+             label="ParallelJ"
+             path="additions">
+          <separator
+                name="additions">
+          </separator>
+       </menu>
+       <action
+             class="org.parallelj.designer.validation.actions.DiagramValidationAction"
+             enablesFor="1"
+             icon="icons/elcl16/validate.GIF"
+             id="org.parallelj.diagram.validation.newAction"
+             label="Validate Diagram"
+             menubarPath="org.eclipse.emf.validationMenuID/additions">
+       </action>
+    </objectContribution>
+    <objectContribution
+          adaptable="true"
+          id="org.parallelj.diagram.validation.contribution2"
+          objectClass="org.parallelj.designer.edit.parts.SpecificationEditPart">
+       <menu
+             id="org.eclipse.emf.validationMenuID"
+             label="ParallelJ"
+             path="additions">
+          <separator
+                name="additions">
+          </separator>
+       </menu>
+       <action
+             class="org.parallelj.designer.validation.actions.EnableLiveValidationAction"
+             enablesFor="1"
+             icon="icons/elcl16/validate_co.gif"
+             id="org.parallelj.diagram.validation.newActions"
+             label="Enable Live Validation"
+             menubarPath="org.eclipse.emf.validationMenuID/additions"
+             state="true"
+             style="toggle">
+       </action>
+    </objectContribution>
+    
+    <objectContribution
+            objectClass="org.eclipse.core.resources.IProject"
+            id="ProjectRoot">
+         <menu
+               id="org.eclipse.emf.validationMenuID"
+               label="ParallelJ">
+            <separator name="forCreation"/>
+            <separator
+                  name="forGeneration">
+            </separator>
+         </menu>
+         <action
+               class="org.parallelj.designer.validation.actions.NewParallelJDiagramAction"
+               enablesFor="1"
+               icon="icons/elcl16/ParallelJDiagramFile.png"
+               id="newParallelJDiagramFromProject"
+               label="Create New ParallelJ Diagram"
+               menubarPath="org.eclipse.emf.validationMenuID/forCreation"/>
+         <action
+               class="org.parallelj.designer.validation.actions.GenerateCodeFromProjectAction"
+               enablesFor="1"
+               icon="icons/elcl16/pjgen-16.png"
+               id="generateJavaCodeFromProject"
+               label="Generate Code From Diagrams"
+               menubarPath="org.eclipse.emf.validationMenuID/forGeneration">
+         </action>
+         <visibility>
+            <objectState
+                  name="projectNature"
+                  value="org.parallelj.designer.validation.ParallelJNature"/>
+         </visibility>
+      </objectContribution>
+    <objectContribution
+          id="ProjectRoot"
+          objectClass="org.eclipse.jdt.core.IJavaProject">
+       <menu
+             id="org.eclipse.emf.validationMenuID"
+             label="ParallelJ">
+          <separator
+                name="forCreation">
+          </separator>
+          <separator
+                name="forGeneration">
+          </separator>
+       </menu>
+       <action
+             class="org.parallelj.designer.validation.actions.NewParallelJDiagramAction"
+             enablesFor="1"
+             icon="icons/elcl16/ParallelJDiagramFile.png"
+             id="newParallelJDiagramFromProject"
+             label="Create New ParallelJ Diagram"
+             menubarPath="org.eclipse.emf.validationMenuID/forCreation">
+       </action>
+       <action
+             class="org.parallelj.designer.validation.actions.GenerateCodeFromProjectAction"
+             enablesFor="1"
+             icon="icons/elcl16/pjgen-16.png"
+             id="generateJavaCodeFromProject"
+             label="Generate Code From Diagrams"
+             menubarPath="org.eclipse.emf.validationMenuID/forGeneration">
+       </action>
+       <visibility>
+          <objectState
+                name="projectNature"
+                value="org.parallelj.designer.validation.ParallelJNature">
+          </objectState>
+       </visibility>
+    </objectContribution>
+      <objectContribution
+            id="ModelRoot"
+            nameFilter="ParallelJ"
+            objectClass="org.eclipse.core.resources.IFolder">
+         <menu
+               id="org.eclipse.emf.validationMenuID"
+               label="ParallelJ">
+            <separator name="forCreation"/>
+         </menu>
+         <action
+               class="org.parallelj.designer.validation.actions.NewParallelJDiagramAction"
+               enablesFor="1"
+               icon="icons/elcl16/ParallelJDiagramFile.png"
+               id="newParallelJDiagramFromModels"
+               label="Create New ParallelJ Diagram"
+               menubarPath="org.eclipse.emf.validationMenuID/forCreation"/>
+         <visibility>
+            <objectState
+                  name="projectNature"
+                  value="org.parallelj.designer.validation.ParallelJNature"/>
+         </visibility>
+      </objectContribution>
+     <objectContribution
+            adaptable="false"
+            id="DiagramRoot"
+            nameFilter="*.pjd"
+            objectClass="org.eclipse.core.resources.IFile">
+         <action
+               class="org.parallelj.designer.validation.actions.GenerateCodeFromFilesAction"
+               icon="icons/elcl16/pjgen-16.png"
+               id="generateJavaCodeFromFile"
+               label="Generate Code From File"
+               menubarPath="org.eclipse.emf.validationMenuID/forGeneration">
+         </action>
+         <menu
+               id="org.eclipse.emf.validationMenuID"
+               label="ParallelJ">
+            <separator
+                  name="forGeneration">
+            </separator>
+         </menu>
+      </objectContribution>
+      
+      
+ </extension>
+ <extension
+       id="ParallelJBuilder"
+       name="ParallelJ Builder"
+       point="org.eclipse.core.resources.builders">
+    <builder
+          hasNature="true">
+       <run
+             class="org.parallelj.designer.validation.builder.ProjectBuilder">
+       </run>
+    </builder>
+ </extension>
+ <extension
+       id="ParallelJNature"
+       name="ParallelJ Nature"
+       point="org.eclipse.core.resources.natures">
+    <runtime>
+       <run
+             class="org.parallelj.designer.validation.nature.ParallelJNature">
+       </run>
+    </runtime>
+    <builder
+          id="org.parallelj.designer.validation.ParallelJBuilder">
+    </builder>
+ </extension>
+ <extension
+       point="org.parallelj.designer.extension.IEditorContribution">
+    <Contribution
+          class="org.parallelj.designer.validation.contribution.DiagramEditorContribution">
+    </Contribution>
+ </extension>
+ <extension
+         id="ParallelJProjectIconDecorator"
+         name="ParallelJProjectIconDecorator"
+         point="org.eclipse.ui.decorators">
+      <decorator
+            adaptable="true"
+            class="org.parallelj.designer.validation.decorators.ParallelJProjectIconDecorator"
+            id="ParallelJProjectIconDecorator"
+            label="ParallelJ Project Icon Decorator"
+            lightweight="true"
+            state="true">
+         <enablement>
+            <objectState
+                  name="projectNature"
+                  value="org.parallelj.designer.validation.ParallelJNature"/>
+         </enablement>
+      </decorator>
+   </extension>
+</plugin>

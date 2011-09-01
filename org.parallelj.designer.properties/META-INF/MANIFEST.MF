@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ParallelJ Properties View
+Bundle-SymbolicName: org.parallelj.designer.properties;singleton:=true
+Bundle-Version: 0.7.0.qualifier
+Bundle-Activator: org.parallelj.designer.properties.PropertiesActivator
+Require-Bundle: org.eclipse.gmf.runtime.diagram.ui.properties,
+ org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.emf.eef.runtime;bundle-version="0.8.1",
+ org.parallelj.model.editor;bundle-version="0.7.0",
+ org.parallelj.designer.extension;bundle-version="0.7.0";visibility:=reexport
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Vendor: Atos Worldline

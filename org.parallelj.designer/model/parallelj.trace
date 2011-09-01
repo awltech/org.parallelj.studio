@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<trace:TraceModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:trace="http://www.eclipse.org/gmf/2006/Trace">
+  <nodeTraces visualID="2001" queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://www.parallelj.org/0.5.0' and _eClass_.name = 'Program') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://www.parallelj.org/0.5.0' and _eClass_.name = 'Specification') and _containmentMF_.name = 'programs')">
+    <nodeLabelTraces visualID="5020" queryText="true"/>
+    <compartmentTraces visualID="7001" queryText="true"/>
+  </nodeTraces>
+  <childNodeTraces visualID="3001" queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://www.parallelj.org/0.5.0' and _eClass_.name = 'InputCondition') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://www.parallelj.org/0.5.0' and _eClass_.name = 'Program') and _containmentMF_.name = 'elements') and ( let _childMF_:ecore::EStructuralFeature = modelFacet.childMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _childMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://www.parallelj.org/0.5.0' and _eClass_.name = 'Program') and _childMF_.name = 'inputCondition')">
+    <nodeLabelTraces visualID="5001" queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces visualID="3002" queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://www.parallelj.org/0.5.0' and _eClass_.name = 'OutputCondition') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://www.parallelj.org/0.5.0' and _eClass_.name = 'Program') and _containmentMF_.name = 'elements') and ( let _childMF_:ecore::EStructuralFeature = modelFacet.childMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _childMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://www.parallelj.org/0.5.0' and _eClass_.name = 'Program') and _childMF_.name = 'outputCondition')">
+    <nodeLabelTraces visualID="5002" queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces visualID="3003" queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://www.parallelj.org/0.5.0' and _eClass_.name = 'Condition') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://www.parallelj.org/0.5.0' and _eClass_.name = 'Program') and _containmentMF_.name = 'elements')">
+    <nodeLabelTraces visualID="5003" queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces visualID="3004" queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://www.parallelj.org/0.5.0' and _eClass_.name = 'Predicate') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://www.parallelj.org/0.5.0' and _eClass_.name = 'Program') and _containmentMF_.name = 'predicates')">
+    <nodeLabelTraces visualID="5004" queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces visualID="3005" queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://www.parallelj.org/0.5.0' and _eClass_.name = 'Procedure') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://www.parallelj.org/0.5.0' and _eClass_.name = 'Program') and _containmentMF_.name = 'elements')">
+    <nodeLabelTraces visualID="5005" queryText="true"/>
+    <nodeLabelTraces visualID="5006" queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces visualID="3006" queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://www.parallelj.org/0.5.0' and _eClass_.name = 'ForEachLoop') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://www.parallelj.org/0.5.0' and _eClass_.name = 'Program') and _containmentMF_.name = 'elements')">
+    <nodeLabelTraces visualID="5007" queryText="true"/>
+    <nodeLabelTraces visualID="5008" queryText="true"/>
+    <nodeLabelTraces visualID="5009" queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces visualID="3007" queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://www.parallelj.org/0.5.0' and _eClass_.name = 'WhileLoop') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://www.parallelj.org/0.5.0' and _eClass_.name = 'Program') and _containmentMF_.name = 'elements')">
+    <nodeLabelTraces visualID="5010" queryText="true"/>
+    <nodeLabelTraces visualID="5011" queryText="true"/>
+    <nodeLabelTraces visualID="5012" queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces visualID="3008" queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://www.parallelj.org/0.5.0' and _eClass_.name = 'Handler') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://www.parallelj.org/0.5.0' and _eClass_.name = 'Program') and _containmentMF_.name = 'elements')">
+    <nodeLabelTraces visualID="5013" queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces visualID="3009" queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://www.parallelj.org/0.5.0' and _eClass_.name = 'Pipeline') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://www.parallelj.org/0.5.0' and _eClass_.name = 'Program') and _containmentMF_.name = 'elements')">
+    <nodeLabelTraces visualID="5016" queryText="true"/>
+    <nodeLabelTraces visualID="5017" queryText="true"/>
+    <compartmentTraces visualID="7002" queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces visualID="3010" queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://www.parallelj.org/0.5.0' and _eClass_.name = 'Procedure') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://www.parallelj.org/0.5.0' and _eClass_.name = 'Pipeline') and _containmentMF_.name = 'procedures')">
+    <nodeLabelTraces visualID="5014" queryText="true"/>
+    <nodeLabelTraces visualID="5015" queryText="true"/>
+  </childNodeTraces>
+  <childNodeTraces visualID="3011" queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://www.parallelj.org/0.5.0' and _eClass_.name = 'Data') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://www.parallelj.org/0.5.0' and _eClass_.name = 'Program') and _containmentMF_.name = 'data')">
+    <nodeLabelTraces visualID="5018" queryText="true"/>
+    <nodeLabelTraces visualID="5019" queryText="true"/>
+  </childNodeTraces>
+  <linkTraces visualID="4001" queryText="modelFacet.oclIsKindOf(gmfgen::TypeLinkModelFacet) and (let _eClass_:ecore::EClass = modelFacet.oclAsType(gmfgen::TypeLinkModelFacet).metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://www.parallelj.org/0.5.0' and _eClass_.name = 'Link')">
+    <linkLabelTraces visualID="6001" queryText="true"/>
+  </linkTraces>
+</trace:TraceModel>

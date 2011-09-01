@@ -1,0 +1,153 @@
+«IMPORT parallelj»
+«EXTENSION org::parallelj::codegen::extensions::common»
+
+
+«DEFINE constructor FOR Program»
+«REM»
+	/**
+	 * Empty Constructor  
+	 */
+	 «EXPAND Annotation::generated FOR this»
+	 public «this.getProgramName()» (){
+	 }
+«ENDREM»
+«ENDDEFINE»
+
+ 
+«DEFINE procedure FOR Element»
+	«IF this.metaType == Handler -»
+		«EXPAND Method::handler FOR (Handler)this -»
+	«ELSE-»
+		«IF this.metaType.isAssignableFrom(Procedure) || this.metaType.superTypes.contains(Procedure) -»
+	 		«IF isRunnable(((Procedure)this).executable,this) -»
+	 			«EXPAND Method::defaultProcedure FOR (Procedure)this -»
+	 		«ELSEIF isCallable(((Procedure)this).executable,this) -»
+	 			«EXPAND Method::callableProcedure FOR (Procedure)this -»
+	 		«ELSEIF ((Procedure)this).executable.length == null || ((Procedure)this).executable.length == 0-»
+	 			«EXPAND Method::noopProcedure FOR (Procedure)this -»
+		 	«ELSE-»
+				«EXPAND Method::defaultProcedure FOR (Procedure)this -»
+	 		«ENDIF-»
+		«ENDIF-»
+	«ENDIF-»	 
+«ENDDEFINE»
+
+«DEFINE defaultProcedure FOR Procedure»
+
+	/**
+	 * Entry method of procedure «this.getElementName()».
+	 * This procedure is bound to «this.executable»
+	 * Description : «this.description»
+	 * @generated «getGeneratorRawNameStr()»
+	 */
+	 «EXPAND Annotation::generatedWithHashToBeComputed FOR this»
+	 «EXPAND Annotation::join FOR this»
+	 «IF this.metaType == WhileLoop -»
+		«EXPAND Annotation::whileLoop FOR (WhileLoop)this»
+		«EXPAND Annotation::capacity FOR this»
+	«ELSEIF this.metaType == ForEachLoop -»
+		«EXPAND Annotation::capacity FOR this»
+	«ENDIF-»
+	 public «this.executable» «this.getElementName()»(«IF this.metaType == ForEachLoop -»«EXPAND Annotation::forEach FOR (ForEachLoop)this -»«ENDIF-») {
+	 	// TODO : to be implemented
+	 	
+	 	return new «this.executable»();
+	 }
+	 
+	/**
+	 * Exit method of procedure «this.getElementName()».
+	 * This procedure is bound to «this.executable»
+	 * Description : «this.description»
+	 * @generated «getGeneratorRawNameStr()»
+	 */
+	 «EXPAND Annotation::generatedWithHashToBeComputed FOR this»
+	 «EXPAND Annotation::split FOR this»
+	 public void «this.getElementName()»(«this.executable» executable) {
+	 	// TODO : to be implemented
+	 	
+	 }
+«ENDDEFINE»
+
+«DEFINE callableProcedure FOR Procedure»
+
+	/**
+	 * Entry method of procedure «this.getElementName()».
+	 * This procedure is bound to «this.executable»
+	 * Description : «this.description»
+	 * @generated «getGeneratorRawNameStr()»
+	 */
+	 «EXPAND Annotation::generatedWithHashToBeComputed FOR this»
+	 «EXPAND Annotation::join FOR this»
+	 «IF this.metaType == WhileLoop -»
+		«EXPAND Annotation::whileLoop FOR (WhileLoop)this»
+		«EXPAND Annotation::capacity FOR this»
+	«ELSEIF this.metaType == ForEachLoop -»
+		«EXPAND Annotation::capacity FOR this»
+	«ENDIF-»
+	 public «this.executable» «this.getElementName()»(«IF this.metaType == ForEachLoop -»«EXPAND Annotation::forEach FOR (ForEachLoop)this -»«ENDIF-») {
+	 	// TODO : to be implemented
+	 	
+	 	return new «this.executable»();
+	 }
+
+	/**
+	 * Exit method of procedure  «this.getElementName()».
+	 * This procedure is bound to «this.executable»
+	 * Description : «this.description»
+	 * @generated «getGeneratorRawNameStr()»
+	 */
+	 «EXPAND Annotation::generatedWithHashToBeComputed FOR this»
+	 «EXPAND Annotation::split FOR this»
+	 void «this.getElementName()»(«this.executable» executable, «getCallableGeneric(this.executable,this)» result){
+	 	// TODO : to be implemented
+	 	
+	 }
+«ENDDEFINE»
+
+«DEFINE handler FOR Handler»
+	/**
+	 * Handler «this.getElementName()»
+	 * Description : «this.description»
+	 * @generated «getGeneratorRawNameStr()»
+	 */
+	 «EXPAND Annotation::generatedWithHashToBeComputed FOR this»
+	 «EXPAND Annotation::handler FOR this»
+	 «EXPAND Annotation::split FOR this»
+	 public void «this.getElementName()» (java.lang.Exception e) {
+	 	// TODO : to be implemented
+	 	
+	 }
+
+«ENDDEFINE»
+
+«DEFINE noopProcedure FOR Procedure»
+	/**
+	 * Noop Procedure «this.getElementName()».
+	 * This procedure is not bound to an executable.
+	 * Description : «this.description»
+	 * @generated «getGeneratorRawNameStr()»
+	 */
+	 «EXPAND Annotation::generatedWithHashToBeComputed FOR this»
+	 «EXPAND Annotation::join FOR this»
+	 «EXPAND Annotation::split FOR this»
+	 public void «this.getElementName()» (){
+	 	// TODO : to be implemented
+	 	
+	 }
+
+«ENDDEFINE»
+
+«DEFINE predicate FOR Predicate»
+
+	/**
+	 * Predicate «this.getPredicateName()»
+	 * Description : «this.description»
+	 * @generated «getGeneratorRawNameStr()»
+	 */
+	 «EXPAND Annotation::generatedWithHashToBeComputed FOR this»
+	 public boolean is«this.getPredicateName().toFirstUpper()» (){
+	 	// TODO : to be implemented
+	 	return false;
+	 }
+
+«ENDDEFINE»

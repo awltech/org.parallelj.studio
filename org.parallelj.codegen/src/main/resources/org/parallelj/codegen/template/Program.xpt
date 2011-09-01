@@ -1,0 +1,6 @@
+«IMPORT parallelj»
+
+«DEFINE program FOR Program»
+«EXPAND Class::class»
+
+«ENDDEFINE» 

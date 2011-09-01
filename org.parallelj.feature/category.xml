@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/org.parallelj_0.7.0.M1.jar" id="org.parallelj" version="0.7.0.M1">
+      <category name="ParallelJ"/>
+   </feature>
+   <category-def name="ParallelJ" label="ParallelJ">
+      <description>
+         ParallelJ is a Java framework for tasks parallelization.
+      </description>
+   </category-def>
+</site>

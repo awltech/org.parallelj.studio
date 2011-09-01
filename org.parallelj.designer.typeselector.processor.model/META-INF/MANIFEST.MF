@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Model Type Processor for Resource Selector
+Bundle-SymbolicName: org.parallelj.designer.typeselector.processor.model;singleton:=true
+Bundle-Version: 0.7.0.qualifier
+Bundle-Activator: org.parallelj.designer.typeselector.processor.model.ModelActivator
+Require-Bundle: org.eclipse.core.resources,
+ org.eclipse.core.runtime,
+ org.eclipse.emf.ecore,
+ org.parallelj.model.editor;bundle-version="0.7.0",
+ org.parallelj.designer;bundle-version="0.7.0",
+ org.eclipselabs.resourceselector.core;bundle-version="0.3.0"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: org.parallelj.designer.typeselector.processor.model
+Import-Package: org.eclipse.jface.resource,
+ org.eclipse.swt.graphics,
+ org.eclipse.ui.plugin
+Bundle-Vendor: Atos Worldline

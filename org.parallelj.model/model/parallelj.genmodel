@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.parallelj.model/src/main/java"
+    editDirectory="/org.parallelj.model.edit/src/main/java" editorDirectory="/org.parallelj.model.editor/src/main/java"
+    modelPluginID="org.parallelj.model" modelName="ParallelJ" testsDirectory="/org.parallelj.model.tests/src/main/java"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" colorProviders="true">
+  <foreignModel>parallelj.ecore</foreignModel>
+  <genPackages prefix="ParallelJ" basePackage="org" disposableProviderFactory="true"
+      interfacePackageSuffix="model" metaDataPackageSuffix="model" classPackageSuffix="model.impl"
+      utilityPackageSuffix="model.util" providerPackageSuffix="model.provider" presentationPackageSuffix="model.presentation"
+      testsPackageSuffix="model.tests" fileExtensions="pjd" ecorePackage="parallelj.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="parallelj.ecore#//SplitType">
+      <genEnumLiterals ecoreEnumLiteral="parallelj.ecore#//SplitType/AND"/>
+      <genEnumLiterals ecoreEnumLiteral="parallelj.ecore#//SplitType/OR"/>
+      <genEnumLiterals ecoreEnumLiteral="parallelj.ecore#//SplitType/XOR"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="parallelj.ecore#//JoinType">
+      <genEnumLiterals ecoreEnumLiteral="parallelj.ecore#//JoinType/AND"/>
+      <genEnumLiterals ecoreEnumLiteral="parallelj.ecore#//JoinType/OR"/>
+      <genEnumLiterals ecoreEnumLiteral="parallelj.ecore#//JoinType/XOR"/>
+    </genEnums>
+    <genClasses ecoreClass="parallelj.ecore#//Program">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference parallelj.ecore#//Program/inputCondition"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference parallelj.ecore#//Program/outputCondition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference parallelj.ecore#//Program/predicates"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference parallelj.ecore#//Program/elements"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference parallelj.ecore#//Program/data"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute parallelj.ecore#//Program/capacity"/>
+    </genClasses>
+    <genClasses ecoreClass="parallelj.ecore#//Specification">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference parallelj.ecore#//Specification/programs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference parallelj.ecore#//Specification/metaInformationContainer"/>
+    </genClasses>
+    <genClasses ecoreClass="parallelj.ecore#//InputCondition"/>
+    <genClasses ecoreClass="parallelj.ecore#//OutputCondition"/>
+    <genClasses ecoreClass="parallelj.ecore#//Predicate"/>
+    <genClasses ecoreClass="parallelj.ecore#//Condition"/>
+    <genClasses ecoreClass="parallelj.ecore#//Link">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference parallelj.ecore#//Link/predicate"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference parallelj.ecore#//Link/destination"/>
+    </genClasses>
+    <genClasses ecoreClass="parallelj.ecore#//Element">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference parallelj.ecore#//Element/inputLinks"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference parallelj.ecore#//Element/outputLinks"/>
+    </genClasses>
+    <genClasses ecoreClass="parallelj.ecore#//Procedure">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EAttribute parallelj.ecore#//Procedure/executable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute parallelj.ecore#//Procedure/join"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute parallelj.ecore#//Procedure/split"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute parallelj.ecore#//Procedure/capacity"/>
+    </genClasses>
+    <genClasses ecoreClass="parallelj.ecore#//ForEachLoop">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference parallelj.ecore#//ForEachLoop/iterable"/>
+    </genClasses>
+    <genClasses ecoreClass="parallelj.ecore#//WhileLoop">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference parallelj.ecore#//WhileLoop/predicate"/>
+    </genClasses>
+    <genClasses ecoreClass="parallelj.ecore#//Data">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute parallelj.ecore#//Data/type"/>
+    </genClasses>
+    <genClasses ecoreClass="parallelj.ecore#//MetaInformationContainer">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference parallelj.ecore#//MetaInformationContainer/metaInformation"/>
+    </genClasses>
+    <genClasses ecoreClass="parallelj.ecore#//MetaInformation"/>
+    <genClasses ecoreClass="parallelj.ecore#//Handler">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference parallelj.ecore#//Handler/procedures"/>
+    </genClasses>
+    <genClasses ecoreClass="parallelj.ecore#//Pipeline">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference parallelj.ecore#//Pipeline/procedures"/>
+    </genClasses>
+    <genClasses ecoreClass="parallelj.ecore#//NamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute parallelj.ecore#//NamedElement/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute parallelj.ecore#//NamedElement/description"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

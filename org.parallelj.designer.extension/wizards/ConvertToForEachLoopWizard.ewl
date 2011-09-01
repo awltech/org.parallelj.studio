@@ -1,0 +1,37 @@
+wizard ConvertToForEachLoop {
+
+	// if selected element is Procedure or WhileLoop or Handler and not ForEachLoop then only execute the wizard 
+	guard : self.isKindOf(Procedure) and not self.eContainer.isKindOf(Pipeline) and not self.isKindOf(ForEachLoop)  
+
+	// sub-menu title
+	title : 'Turn into ForEachLoop'
+
+	do {
+		var isOK : Boolean := true;
+
+		if(self.isKindOf(WhileLoop) or self.isKindOf(Pipeline)){
+			isOK = UserInput.confirm('This wizard may result in the loss of some data from the former object. Do you confirm ?');
+		}
+		
+		if (isOK) 
+		{
+			// creating new ForEachLoop object 
+			var forEachLoopClass = self.eClass().ePackage.getEClassifier('ForEachLoop');
+			var forEachLoopObject = self.eClass().ePackage.eFactoryInstance.create(forEachLoopClass);
+			
+			// Assigning all attribute values to newly created ForEachLoop object
+			forEachLoopObject.name = self.name;
+			forEachLoopObject.description = self.description;
+			forEachLoopObject.executable = self.executable;
+			forEachLoopObject.join = self.join;
+			forEachLoopObject.split= self.split;
+			forEachLoopObject.inputLinks.addAll(self.inputLinks);
+			forEachLoopObject.outputLinks.addAll(self.outputLinks);
+			
+			// adding to new object to container
+			self.eContainer.elements.add(forEachLoopObject);
+			// removing to selected old object from container
+			self.eContainer.elements.remove(self);
+		}
+	}
+}

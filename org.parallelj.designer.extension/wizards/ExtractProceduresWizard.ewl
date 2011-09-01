@@ -1,0 +1,50 @@
+wizard ExtractProcedures {
+
+	// if selected element is Pipeline and having atleast one procedure inside then only execute the wizard 
+	guard : self.isKindOf(Pipeline) and self.procedures.size() <> 0
+
+	// sub-menu title
+	title : 'Extract Procedures'
+
+	do {
+		if (UserInput.confirm('This wizard may result in the loss of some data from the former object. Do you confirm ?')) 
+		{
+			var count = 0;
+			var size = self.procedures.size();
+			
+			while (count < size) {
+				// 1st procedure
+				if(count == 0){
+					// all pipeline inputlinks will be inputlinks for 1st procedure
+					self.procedures[count].inputLinks.addAll(self.inputLinks);
+				}
+				// last procedure
+				if(count == (size - 1)){
+					// all pipeline outputlinks will be outputlinks for last procedure
+					self.procedures[count].outputLinks.addAll(self.outputLinks);
+				}
+				// to link intermediate procedures in sequence
+				if(count <> (size - 1)){
+					// creating new link
+					var linkClass = self.eClass().ePackage.getEClassifier('Link');
+					var linkObject = self.eClass().ePackage.eFactoryInstance.create(linkClass);
+			
+					self.procedures[count].outputLinks.add(linkObject);
+					linkObject.destination = self.procedures[count+1];
+					self.procedures[count+1].inputLinks.add(linkObject);
+				}
+				
+				// next procedure
+				count = count + 1;
+			}
+	
+			// add all procedures to diagram
+			while (self.procedures.size() <> 0) {
+				self.eContainer.elements.add(self.procedures[0]);
+			}
+			
+			// remove existing pipeline
+			self.eContainer.elements.remove(self);
+		}
+	}
+}

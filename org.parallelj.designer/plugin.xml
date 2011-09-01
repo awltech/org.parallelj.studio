@@ -1,0 +1,662 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+
+   <extension point="org.eclipse.team.core.fileTypes" id="repo-ftype">
+      <?gmfgen generated="true"?>
+      <fileTypes type="text" extension="pjd"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser" id="resource-factory">
+      <?gmfgen generated="true"?>
+      <parser
+         type="pjd"
+         class="org.eclipse.gmf.runtime.emf.core.resources.GMFResourceFactory">
+      </parser>
+   </extension>
+
+   
+   <extension point="org.eclipse.ui.contexts" id="ui-context">
+      <?gmfgen generated="true"?>
+      <context
+         description="%context.description"
+         id="org.parallelj.designer.ui.diagramContext"
+         name="%context.name"
+         parentId="org.eclipse.gmf.runtime.diagram.ui.diagramContext">
+      </context>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards" id="creation-wizard">
+      <?gmfgen generated="true"?>
+  	  <wizard
+  	     name="%newWizardName"
+  	     icon="icons/obj16/ParallelJDiagramFile.png"
+  	     category="org.eclipse.ui.Examples"
+  	     class="org.parallelj.designer.part.ParallelJCreationWizard"
+  	     id="org.parallelj.designer.part.ParallelJCreationWizardID">
+  	  	 <description>%newWizardDesc</description>  
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.popupMenus" id="init-diagram-action">
+      <?gmfgen generated="true"?>
+      <objectContribution
+            id="org.parallelj.designer.InitDiagram"
+            nameFilter="*.pjd"
+            objectClass="org.eclipse.core.resources.IFile">
+         <action
+               label="%initDiagramActionLabel"
+               class="org.parallelj.designer.part.ParallelJInitDiagramFileAction"
+               menubarPath="additions"
+               enablesFor="1"
+               id="org.parallelj.designer.InitDiagramAction">
+         </action>
+      </objectContribution>
+   </extension>
+	
+   <extension point="org.eclipse.gmf.runtime.common.ui.services.action.globalActionHandlerProviders" id="global-actions">
+      <?gmfgen generated="true"?>
+      <GlobalActionHandlerProvider
+         class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramGlobalActionHandlerProvider"
+         id="ParallelJPresentation">
+         <Priority name="Lowest"/>
+         <ViewId id="org.parallelj.designer.part.ParallelJDiagramEditorID">
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId actionId="delete"/>
+            </ElementType>
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart">
+               <GlobalActionId actionId="save"/>
+            </ElementType>
+         </ViewId>
+      </GlobalActionHandlerProvider>
+      <GlobalActionHandlerProvider
+         class="org.eclipse.gmf.runtime.diagram.ui.providers.ide.providers.DiagramIDEGlobalActionHandlerProvider"
+         id="ParallelJPresentationIDE">
+         <Priority name="Lowest"/>
+         <ViewId id="org.parallelj.designer.part.ParallelJDiagramEditorID">
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId actionId="bookmark"/>
+            </ElementType>
+         </ViewId>
+      </GlobalActionHandlerProvider>
+      <GlobalActionHandlerProvider
+            class="org.eclipse.gmf.runtime.diagram.ui.render.providers.DiagramUIRenderGlobalActionHandlerProvider"
+            id="ParallelJRender">
+         <Priority name="Lowest"/>
+         <ViewId id="org.parallelj.designer.part.ParallelJDiagramEditorID">
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId actionId="cut"/>
+               <GlobalActionId actionId="copy"/>
+               <GlobalActionId actionId="paste"/>
+            </ElementType>
+         </ViewId>
+      </GlobalActionHandlerProvider>
+   </extension>
+
+
+   
+      
+
+   
+   <extension point="org.eclipse.core.runtime.preferences" id="prefs">
+      <?gmfgen generated="true"?>
+      <initializer class="org.parallelj.designer.preferences.DiagramPreferenceInitializer"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.preferencePages" id="prefpages">
+      <?gmfgen generated="true"?>
+      <page
+            id="org.parallelj.diagram.general"
+            name="%prefpage.org.parallelj.diagram.general"
+            class="org.parallelj.designer.preferences.DiagramGeneralPreferencePage">
+      </page>
+      <page
+            id="org.parallelj.diagram.appearance"
+            name="%prefpage.org.parallelj.diagram.appearance"
+            category="org.parallelj.diagram.general"
+            class="org.parallelj.designer.preferences.DiagramAppearancePreferencePage">
+      </page>
+      <page
+            id="org.parallelj.diagram.connections"
+            name="%prefpage.org.parallelj.diagram.connections"
+            category="org.parallelj.diagram.general"
+            class="org.parallelj.designer.preferences.DiagramConnectionsPreferencePage">
+      </page>
+      <page
+            id="org.parallelj.diagram.printing"
+            name="%prefpage.org.parallelj.diagram.printing"
+            category="org.parallelj.diagram.general"
+            class="org.parallelj.designer.preferences.DiagramPrintingPreferencePage">
+      </page>
+      <page
+            id="org.parallelj.diagram.rulersAndGrid"
+            name="%prefpage.org.parallelj.diagram.rulersAndGrid"
+            category="org.parallelj.diagram.general"
+            class="org.parallelj.designer.preferences.DiagramRulersAndGridPreferencePage">
+      </page>
+   </extension>
+
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertyContributor" id="prop-contrib">
+      <?gmfgen generated="true"?>
+      <propertyContributor
+            contributorId="org.parallelj.designer"
+            labelProvider="org.parallelj.designer.sheet.ParallelJSheetLabelProvider">
+         <propertyCategory category="domain"/>
+         <propertyCategory category="visual"/>
+         <propertyCategory category="extra"/>
+      </propertyContributor>
+   </extension>
+
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertyTabs" id="proptabs">
+      <?gmfgen generated="true"?>   
+      <propertyTabs contributorId="org.parallelj.designer">
+         <propertyTab
+             category="visual"
+             id="property.tab.AppearancePropertySection"
+             label="%tab.appearance"/>
+          <propertyTab
+             category="visual"
+             id="property.tab.DiagramPropertySection"
+             label="%tab.diagram"/>
+          <propertyTab
+             category="domain"
+             id="property.tab.domain"
+             label="%tab.domain"/>
+      </propertyTabs>
+   </extension>
+
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertySections" id="propsections">
+      <?gmfgen generated="true"?>   
+      <propertySections contributorId="org.parallelj.designer">
+         <propertySection id="property.section.ConnectorAppearancePropertySection" 
+            filter="org.eclipse.gmf.runtime.diagram.ui.properties.filters.ConnectionEditPartPropertySectionFilter" 
+            class="org.eclipse.gmf.runtime.diagram.ui.properties.sections.appearance.ConnectionAppearancePropertySection" 
+            tab="property.tab.AppearancePropertySection">
+         </propertySection>
+         <propertySection id="property.section.ShapeColorAndFontPropertySection" 
+            filter="org.eclipse.gmf.runtime.diagram.ui.properties.filters.ShapeEditPartPropertySectionFilter" 
+            class="org.eclipse.gmf.runtime.diagram.ui.properties.sections.appearance.ShapeColorsAndFontsPropertySection" 
+            tab="property.tab.AppearancePropertySection">
+         </propertySection> 
+         <propertySection id="property.section.DiagramColorsAndFontsPropertySection" 
+            filter="org.eclipse.gmf.runtime.diagram.ui.properties.filters.DiagramEditPartPropertySectionFilter" 
+            class="org.eclipse.gmf.runtime.diagram.ui.properties.sections.appearance.DiagramColorsAndFontsPropertySection" 
+            tab="property.tab.AppearancePropertySection">
+         </propertySection>     
+         <propertySection id="property.section.RulerGridPropertySection" 
+            filter="org.eclipse.gmf.runtime.diagram.ui.properties.filters.DiagramEditPartPropertySectionFilter" 
+            class="org.eclipse.gmf.runtime.diagram.ui.properties.sections.grid.RulerGridPropertySection" 
+            tab="property.tab.DiagramPropertySection">
+         </propertySection>     
+         <propertySection
+            id="property.section.domain" 
+            tab="property.tab.domain"
+            class="org.parallelj.designer.sheet.ParallelJPropertySection">
+            <input type="org.eclipse.gmf.runtime.notation.View"/>
+            <input type="org.eclipse.gef.EditPart"/>
+            <input type="org.parallelj.designer.navigator.ParallelJAbstractNavigatorItem"/>
+         </propertySection>
+      </propertySections>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.diagram.core.viewProviders" id="view-provider">
+      <?gmfgen generated="true"?>
+      <viewProvider class="org.parallelj.designer.providers.ParallelJViewProvider">
+         <Priority name="Lowest"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="ParallelJ"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2001,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="4001"/>
+      </viewProvider>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders" id="ep-provider">
+      <?gmfgen generated="true"?>
+      <editpartProvider class="org.parallelj.designer.providers.ParallelJEditPartProvider">
+         <Priority name="Lowest"/>
+         <object class="org.eclipse.gmf.runtime.notation.Diagram" id="generated-diagram">
+            <method name="getType()" value="ParallelJ"/>
+         </object>
+         <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-nodes">
+            <method name="getType()" value="2001,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011"/>
+         </object>
+         <object class="org.eclipse.gmf.runtime.notation.Edge" id="generated-links">
+            <method name="getType()" value="4001"/>
+         </object>
+         <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-labels">
+            <method name="getType()" value="5020,5001,5002,5003,5004,5005,5006,5007,5008,5009,5010,5011,5012,5013,5016,5017,5014,5015,5018,5019"/>
+         </object>
+         <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-compartments">
+            <method name="getType()" value="7001,7002"/>
+         </object>
+         <context views="generated-diagram,generated-nodes,generated-links,generated-labels,generated-compartments"/>
+      </editpartProvider>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.emf.ui.modelingAssistantProviders" id="modelassist-provider">
+      <?gmfgen generated="true"?>
+      <modelingAssistantProvider class="org.parallelj.designer.providers.ParallelJModelingAssistantProvider">
+         <Priority name="Lowest"/>
+         <object class="org.parallelj.designer.edit.parts.SpecificationEditPart" id="Specification_1000"/>
+         <object class="org.parallelj.designer.edit.parts.ProgramEditPart" id="Program_2001"/>
+         <context elements="Specification_1000,Program_2001"/>
+      </modelingAssistantProvider>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.common.ui.services.iconProviders" id="icon-provider">
+      <?gmfgen generated="true"?>
+      <IconProvider class="org.parallelj.designer.providers.ParallelJIconProvider">
+         <Priority name="Low"/>
+      </IconProvider>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.common.ui.services.parserProviders" id="parser-provider">
+      <?gmfgen generated="true"?>
+      <ParserProvider class="org.parallelj.designer.providers.ParallelJParserProvider">
+         <Priority name="Lowest"/>
+      </ParserProvider>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypes" id="element-types">
+      <?gmfgen generated="true"?>
+      <metamodel nsURI="http://www.parallelj.org/0.5.0">
+         <metamodelType
+               id="org.parallelj.designer.Specification_1000"
+               name="%metatype.name.Specification_1000"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Specification"
+               edithelper="org.parallelj.designer.edit.helpers.SpecificationEditHelper">
+            <param name="semanticHint" value="1000"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.parallelj.org/0.5.0">
+         <metamodelType
+               id="org.parallelj.designer.Program_2001"
+               name="%metatype.name.Program_2001"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Program"
+               edithelper="org.parallelj.designer.edit.helpers.ProgramEditHelper">
+            <param name="semanticHint" value="2001"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.parallelj.org/0.5.0">
+         <metamodelType
+               id="org.parallelj.designer.InputCondition_3001"
+               name="%metatype.name.InputCondition_3001"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="InputCondition"
+               edithelper="org.parallelj.designer.edit.helpers.InputConditionEditHelper">
+            <param name="semanticHint" value="3001"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.parallelj.org/0.5.0">
+         <metamodelType
+               id="org.parallelj.designer.OutputCondition_3002"
+               name="%metatype.name.OutputCondition_3002"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="OutputCondition"
+               edithelper="org.parallelj.designer.edit.helpers.OutputConditionEditHelper">
+            <param name="semanticHint" value="3002"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.parallelj.org/0.5.0">
+         <metamodelType
+               id="org.parallelj.designer.Condition_3003"
+               name="%metatype.name.Condition_3003"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Condition"
+               edithelper="org.parallelj.designer.edit.helpers.ConditionEditHelper">
+            <param name="semanticHint" value="3003"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.parallelj.org/0.5.0">
+         <metamodelType
+               id="org.parallelj.designer.Predicate_3004"
+               name="%metatype.name.Predicate_3004"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Predicate"
+               edithelper="org.parallelj.designer.edit.helpers.PredicateEditHelper">
+            <param name="semanticHint" value="3004"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.parallelj.org/0.5.0">
+         <metamodelType
+               id="org.parallelj.designer.Procedure_3005"
+               name="%metatype.name.Procedure_3005"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Procedure"
+               edithelper="org.parallelj.designer.edit.helpers.ProcedureEditHelper">
+            <param name="semanticHint" value="3005"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.parallelj.org/0.5.0">
+         <metamodelType
+               id="org.parallelj.designer.ForEachLoop_3006"
+               name="%metatype.name.ForEachLoop_3006"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="ForEachLoop"
+               edithelper="org.parallelj.designer.edit.helpers.ForEachLoopEditHelper">
+            <param name="semanticHint" value="3006"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.parallelj.org/0.5.0">
+         <metamodelType
+               id="org.parallelj.designer.WhileLoop_3007"
+               name="%metatype.name.WhileLoop_3007"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="WhileLoop"
+               edithelper="org.parallelj.designer.edit.helpers.WhileLoopEditHelper">
+            <param name="semanticHint" value="3007"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.parallelj.org/0.5.0">
+         <metamodelType
+               id="org.parallelj.designer.Handler_3008"
+               name="%metatype.name.Handler_3008"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Handler"
+               edithelper="org.parallelj.designer.edit.helpers.HandlerEditHelper">
+            <param name="semanticHint" value="3008"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.parallelj.org/0.5.0">
+         <metamodelType
+               id="org.parallelj.designer.Pipeline_3009"
+               name="%metatype.name.Pipeline_3009"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Pipeline"
+               edithelper="org.parallelj.designer.edit.helpers.PipelineEditHelper">
+            <param name="semanticHint" value="3009"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.parallelj.org/0.5.0">
+         <specializationType
+               id="org.parallelj.designer.Procedure_3010"
+               name="%metatype.name.Procedure_3010"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="org.parallelj.designer.Procedure_3005"/>
+            <param name="semanticHint" value="3010"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://www.parallelj.org/0.5.0">
+         <metamodelType
+               id="org.parallelj.designer.Data_3011"
+               name="%metatype.name.Data_3011"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Data"
+               edithelper="org.parallelj.designer.edit.helpers.DataEditHelper">
+            <param name="semanticHint" value="3011"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.parallelj.org/0.5.0">
+         <metamodelType
+               id="org.parallelj.designer.Link_4001"
+               name="%metatype.name.Link_4001"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Link"
+               edithelper="org.parallelj.designer.edit.helpers.LinkEditHelper">
+            <param name="semanticHint" value="4001"/>
+         </metamodelType>
+      </metamodel>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypeBindings" id="element-types-bindings">
+      <?gmfgen generated="true"?>
+      <clientContext id="org.parallelj.designer.TypeContext">
+         <enablement>
+            <test
+               property="org.eclipse.gmf.runtime.emf.core.editingDomain"
+               value="org.parallelj.designer.EditingDomain"/>
+         </enablement>
+      </clientContext> 
+      <binding context="org.parallelj.designer.TypeContext">
+         <elementType ref="org.parallelj.designer.Specification_1000"/>
+         <elementType ref="org.parallelj.designer.Program_2001"/>
+         <elementType ref="org.parallelj.designer.InputCondition_3001"/>
+         <elementType ref="org.parallelj.designer.OutputCondition_3002"/>
+         <elementType ref="org.parallelj.designer.Condition_3003"/>
+         <elementType ref="org.parallelj.designer.Predicate_3004"/>
+         <elementType ref="org.parallelj.designer.Procedure_3005"/>
+         <elementType ref="org.parallelj.designer.ForEachLoop_3006"/>
+         <elementType ref="org.parallelj.designer.WhileLoop_3007"/>
+         <elementType ref="org.parallelj.designer.Handler_3008"/>
+         <elementType ref="org.parallelj.designer.Pipeline_3009"/>
+         <elementType ref="org.parallelj.designer.Procedure_3010"/>
+         <elementType ref="org.parallelj.designer.Data_3011"/>
+         <elementType ref="org.parallelj.designer.Link_4001"/>
+         <advice ref="org.eclipse.gmf.runtime.diagram.core.advice.notationDepdendents"/>
+      </binding>
+   </extension>
+	   <extension point="org.eclipse.core.expressions.propertyTesters" id="navigator-proptest.isURIEditorInput">
+      <?gmfgen generated="true"?>
+       <propertyTester
+           id="org.parallelj.designer.URIEditorInputPropertyTester"
+           type="org.eclipse.emf.common.ui.URIEditorInput"
+           namespace="org.parallelj.designer"
+           properties="isURIEditorInput"
+           class="org.parallelj.designer.part.ParallelJUriEditorInputTester">
+       </propertyTester>
+   </extension>
+
+	   <extension point="org.eclipse.ui.navigator.viewer" id="navigator-viewbinding">
+      <?gmfgen generated="true"?>
+      <viewerContentBinding viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+         <includes>
+            <contentExtension pattern="org.parallelj.designer.resourceContent"/>
+			<contentExtension pattern="org.parallelj.designer.domainResourceContent"/>
+            <contentExtension pattern="org.parallelj.designer.navigatorLinkHelper"/>
+         </includes>
+      </viewerContentBinding>
+      <viewerActionBinding viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+         <includes>
+            <actionExtension pattern="org.parallelj.designer.navigatorActionProvider"/>
+         </includes>
+      </viewerActionBinding>
+   </extension>
+
+   <extension point="org.eclipse.ui.navigator.navigatorContent" id="navigator-content">
+      <?gmfgen generated="true"?>
+      <navigatorContent
+            id="org.parallelj.designer.resourceContent" 
+            name="%navigatorContentName" 
+            priority="normal" 
+            contentProvider="org.parallelj.designer.navigator.ParallelJNavigatorContentProvider" 
+            labelProvider="org.parallelj.designer.navigator.ParallelJNavigatorLabelProvider"
+            icon="icons/obj16/ParallelJDiagramFile.png"
+            activeByDefault="true">
+         <triggerPoints>
+            <or>
+	           <and>
+    	          <instanceof value="org.eclipse.core.resources.IFile"/>
+        	      <test property="org.eclipse.core.resources.extension" value="pjd"/>
+               </and>
+               <instanceof value="org.parallelj.designer.navigator.ParallelJAbstractNavigatorItem"/>
+            </or>
+         </triggerPoints>
+         <possibleChildren>
+            <or>
+         	   <instanceof value="org.parallelj.designer.navigator.ParallelJAbstractNavigatorItem"/>
+            </or>
+         </possibleChildren>
+         <commonSorter 
+               id="org.parallelj.designer.navigatorSorter" 
+               class="org.parallelj.designer.navigator.ParallelJNavigatorSorter">
+            <parentExpression>
+               <or>
+	              <and>
+    	             <instanceof value="org.eclipse.core.resources.IFile"/>
+        	         <test property="org.eclipse.core.resources.extension" value="pjd"/>
+                  </and>
+                  <instanceof value="org.parallelj.designer.navigator.ParallelJAbstractNavigatorItem"/>
+               </or>
+            </parentExpression>
+         </commonSorter>
+      </navigatorContent>
+      <navigatorContent
+            id="org.parallelj.designer.domainResourceContent" 
+            name="%domainNavigatorContentName" 
+            priority="normal" 
+            contentProvider="org.parallelj.designer.navigator.ParallelJDomainNavigatorContentProvider" 
+            labelProvider="org.parallelj.designer.navigator.ParallelJDomainNavigatorLabelProvider"
+            icon="icons/obj16/ParallelJDiagramFile.png"
+            activeByDefault="true">
+         <triggerPoints>
+            <or>
+	           <and>
+    	          <instanceof value="org.eclipse.core.resources.IFile"/>
+        	      <test property="org.eclipse.core.resources.extension" value="pjd"/>
+               </and>
+               <instanceof value="org.parallelj.designer.navigator.ParallelJDomainNavigatorItem"/>
+            </or>
+         </triggerPoints>
+         <possibleChildren>
+            <instanceof value="org.parallelj.designer.navigator.ParallelJDomainNavigatorItem"/>
+         </possibleChildren>
+      </navigatorContent>
+      <actionProvider
+            id="org.parallelj.designer.navigatorActionProvider"
+            class="org.parallelj.designer.navigator.ParallelJNavigatorActionProvider">
+         <enablement>
+            <or>
+               <instanceof value="org.parallelj.designer.navigator.ParallelJAbstractNavigatorItem"/>
+            </or>
+         </enablement>
+      </actionProvider>
+   </extension>
+   
+	   <extension point="org.eclipse.ui.navigator.linkHelper" id="navigator-linkhelper">
+      <?gmfgen generated="true"?>
+      <linkHelper
+            id="org.parallelj.designer.navigatorLinkHelper"
+            class="org.parallelj.designer.navigator.ParallelJNavigatorLinkHelper">
+         <editorInputEnablement>
+            <and>
+               <instanceof value="org.eclipse.emf.common.ui.URIEditorInput"/>
+               <test property="org.parallelj.designer.isURIEditorInput"/>
+            </and>
+         </editorInputEnablement>
+         <selectionEnablement>
+            <instanceof value="org.parallelj.designer.navigator.ParallelJAbstractNavigatorItem"/>
+         </selectionEnablement>
+      </linkHelper>
+   </extension>
+   <extension point="org.eclipse.ui.commands" id="update-cmd">
+      <?gmfgen generated="true"?>
+      <command
+         categoryId="org.eclipse.ui.category.edit"
+         defaultHandler="org.parallelj.designer.part.ParallelJDiagramUpdateCommand"
+         description="%update.diagram.description"
+         id="org.parallelj.designer.updateDiagram"
+         name="%update.diagram.name"/>
+   </extension>
+   
+   <extension point="org.eclipse.ui.bindings" id="update-cmd-binding">
+      <?gmfgen generated="true"?>
+      <key 
+         commandId="org.parallelj.designer.updateDiagram"
+         contextId="org.parallelj.designer.ui.diagramContext"
+         schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+         sequence="F5"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.menus" id="context-menus">
+      <?gmfgen generated="true"?>
+      <!-- menuContribution locationURI="menu:org.eclipse.ui.main.menu?after=">
+      </menuContribution>
+      <menuContribution locationURI="toolbar:org.eclipse.ui.main.toolbar?after=">
+      </menuContribution -->
+      <menuContribution locationURI="popup:org.eclipse.gmf.runtime.diagram.ui.DiagramEditorContextMenu">
+         <command commandId="org.parallelj.designer.LoadResourceAction">
+            <visibleWhen>
+               <and>
+                  <with variable="activePartId"><equals value="org.parallelj.designer.part.ParallelJDiagramEditorID"/></with>
+                  <with variable="selection"><iterate ifEmpty="false"> 
+                     <instanceof value="org.parallelj.designer.edit.parts.SpecificationEditPart"/>
+                  </iterate></with>
+               </and>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+
+   <extension point="org.eclipse.ui.commands" id="menu-commands">
+      <?gmfgen generated="true"?>
+      <category id="org.parallelj.designer.part.ParallelJDiagramEditorID" name="%cmdcategory.name" description="%cmdcategory.desc"/>
+      <command id="org.parallelj.designer.LoadResourceAction"
+         name="Load Resource"
+         categoryId="org.parallelj.designer.part.ParallelJDiagramEditorID"
+         defaultHandler="org.parallelj.designer.part.LoadResourceAction"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.handlers" id="menu-handlers">
+      <?gmfgen generated="true"?>
+   </extension>
+
+<extension point="org.eclipse.gmf.runtime.common.ui.services.markerNavigationProviders" id="markers-navigation">
+      <?gmfgen generated="true"?>
+      <MarkerNavigationProvider class="org.parallelj.designer.providers.ParallelJMarkerNavigationProvider">
+         <MarkerType name="org.parallelj.designer.diagnostic"/>
+         <Priority name="Lowest"/>
+      </MarkerNavigationProvider>
+   </extension>
+
+<extension id="diagnostic" name="ParallelJ Plugin problems" point="org.eclipse.core.resources.markers">
+      <?gmfgen generated="true"?>
+      <super type="org.eclipse.core.resources.problemmarker"/>
+      <super type="org.eclipse.gmf.runtime.common.ui.services.marker"/>
+      <persistent value="true"/>
+   </extension><extension id="validationDecoratorProvider" name="ValidationDecorations" point="org.eclipse.gmf.runtime.diagram.ui.decoratorProviders">
+      <?gmfgen generated="true"?>
+      <decoratorProvider class="org.parallelj.designer.providers.ParallelJValidationDecoratorProvider">
+         <Priority name="Lowest"/>
+         <object class="org.eclipse.gmf.runtime.diagram.ui.editparts.IPrimaryEditPart(org.eclipse.gmf.runtime.diagram.ui)" id="PRIMARY_VIEW"/>
+         <context decoratorTargets="PRIMARY_VIEW"/>
+      </decoratorProvider>
+   </extension>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <!-- optionally, specify keybindings -->
+</plugin>

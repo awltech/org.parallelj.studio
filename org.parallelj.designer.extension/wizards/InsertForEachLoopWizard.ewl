@@ -1,0 +1,43 @@
+wizard InsertForEachLoop {
+
+	// if selected element is Link then only execute the wizard 
+	guard : self.isKindOf(Link)
+
+	// sub-menu title
+	title : 'Insert ForEachLoop'
+
+	do{
+	
+		// asking user to enter name for new ForEachLoop
+		var newName : String;
+		var message : String := 'Please provide a name for new ForEachLoop';
+		newName := UserInput.prompt(message);
+		
+		// storing old ForEachLoop ( which is currently destination for selected link )for further use
+		var oldDestination = self.destination;
+		
+		// don't create ForEachLoop if name enter is empty
+		if(newName = ''){return;}
+		
+		// creating new ForEachLoop object and giving name which is enter by user 
+		var forEachLoopClass = self.eClass().ePackage.getEClassifier('ForEachLoop');
+		var forEachLoopObject = self.eClass().ePackage.eFactoryInstance.create(forEachLoopClass);
+		forEachLoopObject.name := newName;
+		
+		// doing link connection rearrangement
+		self.destination := forEachLoopObject;
+		forEachLoopObject.inputLinks.add(self);
+		
+		// creating new link
+		var linkClass = self.eClass().ePackage.getEClassifier('Link');
+		var linkObject = self.eClass().ePackage.eFactoryInstance.create(linkClass);
+		
+		// connecting newly created link between newly created ForEachLoop and older one 
+		forEachLoopObject.outputLinks.add(linkObject);
+		linkObject.destination := oldDestination;
+		oldDestination.inputLinks.add(linkObject);
+		
+		// adding to new object to container 
+		self.eContainer.eContainer.elements.add(forEachLoopObject);
+	}
+}

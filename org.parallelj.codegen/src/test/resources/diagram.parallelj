@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<parallelj:Specification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:parallelj="http://www.parallelj.org/0.1.0">
+  <executables xsi:type="parallelj:Program" name="org.pj.test.Appli" description="description pgm">
+    <predicates name="Valid"/>
+    <elements xsi:type="parallelj:InputCondition" name="begin" description="inputCond description">
+      <outputLinks destination="//@executables.0/@elements.1"/>
+    </elements>
+    <elements xsi:type="parallelj:Procedure" name="Step1" description="Step1 desc" inputLinks="//@executables.0/@elements.0/@outputLinks.0">
+      <outputLinks destination="//@executables.0/@elements.2"/>
+      <outputLinks destination="//@executables.0/@elements.3"/>
+    </elements>
+    <elements xsi:type="parallelj:Procedure" name="Step2" description="Step2 desc" inputLinks="//@executables.0/@elements.1/@outputLinks.0" executable="//@executables.2">
+      <outputLinks destination="//@executables.0/@elements.5"/>
+    </elements>
+    <elements xsi:type="parallelj:Procedure" name="Step3" description="Step3 desc" inputLinks="//@executables.0/@elements.1/@outputLinks.1" executable="//@executables.1">
+      <outputLinks destination="//@executables.0/@elements.4"/>
+    </elements>
+    <elements xsi:type="parallelj:ForEachLoop" name="Step4" description="Belle step4" inputLinks="//@executables.0/@elements.3/@outputLinks.0" executable="//@executables.0">
+      <outputLinks destination="//@executables.0/@elements.6"/>
+    </elements>
+    <elements xsi:type="parallelj:WhileLoop" name="Step5" description="Step5 desc" inputLinks="//@executables.0/@elements.2/@outputLinks.0" executable="//@executables.0" predicate="//@executables.0/@predicates.0">
+      <outputLinks destination="//@executables.0/@elements.6"/>
+    </elements>
+    <elements xsi:type="parallelj:OutputCondition" name="end" description="Output desc" inputLinks="//@executables.0/@elements.4/@outputLinks.0 //@executables.0/@elements.5/@outputLinks.0"/>
+  </executables>
+  <executables xsi:type="parallelj:Runnable" name="dont.erase.RunnableProg" description="This is a Runnable"/>
+  <executables xsi:type="parallelj:Callable" name="dont.erase.CallableProg" description="This is a Callable"/>
+</parallelj:Specification>

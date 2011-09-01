@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id$
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="org.parallelj.model.presentation.ParallelJModelWizardID"
+            name="%_UI_ParallelJModelWizard_label"
+            class="org.parallelj.model.presentation.ParallelJModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/ParallelJModelFile.gif">
+         <description>%_UI_ParallelJModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="org.parallelj.model.presentation.ParallelJEditorID"
+            name="%_UI_ParallelJEditor_label"
+            icon="icons/full/obj16/ParallelJModelFile.gif"
+            extensions="pjd"
+            class="org.parallelj.model.presentation.ParallelJEditor"
+            contributorClass="org.parallelj.model.presentation.ParallelJActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

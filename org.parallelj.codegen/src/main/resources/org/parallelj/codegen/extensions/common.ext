@@ -1,0 +1,43 @@
+import parallelj;
+
+String getPackageName(Program pgm):
+	pgm.name.split("\\.").withoutLast().toLowerCase().toString(".");
+
+String getPackagePath(Program pgm):
+	getPackageName(pgm).replaceAll("\\.","/")+"/";
+	
+String getProgramName(Program pgm):
+	getStringName(pgm.name).toFirstUpper();
+	
+String getElementName(Element elem):
+	getStringName(elem.name);
+
+String getPredicateName(Predicate pred):
+	getStringName(pred.name);
+	
+String getStringName(String str):
+	str.split("\\.").last().toFirstLower().toString();
+
+String getGeneratorNameStr(): 
+		"\""+getGeneratorRawNameStr()+"\""; 
+
+String getGeneratorRawNameStr():
+		"//J";
+		
+String getOutputConditionName():
+		"\"end\"";
+		
+String getInputConditionName():
+		"\"begin\"";
+		
+boolean isCallable(String name, parallelj::Element elem):
+		JAVA org.parallelj.codegen.extensions.CodeChecker.isCallable(java.lang.String, org.parallelj.model.Element);	
+
+boolean isRunnable(String name,parallelj::Element elem):
+		JAVA org.parallelj.codegen.extensions.CodeChecker.isRunnable(java.lang.String, org.parallelj.model.Element);	
+		
+String getGeneric(String str):
+		JAVA org.parallelj.codegen.extensions.CodeChecker.getGeneric(java.lang.String);
+		
+String getCallableGeneric(String name, parallelj::Element elem):
+		JAVA org.parallelj.codegen.extensions.CodeChecker.getCallableGeneric(java.lang.String, org.parallelj.model.Element);

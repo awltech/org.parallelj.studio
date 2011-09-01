@@ -1,0 +1,7 @@
+# Tracing options for the org.parallelj.designer plug-in
+
+# Common issues
+org.parallelj.designer/debug=false
+
+# Visual IDs
+org.parallelj.designer/debug/visualID=false

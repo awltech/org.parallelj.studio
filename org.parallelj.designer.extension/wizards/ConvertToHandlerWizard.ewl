@@ -1,0 +1,34 @@
+wizard ConvertToHandler {
+
+	// if selected element is WhileLoop or ForEachLoop or Procedure and not Handler then only execute the wizard 
+	guard : self.isKindOf(Procedure) and not self.eContainer.isKindOf(Pipeline) and not self.isKindOf(Handler)  
+
+	// sub-menu title
+	title : 'Turn into Handler'
+
+	do {
+		if (UserInput.confirm('This wizard may result in the loss of some data from the former object. Do you confirm ?')) 
+		{	
+			// creating new Handler object 
+			var handlerClass = self.eClass().ePackage.getEClassifier('Handler');
+			var handlerObject = self.eClass().ePackage.eFactoryInstance.create(handlerClass);
+			
+			// Assigning all attribute values to newly created Handler object
+			handlerObject.name = self.name;
+			handlerObject.description = self.description;
+			handlerObject.split= self.split;
+			handlerObject.outputLinks.addAll(self.outputLinks);
+			
+			// adding to new object to container
+			self.eContainer.elements.add(handlerObject);
+			
+			// removing all input links coming from source object
+			for(inputLinks in self.inputLinks){
+				inputLinks.eContainer.outputLinks.remove(inputLinks);
+			}
+			
+			// removing to selected old object from container
+			self.eContainer.elements.remove(self);
+		}
+	}
+}
