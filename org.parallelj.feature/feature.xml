@@ -536,17 +536,17 @@ That&apos;s all there is to it!
 
    <url>
       <discovery label="ParallelJ SourceForge Site" url="http://sourceforge.net/projects/parallelj/"/>
-      <discovery label="Resource Selector Site" url="http://svn.codespot.com/a/eclipselabs.org/resource-selector/site/"/>
+      <discovery label="Resource Selector Site" url="http://xa-labs.github.com/ResourceSelector/site/"/>
    </url>
 
    <requires>
       <import plugin="org.eclipse.ui" version="3.6.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.core.runtime"/>
       <import plugin="org.eclipse.core.resources" version="3.6.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.jdt.core" version="3.6.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.emf.mwe.core" version="1.0.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.xpand" version="1.0.0" match="greaterOrEqual"/>
-      <import plugin="org.junit" version="4.8.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jdt.core" version="3.7.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.mwe.core" version="1.1.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xpand" version="1.1.0" match="compatible"/>
+      <import plugin="org.junit" version="4.8.2" match="greaterOrEqual"/>
       <import plugin="org.eclipse.jface.text" version="3.6.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.core.expressions"/>
       <import plugin="org.eclipse.jface"/>
@@ -555,7 +555,6 @@ That&apos;s all there is to it!
       <import plugin="org.eclipse.ui.navigator"/>
       <import plugin="org.eclipse.ui.navigator.resources"/>
       <import plugin="org.eclipse.emf.ecore.xmi"/>
-      <import feature="org.eclipse.emf.edit.ui" version="2.6.0.v20100914-1218"/>
       <import plugin="org.eclipse.gmf.runtime.emf.core"/>
       <import plugin="org.eclipse.gmf.runtime.emf.commands.core"/>
       <import plugin="org.eclipse.gmf.runtime.emf.ui.properties"/>
@@ -569,131 +568,119 @@ That&apos;s all there is to it!
       <import plugin="org.eclipse.draw2d"/>
       <import plugin="org.eclipse.gmf.runtime.draw2d.ui"/>
       <import plugin="org.eclipse.ocl.ecore"/>
-      <import feature="org.eclipse.emf.validation" version="1.4.0.v20100428-2315-479-9oB56N5BBR6LCA6"/>
+      <import feature="org.eclipse.emf.validation" version="1.5.0"/>
       <import plugin="org.eclipse.gef"/>
-      <import feature="org.eclipse.emf.validation.ocl" version="1.4.0.v20100428-2315-23-7w3121133502768"/>
-      <import plugin="org.eclipse.epsilon.ewl.emf" version="0.8.9" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.jdt.ui" version="3.6.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipselabs.resourceselector.core" version="0.2.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipselabs.resourceselector.processor.java" version="0.2.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipselabs.resourceselector.processor.java.hierarchy" version="0.2.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipselabs.resourceselector.processor.java.primitives" version="0.2.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.validation.ocl" version="1.5.0"/>
+      <import plugin="org.eclipse.epsilon.ewl.emf" version="0.9.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jdt.ui" version="3.7.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipselabs.resourceselector.core" version="0.4.0" match="compatible"/>
+      <import plugin="org.eclipselabs.resourceselector.processor.java" version="0.3.0" match="compatible"/>
+      <import plugin="org.eclipselabs.resourceselector.processor.java.hierarchy" version="0.3.0" match="compatible"/>
+      <import plugin="org.eclipselabs.resourceselector.processor.java.primitives" version="0.3.0" match="compatible"/>
       <import plugin="org.eclipse.swt"/>
       <import plugin="org.eclipse.ui.workbench"/>
-      <import plugin="org.eclipse.jdt.core" version="3.5.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.jdt.launching" version="3.5.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.debug.ui" version="3.5.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.gmf.runtime.notation"/>
-      <import feature="org.eclipse.emf.edit" version="2.6.0.v20100914-1218"/>
-      <import feature="org.eclipse.emf.edit.ui" version="2.6.0.v20100914-1218"/>
-      <import feature="org.eclipse.emf.validation" version="1.4.0.v20100428-2315-479-9oB56N5BBR6LCA6"/>
-      <import feature="org.eclipse.emf.validation.ocl" version="1.4.0.v20100428-2315-23-7w3121133502768"/>
-      <import feature="org.eclipse.emf.edit" version="2.6.0.v20100914-1218"/>
-      <import feature="org.eclipse.xtend.typesystem.emf" version="1.0.1.v201008251147"/>
-      <import feature="org.eclipse.emf.ecore" version="2.6.1.v20100914-1218"/>
-      <import feature="org.eclipse.emf.ecore.edit" version="2.6.0.v20100914-1218"/>
-      <import feature="org.eclipse.emf.edit" version="2.6.0.v20100914-1218"/>
-      <import feature="org.eclipse.emf.edit.ui" version="2.6.0.v20100914-1218"/>
-      <import feature="org.eclipse.emf.mwe.ui" version="1.0.0.v201008251122"/>
-      <import feature="org.eclipse.emf.validation" version="1.4.0.v20100428-2315-479-9oB56N5BBR6LCA6"/>
-      <import feature="org.eclipse.emf.validation.ocl" version="1.4.0.v20100428-2315-23-7w3121133502768"/>
-      <import feature="org.eclipse.emf.workspace" version="1.4.0.v20100428-2315-36-8s734C367E3CBC7"/>
-      <import feature="org.eclipse.epsilon.feature" version="0.9.0.201011251259"/>
-      <import feature="org.eclipse.emf.eef.edt" version="0.8.1.v201009101041-18s7EFCB-_gaPShVhVUi36BF58x4"/>
-      <import feature="org.eclipse.emf.eef.runtime" version="0.8.1.v201009101041-17707w31211A212152"/>
-      <import feature="org.eclipse.epsilon.eugenia.feature" version="0.9.0.201011251259"/>
-      <import feature="org.eclipse.epsilon.evl.emf.validation.feature" version="0.9.0.201011251259"/>
-      <import feature="org.eclipse.epsilon.gmf.feature" version="0.9.0.201011251259"/>
-      <import feature="org.eclipse.epsilon.hutn.feature" version="0.8.0.201011251259"/>
-      <import plugin="org.eclipse.emf.ecore" version="2.6.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.emf.workspace" version="1.4.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.xtend.typesystem.emf" version="1.0.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.emf.eef.runtime" version="0.8.1" match="greaterOrEqual"/>
-      <import feature="org.maven.ide.eclipse.feature" version="0.10.2.20100623-1649" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.edit" version="2.7.0"/>
+      <import feature="org.eclipse.emf.ecore.edit" version="2.7.0"/>
+      <import feature="org.eclipse.emf.edit.ui" version="2.7.0"/>
+      <import feature="org.eclipse.emf.mwe.ui" version="1.1.0"/>
+      <import feature="org.eclipse.epsilon.feature" version="0.9.0"/>
+      <import feature="org.eclipse.emf.eef.edt" version="1.0.0"/>
+      <import feature="org.eclipse.emf.eef.runtime" version="1.0.0"/>
+      <import feature="org.eclipse.epsilon.eugenia.feature" version="0.9.0"/>
+      <import feature="org.eclipse.epsilon.evl.emf.validation.feature" version="0.9.0"/>
+      <import feature="org.eclipse.epsilon.gmf.feature" version="0.9.0"/>
+      <import feature="org.eclipse.epsilon.hutn.feature" version="0.8.0"/>
+      <import plugin="org.eclipse.emf.ecore" version="2.7.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.workspace" version="1.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtend.typesystem.emf" version="1.1.0" match="compatible"/>
+      <import feature="org.eclipse.m2e.feature" version="1.0.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin
          id="org.parallelj.codegen"
          download-size="0"
          install-size="0"
-         version="0.7.0.qualifier"
+         version="0.0.0"
          unpack="false"/>
 
    <plugin
          id="org.parallelj.common.jdt"
          download-size="0"
          install-size="0"
-         version="0.7.0.qualifier"
+         version="0.0.0"
          unpack="false"/>
 
    <plugin
          id="org.parallelj.designer"
          download-size="0"
          install-size="0"
-         version="0.7.0.qualifier"
+         version="0.0.0"
          unpack="false"/>
 
    <plugin
          id="org.parallelj.designer.extension"
          download-size="0"
          install-size="0"
-         version="0.7.0.qualifier"
+         version="0.0.0"
          unpack="false"/>
 
    <plugin
          id="org.parallelj.designer.typeselector.processor.model"
          download-size="0"
          install-size="0"
-         version="0.7.0.qualifier"
+         version="0.0.0"
          unpack="false"/>
 
    <plugin
          id="org.parallelj.designer.validation"
          download-size="0"
          install-size="0"
-         version="0.7.0.qualifier"
+         version="0.0.0"
          unpack="false"/>
 
    <plugin
          id="org.parallelj.model"
          download-size="0"
          install-size="0"
-         version="0.7.0.qualifier"
+         version="0.0.0"
          unpack="false"/>
 
    <plugin
          id="org.parallelj.model.edit"
          download-size="0"
          install-size="0"
-         version="0.7.0.qualifier"
+         version="0.0.0"
          unpack="false"/>
 
    <plugin
          id="org.parallelj.model.editor"
          download-size="0"
          install-size="0"
-         version="0.7.0.qualifier"
+         version="0.0.0"
          unpack="false"/>
 
    <plugin
          id="org.parallelj.designer.properties"
          download-size="0"
          install-size="0"
-         version="0.7.0.qualifier"
+         version="0.0.0"
          unpack="false"/>
 
    <plugin
          id="org.parallelj.designer.typeselector.processor.annotation"
          download-size="0"
          install-size="0"
-         version="0.7.0.qualifier"
+         version="0.0.0"
          unpack="false"/>
 
    <plugin
          id="org.parallelj.designer.typeselector.processor.hierarchy"
          download-size="0"
          install-size="0"
-         version="0.7.0.qualifier"
+         version="0.0.0"
          unpack="false"/>
 
 </feature>
