@@ -537,6 +537,7 @@ That&apos;s all there is to it!
    <url>
       <discovery label="ParallelJ SourceForge Site" url="http://sourceforge.net/projects/parallelj/"/>
       <discovery label="Resource Selector Site" url="http://xa-labs.github.com/ResourceSelector/site/"/>
+      <discovery label="EMFT Site" url="http://download.eclipse.org/modeling/emft/updates/releases/"/>
    </url>
 
    <requires>
@@ -587,8 +588,8 @@ That&apos;s all there is to it!
       <import feature="org.eclipse.emf.edit.ui" version="2.7.0"/>
       <import feature="org.eclipse.emf.mwe.ui" version="1.1.0"/>
       <import feature="org.eclipse.epsilon.feature" version="0.9.0"/>
-      <import feature="org.eclipse.emf.eef.edt" version="1.0.0"/>
-      <import feature="org.eclipse.emf.eef.runtime" version="1.0.0"/>
+      <import feature="org.eclipse.emf.eef.edt" version="0.8.0" match="equivalent"/>
+      <import feature="org.eclipse.emf.eef.runtime" version="0.8.0" match="equivalent"/>
       <import feature="org.eclipse.epsilon.eugenia.feature" version="0.9.0"/>
       <import feature="org.eclipse.epsilon.evl.emf.validation.feature" version="0.9.0"/>
       <import feature="org.eclipse.epsilon.gmf.feature" version="0.9.0"/>
