@@ -8,8 +8,8 @@ Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.parallelj.model.tests
-Require-Bundle: org.eclipse.core.runtime,
- org.parallelj.model;visibility:=reexport,
- org.eclipse.emf.ecore.xmi;visibility:=reexport,
- org.junit;visibility:=reexport
+Require-Bundle: org.eclipse.core.runtime;bundle-version="3.7.0",
+ org.parallelj.model;bundle-version="0.7.0";visibility:=reexport,
+ org.eclipse.emf.ecore.xmi;bundle-version="2.7.0";visibility:=reexport,
+ org.junit;bundle-version="4.8.2";visibility:=reexport
 Bundle-ActivationPolicy: lazy
