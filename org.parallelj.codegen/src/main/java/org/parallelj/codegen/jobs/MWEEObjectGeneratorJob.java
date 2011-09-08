@@ -36,7 +36,7 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.impl.EPackageRegistryImpl;
-import org.eclipse.emf.mwe.core.WorkflowRunner;
+import org.eclipse.emf.mwe.core.WorkflowEngine;
 import org.eclipse.emf.mwe.core.issues.Issues;
 import org.eclipse.emf.mwe.core.issues.IssuesImpl;
 import org.eclipse.emf.mwe.core.issues.MWEDiagnostic;
@@ -77,8 +77,7 @@ public abstract class MWEEObjectGeneratorJob<T extends EObject> extends
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.parallelj.codegen.jobs.GeneratorJob#generateCodeFromElement
+	 * @see org.parallelj.codegen.jobs.GeneratorJob#generateCodeFromElement
 	 * (java.lang.Object, org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	@Override
@@ -99,10 +98,10 @@ public abstract class MWEEObjectGeneratorJob<T extends EObject> extends
 		}
 
 		slotContents.put(getSlotContentKey(), eObject);
-		properties.put(getSlotContentKey(), eObject.eResource().getURIFragment(
-				eObject));
+		properties.put(getSlotContentKey(),
+				eObject.eResource().getURIFragment(eObject));
 
-		WorkflowRunner workflowRunner = new WorkflowRunner();
+		WorkflowEngine workflowRunner = new WorkflowEngine();
 
 		boolean prepareOK = workflowRunner.prepare(getPathToWorkflow(),
 				new ProgressMonitorAdapter(monitor), properties);
@@ -171,7 +170,8 @@ public abstract class MWEEObjectGeneratorJob<T extends EObject> extends
 
 	@Override
 	protected void performCleanup() {
-		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+		ClassLoader classLoader = Thread.currentThread()
+				.getContextClassLoader();
 		EPackageRegistryImpl.getRegistry(classLoader).clear();
 	}
 
