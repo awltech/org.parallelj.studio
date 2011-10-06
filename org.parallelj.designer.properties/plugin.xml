@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.7"?>
+<plugin>
+		
+	<extension point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
+		<propertyContributor contributorId="org.parallelj.properties" labelProvider="org.parallelj.designer.properties.helpers.ParallelJLabelProvider">
+			<propertyCategory
+				category="default">
+			</propertyCategory>
+			<propertyCategory
+				category="extended">
+			</propertyCategory>
+			<propertyCategory
+				category="advanced">
+			</propertyCategory>
+		</propertyContributor>
+	</extension>
+
+	<extension point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+		<propertyTabs contributorId="org.parallelj.properties">
+			<propertyTab
+				label="General"
+				category="default"
+				id="Base">
+			</propertyTab>
+   <propertyTab
+         afterTab="Base"
+         category="default"
+         id="Colors"
+         label="Colors">
+   </propertyTab>
+		</propertyTabs>
+	</extension>
+	<extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
+		<propertySections contributorId="org.parallelj.properties">
+			<propertySection
+         class="org.parallelj.designer.properties.sections.ProgramBasePropertySection"
+         filter="org.parallelj.designer.properties.filters.ProgramBasePropertyFilter"
+         id="org.parallelj.section.ProgramBasePropertySection"
+         tab="Base">
+			</propertySection>
+			<propertySection
+				class="org.parallelj.designer.properties.sections.InputConditionBasePropertySection"
+				filter="org.parallelj.designer.properties.filters.InputConditionBasePropertyFilter"
+				id="org.parallelj.section.InputConditionBasePropertySection"
+				tab="Base">
+			</propertySection>
+			<propertySection
+				class="org.parallelj.designer.properties.sections.OutputConditionBasePropertySection"
+				filter="org.parallelj.designer.properties.filters.OutputConditionBasePropertyFilter"
+				id="org.parallelj.section.OutputConditionBasePropertySection"
+				tab="Base">
+			</propertySection>
+			<propertySection
+				class="org.parallelj.designer.properties.sections.PredicateBasePropertySection"
+				filter="org.parallelj.designer.properties.filters.PredicateBasePropertyFilter"
+				id="org.parallelj.section.PredicateBasePropertySection"
+				tab="Base">
+			</propertySection>
+			<propertySection
+				class="org.parallelj.designer.properties.sections.ConditionBasePropertySection"
+				filter="org.parallelj.designer.properties.filters.ConditionBasePropertyFilter"
+				id="org.parallelj.section.ConditionBasePropertySection"
+				tab="Base">
+			</propertySection>
+			<propertySection
+				class="org.parallelj.designer.properties.sections.LinkBasePropertySection"
+				filter="org.parallelj.designer.properties.filters.LinkBasePropertyFilter"
+				id="org.parallelj.section.LinkBasePropertySection"
+				tab="Base">
+			</propertySection>
+			<propertySection
+				class="org.parallelj.designer.properties.sections.ProcedureBasePropertySection"
+				filter="org.parallelj.designer.properties.filters.ProcedureBasePropertyFilter"
+				id="org.parallelj.section.ProcedureBasePropertySection"
+				tab="Base">
+			</propertySection>
+			<propertySection
+				class="org.parallelj.designer.properties.sections.ForEachLoopBasePropertySection"
+				filter="org.parallelj.designer.properties.filters.ForEachLoopBasePropertyFilter"
+				id="org.parallelj.section.ForEachLoopBasePropertySection"
+				tab="Base">
+			</propertySection>
+			<propertySection
+				class="org.parallelj.designer.properties.sections.WhileLoopBasePropertySection"
+				filter="org.parallelj.designer.properties.filters.WhileLoopBasePropertyFilter"
+				id="org.parallelj.section.WhileLoopBasePropertySection"
+				tab="Base">
+			</propertySection>
+			<propertySection
+				class="org.parallelj.designer.properties.sections.DataBasePropertySection"
+				filter="org.parallelj.designer.properties.filters.DataBasePropertyFilter"
+				id="org.parallelj.section.DataBasePropertySection"
+				tab="Base">
+			</propertySection>
+			<propertySection
+				class="org.parallelj.designer.properties.sections.HandlerBasePropertySection"
+				filter="org.parallelj.designer.properties.filters.HandlerBasePropertyFilter"
+				id="org.parallelj.section.HandlerBasePropertySection"
+				tab="Base">
+			</propertySection>
+			<propertySection
+				class="org.parallelj.designer.properties.sections.PipelineBasePropertySection"
+				filter="org.parallelj.designer.properties.filters.PipelineBasePropertyFilter"
+				id="org.parallelj.section.PipelineBasePropertySection"
+				tab="Base">
+			</propertySection>
+  			<propertySection
+           afterSection="org.parallelj.section.ProgramBasePropertySection"
+           class="org.parallelj.designer.properties.sections.ColorPropertySection"
+           filter="org.parallelj.designer.properties.filters.ColorPropertyFilter"
+           id="org.parallelj.designer.properties.propertyColorSection"
+           tab="Colors">
+		   </propertySection>			
+		</propertySections>
+	</extension>
+
+</plugin>
