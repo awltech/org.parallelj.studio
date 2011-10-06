@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="ASCII"?>
-<eef-gen:EEFGenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:eef-gen="http://www.eclipse.org/emf/eef/generation/1.0.0" genDirectory="/org.parallelj.designer.properties/src/main/java" author="" license="" testsGenDirectory="">
-  <editionContexts basePackage="org" descriptorsContributorID="" descriptorsGenericPropertiesViews="true" gmfPropertiesViews="true">
-    <PropertiesEditionContext href="parallelj.components#_rC17gPIzEd-CGO24tymZ5g"/>
-  </editionContexts>
-  <viewsRepositories basePackage="org.parallelj.designer.properties" swtViews="true" formViews="true" helpStrategy="ECOREMODEL">
-    <viewsRepository href="parallelj.components#_rC17w_IzEd-CGO24tymZ5g"/>
-  </viewsRepositories>
-</eef-gen:EEFGenModel>
