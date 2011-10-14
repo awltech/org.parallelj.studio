@@ -541,61 +541,55 @@ That&apos;s all there is to it!
    </url>
 
    <requires>
-      <import plugin="org.eclipse.ui" version="3.6.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.core.runtime"/>
-      <import plugin="org.eclipse.core.resources" version="3.6.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui" version="3.7.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.runtime" version="3.7.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.resources" version="3.7.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.jdt.core" version="3.7.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.ecore" version="2.7.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.workspace" version="1.4.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.emf.mwe.core" version="1.1.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.xpand" version="1.1.0" match="compatible"/>
+      <import plugin="org.eclipse.xpand" version="1.1.0" match="greaterOrEqual"/>
       <import plugin="org.junit" version="4.8.2" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.jface.text" version="3.6.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.core.expressions"/>
-      <import plugin="org.eclipse.jface"/>
-      <import plugin="org.eclipse.ui.ide" version="3.5.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.ui.views"/>
-      <import plugin="org.eclipse.ui.navigator"/>
-      <import plugin="org.eclipse.ui.navigator.resources"/>
-      <import plugin="org.eclipse.emf.ecore.xmi"/>
-      <import plugin="org.eclipse.gmf.runtime.emf.core"/>
-      <import plugin="org.eclipse.gmf.runtime.emf.commands.core"/>
-      <import plugin="org.eclipse.gmf.runtime.emf.ui.properties"/>
-      <import plugin="org.eclipse.gmf.runtime.diagram.ui"/>
-      <import plugin="org.eclipse.gmf.runtime.diagram.ui.properties" version="1.2.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.gmf.runtime.diagram.ui.providers"/>
-      <import plugin="org.eclipse.gmf.runtime.diagram.ui.providers.ide"/>
-      <import plugin="org.eclipse.gmf.runtime.diagram.ui.render"/>
-      <import plugin="org.eclipse.gmf.runtime.diagram.ui.resources.editor" version="1.2.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.gmf.runtime.diagram.ui.resources.editor.ide"/>
-      <import plugin="org.eclipse.draw2d"/>
-      <import plugin="org.eclipse.gmf.runtime.draw2d.ui"/>
-      <import plugin="org.eclipse.ocl.ecore"/>
-      <import feature="org.eclipse.emf.validation" version="1.5.0"/>
-      <import plugin="org.eclipse.gef"/>
-      <import feature="org.eclipse.emf.validation.ocl" version="1.5.0"/>
+      <import plugin="org.eclipse.xtend.typesystem.emf" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jface.text" version="3.7.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.expressions" version="3.4.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jface" version="3.7.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.ide" version="3.7.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.views" version="3.6.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.navigator" version="3.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.navigator.resources" version="3.4.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.ecore.xmi" version="2.7.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.edit.ui" version="2.7.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.gmf.runtime.emf.core" version="1.4.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.gmf.runtime.emf.commands.core" version="1.4.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.gmf.runtime.emf.ui.properties" version="1.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.gmf.runtime.diagram.ui" version="1.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.gmf.runtime.diagram.ui.properties" version="1.4.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.gmf.runtime.diagram.ui.providers" version="1.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.gmf.runtime.diagram.ui.providers.ide" version="1.2.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.gmf.runtime.diagram.ui.render" version="1.4.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.gmf.runtime.diagram.ui.resources.editor" version="1.4.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.gmf.runtime.diagram.ui.resources.editor.ide" version="1.2.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.draw2d" version="3.7.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.gmf.runtime.draw2d.ui" version="1.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ocl.ecore" version="3.1.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.validation" version="1.4.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.gef" version="3.7.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.validation.ocl" version="1.4.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.epsilon.ewl.emf" version="0.9.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.jdt.ui" version="3.7.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipselabs.resourceselector.core" version="0.4.0" match="compatible"/>
-      <import plugin="org.eclipselabs.resourceselector.processor.java" version="0.3.0" match="compatible"/>
-      <import plugin="org.eclipselabs.resourceselector.processor.java.hierarchy" version="0.3.0" match="compatible"/>
-      <import plugin="org.eclipselabs.resourceselector.processor.java.primitives" version="0.3.0" match="compatible"/>
+      <import plugin="org.eclipselabs.resourceselector.core" version="0.4.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipselabs.resourceselector.processor.java" version="0.3.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipselabs.resourceselector.processor.java.primitives" version="0.3.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.swt"/>
       <import plugin="org.eclipse.ui.workbench"/>
-      <import plugin="org.eclipse.jdt.launching" version="3.5.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.debug.ui" version="3.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jdt.launching" version="3.6.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.debug.ui" version="3.7.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.gmf.runtime.notation"/>
-      <import feature="org.eclipse.emf.edit" version="2.7.0"/>
-      <import feature="org.eclipse.emf.ecore.edit" version="2.7.0"/>
-      <import feature="org.eclipse.emf.edit.ui" version="2.7.0"/>
-      <import feature="org.eclipse.emf.mwe.ui" version="1.1.0"/>
-      <import feature="org.eclipse.epsilon.feature" version="0.9.0"/>
-      <import feature="org.eclipse.epsilon.eugenia.feature" version="0.9.0"/>
-      <import feature="org.eclipse.epsilon.evl.emf.validation.feature" version="0.9.0"/>
-      <import feature="org.eclipse.epsilon.gmf.feature" version="0.9.0"/>
-      <import feature="org.eclipse.epsilon.hutn.feature" version="0.8.0"/>
-      <import plugin="org.eclipse.emf.ecore" version="2.7.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.emf.workspace" version="1.5.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.xtend.typesystem.emf" version="1.1.0" match="compatible"/>
-      <import feature="org.eclipse.m2e.feature" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.edit" version="2.7.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.gmf.runtime.diagram.ui.properties" version="1.4.2" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jdt" version="3.7.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipselabs.resourceselector.processor.java.hierarchy" version="0.3.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin
