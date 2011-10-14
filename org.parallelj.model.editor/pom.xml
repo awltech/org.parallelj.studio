@@ -7,6 +7,6 @@
     <version>0.7.0-SNAPSHOT</version>
     <artifactId>parallelj-studio</artifactId>
   </parent>
-  <artifactId>org.parallelj.codegen</artifactId>
+  <artifactId>org.parallelj.model.editor</artifactId>
   <packaging>eclipse-plugin</packaging>
 </project>
