@@ -55,6 +55,7 @@
 		<module>org.parallelj.model.edit</module>
 		<module>org.parallelj.model.editor</module>
 		<module>org.parallelj.model.tests</module>
+		<module>org.parallelj.studio.updatesite</module>
 	</modules>
 	
 	<build>
