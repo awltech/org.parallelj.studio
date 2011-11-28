@@ -129,6 +129,8 @@ public class ExecutableZone extends Zone {
 
 	protected void askForExecutable() {
 		ResourceProcessorFactory[] factories = new ResourceProcessorFactory[] {
+				// new ParallelJModelResourceProcessorFactory(getEObject()
+				// .eResource().getResourceSet()),
 				new JavaHierarchyTypeProcessorFactory(Runnable.class),
 				new JavaHierarchyTypeProcessorFactory(Callable.class) };
 		ResourceSelector selector = new ResourceSelector(factories, Tools
@@ -216,5 +218,79 @@ public class ExecutableZone extends Zone {
 		}
 
 	}
+
+	// class ParallelJModelResourceProcessorFactory implements
+	// ResourceProcessorFactory {
+	//
+	// protected ResourceSet resourceSet;
+	//
+	// public ParallelJModelResourceProcessorFactory(ResourceSet resourceSet) {
+	// this.resourceSet = resourceSet;
+	// }
+	//
+	// @Override
+	// public ResourceProcessor createResourceProcessor(IProject project,
+	// String pattern) {
+	// return new ParallelJModelResourceProcessor(this.resourceSet,
+	// project, pattern);
+	// }
+	//
+	// }
+
+	// class ParallelJModelResourceProcessor extends ResourceProcessor {
+	//
+	// IProject project;
+	// String pattern;
+	// ResourceSet resourceSet;
+	//
+	// public ParallelJModelResourceProcessor(ResourceSet resourceSet,
+	// IProject project, String pattern) {
+	// this.resourceSet = resourceSet;
+	// this.project = project;
+	// this.pattern = pattern;
+	// }
+	//
+	// @Override
+	// protected void process() {
+	// for (Resource resource : resourceSet.getResources()) {
+	// for (EObject eObject : resource.getContents()) {
+	// if (eObject instanceof Specification) {
+	// Specification spec = (Specification) eObject;
+	// for (Program program : spec.getPrograms()) {
+	// if (this.pattern.equals("*"))
+	// this.searchResults
+	// .add(getFromProgramName(program
+	// .getName()));
+	// else if (program.getName().contains(this.pattern))
+	// this.searchResults
+	// .add(getFromProgramName(program
+	// .getName()));
+	// else if (this.pattern.endsWith("*")
+	// && program.getName().startsWith(
+	// this.pattern.substring(0,
+	// this.pattern.length() - 2)))
+	// this.searchResults
+	// .add(getFromProgramName(program
+	// .getName()));
+	// }
+	// }
+	// }
+	// }
+	// }
+	//
+	// private ResourceInfo getFromProgramName(String name) {
+	// List<String> parts = Arrays.asList(name.split("."));
+	// if (parts != null && parts.size() > 1) {
+	// StringBuilder packageName = new StringBuilder();
+	// for (int i = 0; i < parts.size() - 1; i++)
+	// packageName.append(parts.get(i));
+	// return new ResourceInfo(parts.get(parts.size() - 1),
+	// packageName.toString(), project.getFullPath()
+	// .toString()) {
+	// };
+	// } else
+	// return null;
+	// }
+	// }
 
 }
