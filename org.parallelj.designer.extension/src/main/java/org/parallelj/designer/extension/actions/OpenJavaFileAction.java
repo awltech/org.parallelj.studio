@@ -70,7 +70,7 @@ public class OpenJavaFileAction implements IObjectActionDelegate {
 	 */
 	public void setActivePart(IAction action, IWorkbenchPart targetPart) {
 		if (targetPart != null
-				|| (targetPart instanceof ParallelJDiagramEditor)) {
+				&& (targetPart instanceof ParallelJDiagramEditor)) {
 			shellz = targetPart.getSite().getShell();
 			workbenchWindow = targetPart.getSite().getWorkbenchWindow();
 			// Fetch Editor Input from Editor
