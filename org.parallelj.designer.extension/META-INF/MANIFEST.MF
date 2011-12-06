@@ -47,5 +47,6 @@ Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.7.0",
  org.parallelj.designer.typeselector.processor.model;bundle-version="0.7.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
-Export-Package: org.parallelj.designer.extension.part.contrib,
+Export-Package: org.parallelj.designer.extension.dialog,
+ org.parallelj.designer.extension.part.contrib,
  org.parallelj.designer.extension.tools

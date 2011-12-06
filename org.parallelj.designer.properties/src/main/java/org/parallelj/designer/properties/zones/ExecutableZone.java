@@ -45,9 +45,11 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipselabs.resourceselector.core.processor.ResourceProcessorFactory;
 import org.eclipselabs.resourceselector.core.resources.ResourceInfo;
 import org.eclipselabs.resourceselector.core.selector.ResourceSelector;
-import org.eclipselabs.resourceselector.processor.java.hierarchy.JavaHierarchyTypeProcessorFactory;
 import org.parallelj.designer.properties.helpers.ParallelJPropertiesMessages;
 import org.parallelj.designer.properties.helpers.Tools;
+import org.parallelj.designer.typeselector.processor.annotation.AnnotationTypeProcessorFactory;
+import org.parallelj.designer.typeselector.processor.hierarchy.JavaExecutableProcessorFactory;
+import org.parallelj.designer.typeselector.processor.model.ModelTypeProcessorFactory;
 import org.parallelj.ixea.Zone;
 import org.parallelj.ixea.helpers.TextChangeHelper;
 import org.parallelj.ixea.tools.Commands;
@@ -129,8 +131,10 @@ public class ExecutableZone extends Zone {
 
 	protected void askForExecutable() {
 		ResourceProcessorFactory[] factories = new ResourceProcessorFactory[] {
-				new JavaHierarchyTypeProcessorFactory(Runnable.class),
-				new JavaHierarchyTypeProcessorFactory(Callable.class) };
+				new AnnotationTypeProcessorFactory(),
+				new ModelTypeProcessorFactory(),
+				new JavaExecutableProcessorFactory(Runnable.class),
+				new JavaExecutableProcessorFactory(Callable.class) };
 		ResourceSelector selector = new ResourceSelector(factories, Tools
 				.getJavaProjectFromEObject(getEObject()).getProject());
 		selector.run();
