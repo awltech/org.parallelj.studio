@@ -151,3 +151,15 @@
 	 }
 
 «ENDDEFINE»
+
+«DEFINE execute FOR Program»
+
+«LET getProgramName(this) AS pgm»
+
+	 «EXPAND Annotation::override FOR this»
+	 public void execute (org.quartz.JobExecutionContext context)
+	 		throws org.quartz.JobExecutionException {
+		org.parallelj.Programs.as(new «pgm»()).execute(java.util.concurrent.Executors.newCachedThreadPool()).join();
+	}
+«ENDLET»
+«ENDDEFINE»

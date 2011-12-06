@@ -1,6 +1,10 @@
 «IMPORT parallelj»
 «EXTENSION org::parallelj::codegen::extensions::common»
 
+«DEFINE override FOR Object»
+@Override
+«ENDDEFINE»
+
 «DEFINE generated FOR Object»
 @javax.annotation.Generated(«getGeneratorNameStr()»)
 «ENDDEFINE»

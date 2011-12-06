@@ -21,7 +21,7 @@ package «pkg»;
 «IF this.capacity > 0 -»
 «EXPAND Annotation::capacityP FOR this»
 «ENDIF-»
-public class «pgm» {
+public class «pgm» implements org.quartz.Job{
 
 «EXPAND Field::dataType FOREACH this.data»
 
@@ -30,6 +30,8 @@ public class «pgm» {
 «EXPAND Method::procedure FOREACH this.elements» 
 
 «EXPAND Method::predicate FOREACH this.predicates»
+
+«EXPAND Method::execute FOR this»
 
 }
 «ENDFILE»
