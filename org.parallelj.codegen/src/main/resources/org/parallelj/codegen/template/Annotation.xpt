@@ -1,8 +1,8 @@
 «IMPORT parallelj»
 «EXTENSION org::parallelj::codegen::extensions::common»
 
-«DEFINE override FOR Object»
-@Override
+«DEFINE quartzExecution FOR Object»
+@org.parallelj.launching.QuartzExecution
 «ENDDEFINE»
 
 «DEFINE generated FOR Object»
