@@ -1,10 +1,7 @@
 Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: ParallelJ Diagram Editor Extension
-Bundle-SymbolicName: org.parallelj.designer.extension;singleton:=true
-Bundle-Version: 0.7.0.qualifier
-Bundle-Activator: org.parallelj.designer.extension.Activator
-Bundle-Vendor: Atos Worldline
+Export-Package: org.parallelj.designer.extension.dialog,org.parallelj.
+ designer.extension.part.contrib,org.parallelj.designer.extension.tool
+ s
 Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.7.0",
  org.eclipse.core.runtime;bundle-version="3.7.0",
  org.eclipse.core.resources;bundle-version="3.7.0",
@@ -28,25 +25,29 @@ Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.7.0",
  org.eclipse.gmf.runtime.diagram.ui.resources.editor.ide;bundle-version="1.2.0",
  org.eclipse.draw2d;bundle-version="3.7.0";visibility:=reexport,
  org.eclipse.gmf.runtime.draw2d.ui;bundle-version="1.5.0";visibility:=reexport,
- org.parallelj.model;bundle-version="0.7.0";visibility:=reexport,
- org.parallelj.model.edit;bundle-version="0.7.0";visibility:=reexport,
+ org.parallelj.model;bundle-version="0.8.0";visibility:=reexport,
+ org.parallelj.model.edit;bundle-version="0.8.0";visibility:=reexport,
  org.eclipse.ocl.ecore;bundle-version="3.1.0";visibility:=reexport,
  org.eclipse.emf.validation;bundle-version="1.4.0";visibility:=reexport,
  org.eclipse.emf.validation.ocl;bundle-version="1.4.0";visibility:=reexport,
  org.eclipse.gef;bundle-version="3.7.0";visibility:=reexport,
- org.parallelj.designer;bundle-version="0.7.0";visibility:=reexport,
+ org.parallelj.designer;bundle-version="0.8.0";visibility:=reexport,
  org.eclipse.epsilon.ewl.emf;bundle-version="0.9.0",
  org.eclipse.jdt.core;bundle-version="3.7.0",
  org.eclipse.jdt.ui;bundle-version="3.7.0",
- org.parallelj.codegen;bundle-version="0.7.0",
+ org.parallelj.codegen;bundle-version="0.8.0",
  org.eclipselabs.resourceselector.core;bundle-version="0.4.0",
  org.eclipselabs.resourceselector.processor.java;bundle-version="0.3.0",
  org.eclipselabs.resourceselector.processor.java.primitives;bundle-version="0.3.0",
- org.parallelj.designer.typeselector.processor.hierarchy;bundle-version="0.7.0",
- org.parallelj.designer.typeselector.processor.annotation;bundle-version="0.7.0",
- org.parallelj.designer.typeselector.processor.model;bundle-version="0.7.0"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+ org.parallelj.designer.typeselector.processor.hierarchy;bundle-version="0.8.0",
+ org.parallelj.designer.typeselector.processor.annotation;bundle-version="0.8.0",
+ org.parallelj.designer.typeselector.processor.model;bundle-version="0.8.0"
+Bundle-Vendor: Parallelj.org
 Bundle-ActivationPolicy: lazy
-Export-Package: org.parallelj.designer.extension.dialog,
- org.parallelj.designer.extension.part.contrib,
- org.parallelj.designer.extension.tools
+Bundle-Version: 0.8.0.qualifier
+Bundle-Name: //J Diagram Editor Extension
+Bundle-Activator: org.parallelj.designer.extension.Activator
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: org.parallelj.designer.extension;singleton:=true
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+

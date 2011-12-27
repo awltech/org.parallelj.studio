@@ -1,15 +1,17 @@
 Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: %pluginName
-Bundle-SymbolicName: org.parallelj.model.edit;singleton:=true
-Bundle-Version: 0.7.0.qualifier
+Export-Package: org.parallelj.model.provider
+Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .
-Bundle-Activator: org.parallelj.model.provider.ParallelJEditPlugin$Implementation
-Bundle-Vendor: %providerName
+Bundle-Name: %pluginName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: org.parallelj.model.provider
 Require-Bundle: org.eclipse.core.runtime;bundle-version="3.7.0",
- org.parallelj.model;bundle-version="0.7.0";visibility:=reexport,
+ org.parallelj.model;bundle-version="0.8.0";visibility:=reexport,
  org.eclipse.emf.edit;bundle-version="2.7.0";visibility:=reexport
-Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %providerName
+Bundle-Version: 0.8.0.qualifier
+Bundle-ManifestVersion: 2
+Bundle-Activator: org.parallelj.model.provider.ParallelJEditPlugin$Imp
+ lementation
+Bundle-SymbolicName: org.parallelj.model.edit;singleton:=true
+

@@ -1,15 +1,11 @@
 Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: ParallelJ Diagram Editor
-Bundle-SymbolicName: org.parallelj.designer; singleton:=true
-Bundle-Version: 0.7.0.qualifier
+Export-Package: org.parallelj.designer.edit.parts,org.parallelj.design
+ er.part,org.parallelj.designer.providers
+Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .
-Bundle-Activator: org.parallelj.designer.part.ParallelJDiagramEditorPlugin
-Bundle-Vendor: Atos Worldline
+Bundle-Name: //J Diagram Editor
 Bundle-Localization: plugin
-Export-Package: org.parallelj.designer.edit.parts,
- org.parallelj.designer.part,
- org.parallelj.designer.providers
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: org.eclipse.core.runtime;bundle-version="3.7.0",
  org.eclipse.core.resources;bundle-version="3.7.0",
  org.eclipse.core.expressions;bundle-version="3.4.0",
@@ -33,10 +29,15 @@ Require-Bundle: org.eclipse.core.runtime;bundle-version="3.7.0",
  org.eclipse.gmf.runtime.diagram.ui.resources.editor.ide;bundle-version="1.2.0",
  org.eclipse.draw2d;bundle-version="3.7.0";visibility:=reexport,
  org.eclipse.gmf.runtime.draw2d.ui;bundle-version="1.5.0";visibility:=reexport,
- org.parallelj.model;bundle-version="0.7.0";visibility:=reexport,
- org.parallelj.model.edit;bundle-version="0.7.0";visibility:=reexport,
+ org.parallelj.model;bundle-version="0.8.0";visibility:=reexport,
+ org.parallelj.model.edit;bundle-version="0.8.0";visibility:=reexport,
  org.eclipse.ocl.ecore;bundle-version="3.1.0";visibility:=reexport,
  org.eclipse.emf.validation;bundle-version="1.4.0";visibility:=reexport,
  org.eclipse.gef;bundle-version="3.7.0";visibility:=reexport
-Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Vendor: Parallelj.org
+Bundle-Version: 0.8.0.qualifier
+Bundle-ManifestVersion: 2
+Bundle-Activator: org.parallelj.designer.part.ParallelJDiagramEditorPl
+ ugin
+Bundle-SymbolicName: org.parallelj.designer; singleton:=true
+

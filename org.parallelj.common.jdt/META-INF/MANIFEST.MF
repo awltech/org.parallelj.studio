@@ -1,19 +1,17 @@
 Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: ParallelJ Common JDT
-Bundle-SymbolicName: org.parallelj.common.jdt
-Bundle-Version: 0.7.0.qualifier
-Bundle-Activator: org.parallelj.common.jdt.Activator
-Bundle-Vendor: Atos Worldline
-Require-Bundle: org.eclipse.ui;bundle-version="3.7.0",
- org.eclipse.core.runtime;bundle-version="3.7.0",
- org.eclipse.jdt.core;bundle-version="3.7.0",
- org.eclipse.jface.text;bundle-version="3.7.0",
- org.eclipse.core.resources;bundle-version="3.7.0",
- org.junit;bundle-version="4.8.2"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: org.parallelj.common.jdt.checkers,org.parallelj.common
+ .jdt.helpers,org.parallelj.common.jdt.imports,org.parallelj.common.jd
+ t.mergers
+Require-Bundle: org.eclipse.ui;bundle-version="3.7.0",org.eclipse.core
+ .runtime;bundle-version="3.7.0",org.eclipse.jdt.core;bundle-version="
+ 3.7.0",org.eclipse.jface.text;bundle-version="3.7.0",org.eclipse.core
+ .resources;bundle-version="3.7.0",org.junit;bundle-version="4.8.2"
+Bundle-Vendor: Parallelj.org
 Bundle-ActivationPolicy: lazy
-Export-Package: org.parallelj.common.jdt.checkers,
- org.parallelj.common.jdt.helpers,
- org.parallelj.common.jdt.imports,
- org.parallelj.common.jdt.mergers
+Bundle-Version: 0.8.0.qualifier
+Bundle-Name: //J Common JDT
+Bundle-Activator: org.parallelj.common.jdt.Activator
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: org.parallelj.common.jdt
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+

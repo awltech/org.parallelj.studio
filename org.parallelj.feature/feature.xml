@@ -2,8 +2,8 @@
 <feature
       id="org.parallelj.feature"
       label="ParallelJ"
-      version="0.7.0.qualifier"
-      provider-name="ParallelJ">
+      version="0.8.0.qualifier"
+      provider-name="Parallelj.org">
 
    <description url="http://www.parallelj.org">
       ParallelJ is a Java framework for tasks parallelization.
@@ -596,84 +596,84 @@ That&apos;s all there is to it!
          id="org.parallelj.codegen"
          download-size="0"
          install-size="0"
-         version="0.0.0"
+         version="0.8.0.qualifier"
          unpack="false"/>
 
    <plugin
          id="org.parallelj.common.jdt"
          download-size="0"
          install-size="0"
-         version="0.0.0"
+         version="0.8.0.qualifier"
          unpack="false"/>
 
    <plugin
          id="org.parallelj.designer"
          download-size="0"
          install-size="0"
-         version="0.0.0"
+         version="0.8.0.qualifier"
          unpack="false"/>
 
    <plugin
          id="org.parallelj.designer.extension"
          download-size="0"
          install-size="0"
-         version="0.0.0"
+         version="0.8.0.qualifier"
          unpack="false"/>
 
    <plugin
          id="org.parallelj.designer.typeselector.processor.model"
          download-size="0"
          install-size="0"
-         version="0.0.0"
+         version="0.8.0.qualifier"
          unpack="false"/>
 
    <plugin
          id="org.parallelj.designer.validation"
          download-size="0"
          install-size="0"
-         version="0.0.0"
+         version="0.8.0.qualifier"
          unpack="false"/>
 
    <plugin
          id="org.parallelj.model"
          download-size="0"
          install-size="0"
-         version="0.0.0"
+         version="0.8.0.qualifier"
          unpack="false"/>
 
    <plugin
          id="org.parallelj.model.edit"
          download-size="0"
          install-size="0"
-         version="0.0.0"
+         version="0.8.0.qualifier"
          unpack="false"/>
 
    <plugin
          id="org.parallelj.model.editor"
          download-size="0"
          install-size="0"
-         version="0.0.0"
+         version="0.8.0.qualifier"
          unpack="false"/>
 
    <plugin
          id="org.parallelj.designer.properties"
          download-size="0"
          install-size="0"
-         version="0.0.0"
+         version="0.8.0.qualifier"
          unpack="false"/>
 
    <plugin
          id="org.parallelj.designer.typeselector.processor.annotation"
          download-size="0"
          install-size="0"
-         version="0.0.0"
+         version="0.8.0.qualifier"
          unpack="false"/>
 
    <plugin
          id="org.parallelj.designer.typeselector.processor.hierarchy"
          download-size="0"
          install-size="0"
-         version="0.0.0"
+         version="0.8.0.qualifier"
          unpack="false"/>
 
 </feature>
