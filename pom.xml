@@ -3,9 +3,6 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.parallelj</groupId>
-	<version>0.8.0-SNAPSHOT</version>
-	<packaging>pom</packaging>
 
 	<parent>
 		<groupId>org.sonatype.oss</groupId>
@@ -13,12 +10,102 @@
 		<version>3</version>
 	</parent>
 
+	<groupId>org.parallelj</groupId>
+	<artifactId>parallelj-studio</artifactId>
+	<version>0.8.0-SNAPSHOT</version>
+	<name>ParallelJ-Studio</name>
+	<packaging>pom</packaging>
+
+	<url>http://www.parallelj.org/</url>
+	<description>ParallelJ is a Java framework for parallel computing. It provides flow modeling and execution.</description>
+	<inceptionYear>2011</inceptionYear>
+
+	<distributionManagement>
+		<site>
+			<id>www.parallelj.org</id>
+			<url>http://www.parallelj.org/site/${project.version}/</url>
+		</site>
+	</distributionManagement>
+
+	<issueManagement>
+		<system>github</system>
+		<url>https://github.com/XA-Labs/ParallelJ-Studio/issues</url>
+	</issueManagement>
+
+	<licenses>
+		<license>
+			<name>LGPL 2.1</name>
+			<url>http://www.gnu.org/licenses/lgpl-2.1.txt</url>
+			<distribution>repo</distribution>
+			<comments>GNU LESSER GENERAL PUBLIC LICENSE</comments>
+		</license>
+	</licenses>
+
+	<scm>
+		<connection>scm:git:http://github.com/XA-Labs/ParallelJ-Studio.git</connection>
+		<developerConnection>scm:git:git@github.com:XA-Labs/ParallelJ-Studio.git</developerConnection>
+		<url>https://github.com/XA-Labs/ParallelJ-Studio</url>
+	</scm>
+
+	<organization>
+		<name>Atos Worldline</name>
+		<url>http://www.atosworldline.com/</url>
+	</organization>
+
+	<developers>
+		<developer>
+			<name>Antoine Neveux</name>
+			<email>antoine.neveux@atos.net</email>
+			<id>aneveux</id>
+			<url>https://github.com/aneveux</url>
+		</developer>
+		<developer>
+			<name>Christophe Wastiaux</name>
+			<email>christophe.wastiaux@atos.net</email>
+			<id>christophe-w</id>
+			<url>https://github.com/christophe-w</url>
+		</developer>
+		<developer>
+			<name>Abhijit Gurav</name>
+			<email>abhijit.gurav@atos.net</email>
+			<id>abhijit-g</id>
+			<url>https://github.com/abhijit-g</url>
+		</developer>
+		<developer>
+			<name>Pierre Devreux</name>
+			<email>pierre.devreux@atos.net</email>
+			<id>devreux</id>
+			<url>https://github.com/devreux</url>
+		</developer>
+		<developer>
+			<name>Thierry Beucher</name>
+			<email>thierry.beucher@atos.net</email>
+			<id>tbrgit</id>
+			<url>https://github.com/tbrgit</url>
+		</developer>
+		<developer>
+			<name>Thibaut Robert</name>
+			<email>thibaut.robert@atos.net</email>
+			<id>trobert</id>
+			<url>https://github.com/trobert</url>
+		</developer>
+	</developers>
+
+	<mailingLists>
+		<mailingList>
+			<archive>http://groups.google.com/group/parallelj-dev</archive>
+			<name>parallelj-dev</name>
+			<post>parallelj-dev@googlegroups.com</post>
+			<subscribe>http://groups.google.com/group/parallelj-dev</subscribe>
+			<unsubscribe>parallelj-dev+unsubscribe@googlegroups.com</unsubscribe>
+		</mailingList>
+	</mailingLists>
+
+
 	<properties>
 		<tycho-version>0.13.0</tycho-version>
 		<eclipse-mirror>http://eclipse.ialto.com</eclipse-mirror>
 		<eclipse-site>${eclipse-mirror}/releases/${platform-version-name}</eclipse-site>
-		<xpand-site>${eclipse-mirror}/modeling/m2t/xpand/updates</xpand-site>
-		<mwe-site>${eclipse-mirror}/modeling/emft/mwe/updates</mwe-site>
 		<resourceselector-site>http://xa-labs.github.com/ResourceSelector/site</resourceselector-site>
 		<epsilon-site>${eclipse-mirror}/modeling/gmt/epsilon/marketplace/</epsilon-site>
 	</properties>
@@ -57,41 +144,31 @@
 		<module>org.parallelj.model.tests</module>
 		<module>org.parallelj.studio.updatesite</module>
 	</modules>
-	
+
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-maven-plugin</artifactId>
-				<version>0.13.0</version>
+				<version>${tycho-version}</version>
 				<extensions>true</extensions>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-				<source>1.6</source>
-				<target>1.6</target>
+					<source>1.6</source>
+					<target>1.6</target>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
-	
+
 	<repositories>
 		<repository>
 			<id>eclipse-platform</id>
 			<layout>p2</layout>
 			<url>${eclipse-site}</url>
-		</repository>
-		<repository>
-			<id>xpand</id>
-			<layout>p2</layout>
-			<url>${xpand-site}</url>
-		</repository>
-		<repository>
-			<id>mwe</id>
-			<layout>p2</layout>
-			<url>${mwe-site}</url>
 		</repository>
 		<repository>
 			<id>resourceselecotr</id>
@@ -104,5 +181,4 @@
 			<url>${epsilon-site}</url>
 		</repository>
 	</repositories>
-	<artifactId>parallelj-studio</artifactId>
 </project>
