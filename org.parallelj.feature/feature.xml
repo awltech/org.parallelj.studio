@@ -590,6 +590,7 @@ That&apos;s all there is to it!
       <import plugin="org.eclipse.gmf.runtime.diagram.ui.properties" version="1.4.2" match="greaterOrEqual"/>
       <import plugin="org.eclipse.jdt" version="3.7.0" match="greaterOrEqual"/>
       <import plugin="org.eclipselabs.resourceselector.processor.java.hierarchy" version="0.3.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.m2e.feature" version="1.0.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin
