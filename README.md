@@ -4,7 +4,7 @@ ParallelJ, framework for parallel computing
 About
 -----
 
-ParallelJ-Studio is a part of the ParallelJ project corresponding to the Eclipse plug-ins part.
+org.parallelj.studio is a part of the ParallelJ project corresponding to the Eclipse plug-ins part.
 It contains the graphical editor, but also the code generator and the ParallelJ metamodel.
 More information can be found on our website: http://www.parallelj.org
 
