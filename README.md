@@ -6,12 +6,12 @@ About
 
 ParallelJ-Studio is a part of the ParallelJ project corresponding to the Eclipse plug-ins part.
 It contains the graphical editor, but also the code generator and the ParallelJ metamodel.
-More information can be found on our website: http://www.parallelj.org$
+More information can be found on our website: http://www.parallelj.org
 
 Sources
 -------
 
-Fork on github: https://github.com/XA-Labs/ParallelJ-Studio
+Fork on github: https://github.com/XA-Labs/org.parallelj.studio
 
 Contact
 -------

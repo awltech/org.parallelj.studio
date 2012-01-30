@@ -10,7 +10,7 @@
 		<version>3</version>
 	</parent>
 
-	<groupId>org.parallelj</groupId>
+	<groupId>org.parallelj.studio</groupId>
 	<artifactId>parallelj-studio</artifactId>
 	<version>0.8.0-SNAPSHOT</version>
 	<name>ParallelJ-Studio</name>
@@ -29,7 +29,7 @@
 
 	<issueManagement>
 		<system>github</system>
-		<url>https://github.com/XA-Labs/ParallelJ-Studio/issues</url>
+		<url>https://github.com/XA-Labs/org.parallelj.studio/issues</url>
 	</issueManagement>
 
 	<licenses>
@@ -42,9 +42,9 @@
 	</licenses>
 
 	<scm>
-		<connection>scm:git:http://github.com/XA-Labs/ParallelJ-Studio.git</connection>
-		<developerConnection>scm:git:git@github.com:XA-Labs/ParallelJ-Studio.git</developerConnection>
-		<url>https://github.com/XA-Labs/ParallelJ-Studio</url>
+		<connection>scm:git:http://github.com/XA-Labs/org.parallelj.studio.git</connection>
+		<developerConnection>scm:git:git@github.com:XA-Labs/org.parallelj.studio.git</developerConnection>
+		<url>https://github.com/XA-Labs/org.parallelj.studio</url>
 	</scm>
 
 	<organization>
@@ -141,7 +141,10 @@
 		<module>org.parallelj.model</module>
 		<module>org.parallelj.model.edit</module>
 		<module>org.parallelj.model.editor</module>
-		<module>org.parallelj.model.tests</module>
+		<!-- I promess I'd like to test, but actually this test project is generated 
+			by Eclipse and must be executed in Eclipse. It seems that Maven can't run 
+			that kind of tests for the moment. -->
+		<!--module>org.parallelj.model.tests</module -->
 		<module>org.parallelj.studio.updatesite</module>
 	</modules>
 
