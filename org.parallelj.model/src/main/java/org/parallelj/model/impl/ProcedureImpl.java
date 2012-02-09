@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.parallelj.model.ExecutionMode;
 import org.parallelj.model.JoinType;
 import org.parallelj.model.ParallelJPackage;
 import org.parallelj.model.Procedure;
@@ -43,6 +44,7 @@ import org.parallelj.model.SplitType;
  *   <li>{@link org.parallelj.model.impl.ProcedureImpl#getJoin <em>Join</em>}</li>
  *   <li>{@link org.parallelj.model.impl.ProcedureImpl#getSplit <em>Split</em>}</li>
  *   <li>{@link org.parallelj.model.impl.ProcedureImpl#getCapacity <em>Capacity</em>}</li>
+ *   <li>{@link org.parallelj.model.impl.ProcedureImpl#getExecutionMode <em>Execution Mode</em>}</li>
  * </ul>
  * </p>
  *
@@ -128,6 +130,26 @@ public class ProcedureImpl extends ElementImpl implements Procedure {
 	 * @ordered
 	 */
 	protected int capacity = CAPACITY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getExecutionMode() <em>Execution Mode</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExecutionMode()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final ExecutionMode EXECUTION_MODE_EDEFAULT = ExecutionMode.PARALLEL;
+
+	/**
+	 * The cached value of the '{@link #getExecutionMode() <em>Execution Mode</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExecutionMode()
+	 * @generated
+	 * @ordered
+	 */
+	protected ExecutionMode executionMode = EXECUTION_MODE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -237,6 +259,27 @@ public class ProcedureImpl extends ElementImpl implements Procedure {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ExecutionMode getExecutionMode() {
+		return executionMode;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setExecutionMode(ExecutionMode newExecutionMode) {
+		ExecutionMode oldExecutionMode = executionMode;
+		executionMode = newExecutionMode == null ? EXECUTION_MODE_EDEFAULT : newExecutionMode;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ParallelJPackage.PROCEDURE__EXECUTION_MODE, oldExecutionMode, executionMode));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -248,6 +291,8 @@ public class ProcedureImpl extends ElementImpl implements Procedure {
 				return getSplit();
 			case ParallelJPackage.PROCEDURE__CAPACITY:
 				return getCapacity();
+			case ParallelJPackage.PROCEDURE__EXECUTION_MODE:
+				return getExecutionMode();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -271,6 +316,9 @@ public class ProcedureImpl extends ElementImpl implements Procedure {
 				return;
 			case ParallelJPackage.PROCEDURE__CAPACITY:
 				setCapacity((Integer)newValue);
+				return;
+			case ParallelJPackage.PROCEDURE__EXECUTION_MODE:
+				setExecutionMode((ExecutionMode)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -296,6 +344,9 @@ public class ProcedureImpl extends ElementImpl implements Procedure {
 			case ParallelJPackage.PROCEDURE__CAPACITY:
 				setCapacity(CAPACITY_EDEFAULT);
 				return;
+			case ParallelJPackage.PROCEDURE__EXECUTION_MODE:
+				setExecutionMode(EXECUTION_MODE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -316,6 +367,8 @@ public class ProcedureImpl extends ElementImpl implements Procedure {
 				return split != SPLIT_EDEFAULT;
 			case ParallelJPackage.PROCEDURE__CAPACITY:
 				return capacity != CAPACITY_EDEFAULT;
+			case ParallelJPackage.PROCEDURE__EXECUTION_MODE:
+				return executionMode != EXECUTION_MODE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -338,6 +391,8 @@ public class ProcedureImpl extends ElementImpl implements Procedure {
 		result.append(split);
 		result.append(", capacity: ");
 		result.append(capacity);
+		result.append(", executionMode: ");
+		result.append(executionMode);
 		result.append(')');
 		return result.toString();
 	}

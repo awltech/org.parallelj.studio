@@ -635,13 +635,22 @@ public interface ParallelJPackage extends EPackage {
 	int PROCEDURE__CAPACITY = ELEMENT_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Execution Mode</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCEDURE__EXECUTION_MODE = ELEMENT_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Procedure</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROCEDURE_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 4;
+	int PROCEDURE_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link org.parallelj.model.impl.ForEachLoopImpl <em>For Each Loop</em>}' class.
@@ -724,6 +733,15 @@ public interface ParallelJPackage extends EPackage {
 	 * @ordered
 	 */
 	int FOR_EACH_LOOP__CAPACITY = PROCEDURE__CAPACITY;
+
+	/**
+	 * The feature id for the '<em><b>Execution Mode</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FOR_EACH_LOOP__EXECUTION_MODE = PROCEDURE__EXECUTION_MODE;
 
 	/**
 	 * The feature id for the '<em><b>Iterable</b></em>' reference.
@@ -824,6 +842,15 @@ public interface ParallelJPackage extends EPackage {
 	 * @ordered
 	 */
 	int WHILE_LOOP__CAPACITY = PROCEDURE__CAPACITY;
+
+	/**
+	 * The feature id for the '<em><b>Execution Mode</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHILE_LOOP__EXECUTION_MODE = PROCEDURE__EXECUTION_MODE;
 
 	/**
 	 * The feature id for the '<em><b>Predicate</b></em>' reference.
@@ -1019,6 +1046,15 @@ public interface ParallelJPackage extends EPackage {
 	int HANDLER__CAPACITY = PROCEDURE__CAPACITY;
 
 	/**
+	 * The feature id for the '<em><b>Execution Mode</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HANDLER__EXECUTION_MODE = PROCEDURE__EXECUTION_MODE;
+
+	/**
 	 * The feature id for the '<em><b>Procedures</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1037,14 +1073,14 @@ public interface ParallelJPackage extends EPackage {
 	int HANDLER_FEATURE_COUNT = PROCEDURE_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link org.parallelj.model.impl.PipelineImpl <em>Pipeline</em>}' class.
+	 * The meta object id for the '{@link org.parallelj.model.impl.BlockImpl <em>Block</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.parallelj.model.impl.PipelineImpl
-	 * @see org.parallelj.model.impl.ParallelJPackageImpl#getPipeline()
+	 * @see org.parallelj.model.impl.BlockImpl
+	 * @see org.parallelj.model.impl.ParallelJPackageImpl#getBlock()
 	 * @generated
 	 */
-	int PIPELINE = 15;
+	int BLOCK = 15;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1053,7 +1089,7 @@ public interface ParallelJPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PIPELINE__NAME = PROCEDURE__NAME;
+	int BLOCK__NAME = PROCEDURE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -1062,7 +1098,7 @@ public interface ParallelJPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PIPELINE__DESCRIPTION = PROCEDURE__DESCRIPTION;
+	int BLOCK__DESCRIPTION = PROCEDURE__DESCRIPTION;
 
 	/**
 	 * The feature id for the '<em><b>Input Links</b></em>' reference list.
@@ -1071,7 +1107,7 @@ public interface ParallelJPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PIPELINE__INPUT_LINKS = PROCEDURE__INPUT_LINKS;
+	int BLOCK__INPUT_LINKS = PROCEDURE__INPUT_LINKS;
 
 	/**
 	 * The feature id for the '<em><b>Output Links</b></em>' containment reference list.
@@ -1080,7 +1116,7 @@ public interface ParallelJPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PIPELINE__OUTPUT_LINKS = PROCEDURE__OUTPUT_LINKS;
+	int BLOCK__OUTPUT_LINKS = PROCEDURE__OUTPUT_LINKS;
 
 	/**
 	 * The feature id for the '<em><b>Executable</b></em>' attribute.
@@ -1089,7 +1125,7 @@ public interface ParallelJPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PIPELINE__EXECUTABLE = PROCEDURE__EXECUTABLE;
+	int BLOCK__EXECUTABLE = PROCEDURE__EXECUTABLE;
 
 	/**
 	 * The feature id for the '<em><b>Join</b></em>' attribute.
@@ -1098,7 +1134,7 @@ public interface ParallelJPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PIPELINE__JOIN = PROCEDURE__JOIN;
+	int BLOCK__JOIN = PROCEDURE__JOIN;
 
 	/**
 	 * The feature id for the '<em><b>Split</b></em>' attribute.
@@ -1107,7 +1143,7 @@ public interface ParallelJPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PIPELINE__SPLIT = PROCEDURE__SPLIT;
+	int BLOCK__SPLIT = PROCEDURE__SPLIT;
 
 	/**
 	 * The feature id for the '<em><b>Capacity</b></em>' attribute.
@@ -1116,7 +1152,16 @@ public interface ParallelJPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PIPELINE__CAPACITY = PROCEDURE__CAPACITY;
+	int BLOCK__CAPACITY = PROCEDURE__CAPACITY;
+
+	/**
+	 * The feature id for the '<em><b>Execution Mode</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BLOCK__EXECUTION_MODE = PROCEDURE__EXECUTION_MODE;
 
 	/**
 	 * The feature id for the '<em><b>Procedures</b></em>' containment reference list.
@@ -1125,16 +1170,16 @@ public interface ParallelJPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PIPELINE__PROCEDURES = PROCEDURE_FEATURE_COUNT + 0;
+	int BLOCK__PROCEDURES = PROCEDURE_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Pipeline</em>' class.
+	 * The number of structural features of the '<em>Block</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PIPELINE_FEATURE_COUNT = PROCEDURE_FEATURE_COUNT + 1;
+	int BLOCK_FEATURE_COUNT = PROCEDURE_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.parallelj.model.SplitType <em>Split Type</em>}' enum.
@@ -1155,6 +1200,17 @@ public interface ParallelJPackage extends EPackage {
 	 * @generated
 	 */
 	int JOIN_TYPE = 18;
+
+
+	/**
+	 * The meta object id for the '{@link org.parallelj.model.ExecutionMode <em>Execution Mode</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.parallelj.model.ExecutionMode
+	 * @see org.parallelj.model.impl.ParallelJPackageImpl#getExecutionMode()
+	 * @generated
+	 */
+	int EXECUTION_MODE = 19;
 
 
 	/**
@@ -1424,6 +1480,17 @@ public interface ParallelJPackage extends EPackage {
 	EAttribute getProcedure_Capacity();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.parallelj.model.Procedure#getExecutionMode <em>Execution Mode</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Execution Mode</em>'.
+	 * @see org.parallelj.model.Procedure#getExecutionMode()
+	 * @see #getProcedure()
+	 * @generated
+	 */
+	EAttribute getProcedure_ExecutionMode();
+
+	/**
 	 * Returns the meta object for class '{@link org.parallelj.model.ForEachLoop <em>For Each Loop</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1539,25 +1606,25 @@ public interface ParallelJPackage extends EPackage {
 	EReference getHandler_Procedures();
 
 	/**
-	 * Returns the meta object for class '{@link org.parallelj.model.Pipeline <em>Pipeline</em>}'.
+	 * Returns the meta object for class '{@link org.parallelj.model.Block <em>Block</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Pipeline</em>'.
-	 * @see org.parallelj.model.Pipeline
+	 * @return the meta object for class '<em>Block</em>'.
+	 * @see org.parallelj.model.Block
 	 * @generated
 	 */
-	EClass getPipeline();
+	EClass getBlock();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.parallelj.model.Pipeline#getProcedures <em>Procedures</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.parallelj.model.Block#getProcedures <em>Procedures</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Procedures</em>'.
-	 * @see org.parallelj.model.Pipeline#getProcedures()
-	 * @see #getPipeline()
+	 * @see org.parallelj.model.Block#getProcedures()
+	 * @see #getBlock()
 	 * @generated
 	 */
-	EReference getPipeline_Procedures();
+	EReference getBlock_Procedures();
 
 	/**
 	 * Returns the meta object for class '{@link org.parallelj.model.NamedElement <em>Named Element</em>}'.
@@ -1610,6 +1677,16 @@ public interface ParallelJPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getJoinType();
+
+	/**
+	 * Returns the meta object for enum '{@link org.parallelj.model.ExecutionMode <em>Execution Mode</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Execution Mode</em>'.
+	 * @see org.parallelj.model.ExecutionMode
+	 * @generated
+	 */
+	EEnum getExecutionMode();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1852,6 +1929,14 @@ public interface ParallelJPackage extends EPackage {
 		EAttribute PROCEDURE__CAPACITY = eINSTANCE.getProcedure_Capacity();
 
 		/**
+		 * The meta object literal for the '<em><b>Execution Mode</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROCEDURE__EXECUTION_MODE = eINSTANCE.getProcedure_ExecutionMode();
+
+		/**
 		 * The meta object literal for the '{@link org.parallelj.model.impl.ForEachLoopImpl <em>For Each Loop</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1952,14 +2037,14 @@ public interface ParallelJPackage extends EPackage {
 		EReference HANDLER__PROCEDURES = eINSTANCE.getHandler_Procedures();
 
 		/**
-		 * The meta object literal for the '{@link org.parallelj.model.impl.PipelineImpl <em>Pipeline</em>}' class.
+		 * The meta object literal for the '{@link org.parallelj.model.impl.BlockImpl <em>Block</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.parallelj.model.impl.PipelineImpl
-		 * @see org.parallelj.model.impl.ParallelJPackageImpl#getPipeline()
+		 * @see org.parallelj.model.impl.BlockImpl
+		 * @see org.parallelj.model.impl.ParallelJPackageImpl#getBlock()
 		 * @generated
 		 */
-		EClass PIPELINE = eINSTANCE.getPipeline();
+		EClass BLOCK = eINSTANCE.getBlock();
 
 		/**
 		 * The meta object literal for the '<em><b>Procedures</b></em>' containment reference list feature.
@@ -1967,7 +2052,7 @@ public interface ParallelJPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PIPELINE__PROCEDURES = eINSTANCE.getPipeline_Procedures();
+		EReference BLOCK__PROCEDURES = eINSTANCE.getBlock_Procedures();
 
 		/**
 		 * The meta object literal for the '{@link org.parallelj.model.impl.NamedElementImpl <em>Named Element</em>}' class.
@@ -2014,6 +2099,16 @@ public interface ParallelJPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum JOIN_TYPE = eINSTANCE.getJoinType();
+
+		/**
+		 * The meta object literal for the '{@link org.parallelj.model.ExecutionMode <em>Execution Mode</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.parallelj.model.ExecutionMode
+		 * @see org.parallelj.model.impl.ParallelJPackageImpl#getExecutionMode()
+		 * @generated
+		 */
+		EEnum EXECUTION_MODE = eINSTANCE.getExecutionMode();
 
 	}
 

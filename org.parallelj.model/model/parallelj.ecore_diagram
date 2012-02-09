@@ -159,6 +159,10 @@
         <element xmi:type="ecore:EAttribute" href="parallelj.ecore#//Procedure/capacity"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_etq8QffeEd-TLfYo5U9jgw"/>
       </children>
+      <children xmi:type="notation:Node" xmi:id="_HIb-oFCPEeGaOvPc5RpoLw" type="3001">
+        <element xmi:type="ecore:EAttribute" href="parallelj.ecore#//Procedure/executionMode"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_HIb-oVCPEeGaOvPc5RpoLw"/>
+      </children>
       <styles xmi:type="notation:SortingStyle" xmi:id="_zz0OdJ8cEd-XM-YWhlSJ4A"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_zz0OdZ8cEd-XM-YWhlSJ4A"/>
     </children>
@@ -345,8 +349,8 @@
       <styles xmi:type="notation:SortingStyle" xmi:id="_buSmK-wOEd-QVejQclG4AQ"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_buSmLOwOEd-QVejQclG4AQ"/>
     </children>
-    <element xmi:type="ecore:EClass" href="parallelj.ecore#//Pipeline"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_buSmIuwOEd-QVejQclG4AQ" x="535" y="520" width="81"/>
+    <element xmi:type="ecore:EClass" href="parallelj.ecore#//Block"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_buSmIuwOEd-QVejQclG4AQ" x="535" y="520" width="81" height="57"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_rLEKsA3PEeCyKb81xfH8Pg" type="2001">
     <children xmi:type="notation:DecorationNode" xmi:id="_rLEKsg3PEeCyKb81xfH8Pg" type="5001"/>
@@ -372,6 +376,31 @@
     </children>
     <element xmi:type="ecore:EClass" href="parallelj.ecore#//NamedElement"/>
     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_rLEKsQ3PEeCyKb81xfH8Pg" x="255" y="225" width="142"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_zmuSgVCOEeGaOvPc5RpoLw" type="2005">
+    <children xmi:type="notation:DecorationNode" xmi:id="_zmuSg1COEeGaOvPc5RpoLw" type="5005"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_zmuShFCOEeGaOvPc5RpoLw" type="7011">
+      <children xmi:type="notation:Node" xmi:id="_6OepoFCOEeGaOvPc5RpoLw" type="3009">
+        <element xmi:type="ecore:EEnumLiteral" href="parallelj.ecore#//ExecutionMode/PARALLEL"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_6OepoVCOEeGaOvPc5RpoLw"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_6VoagFCOEeGaOvPc5RpoLw" type="3009">
+        <element xmi:type="ecore:EEnumLiteral" href="parallelj.ecore#//ExecutionMode/ITERATIVE"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_6VoagVCOEeGaOvPc5RpoLw"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_BAP4YFCPEeGaOvPc5RpoLw" type="3009">
+        <element xmi:type="ecore:EEnumLiteral" href="parallelj.ecore#//ExecutionMode/STREAM"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_BAP4YVCPEeGaOvPc5RpoLw"/>
+      </children>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_zmuShVCOEeGaOvPc5RpoLw"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_zmuShlCOEeGaOvPc5RpoLw"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_zmuSh1COEeGaOvPc5RpoLw" type="7012">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_zmuSiFCOEeGaOvPc5RpoLw"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_zmuSiVCOEeGaOvPc5RpoLw"/>
+    </children>
+    <element xmi:type="ecore:EEnum" href="parallelj.ecore#//ExecutionMode"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zmuSglCOEeGaOvPc5RpoLw" x="687" y="502"/>
   </children>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_AOVD0p8cEd-XM-YWhlSJ4A"/>
   <element xmi:type="ecore:EPackage" href="parallelj.ecore#/"/>
@@ -637,7 +666,7 @@
       <layoutConstraint xmi:type="notation:Location" xmi:id="_GlLkVvZUEd-TLfYo5U9jgw" x="-103" y="10"/>
     </children>
     <styles xmi:type="notation:FontStyle" xmi:id="_GlLkUfZUEd-TLfYo5U9jgw"/>
-    <element xmi:type="ecore:EReference" href="parallelj.ecore#//Pipeline/procedures"/>
+    <element xmi:type="ecore:EReference" href="parallelj.ecore#//Block/procedures"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_GlLkUvZUEd-TLfYo5U9jgw" points="[-10, 0, 167, 0]$[-280, -72, -103, -72]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_GlVVUPZUEd-TLfYo5U9jgw" id="(0.024691358024691357,0.8846153846153846)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_GlVVUfZUEd-TLfYo5U9jgw" id="(0.9338842975206612,0.8317757009345794)"/>

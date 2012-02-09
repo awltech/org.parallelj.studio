@@ -89,7 +89,6 @@ public class ParallelJItemProviderAdapterFactory extends ParallelJAdapterFactory
 		supportedTypes.add(ITreeItemContentProvider.class);
 		supportedTypes.add(IItemLabelProvider.class);
 		supportedTypes.add(IItemPropertySource.class);
-		supportedTypes.add(IItemColorProvider.class);
 	}
 
 	/**
@@ -438,26 +437,26 @@ public class ParallelJItemProviderAdapterFactory extends ParallelJAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.parallelj.model.Pipeline} instances.
+	 * This keeps track of the one adapter used for all {@link org.parallelj.model.Block} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected PipelineItemProvider pipelineItemProvider;
+	protected BlockItemProvider blockItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.parallelj.model.Pipeline}.
+	 * This creates an adapter for a {@link org.parallelj.model.Block}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createPipelineAdapter() {
-		if (pipelineItemProvider == null) {
-			pipelineItemProvider = new PipelineItemProvider(this);
+	public Adapter createBlockAdapter() {
+		if (blockItemProvider == null) {
+			blockItemProvider = new BlockItemProvider(this);
 		}
 
-		return pipelineItemProvider;
+		return blockItemProvider;
 	}
 
 	/**
@@ -597,7 +596,7 @@ public class ParallelJItemProviderAdapterFactory extends ParallelJAdapterFactory
 		if (metaInformationContainerItemProvider != null) metaInformationContainerItemProvider.dispose();
 		if (metaInformationItemProvider != null) metaInformationItemProvider.dispose();
 		if (handlerItemProvider != null) handlerItemProvider.dispose();
-		if (pipelineItemProvider != null) pipelineItemProvider.dispose();
+		if (blockItemProvider != null) blockItemProvider.dispose();
 		if (namedElementItemProvider != null) namedElementItemProvider.dispose();
 	}
 

@@ -25,21 +25,21 @@ import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Pipeline</b></em>'.
+ * A representation of the model object '<em><b>Block</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.parallelj.model.Pipeline#getProcedures <em>Procedures</em>}</li>
+ *   <li>{@link org.parallelj.model.Block#getProcedures <em>Procedures</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.parallelj.model.ParallelJPackage#getPipeline()
+ * @see org.parallelj.model.ParallelJPackage#getBlock()
  * @model
  * @generated
  */
-public interface Pipeline extends Procedure {
+public interface Block extends Procedure {
 	/**
 	 * Returns the value of the '<em><b>Procedures</b></em>' containment reference list.
 	 * The list contents are of type {@link org.parallelj.model.Procedure}.
@@ -50,10 +50,10 @@ public interface Pipeline extends Procedure {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Procedures</em>' containment reference list.
-	 * @see org.parallelj.model.ParallelJPackage#getPipeline_Procedures()
+	 * @see org.parallelj.model.ParallelJPackage#getBlock_Procedures()
 	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Procedure> getProcedures();
 
-} // Pipeline
+} // Block

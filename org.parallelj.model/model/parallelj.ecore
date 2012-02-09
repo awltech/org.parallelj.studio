@@ -45,6 +45,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="split" eType="#//SplitType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="capacity" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         defaultValueLiteral="1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="executionMode" eType="#//ExecutionMode"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ForEachLoop" eSuperTypes="#//Procedure">
     <eStructuralFeatures xsi:type="ecore:EReference" name="iterable" lowerBound="1"
@@ -76,12 +77,17 @@
     <eLiterals name="OR" value="1"/>
     <eLiterals name="XOR" value="2"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Pipeline" eSuperTypes="#//Procedure">
+  <eClassifiers xsi:type="ecore:EClass" name="Block" eSuperTypes="#//Procedure">
     <eStructuralFeatures xsi:type="ecore:EReference" name="procedures" upperBound="-1"
         eType="#//Procedure" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NamedElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ExecutionMode">
+    <eLiterals name="PARALLEL"/>
+    <eLiterals name="ITERATIVE" value="1"/>
+    <eLiterals name="STREAM" value="2"/>
   </eClassifiers>
 </ecore:EPackage>

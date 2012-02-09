@@ -54,12 +54,7 @@ import org.parallelj.model.Program;
 public class ProgramItemProvider
 	extends NamedElementItemProvider
 	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource,
-		IItemColorProvider {
+		IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -294,7 +289,7 @@ public class ProgramItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(ParallelJPackage.Literals.PROGRAM__ELEMENTS,
-				 ParallelJFactory.eINSTANCE.createPipeline()));
+				 ParallelJFactory.eINSTANCE.createBlock()));
 
 		newChildDescriptors.add
 			(createChildParameter

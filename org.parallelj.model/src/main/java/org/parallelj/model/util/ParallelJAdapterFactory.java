@@ -147,8 +147,8 @@ public class ParallelJAdapterFactory extends AdapterFactoryImpl {
 				return createHandlerAdapter();
 			}
 			@Override
-			public Adapter casePipeline(Pipeline object) {
-				return createPipelineAdapter();
+			public Adapter caseBlock(Block object) {
+				return createBlockAdapter();
 			}
 			@Override
 			public Adapter caseNamedElement(NamedElement object) {
@@ -385,16 +385,16 @@ public class ParallelJAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.parallelj.model.Pipeline <em>Pipeline</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.parallelj.model.Block <em>Block</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.parallelj.model.Pipeline
+	 * @see org.parallelj.model.Block
 	 * @generated
 	 */
-	public Adapter createPipelineAdapter() {
+	public Adapter createBlockAdapter() {
 		return null;
 	}
 

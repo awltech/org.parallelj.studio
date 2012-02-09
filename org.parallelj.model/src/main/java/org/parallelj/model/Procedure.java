@@ -34,6 +34,7 @@ package org.parallelj.model;
  *   <li>{@link org.parallelj.model.Procedure#getJoin <em>Join</em>}</li>
  *   <li>{@link org.parallelj.model.Procedure#getSplit <em>Split</em>}</li>
  *   <li>{@link org.parallelj.model.Procedure#getCapacity <em>Capacity</em>}</li>
+ *   <li>{@link org.parallelj.model.Procedure#getExecutionMode <em>Execution Mode</em>}</li>
  * </ul>
  * </p>
  *
@@ -153,5 +154,34 @@ public interface Procedure extends Element {
 	 * @generated
 	 */
 	void setCapacity(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Execution Mode</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.parallelj.model.ExecutionMode}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Execution Mode</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Execution Mode</em>' attribute.
+	 * @see org.parallelj.model.ExecutionMode
+	 * @see #setExecutionMode(ExecutionMode)
+	 * @see org.parallelj.model.ParallelJPackage#getProcedure_ExecutionMode()
+	 * @model
+	 * @generated
+	 */
+	ExecutionMode getExecutionMode();
+
+	/**
+	 * Sets the value of the '{@link org.parallelj.model.Procedure#getExecutionMode <em>Execution Mode</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Execution Mode</em>' attribute.
+	 * @see org.parallelj.model.ExecutionMode
+	 * @see #getExecutionMode()
+	 * @generated
+	 */
+	void setExecutionMode(ExecutionMode value);
 
 } // Procedure
