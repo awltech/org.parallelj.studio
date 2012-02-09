@@ -1,7 +1,7 @@
 wizard ConvertToHandler {
 
 	// if selected element is WhileLoop or ForEachLoop or Procedure and not Handler then only execute the wizard 
-	guard : self.isKindOf(Procedure) and not self.eContainer.isKindOf(Pipeline) and not self.isKindOf(Handler)  
+	guard : self.isKindOf(Procedure) and not self.eContainer.isKindOf(Block) and not self.isKindOf(Handler) and not self.isKindOf(Block)  
 
 	// sub-menu title
 	title : 'Turn into Handler'

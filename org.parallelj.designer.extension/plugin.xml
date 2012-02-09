@@ -47,7 +47,7 @@
             namespaceURI="http://www.parallelj.org/0.5.0">
       </wizards>
       <wizards
-            file="wizards/ConvertToPipelineWizard.ewl"
+            file="wizards/ConvertToBlockWizard.ewl"
             namespaceURI="http://www.parallelj.org/0.5.0">
       </wizards>
       <wizards
@@ -55,7 +55,7 @@
             namespaceURI="http://www.parallelj.org/0.5.0">
       </wizards>
       <wizards
-            file="wizards/InsertPipelineWizard.ewl"
+            file="wizards/InsertBlockWizard.ewl"
             namespaceURI="http://www.parallelj.org/0.5.0">
       </wizards>
       <wizards
@@ -67,7 +67,7 @@
             namespaceURI="http://www.parallelj.org/0.5.0">
       </wizards>
       <wizards
-            file="wizards/PushProceduresIntoPipelineWizard.ewl"
+            file="wizards/PushProceduresIntoBlockWizard.ewl"
             namespaceURI="http://www.parallelj.org/0.5.0">
       </wizards>
    </extension>
@@ -95,28 +95,28 @@
    <extension
          point="org.eclipse.gmf.runtime.diagram.ui.editpolicyProviders">
       <editpolicyProvider
-            class="org.parallelj.designer.extension.providers.PipelineProcedureEditPolicyProvider">
+            class="org.parallelj.designer.extension.providers.BlockProcedureEditPolicyProvider">
          <Priority
                name="Medium">
          </Priority>
          <context
-               editparts="org.parallelj.designer.edit.parts.PipelineProcedureEditPart">
+               editparts="org.parallelj.designer.edit.parts.BlockProcedureEditPart">
          </context>
          <object
-               class="org.parallelj.designer.edit.parts.PipelineProcedureEditPart"
-               id="org.parallelj.designer.edit.parts.PipelineProcedureEditPart">
+               class="org.parallelj.designer.edit.parts.BlockProcedureEditPart"
+               id="org.parallelj.designer.edit.parts.BlockProcedureEditPart">
          </object>
       </editpolicyProvider>
       <editpolicyProvider
-            class="org.parallelj.designer.extension.providers.PipelineIconEditPolicyProvider">
+            class="org.parallelj.designer.extension.providers.BlockIconEditPolicyProvider">
          <Priority
                name="Medium">
          </Priority>
          <context
-               editparts="org.parallelj.designer.edit.parts.PipelineIconEditPart"></context>
+               editparts="org.parallelj.designer.edit.parts.BlockIconEditPart"></context>
          <object
-               class="org.parallelj.designer.edit.parts.PipelineIconEditPart"
-               id="org.parallelj.designer.edit.parts.PipelineIconEditPart">
+               class="org.parallelj.designer.edit.parts.BlockIconEditPart"
+               id="org.parallelj.designer.edit.parts.BlockIconEditPart">
          </object>
       </editpolicyProvider>
    </extension>
@@ -166,7 +166,7 @@
                      name="org.parallelj.designer.edit.parts.ForEachLoopEditPart">
                </objectClass>
                <objectClass
-                     name="org.parallelj.designer.edit.parts.PipelineEditPart">
+                     name="org.parallelj.designer.edit.parts.BlockEditPart">
                </objectClass>
             </or>
          </visibility>
@@ -215,7 +215,7 @@
                      name="org.parallelj.designer.edit.parts.ForEachLoopEditPart">
                </objectClass>
                <objectClass
-                     name="org.parallelj.designer.edit.parts.PipelineEditPart">
+                     name="org.parallelj.designer.edit.parts.BlockEditPart">
                </objectClass>
                <objectClass
                      name="org.parallelj.designer.edit.parts.HandlerEditPart">
@@ -332,7 +332,7 @@
                      name="org.parallelj.designer.edit.parts.ForEachLoopEditPart">
                </objectClass>
                <objectClass
-                     name="org.parallelj.designer.edit.parts.PipelineProcedureEditPart">
+                     name="org.parallelj.designer.edit.parts.BlockProcedureEditPart">
                </objectClass>
             </or>
          </visibility>

@@ -34,7 +34,7 @@ import org.parallelj.model.InputCondition;
 import org.parallelj.model.Link;
 import org.parallelj.model.OutputCondition;
 import org.parallelj.model.ParallelJPackage;
-import org.parallelj.model.Pipeline;
+import org.parallelj.model.Block;
 import org.parallelj.model.Predicate;
 import org.parallelj.model.Procedure;
 import org.parallelj.model.Program;
@@ -58,7 +58,7 @@ public class ParallelJLabelProvider extends LiteLabelProvider {
 		this.bind(InputCondition.class, ePackage.getNamedElement_Name());
 		this.bind(Link.class, ePackage.getNamedElement_Name());
 		this.bind(OutputCondition.class, ePackage.getNamedElement_Name());
-		this.bind(Pipeline.class, ePackage.getNamedElement_Name());
+		this.bind(Block.class, ePackage.getNamedElement_Name());
 		this.bind(Predicate.class, ePackage.getNamedElement_Name());
 		this.bind(Procedure.class, ePackage.getNamedElement_Name());
 		this.bind(WhileLoop.class, ePackage.getNamedElement_Name());

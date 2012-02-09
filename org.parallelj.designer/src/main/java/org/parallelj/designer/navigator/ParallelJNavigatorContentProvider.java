@@ -43,6 +43,9 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.ui.IMemento;
 import org.eclipse.ui.navigator.ICommonContentExtensionSite;
 import org.eclipse.ui.navigator.ICommonContentProvider;
+import org.parallelj.designer.edit.parts.BlockBlockCompartmentEditPart;
+import org.parallelj.designer.edit.parts.BlockEditPart;
+import org.parallelj.designer.edit.parts.BlockProcedureEditPart;
 import org.parallelj.designer.edit.parts.ConditionEditPart;
 import org.parallelj.designer.edit.parts.DataEditPart;
 import org.parallelj.designer.edit.parts.ForEachLoopEditPart;
@@ -50,9 +53,6 @@ import org.parallelj.designer.edit.parts.HandlerEditPart;
 import org.parallelj.designer.edit.parts.InputConditionEditPart;
 import org.parallelj.designer.edit.parts.LinkEditPart;
 import org.parallelj.designer.edit.parts.OutputConditionEditPart;
-import org.parallelj.designer.edit.parts.PipelineEditPart;
-import org.parallelj.designer.edit.parts.PipelinePipelineCompartmentEditPart;
-import org.parallelj.designer.edit.parts.PipelineProcedureEditPart;
 import org.parallelj.designer.edit.parts.PredicateEditPart;
 import org.parallelj.designer.edit.parts.ProcedureEditPart;
 import org.parallelj.designer.edit.parts.ProgramEditPart;
@@ -225,9 +225,6 @@ public class ParallelJNavigatorContentProvider implements
 					topViews.add((View) o);
 				}
 			}
-			result.addAll(createNavigatorItems(
-					selectViewsByType(topViews, SpecificationEditPart.MODEL_ID),
-					file, false));
 			return result.toArray();
 		}
 
@@ -253,14 +250,41 @@ public class ParallelJNavigatorContentProvider implements
 	private Object[] getViewChildren(View view, Object parentElement) {
 		switch (ParallelJVisualIDRegistry.getVisualID(view)) {
 
-		case ConditionEditPart.VISUAL_ID: {
+		case ForEachLoopEditPart.VISUAL_ID: {
 			LinkedList<ParallelJAbstractNavigatorItem> result = new LinkedList<ParallelJAbstractNavigatorItem>();
 			Node sv = (Node) view;
 			ParallelJNavigatorGroup incominglinks = new ParallelJNavigatorGroup(
-					Messages.NavigatorGroupName_Condition_3003_incominglinks,
+					Messages.NavigatorGroupName_ForEachLoop_3006_incominglinks,
 					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			ParallelJNavigatorGroup outgoinglinks = new ParallelJNavigatorGroup(
-					Messages.NavigatorGroupName_Condition_3003_outgoinglinks,
+					Messages.NavigatorGroupName_ForEachLoop_3006_outgoinglinks,
+					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Collection<View> connectedViews;
+			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
+					ParallelJVisualIDRegistry.getType(LinkEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
+					ParallelJVisualIDRegistry.getType(LinkEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			if (!incominglinks.isEmpty()) {
+				result.add(incominglinks);
+			}
+			if (!outgoinglinks.isEmpty()) {
+				result.add(outgoinglinks);
+			}
+			return result.toArray();
+		}
+
+		case InputConditionEditPart.VISUAL_ID: {
+			LinkedList<ParallelJAbstractNavigatorItem> result = new LinkedList<ParallelJAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			ParallelJNavigatorGroup incominglinks = new ParallelJNavigatorGroup(
+					Messages.NavigatorGroupName_InputCondition_3001_incominglinks,
+					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			ParallelJNavigatorGroup outgoinglinks = new ParallelJNavigatorGroup(
+					Messages.NavigatorGroupName_InputCondition_3001_outgoinglinks,
 					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection<View> connectedViews;
 			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
@@ -361,8 +385,7 @@ public class ParallelJNavigatorContentProvider implements
 					ParallelJVisualIDRegistry
 							.getType(ProgramProgramCompartmentEditPart.VISUAL_ID));
 			connectedViews = getChildrenByType(connectedViews,
-					ParallelJVisualIDRegistry
-							.getType(PipelineEditPart.VISUAL_ID));
+					ParallelJVisualIDRegistry.getType(BlockEditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement,
 					false));
 			connectedViews = getChildrenByType(
@@ -376,35 +399,14 @@ public class ParallelJNavigatorContentProvider implements
 			return result.toArray();
 		}
 
-		case SpecificationEditPart.VISUAL_ID: {
-			LinkedList<ParallelJAbstractNavigatorItem> result = new LinkedList<ParallelJAbstractNavigatorItem>();
-			Diagram sv = (Diagram) view;
-			ParallelJNavigatorGroup links = new ParallelJNavigatorGroup(
-					Messages.NavigatorGroupName_Specification_1000_links,
-					"icons/linksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection<View> connectedViews;
-			connectedViews = getChildrenByType(Collections.singleton(sv),
-					ParallelJVisualIDRegistry
-							.getType(ProgramEditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getDiagramLinksByType(Collections.singleton(sv),
-					ParallelJVisualIDRegistry.getType(LinkEditPart.VISUAL_ID));
-			links.addChildren(createNavigatorItems(connectedViews, links, false));
-			if (!links.isEmpty()) {
-				result.add(links);
-			}
-			return result.toArray();
-		}
-
-		case ForEachLoopEditPart.VISUAL_ID: {
+		case ConditionEditPart.VISUAL_ID: {
 			LinkedList<ParallelJAbstractNavigatorItem> result = new LinkedList<ParallelJAbstractNavigatorItem>();
 			Node sv = (Node) view;
 			ParallelJNavigatorGroup incominglinks = new ParallelJNavigatorGroup(
-					Messages.NavigatorGroupName_ForEachLoop_3006_incominglinks,
+					Messages.NavigatorGroupName_Condition_3003_incominglinks,
 					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			ParallelJNavigatorGroup outgoinglinks = new ParallelJNavigatorGroup(
-					Messages.NavigatorGroupName_ForEachLoop_3006_outgoinglinks,
+					Messages.NavigatorGroupName_Condition_3003_outgoinglinks,
 					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection<View> connectedViews;
 			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
@@ -424,131 +426,14 @@ public class ParallelJNavigatorContentProvider implements
 			return result.toArray();
 		}
 
-		case PipelineEditPart.VISUAL_ID: {
+		case WhileLoopEditPart.VISUAL_ID: {
 			LinkedList<ParallelJAbstractNavigatorItem> result = new LinkedList<ParallelJAbstractNavigatorItem>();
 			Node sv = (Node) view;
 			ParallelJNavigatorGroup incominglinks = new ParallelJNavigatorGroup(
-					Messages.NavigatorGroupName_Pipeline_3009_incominglinks,
+					Messages.NavigatorGroupName_WhileLoop_3007_incominglinks,
 					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			ParallelJNavigatorGroup outgoinglinks = new ParallelJNavigatorGroup(
-					Messages.NavigatorGroupName_Pipeline_3009_outgoinglinks,
-					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection<View> connectedViews;
-			connectedViews = getChildrenByType(
-					Collections.singleton(sv),
-					ParallelJVisualIDRegistry
-							.getType(PipelinePipelineCompartmentEditPart.VISUAL_ID));
-			connectedViews = getChildrenByType(connectedViews,
-					ParallelJVisualIDRegistry
-							.getType(PipelineProcedureEditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
-					ParallelJVisualIDRegistry.getType(LinkEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
-					ParallelJVisualIDRegistry.getType(LinkEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			if (!incominglinks.isEmpty()) {
-				result.add(incominglinks);
-			}
-			if (!outgoinglinks.isEmpty()) {
-				result.add(outgoinglinks);
-			}
-			return result.toArray();
-		}
-
-		case InputConditionEditPart.VISUAL_ID: {
-			LinkedList<ParallelJAbstractNavigatorItem> result = new LinkedList<ParallelJAbstractNavigatorItem>();
-			Node sv = (Node) view;
-			ParallelJNavigatorGroup incominglinks = new ParallelJNavigatorGroup(
-					Messages.NavigatorGroupName_InputCondition_3001_incominglinks,
-					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			ParallelJNavigatorGroup outgoinglinks = new ParallelJNavigatorGroup(
-					Messages.NavigatorGroupName_InputCondition_3001_outgoinglinks,
-					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection<View> connectedViews;
-			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
-					ParallelJVisualIDRegistry.getType(LinkEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
-					ParallelJVisualIDRegistry.getType(LinkEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			if (!incominglinks.isEmpty()) {
-				result.add(incominglinks);
-			}
-			if (!outgoinglinks.isEmpty()) {
-				result.add(outgoinglinks);
-			}
-			return result.toArray();
-		}
-
-		case OutputConditionEditPart.VISUAL_ID: {
-			LinkedList<ParallelJAbstractNavigatorItem> result = new LinkedList<ParallelJAbstractNavigatorItem>();
-			Node sv = (Node) view;
-			ParallelJNavigatorGroup incominglinks = new ParallelJNavigatorGroup(
-					Messages.NavigatorGroupName_OutputCondition_3002_incominglinks,
-					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			ParallelJNavigatorGroup outgoinglinks = new ParallelJNavigatorGroup(
-					Messages.NavigatorGroupName_OutputCondition_3002_outgoinglinks,
-					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection<View> connectedViews;
-			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
-					ParallelJVisualIDRegistry.getType(LinkEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
-					ParallelJVisualIDRegistry.getType(LinkEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			if (!incominglinks.isEmpty()) {
-				result.add(incominglinks);
-			}
-			if (!outgoinglinks.isEmpty()) {
-				result.add(outgoinglinks);
-			}
-			return result.toArray();
-		}
-
-		case ProcedureEditPart.VISUAL_ID: {
-			LinkedList<ParallelJAbstractNavigatorItem> result = new LinkedList<ParallelJAbstractNavigatorItem>();
-			Node sv = (Node) view;
-			ParallelJNavigatorGroup incominglinks = new ParallelJNavigatorGroup(
-					Messages.NavigatorGroupName_Procedure_3005_incominglinks,
-					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			ParallelJNavigatorGroup outgoinglinks = new ParallelJNavigatorGroup(
-					Messages.NavigatorGroupName_Procedure_3005_outgoinglinks,
-					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection<View> connectedViews;
-			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
-					ParallelJVisualIDRegistry.getType(LinkEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
-					ParallelJVisualIDRegistry.getType(LinkEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			if (!incominglinks.isEmpty()) {
-				result.add(incominglinks);
-			}
-			if (!outgoinglinks.isEmpty()) {
-				result.add(outgoinglinks);
-			}
-			return result.toArray();
-		}
-
-		case PipelineProcedureEditPart.VISUAL_ID: {
-			LinkedList<ParallelJAbstractNavigatorItem> result = new LinkedList<ParallelJAbstractNavigatorItem>();
-			Node sv = (Node) view;
-			ParallelJNavigatorGroup incominglinks = new ParallelJNavigatorGroup(
-					Messages.NavigatorGroupName_Procedure_3010_incominglinks,
-					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			ParallelJNavigatorGroup outgoinglinks = new ParallelJNavigatorGroup(
-					Messages.NavigatorGroupName_Procedure_3010_outgoinglinks,
+					Messages.NavigatorGroupName_WhileLoop_3007_outgoinglinks,
 					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection<View> connectedViews;
 			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
@@ -614,13 +499,12 @@ public class ParallelJNavigatorContentProvider implements
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(sv),
-					ParallelJVisualIDRegistry
-							.getType(PipelineEditPart.VISUAL_ID));
+					ParallelJVisualIDRegistry.getType(BlockEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(sv),
 					ParallelJVisualIDRegistry
-							.getType(PipelineProcedureEditPart.VISUAL_ID));
+							.getType(BlockProcedureEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(sv),
@@ -659,13 +543,12 @@ public class ParallelJNavigatorContentProvider implements
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(sv),
-					ParallelJVisualIDRegistry
-							.getType(PipelineEditPart.VISUAL_ID));
+					ParallelJVisualIDRegistry.getType(BlockEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(sv),
 					ParallelJVisualIDRegistry
-							.getType(PipelineProcedureEditPart.VISUAL_ID));
+							.getType(BlockProcedureEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			if (!target.isEmpty()) {
@@ -677,14 +560,14 @@ public class ParallelJNavigatorContentProvider implements
 			return result.toArray();
 		}
 
-		case WhileLoopEditPart.VISUAL_ID: {
+		case BlockProcedureEditPart.VISUAL_ID: {
 			LinkedList<ParallelJAbstractNavigatorItem> result = new LinkedList<ParallelJAbstractNavigatorItem>();
 			Node sv = (Node) view;
 			ParallelJNavigatorGroup incominglinks = new ParallelJNavigatorGroup(
-					Messages.NavigatorGroupName_WhileLoop_3007_incominglinks,
+					Messages.NavigatorGroupName_Procedure_3013_incominglinks,
 					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			ParallelJNavigatorGroup outgoinglinks = new ParallelJNavigatorGroup(
-					Messages.NavigatorGroupName_WhileLoop_3007_outgoinglinks,
+					Messages.NavigatorGroupName_Procedure_3013_outgoinglinks,
 					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection<View> connectedViews;
 			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
@@ -727,6 +610,116 @@ public class ParallelJNavigatorContentProvider implements
 			}
 			if (!outgoinglinks.isEmpty()) {
 				result.add(outgoinglinks);
+			}
+			return result.toArray();
+		}
+
+		case ProcedureEditPart.VISUAL_ID: {
+			LinkedList<ParallelJAbstractNavigatorItem> result = new LinkedList<ParallelJAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			ParallelJNavigatorGroup incominglinks = new ParallelJNavigatorGroup(
+					Messages.NavigatorGroupName_Procedure_3005_incominglinks,
+					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			ParallelJNavigatorGroup outgoinglinks = new ParallelJNavigatorGroup(
+					Messages.NavigatorGroupName_Procedure_3005_outgoinglinks,
+					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Collection<View> connectedViews;
+			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
+					ParallelJVisualIDRegistry.getType(LinkEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
+					ParallelJVisualIDRegistry.getType(LinkEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			if (!incominglinks.isEmpty()) {
+				result.add(incominglinks);
+			}
+			if (!outgoinglinks.isEmpty()) {
+				result.add(outgoinglinks);
+			}
+			return result.toArray();
+		}
+
+		case BlockEditPart.VISUAL_ID: {
+			LinkedList<ParallelJAbstractNavigatorItem> result = new LinkedList<ParallelJAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			ParallelJNavigatorGroup incominglinks = new ParallelJNavigatorGroup(
+					Messages.NavigatorGroupName_Block_3012_incominglinks,
+					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			ParallelJNavigatorGroup outgoinglinks = new ParallelJNavigatorGroup(
+					Messages.NavigatorGroupName_Block_3012_outgoinglinks,
+					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Collection<View> connectedViews;
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					ParallelJVisualIDRegistry
+							.getType(BlockBlockCompartmentEditPart.VISUAL_ID));
+			connectedViews = getChildrenByType(connectedViews,
+					ParallelJVisualIDRegistry
+							.getType(BlockProcedureEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement,
+					false));
+			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
+					ParallelJVisualIDRegistry.getType(LinkEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
+					ParallelJVisualIDRegistry.getType(LinkEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			if (!incominglinks.isEmpty()) {
+				result.add(incominglinks);
+			}
+			if (!outgoinglinks.isEmpty()) {
+				result.add(outgoinglinks);
+			}
+			return result.toArray();
+		}
+
+		case OutputConditionEditPart.VISUAL_ID: {
+			LinkedList<ParallelJAbstractNavigatorItem> result = new LinkedList<ParallelJAbstractNavigatorItem>();
+			Node sv = (Node) view;
+			ParallelJNavigatorGroup incominglinks = new ParallelJNavigatorGroup(
+					Messages.NavigatorGroupName_OutputCondition_3002_incominglinks,
+					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			ParallelJNavigatorGroup outgoinglinks = new ParallelJNavigatorGroup(
+					Messages.NavigatorGroupName_OutputCondition_3002_outgoinglinks,
+					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Collection<View> connectedViews;
+			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
+					ParallelJVisualIDRegistry.getType(LinkEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
+					ParallelJVisualIDRegistry.getType(LinkEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			if (!incominglinks.isEmpty()) {
+				result.add(incominglinks);
+			}
+			if (!outgoinglinks.isEmpty()) {
+				result.add(outgoinglinks);
+			}
+			return result.toArray();
+		}
+
+		case SpecificationEditPart.VISUAL_ID: {
+			LinkedList<ParallelJAbstractNavigatorItem> result = new LinkedList<ParallelJAbstractNavigatorItem>();
+			Diagram sv = (Diagram) view;
+			ParallelJNavigatorGroup links = new ParallelJNavigatorGroup(
+					Messages.NavigatorGroupName_Specification_1000_links,
+					"icons/linksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Collection<View> connectedViews;
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					ParallelJVisualIDRegistry
+							.getType(ProgramEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement,
+					false));
+			connectedViews = getDiagramLinksByType(Collections.singleton(sv),
+					ParallelJVisualIDRegistry.getType(LinkEditPart.VISUAL_ID));
+			links.addChildren(createNavigatorItems(connectedViews, links, false));
+			if (!links.isEmpty()) {
+				result.add(links);
 			}
 			return result.toArray();
 		}

@@ -62,6 +62,13 @@ import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.PreferenceConverter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.FontData;
+import org.parallelj.designer.edit.parts.BlockBlockCompartmentEditPart;
+import org.parallelj.designer.edit.parts.BlockEditPart;
+import org.parallelj.designer.edit.parts.BlockIconEditPart;
+import org.parallelj.designer.edit.parts.BlockNameEditPart;
+import org.parallelj.designer.edit.parts.BlockProcedureEditPart;
+import org.parallelj.designer.edit.parts.BlockProcedureExecutableEditPart;
+import org.parallelj.designer.edit.parts.BlockProcedureNameEditPart;
 import org.parallelj.designer.edit.parts.ConditionEditPart;
 import org.parallelj.designer.edit.parts.ConditionNameEditPart;
 import org.parallelj.designer.edit.parts.DataEditPart;
@@ -79,13 +86,6 @@ import org.parallelj.designer.edit.parts.LinkEditPart;
 import org.parallelj.designer.edit.parts.LinkPredicateInfoEditPart;
 import org.parallelj.designer.edit.parts.OutputConditionEditPart;
 import org.parallelj.designer.edit.parts.OutputConditionNameEditPart;
-import org.parallelj.designer.edit.parts.PipelineEditPart;
-import org.parallelj.designer.edit.parts.PipelineIconEditPart;
-import org.parallelj.designer.edit.parts.PipelineNameEditPart;
-import org.parallelj.designer.edit.parts.PipelinePipelineCompartmentEditPart;
-import org.parallelj.designer.edit.parts.PipelineProcedureEditPart;
-import org.parallelj.designer.edit.parts.PipelineProcedureExecutableEditPart;
-import org.parallelj.designer.edit.parts.PipelineProcedureNameEditPart;
 import org.parallelj.designer.edit.parts.PredicateEditPart;
 import org.parallelj.designer.edit.parts.PredicateNameEditPart;
 import org.parallelj.designer.edit.parts.ProcedureEditPart;
@@ -203,9 +203,9 @@ public class ParallelJViewProvider extends AbstractProvider implements
 				case ForEachLoopEditPart.VISUAL_ID:
 				case WhileLoopEditPart.VISUAL_ID:
 				case HandlerEditPart.VISUAL_ID:
-				case PipelineEditPart.VISUAL_ID:
+				case BlockEditPart.VISUAL_ID:
 				case DataEditPart.VISUAL_ID:
-				case PipelineProcedureEditPart.VISUAL_ID:
+				case BlockProcedureEditPart.VISUAL_ID:
 					if (domainElement == null
 							|| visualID != ParallelJVisualIDRegistry
 									.getNodeVisualID(op.getContainerView(),
@@ -227,8 +227,8 @@ public class ParallelJViewProvider extends AbstractProvider implements
 				|| ForEachLoopEditPart.VISUAL_ID == visualID
 				|| WhileLoopEditPart.VISUAL_ID == visualID
 				|| HandlerEditPart.VISUAL_ID == visualID
-				|| PipelineEditPart.VISUAL_ID == visualID
-				|| PipelineProcedureEditPart.VISUAL_ID == visualID
+				|| BlockEditPart.VISUAL_ID == visualID
+				|| BlockProcedureEditPart.VISUAL_ID == visualID
 				|| DataEditPart.VISUAL_ID == visualID;
 	}
 
@@ -313,11 +313,11 @@ public class ParallelJViewProvider extends AbstractProvider implements
 		case HandlerEditPart.VISUAL_ID:
 			return createHandler_3008(domainElement, containerView, index,
 					persisted, preferencesHint);
-		case PipelineEditPart.VISUAL_ID:
-			return createPipeline_3009(domainElement, containerView, index,
+		case BlockEditPart.VISUAL_ID:
+			return createBlock_3012(domainElement, containerView, index,
 					persisted, preferencesHint);
-		case PipelineProcedureEditPart.VISUAL_ID:
-			return createProcedure_3010(domainElement, containerView, index,
+		case BlockProcedureEditPart.VISUAL_ID:
+			return createProcedure_3013(domainElement, containerView, index,
 					persisted, preferencesHint);
 		case DataEditPart.VISUAL_ID:
 			return createData_3011(domainElement, containerView, index,
@@ -775,12 +775,11 @@ public class ParallelJViewProvider extends AbstractProvider implements
 	/**
 	 * @generated
 	 */
-	public Node createPipeline_3009(EObject domainElement, View containerView,
+	public Node createBlock_3012(EObject domainElement, View containerView,
 			int index, boolean persisted, PreferencesHint preferencesHint) {
 		Shape node = NotationFactory.eINSTANCE.createShape();
 		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
-		node.setType(ParallelJVisualIDRegistry
-				.getType(PipelineEditPart.VISUAL_ID));
+		node.setType(ParallelJVisualIDRegistry.getType(BlockEditPart.VISUAL_ID));
 		ViewUtil.insertChildView(containerView, node, index, persisted);
 		node.setElement(domainElement);
 		// initializeFromPreferences 
@@ -811,16 +810,13 @@ public class ParallelJViewProvider extends AbstractProvider implements
 		ViewUtil.setStructuralFeatureValue(node,
 				NotationPackage.eINSTANCE.getFillStyle_FillColor(),
 				FigureUtilities.RGBToInteger(fillRGB));
-		Node label5016 = createLabel(node,
+		Node label5023 = createLabel(node,
+				ParallelJVisualIDRegistry.getType(BlockNameEditPart.VISUAL_ID));
+		Node label5024 = createLabel(node,
+				ParallelJVisualIDRegistry.getType(BlockIconEditPart.VISUAL_ID));
+		createCompartment(node,
 				ParallelJVisualIDRegistry
-						.getType(PipelineNameEditPart.VISUAL_ID));
-		Node label5017 = createLabel(node,
-				ParallelJVisualIDRegistry
-						.getType(PipelineIconEditPart.VISUAL_ID));
-		createCompartment(
-				node,
-				ParallelJVisualIDRegistry
-						.getType(PipelinePipelineCompartmentEditPart.VISUAL_ID),
+						.getType(BlockBlockCompartmentEditPart.VISUAL_ID),
 				false, false, false, false);
 		return node;
 	}
@@ -828,12 +824,12 @@ public class ParallelJViewProvider extends AbstractProvider implements
 	/**
 	 * @generated
 	 */
-	public Node createProcedure_3010(EObject domainElement, View containerView,
+	public Node createProcedure_3013(EObject domainElement, View containerView,
 			int index, boolean persisted, PreferencesHint preferencesHint) {
 		Shape node = NotationFactory.eINSTANCE.createShape();
 		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
 		node.setType(ParallelJVisualIDRegistry
-				.getType(PipelineProcedureEditPart.VISUAL_ID));
+				.getType(BlockProcedureEditPart.VISUAL_ID));
 		ViewUtil.insertChildView(containerView, node, index, persisted);
 		node.setElement(domainElement);
 		// initializeFromPreferences 
@@ -864,12 +860,12 @@ public class ParallelJViewProvider extends AbstractProvider implements
 		ViewUtil.setStructuralFeatureValue(node,
 				NotationPackage.eINSTANCE.getFillStyle_FillColor(),
 				FigureUtilities.RGBToInteger(fillRGB));
-		Node label5014 = createLabel(node,
+		Node label5021 = createLabel(node,
 				ParallelJVisualIDRegistry
-						.getType(PipelineProcedureNameEditPart.VISUAL_ID));
-		Node label5015 = createLabel(node,
+						.getType(BlockProcedureNameEditPart.VISUAL_ID));
+		Node label5022 = createLabel(node,
 				ParallelJVisualIDRegistry
-						.getType(PipelineProcedureExecutableEditPart.VISUAL_ID));
+						.getType(BlockProcedureExecutableEditPart.VISUAL_ID));
 		return node;
 	}
 

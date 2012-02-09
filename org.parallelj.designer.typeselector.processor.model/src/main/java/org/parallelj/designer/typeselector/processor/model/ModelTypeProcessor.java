@@ -31,6 +31,7 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -54,6 +55,11 @@ public class ModelTypeProcessor extends ResourceProcessor {
 	 * ResourceSet to use while processing elements
 	 */
 	protected ResourceSet resourceSet;
+	
+	/**
+	 * element selected
+	 */
+	protected EObject eObject;
 
 	/**
 	 * default constructor.
@@ -71,12 +77,14 @@ public class ModelTypeProcessor extends ResourceProcessor {
 	 *            : input IProject
 	 * @param pattern
 	 *            : input pattern
+	 * @param eObject 
 	 */
 	public ModelTypeProcessor(ResourceSet resourceSet, IProject project,
-			String pattern) {
+			String pattern, EObject eObject) {
 		this.resourceSet = resourceSet;
 		this.iProject = project;
 		this.pattern = pattern;
+		this.eObject=eObject;
 	}
 
 	/**
@@ -174,7 +182,7 @@ public class ModelTypeProcessor extends ResourceProcessor {
 							}
 						}
 						ModelTypeInfos.addAll(new ModelResourceProcessor()
-								.lookForTypesInResource(resource));
+								.lookForTypesInResource(resource,this.eObject));
 					}
 				}
 		} catch (CoreException e) {

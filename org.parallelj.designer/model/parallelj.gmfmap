@@ -120,7 +120,7 @@
           <domainMetaElement
               href="../../org.parallelj.model/model/parallelj.ecore#//Procedure"/>
           <domainSpecialization
-              body="not self.oclIsTypeOf(ForEachLoop) and not self.oclIsTypeOf(WhileLoop) and not self.oclIsTypeOf(Handler) and not self.oclIsTypeOf(Pipeline)"/>
+              body="not self.oclIsTypeOf(ForEachLoop) and not self.oclIsTypeOf(WhileLoop) and not self.oclIsTypeOf(Handler) and not self.oclIsTypeOf(Block)"/>
           <labelMappings
               xsi:type="gmfmap:FeatureLabelMapping">
             <diagramLabel
@@ -160,8 +160,7 @@
           </labelMappings>
           <labelMappings
               xsi:type="gmfmap:FeatureLabelMapping"
-              readOnly="true"
-              editorPattern="">
+              readOnly="true">
             <diagramLabel
                 href="parallelj.gmfgraph#ForEachLoopExecutable"/>
             <features
@@ -195,8 +194,7 @@
           </labelMappings>
           <labelMappings
               xsi:type="gmfmap:FeatureLabelMapping"
-              readOnly="true"
-              viewPattern="">
+              readOnly="true">
             <diagramLabel
                 href="parallelj.gmfgraph#WhileLoopExecutable"/>
             <features
@@ -242,29 +240,28 @@
             href="../../org.parallelj.model/model/parallelj.ecore#//Program/elements"/>
         <ownedChild>
           <domainMetaElement
-              href="../../org.parallelj.model/model/parallelj.ecore#//Pipeline"/>
+              href="../../org.parallelj.model/model/parallelj.ecore#//Block"/>
           <labelMappings
               xsi:type="gmfmap:FeatureLabelMapping">
             <diagramLabel
-                href="parallelj.gmfgraph#PipelineName"/>
+                href="parallelj.gmfgraph#BlockName"/>
             <features
                 href="../../org.parallelj.model/model/parallelj.ecore#//NamedElement/name"/>
           </labelMappings>
-          <labelMappings
-              readOnly="true">
+          <labelMappings>
             <diagramLabel
-                href="parallelj.gmfgraph#PipelineIcon"/>
+                href="parallelj.gmfgraph#BlockIcon"/>
           </labelMappings>
           <tool
               xsi:type="gmftool:CreationTool"
               href="parallelj.gmftool#//@palette/@tools.2/@tools.0"/>
           <diagramNode
-              href="parallelj.gmfgraph#Pipeline"/>
+              href="parallelj.gmfgraph#Block"/>
           <children
               compartment="//@nodes.0/@ownedChild/@children.8/@ownedChild/@compartments.0"
               referencedChild="//@nodes.0/@ownedChild/@children.8/@ownedChild">
             <containmentFeature
-                href="../../org.parallelj.model/model/parallelj.ecore#//Pipeline/procedures"/>
+                href="../../org.parallelj.model/model/parallelj.ecore#//Block/procedures"/>
             <ownedChild>
               <domainMetaElement
                   href="../../org.parallelj.model/model/parallelj.ecore#//Procedure"/>
@@ -293,7 +290,7 @@
           <compartments
               children="//@nodes.0/@ownedChild/@children.8/@ownedChild/@children.0">
             <compartment
-                href="parallelj.gmfgraph#PipelineCompartment"/>
+                href="parallelj.gmfgraph#BlockCompartment"/>
           </compartments>
         </ownedChild>
       </children>
@@ -328,7 +325,7 @@
         </ownedChild>
       </children>
       <compartments
-          children="//@nodes.0/@ownedChild/@children.2 //@nodes.0/@ownedChild/@children.9 //@nodes.0/@ownedChild/@children.5 //@nodes.0/@ownedChild/@children.7 //@nodes.0/@ownedChild/@children.8 //@nodes.0/@ownedChild/@children.3 //@nodes.0/@ownedChild/@children.4 //@nodes.0/@ownedChild/@children.6 //@nodes.0/@ownedChild/@children.0 //@nodes.0/@ownedChild/@children.1">
+          children="//@nodes.0/@ownedChild/@children.9 //@nodes.0/@ownedChild/@children.8 //@nodes.0/@ownedChild/@children.2 //@nodes.0/@ownedChild/@children.5 //@nodes.0/@ownedChild/@children.7 //@nodes.0/@ownedChild/@children.3 //@nodes.0/@ownedChild/@children.4 //@nodes.0/@ownedChild/@children.6 //@nodes.0/@ownedChild/@children.0 //@nodes.0/@ownedChild/@children.1">
         <compartment
             href="parallelj.gmfgraph#ProgramCompartment"/>
       </compartments>
@@ -354,9 +351,9 @@
         href="../../org.parallelj.model/model/parallelj.ecore#//Link/destination"/>
     <creationConstraints>
       <sourceEnd
-          body="not oclIsKindOf(OutputCondition) and not eContainer().oclIsKindOf(Pipeline) and not oclIsKindOf(Data) and not oclIsKindOf(Predicate)"/>
+          body="not oclIsKindOf(OutputCondition) and not eContainer().oclIsKindOf(Block) and not oclIsKindOf(Data) and not oclIsKindOf(Predicate) and not oclIsKindOf(Block)"/>
       <targetEnd
-          body="not oclIsKindOf(InputCondition) and not oclIsKindOf(Handler) and if oclIsKindOf(Condition) then not oppositeEnd.oclIsKindOf(Condition) else true endif and oppositeEnd.outputLinks -> select (p | p.destination = self ) -> size() &lt;> 1 and not eContainer().oclIsKindOf(Pipeline) and not oclIsKindOf(Data) and not oclIsKindOf(Predicate)"/>
+          body="not oclIsKindOf(InputCondition) and not oclIsKindOf(Handler) and if oclIsKindOf(Condition) then not oppositeEnd.oclIsKindOf(Condition) else true endif and oppositeEnd.outputLinks -> select (p | p.destination = self ) -> size() &lt;> 1 and not eContainer().oclIsKindOf(Block) and not oclIsKindOf(Data) and not oclIsKindOf(Predicate) and not oclIsKindOf(Block)"/>
     </creationConstraints>
   </links>
   <diagram>

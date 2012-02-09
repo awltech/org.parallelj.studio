@@ -71,9 +71,9 @@ public class ParallelJOCLFactory {
 		}
 		if (cached.expressions[index] == null) {
 			final String[] exprBodies = new String[] {
-					"not self.oclIsTypeOf(ForEachLoop) and not self.oclIsTypeOf(WhileLoop) and not self.oclIsTypeOf(Handler) and not self.oclIsTypeOf(Pipeline)", //$NON-NLS-1$
-					"not oclIsKindOf(OutputCondition) and not eContainer().oclIsKindOf(Pipeline) and not oclIsKindOf(Data) and not oclIsKindOf(Predicate)", //$NON-NLS-1$
-					"not oclIsKindOf(InputCondition) and not oclIsKindOf(Handler) and if oclIsKindOf(Condition) then not oppositeEnd.oclIsKindOf(Condition) else true endif and oppositeEnd.outputLinks -> select (p | p.destination = self ) -> size() <> 1 and not eContainer().oclIsKindOf(Pipeline) and not oclIsKindOf(Data) and not oclIsKindOf(Predicate)", //$NON-NLS-1$
+					"not self.oclIsTypeOf(ForEachLoop) and not self.oclIsTypeOf(WhileLoop) and not self.oclIsTypeOf(Handler) and not self.oclIsTypeOf(Block)", //$NON-NLS-1$
+					"not oclIsKindOf(OutputCondition) and not eContainer().oclIsKindOf(Block) and not oclIsKindOf(Data) and not oclIsKindOf(Predicate) and not oclIsKindOf(Block)", //$NON-NLS-1$
+					"not oclIsKindOf(InputCondition) and not oclIsKindOf(Handler) and if oclIsKindOf(Condition) then not oppositeEnd.oclIsKindOf(Condition) else true endif and oppositeEnd.outputLinks -> select (p | p.destination = self ) -> size() <> 1 and not eContainer().oclIsKindOf(Block) and not oclIsKindOf(Data) and not oclIsKindOf(Predicate) and not oclIsKindOf(Block)", //$NON-NLS-1$
 			};
 			cached.expressions[index] = getExpression(
 					exprBodies[index],

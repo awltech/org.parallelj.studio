@@ -28,8 +28,8 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
-import org.parallelj.designer.extension.edit.parts.PipelineProcedureExtendedEditPart;
-import org.parallelj.model.Pipeline;
+import org.parallelj.designer.extension.edit.parts.BlockProcedureExtendedEditPart;
+import org.parallelj.model.Block;
 import org.parallelj.model.Procedure;
 
 public class BoundsRefreshment {
@@ -103,13 +103,13 @@ public class BoundsRefreshment {
 	}
 
 	/**
-	 * Refreshing passed pipeline procedure with default location as per
+	 * Refreshing passed block procedure with default location as per
 	 * sequence logic
 	 * 
 	 * @param editPart
 	 */
 	public static void refreshLocation(
-			PipelineProcedureExtendedEditPart editPart) {
+			BlockProcedureExtendedEditPart editPart) {
 		int locY = giveYAxis(editPart);
 		Point loc = new Point(0, locY);
 		((GraphicalEditPart) editPart.getParent()).setLayoutConstraint(
@@ -123,24 +123,24 @@ public class BoundsRefreshment {
 
 	/**
 	 * @param editPart
-	 * @return the Y Co-ordinate for passed Pipeline Procedure as per sequence
+	 * @return the Y Co-ordinate for passed Block Procedure as per sequence
 	 *         logic
 	 */
-	public static int giveYAxis(PipelineProcedureExtendedEditPart editPart) {
+	public static int giveYAxis(BlockProcedureExtendedEditPart editPart) {
 		int locY = 0;
-		Pipeline pipeline = (Pipeline) (((View) editPart.getParent().getModel())
+		Block block = (Block) (((View) editPart.getParent().getModel())
 				.getElement());
 
 		Procedure currentProcedure = (Procedure) (((View) editPart.getModel())
 				.getElement());
 
-		Procedure listLastProcedure = pipeline.getProcedures().get(
-				pipeline.getProcedures().size() - 1);
+		Procedure listLastProcedure = block.getProcedures().get(
+				block.getProcedures().size() - 1);
 
 		// if current procedure is the last from property list
 		if (currentProcedure.equals(listLastProcedure)) {
-			if (pipeline.getProcedures().size() > 1) {
-				locY = ((pipeline.getProcedures().size() - 1) * 45);
+			if (block.getProcedures().size() > 1) {
+				locY = ((block.getProcedures().size() - 1) * 45);
 			}
 		}
 		// if not that means it is getting added after Ctrl-Z

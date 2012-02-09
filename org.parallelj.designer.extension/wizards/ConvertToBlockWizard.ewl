@@ -1,0 +1,42 @@
+wizard ConvertToBlock {
+
+	// if selected element is Procedure or WhileLoop or Handler and not Block then only execute the wizard 
+	guard : self.isKindOf(Procedure) and not self.eContainer.isKindOf(Block) and not self.isKindOf(Block)  
+
+	// sub-menu title
+	title : 'Turn into Block'
+
+	do {
+		var isOK : Boolean := true;
+
+		if(not self.isKindOf(Handler)){
+			isOK = UserInput.confirm('This wizard may result in the loss of some data from the former object. Do you confirm ?');
+		}
+		
+		if (isOK) 
+		{
+			// creating new Block object 
+			var blockClass = self.eClass().ePackage.getEClassifier('Block');
+			var blockObject = self.eClass().ePackage.eFactoryInstance.create(blockClass);
+			
+			// Assigning all attribute values to newly created Block object
+			blockObject.name = self.name;
+			blockObject.description = self.description;
+			
+			// removing all input links coming from source object
+			for(inputLinks in self.inputLinks){
+				inputLinks.eContainer.outputLinks.remove(inputLinks);
+			}
+					
+			// removing all out going links coming from source object
+			for(outputLinks in self.outputLinks){
+				outputLinks.destination.inputLinks.remove(outputLinks);
+			}
+			
+			// adding to new object to container
+			self.eContainer.elements.add(blockObject);
+			// removing to selected old object from container
+			self.eContainer.elements.remove(self);
+		}
+	}
+}

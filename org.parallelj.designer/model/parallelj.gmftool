@@ -93,8 +93,8 @@
         collapsible="true">
       <tools
           xsi:type="gmftool:CreationTool"
-          title="Pipeline"
-          description="Create new Pipeline">
+          title="Block"
+          description="Create new Block">
         <smallIcon
             xsi:type="gmftool:DefaultImage"/>
         <largeIcon

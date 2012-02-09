@@ -54,7 +54,7 @@ import org.parallelj.ixea.tools.FormDataBuilder;
 import org.parallelj.model.Element;
 import org.parallelj.model.Handler;
 import org.parallelj.model.ParallelJPackage;
-import org.parallelj.model.Pipeline;
+import org.parallelj.model.Block;
 import org.parallelj.model.Procedure;
 import org.parallelj.model.Program;
 
@@ -76,11 +76,11 @@ public class ProceduresZone extends Zone {
 
 	private Procedure selectedProcedure;
 
-	private boolean isPipeline;
+	private boolean isBlock;
 
-	public ProceduresZone(Composite parent, boolean isGroup, boolean isPipeline) {
+	public ProceduresZone(Composite parent, boolean isGroup, boolean isBlock) {
 		super(parent, isGroup);
-		this.isPipeline = isPipeline;
+		this.isBlock = isBlock;
 	}
 
 	@Override
@@ -94,7 +94,7 @@ public class ProceduresZone extends Zone {
 		listViewer.setContentProvider(new ListContentProvider());
 		listViewer.setLabelProvider(new ListLabelProvider());
 
-		if (this.isPipeline) {
+		if (this.isBlock) {
 			upButton = this.getWidgetFactory().createButton(getZone(),
 					ParallelJPropertiesMessages.button_up.message(), SWT.PUSH);
 			downButton = this.getWidgetFactory()
@@ -115,7 +115,7 @@ public class ProceduresZone extends Zone {
 	@Override
 	public void addLayoutsToItems() {
 		new FormDataBuilder().left().top().mediumLabel().apply(proceduresLabel);
-		if (!this.isPipeline) {
+		if (!this.isBlock) {
 			new FormDataBuilder().right().top().shortButton().apply(addButton);
 			new FormDataBuilder().right().top(addButton).shortButton()
 					.apply(deleteButton);
@@ -141,7 +141,7 @@ public class ProceduresZone extends Zone {
 							.getSelection()).getFirstElement();
 					if (procedure instanceof Procedure) {
 						ProceduresZone.this.selectedProcedure = (Procedure) procedure;
-						if (ProceduresZone.this.isPipeline) {
+						if (ProceduresZone.this.isBlock) {
 							ProceduresZone.this.upButton.setEnabled(ProceduresZone.this.selectedProcedure != null
 									&& !ProceduresZone.this.selectedProcedure
 											.equals(ProceduresZone.this.listViewer
@@ -156,14 +156,14 @@ public class ProceduresZone extends Zone {
 				}
 			}
 		});
-		if (this.isPipeline) {
+		if (this.isBlock) {
 			upButton.addSelectionListener(new SelectionAdapter() {
 				@Override
 				public void widgetSelected(SelectionEvent e) {
 					Commands.doMoveValue(
 							getEditingDomain(),
 							getEObject(),
-							ParallelJPackage.eINSTANCE.getPipeline_Procedures(),
+							ParallelJPackage.eINSTANCE.getBlock_Procedures(),
 							ProceduresZone.this.selectedProcedure,
 							Commands.MOVE_UP, getEditPart());
 					ProceduresZone.this.listViewer.refresh();
@@ -183,7 +183,7 @@ public class ProceduresZone extends Zone {
 					Commands.doMoveValue(
 							getEditingDomain(),
 							getEObject(),
-							ParallelJPackage.eINSTANCE.getPipeline_Procedures(),
+							ParallelJPackage.eINSTANCE.getBlock_Procedures(),
 							ProceduresZone.this.selectedProcedure,
 							Commands.MOVE_DOWN, getEditPart());
 					ProceduresZone.this.listViewer.refresh();
@@ -274,8 +274,8 @@ public class ProceduresZone extends Zone {
 		private boolean isAlreadyUsed(Procedure p) {
 			if (getEObject() instanceof Handler) {
 				return ((Handler) getEObject()).getProcedures().contains(p);
-			} else if (getEObject() instanceof Pipeline) {
-				return ((Pipeline) getEObject()).getProcedures().contains(p);
+			} else if (getEObject() instanceof Block) {
+				return ((Block) getEObject()).getProcedures().contains(p);
 			} else
 				return true;
 		}
@@ -349,8 +349,8 @@ public class ProceduresZone extends Zone {
 		@Override
 		public Object[] getElements(Object inputElement) {
 			java.util.List<Procedure> list = new ArrayList<Procedure>();
-			if (ProceduresZone.this.isPipeline) {
-				Pipeline p = (Pipeline) inputElement;
+			if (ProceduresZone.this.isBlock) {
+				Block p = (Block) inputElement;
 				Iterator<Procedure> iterator = p.getProcedures().iterator();
 				while (iterator.hasNext()) {
 					Procedure procedure = iterator.next();

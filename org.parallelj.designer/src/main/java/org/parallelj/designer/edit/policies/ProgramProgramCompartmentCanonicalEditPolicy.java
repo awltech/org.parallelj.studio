@@ -32,6 +32,7 @@ import java.util.Set;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.gef.EditPart;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
 import org.eclipse.gmf.runtime.diagram.ui.commands.DeferredLayoutCommand;
@@ -42,13 +43,13 @@ import org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewRequest;
 import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
+import org.parallelj.designer.edit.parts.BlockEditPart;
 import org.parallelj.designer.edit.parts.ConditionEditPart;
 import org.parallelj.designer.edit.parts.DataEditPart;
 import org.parallelj.designer.edit.parts.ForEachLoopEditPart;
 import org.parallelj.designer.edit.parts.HandlerEditPart;
 import org.parallelj.designer.edit.parts.InputConditionEditPart;
 import org.parallelj.designer.edit.parts.OutputConditionEditPart;
-import org.parallelj.designer.edit.parts.PipelineEditPart;
 import org.parallelj.designer.edit.parts.PredicateEditPart;
 import org.parallelj.designer.edit.parts.ProcedureEditPart;
 import org.parallelj.designer.edit.parts.WhileLoopEditPart;
@@ -67,6 +68,18 @@ public class ProgramProgramCompartmentCanonicalEditPolicy extends
 	 * @generated
 	 */
 	private Set<EStructuralFeature> myFeaturesToSynchronize;
+
+	/**
+	 * @generated
+	 */
+	protected void refreshOnActivate() {
+		// Need to activate editpart children before invoking the canonical refresh for EditParts to add event listeners
+		List<?> c = getHost().getChildren();
+		for (int i = 0; i < c.size(); i++) {
+			((EditPart) c.get(i)).activate();
+		}
+		super.refreshOnActivate();
+	}
 
 	/**
 	 * @generated
@@ -122,7 +135,7 @@ public class ProgramProgramCompartmentCanonicalEditPolicy extends
 		case ForEachLoopEditPart.VISUAL_ID:
 		case WhileLoopEditPart.VISUAL_ID:
 		case HandlerEditPart.VISUAL_ID:
-		case PipelineEditPart.VISUAL_ID:
+		case BlockEditPart.VISUAL_ID:
 		case DataEditPart.VISUAL_ID:
 			return true;
 		}

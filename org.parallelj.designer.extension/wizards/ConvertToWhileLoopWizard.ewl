@@ -1,7 +1,7 @@
 wizard ConvertToWhileLoop {
 
-	// if selected element is Procedure or ForEachLoop or Handler and not WhileLoop then only execute the wizard 
-	guard : self.isKindOf(Procedure) and not self.eContainer.isKindOf(Pipeline) and not self.isKindOf(WhileLoop)  
+	// if selected element is Procedure or ForEachLoop or Handler and not WhileLoop or Block then only execute the wizard 
+	guard : self.isKindOf(Procedure) and not self.eContainer.isKindOf(Block) and not self.isKindOf(WhileLoop) and not self.isKindOf(Block)  
 
 	// sub-menu title
 	title : 'Turn into WhileLoop'
@@ -9,7 +9,7 @@ wizard ConvertToWhileLoop {
 	do {
 		var isOK : Boolean := true;
 
-		if(self.isKindOf(ForEachLoop) or self.isKindOf(Pipeline)){
+		if(self.isKindOf(ForEachLoop)){
 			isOK = UserInput.confirm('This wizard may result in the loss of some data from the former object. Do you confirm ?');
 		}
 		
@@ -27,6 +27,10 @@ wizard ConvertToWhileLoop {
 			whileLoopObject.split= self.split;
 			whileLoopObject.inputLinks.addAll(self.inputLinks);
 			whileLoopObject.outputLinks.addAll(self.outputLinks);
+			
+			if(self.isKindOf(ForEachLoop)){
+				whileLoopObject.executionMode = self.executionMode;
+			}
 			
 			// adding to new object to container
 			self.eContainer.elements.add(whileLoopObject);

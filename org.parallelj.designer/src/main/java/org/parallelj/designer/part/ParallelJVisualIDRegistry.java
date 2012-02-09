@@ -26,6 +26,13 @@ import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
+import org.parallelj.designer.edit.parts.BlockBlockCompartmentEditPart;
+import org.parallelj.designer.edit.parts.BlockEditPart;
+import org.parallelj.designer.edit.parts.BlockIconEditPart;
+import org.parallelj.designer.edit.parts.BlockNameEditPart;
+import org.parallelj.designer.edit.parts.BlockProcedureEditPart;
+import org.parallelj.designer.edit.parts.BlockProcedureExecutableEditPart;
+import org.parallelj.designer.edit.parts.BlockProcedureNameEditPart;
 import org.parallelj.designer.edit.parts.ConditionEditPart;
 import org.parallelj.designer.edit.parts.ConditionNameEditPart;
 import org.parallelj.designer.edit.parts.DataEditPart;
@@ -43,13 +50,6 @@ import org.parallelj.designer.edit.parts.LinkEditPart;
 import org.parallelj.designer.edit.parts.LinkPredicateInfoEditPart;
 import org.parallelj.designer.edit.parts.OutputConditionEditPart;
 import org.parallelj.designer.edit.parts.OutputConditionNameEditPart;
-import org.parallelj.designer.edit.parts.PipelineEditPart;
-import org.parallelj.designer.edit.parts.PipelineIconEditPart;
-import org.parallelj.designer.edit.parts.PipelineNameEditPart;
-import org.parallelj.designer.edit.parts.PipelinePipelineCompartmentEditPart;
-import org.parallelj.designer.edit.parts.PipelineProcedureEditPart;
-import org.parallelj.designer.edit.parts.PipelineProcedureExecutableEditPart;
-import org.parallelj.designer.edit.parts.PipelineProcedureNameEditPart;
 import org.parallelj.designer.edit.parts.PredicateEditPart;
 import org.parallelj.designer.edit.parts.PredicateNameEditPart;
 import org.parallelj.designer.edit.parts.ProcedureEditPart;
@@ -215,19 +215,19 @@ public class ParallelJVisualIDRegistry {
 					domainElement.eClass())) {
 				return HandlerEditPart.VISUAL_ID;
 			}
-			if (ParallelJPackage.eINSTANCE.getPipeline().isSuperTypeOf(
+			if (ParallelJPackage.eINSTANCE.getBlock().isSuperTypeOf(
 					domainElement.eClass())) {
-				return PipelineEditPart.VISUAL_ID;
+				return BlockEditPart.VISUAL_ID;
 			}
 			if (ParallelJPackage.eINSTANCE.getData().isSuperTypeOf(
 					domainElement.eClass())) {
 				return DataEditPart.VISUAL_ID;
 			}
 			break;
-		case PipelinePipelineCompartmentEditPart.VISUAL_ID:
+		case BlockBlockCompartmentEditPart.VISUAL_ID:
 			if (ParallelJPackage.eINSTANCE.getProcedure().isSuperTypeOf(
 					domainElement.eClass())) {
-				return PipelineProcedureEditPart.VISUAL_ID;
+				return BlockProcedureEditPart.VISUAL_ID;
 			}
 			break;
 		}
@@ -323,22 +323,22 @@ public class ParallelJVisualIDRegistry {
 				return true;
 			}
 			break;
-		case PipelineEditPart.VISUAL_ID:
-			if (PipelineNameEditPart.VISUAL_ID == nodeVisualID) {
+		case BlockEditPart.VISUAL_ID:
+			if (BlockNameEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
-			if (PipelineIconEditPart.VISUAL_ID == nodeVisualID) {
+			if (BlockIconEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
-			if (PipelinePipelineCompartmentEditPart.VISUAL_ID == nodeVisualID) {
+			if (BlockBlockCompartmentEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
-		case PipelineProcedureEditPart.VISUAL_ID:
-			if (PipelineProcedureNameEditPart.VISUAL_ID == nodeVisualID) {
+		case BlockProcedureEditPart.VISUAL_ID:
+			if (BlockProcedureNameEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
-			if (PipelineProcedureExecutableEditPart.VISUAL_ID == nodeVisualID) {
+			if (BlockProcedureExecutableEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
@@ -375,15 +375,15 @@ public class ParallelJVisualIDRegistry {
 			if (HandlerEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
-			if (PipelineEditPart.VISUAL_ID == nodeVisualID) {
+			if (BlockEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			if (DataEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
-		case PipelinePipelineCompartmentEditPart.VISUAL_ID:
-			if (PipelineProcedureEditPart.VISUAL_ID == nodeVisualID) {
+		case BlockBlockCompartmentEditPart.VISUAL_ID:
+			if (BlockProcedureEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;

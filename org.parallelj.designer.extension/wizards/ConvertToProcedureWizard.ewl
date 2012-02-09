@@ -1,7 +1,7 @@
 wizard ConvertToProcedure {
 
-	// if selected element is WhileLoop or ForEachLoop or Handler and not Procedure then only execute the wizard 
-	guard : self.isKindOf(Procedure) and not self.isTypeOf(Procedure)  
+	// if selected element is WhileLoop or ForEachLoop or Handler and not Procedure or Block then only execute the wizard 
+	guard : self.isKindOf(Procedure) and not self.isTypeOf(Procedure) and not self.isTypeOf(Block)  
 
 	// sub-menu title
 	title : 'Turn into Procedure'

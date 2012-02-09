@@ -124,7 +124,7 @@ public class ExecutableTools {
 			factories = new ResourceProcessorFactory[] {
 					new JavaExecutableProcessorFactory(Callable.class),
 					new JavaExecutableProcessorFactory(Runnable.class),
-					new ModelTypeProcessorFactory(),
+					new ModelTypeProcessorFactory(eObject),
 					new AnnotationTypeProcessorFactory()};
 		}
 		ResourceSelector selector = new ResourceSelector(factories,

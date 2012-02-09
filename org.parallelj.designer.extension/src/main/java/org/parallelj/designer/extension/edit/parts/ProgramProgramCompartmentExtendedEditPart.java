@@ -33,8 +33,8 @@ public class ProgramProgramCompartmentExtendedEditPart extends
 	}
 	
 	/**
-	 * Removing Drag Drop facility from Pipeline Compartment, to avoid insertion
-	 * of procedure by Dragging from Program and dropping inside pipeline
+	 * Removing Drag Drop facility from Block Compartment, to avoid insertion
+	 * of procedure by Dragging from Program and dropping inside block
 	 * compartment.
 	 */
 	@Override

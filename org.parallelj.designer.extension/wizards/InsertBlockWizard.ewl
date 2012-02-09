@@ -1,0 +1,43 @@
+wizard InsertBlock {
+
+	// if selected element is Link then only execute the wizard 
+	guard : self.isKindOf(Link)
+
+	// sub-menu title
+	title : 'Insert Block'
+
+	do{
+	
+		// asking user to enter name for new Block
+		var newName : String;
+		var message : String := 'Please provide a name for new Block';
+		newName := UserInput.prompt(message);
+		
+		// storing old Block ( which is currently destination for selected link )for further use
+		var oldDestination = self.destination;
+		
+		// don't create Block if name enter is empty
+		if(newName = ''){return;}
+		
+		// creating new Block object and giving name which is enter by user 
+		var blockClass = self.eClass().ePackage.getEClassifier('Block');
+		var blockObject = self.eClass().ePackage.eFactoryInstance.create(blockClass);
+		blockObject.name := newName;
+		
+		// doing link connection rearrangement
+		self.destination := blockObject;
+		blockObject.inputLinks.add(self);
+		
+		// creating new link
+		var linkClass = self.eClass().ePackage.getEClassifier('Link');
+		var linkObject = self.eClass().ePackage.eFactoryInstance.create(linkClass);
+		
+		// connecting newly created link between newly created Block and older one 
+		blockObject.outputLinks.add(linkObject);
+		linkObject.destination := oldDestination;
+		oldDestination.inputLinks.add(linkObject);
+		
+		// adding to new object to container 
+		self.eContainer.eContainer.elements.add(blockObject);
+	}
+}

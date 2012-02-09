@@ -1,7 +1,7 @@
 wizard ExtractProcedures {
 
-	// if selected element is Pipeline and having atleast one procedure inside then only execute the wizard 
-	guard : self.isKindOf(Pipeline) and self.procedures.size() <> 0
+	// if selected element is Block and having atleast one procedure inside then only execute the wizard 
+	guard : self.isKindOf(Block) and self.procedures.size() <> 0
 
 	// sub-menu title
 	title : 'Extract Procedures'
@@ -10,18 +10,47 @@ wizard ExtractProcedures {
 		if (UserInput.confirm('This wizard may result in the loss of some data from the former object. Do you confirm ?')) 
 		{
 			var count = 0;
+			var elementCount = 0;
+			var element;
 			var size = self.procedures.size();
+			
+			var elements = self.eContainer.elements;
+			
+			// travelling through all elelment
+			while (count < elements.size()) {
+			
+				// checking that selected block is executable of more than one ForEachLoop/WhileLoop 			
+				if((elements[count].isKindOf(ForEachLoop) or elements[count].isKindOf(WhileLoop)) and elements[count].executable = self.name){
+					element = elements[count];
+					elementCount = elementCount + 1;
+				}
+				count = count + 1;
+			}
+			
+			
+			// if block is not used in any forEachLoop/whileLoop as executable, then not possible to extract 
+			if(elementCount = 0){
+				UserInput.inform("It is not possible to extract as the Block is not used in any Loop!");
+        		return;
+			}
+			// if block is executable of more than one forEachLoop/whileLoop, then not possible to extract 
+			else if(elementCount > 1){
+				UserInput.inform("It is not possible to extract as the Block is used in more than one Loop!");
+        		return;
+			}
+			
+			count = 0;
 			
 			while (count < size) {
 				// 1st procedure
 				if(count == 0){
-					// all pipeline inputlinks will be inputlinks for 1st procedure
-					self.procedures[count].inputLinks.addAll(self.inputLinks);
+					// all forEachLoop/whileLoop inputlinks will be inputlinks for 1st procedure
+					self.procedures[count].inputLinks.addAll(element.inputLinks);
 				}
 				// last procedure
 				if(count == (size - 1)){
-					// all pipeline outputlinks will be outputlinks for last procedure
-					self.procedures[count].outputLinks.addAll(self.outputLinks);
+					// all forEachLoop/whileLoop outputlinks will be outputlinks for last procedure
+					self.procedures[count].outputLinks.addAll(element.outputLinks);
 				}
 				// to link intermediate procedures in sequence
 				if(count <> (size - 1)){
@@ -43,7 +72,8 @@ wizard ExtractProcedures {
 				self.eContainer.elements.add(self.procedures[0]);
 			}
 			
-			// remove existing pipeline
+			// remove existing block and forEachLoop/whileLoop
+			self.eContainer.elements.remove(element);
 			self.eContainer.elements.remove(self);
 		}
 	}

@@ -22,6 +22,7 @@
 package org.parallelj.designer.typeselector.processor.model;
 
 import org.eclipse.core.resources.IProject;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipselabs.resourceselector.core.processor.ResourceProcessor;
@@ -43,6 +44,11 @@ public class ModelTypeProcessorFactory implements ResourceProcessorFactory {
 	protected ResourceSet resourceSet;
 
 	/**
+	 * element selected
+	 */
+	protected EObject eObject;
+
+	/**
 	 * Creates a new Factory with Model Resource
 	 * 
 	 * @param resource
@@ -59,10 +65,15 @@ public class ModelTypeProcessorFactory implements ResourceProcessorFactory {
 		this.resourceSet = resourceSet;
 	}
 
+	public ModelTypeProcessorFactory(EObject eObject) {
+		super();
+		this.eObject = eObject;
+	}
+
 	public ResourceProcessor createResourceProcessor(IProject project,
 			String pattern) {
 		ModelTypeProcessor processor = new ModelTypeProcessor(this.resourceSet,
-				project, pattern);
+				project, pattern, this.eObject);
 		return processor;
 	}
 

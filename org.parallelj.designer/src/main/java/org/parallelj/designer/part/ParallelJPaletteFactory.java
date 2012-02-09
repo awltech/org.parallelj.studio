@@ -90,7 +90,7 @@ public class ParallelJPaletteFactory {
 		PaletteDrawer paletteContainer = new PaletteDrawer(
 				Messages.ComplexObjects3Group_title);
 		paletteContainer.setId("createComplexObjects3Group"); //$NON-NLS-1$
-		paletteContainer.add(createPipeline1CreationTool());
+		paletteContainer.add(createBlock1CreationTool());
 		return paletteContainer;
 	}
 
@@ -174,7 +174,7 @@ public class ParallelJPaletteFactory {
 	private ToolEntry createProcedure1CreationTool() {
 		ArrayList<IElementType> types = new ArrayList<IElementType>(2);
 		types.add(ParallelJElementTypes.Procedure_3005);
-		types.add(ParallelJElementTypes.Procedure_3010);
+		types.add(ParallelJElementTypes.Procedure_3013);
 		NodeToolEntry entry = new NodeToolEntry(
 				Messages.Procedure1CreationTool_title,
 				Messages.Procedure1CreationTool_desc, types);
@@ -234,14 +234,14 @@ public class ParallelJPaletteFactory {
 	/**
 	 * @generated
 	 */
-	private ToolEntry createPipeline1CreationTool() {
+	private ToolEntry createBlock1CreationTool() {
 		NodeToolEntry entry = new NodeToolEntry(
-				Messages.Pipeline1CreationTool_title,
-				Messages.Pipeline1CreationTool_desc,
-				Collections.singletonList(ParallelJElementTypes.Pipeline_3009));
-		entry.setId("createPipeline1CreationTool"); //$NON-NLS-1$
+				Messages.Block1CreationTool_title,
+				Messages.Block1CreationTool_desc,
+				Collections.singletonList(ParallelJElementTypes.Block_3012));
+		entry.setId("createBlock1CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(ParallelJElementTypes
-				.getImageDescriptor(ParallelJElementTypes.Pipeline_3009));
+				.getImageDescriptor(ParallelJElementTypes.Block_3012));
 		entry.setLargeIcon(entry.getSmallIcon());
 		return entry;
 	}

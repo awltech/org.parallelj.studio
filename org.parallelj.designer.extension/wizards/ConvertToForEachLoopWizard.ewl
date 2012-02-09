@@ -1,7 +1,7 @@
 wizard ConvertToForEachLoop {
 
-	// if selected element is Procedure or WhileLoop or Handler and not ForEachLoop then only execute the wizard 
-	guard : self.isKindOf(Procedure) and not self.eContainer.isKindOf(Pipeline) and not self.isKindOf(ForEachLoop)  
+	// if selected element is Procedure or WhileLoop or Handler and not ForEachLoop or Block then only execute the wizard 
+	guard : self.isKindOf(Procedure) and not self.eContainer.isKindOf(Block) and not self.isKindOf(ForEachLoop) and not self.isKindOf(Block)  
 
 	// sub-menu title
 	title : 'Turn into ForEachLoop'
@@ -9,7 +9,7 @@ wizard ConvertToForEachLoop {
 	do {
 		var isOK : Boolean := true;
 
-		if(self.isKindOf(WhileLoop) or self.isKindOf(Pipeline)){
+		if(self.isKindOf(WhileLoop)){
 			isOK = UserInput.confirm('This wizard may result in the loss of some data from the former object. Do you confirm ?');
 		}
 		
@@ -27,6 +27,10 @@ wizard ConvertToForEachLoop {
 			forEachLoopObject.split= self.split;
 			forEachLoopObject.inputLinks.addAll(self.inputLinks);
 			forEachLoopObject.outputLinks.addAll(self.outputLinks);
+			
+			if(self.isKindOf(WhileLoop)){
+				forEachLoopObject.executionMode = self.executionMode;
+			}
 			
 			// adding to new object to container
 			self.eContainer.elements.add(forEachLoopObject);

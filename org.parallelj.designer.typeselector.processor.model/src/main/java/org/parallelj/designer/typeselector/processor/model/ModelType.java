@@ -28,7 +28,7 @@ import org.parallelj.model.ParallelJPackage;
  * Enumeration describing all possible Parallel J Model Types.
  */
 public enum ModelType {
-	PROGRAM, ELEMENT;
+	PROGRAM, BLOCK, ELEMENT;
 
 	/**
 	 * Returns ModelType enumeration value from Model EClass
@@ -40,6 +40,8 @@ public enum ModelType {
 	public static ModelType create(EClass eClass) {
 		if (ParallelJPackage.eINSTANCE.getProgram().equals(eClass))
 			return ModelType.PROGRAM;
+		else if (ParallelJPackage.eINSTANCE.getBlock().equals(eClass))
+			return ModelType.BLOCK;
 		else
 			return ModelType.ELEMENT;
 	}
@@ -51,6 +53,8 @@ public enum ModelType {
 		switch (this) {
 		case PROGRAM:
 			return ParallelJPackage.eINSTANCE.getProgram();
+		case BLOCK:
+			return ParallelJPackage.eINSTANCE.getBlock();
 		default:
 			return ParallelJPackage.eINSTANCE.getElement();
 		}

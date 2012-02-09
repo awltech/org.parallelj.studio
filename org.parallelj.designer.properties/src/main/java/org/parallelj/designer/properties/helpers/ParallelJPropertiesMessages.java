@@ -28,13 +28,13 @@ import org.parallelj.designer.properties.Activator;
 
 public enum ParallelJPropertiesMessages {
 
-	help_color, help_name, help_description, help_type, help_capacity, help_executable, help_join, help_split, help_iterable, help_outputlinks, help_procedures, help_predicate,
+	help_color, help_name, help_description, help_type, help_capacity, help_executable, help_join, help_split, help_iterable, help_outputlinks, help_procedures, help_predicate, help_execution_mode,
 
-	element_capacity, element_color, element_description, element_executable, element_iterable, element_join, element_name, element_outputlinks, element_predicate, element_procedures, element_split, element_type,
+	element_capacity, element_color, element_description, element_executable, element_iterable, element_join, element_name, element_outputlinks, element_predicate, element_procedures, element_split, element_type, element_execution_mode,
 
 	button_propagate, button_create, button_select, button_up, button_down, button_remove, button_add,
 
-	tooltip_and_join, tooltip_or_join, tooltip_xor_join, tooltip_and_split, tooltip_or_split, tooltip_xor_split, tooltip_selected_color, tooltip_color_disabled,
+	tooltip_and_join, tooltip_or_join, tooltip_xor_join, tooltip_and_split, tooltip_or_split, tooltip_xor_split, tooltip_selected_color, tooltip_color_disabled, tooltip_parallel_execution_mode, tooltip_iterative_execution_mode, tooltip_stream_execution_mode,
 
 	pattern_link,
 

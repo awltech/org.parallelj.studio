@@ -32,6 +32,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gmf.runtime.notation.View;
+import org.parallelj.designer.edit.parts.BlockBlockCompartmentEditPart;
+import org.parallelj.designer.edit.parts.BlockEditPart;
+import org.parallelj.designer.edit.parts.BlockProcedureEditPart;
 import org.parallelj.designer.edit.parts.ConditionEditPart;
 import org.parallelj.designer.edit.parts.DataEditPart;
 import org.parallelj.designer.edit.parts.ForEachLoopEditPart;
@@ -39,9 +42,6 @@ import org.parallelj.designer.edit.parts.HandlerEditPart;
 import org.parallelj.designer.edit.parts.InputConditionEditPart;
 import org.parallelj.designer.edit.parts.LinkEditPart;
 import org.parallelj.designer.edit.parts.OutputConditionEditPart;
-import org.parallelj.designer.edit.parts.PipelineEditPart;
-import org.parallelj.designer.edit.parts.PipelinePipelineCompartmentEditPart;
-import org.parallelj.designer.edit.parts.PipelineProcedureEditPart;
 import org.parallelj.designer.edit.parts.PredicateEditPart;
 import org.parallelj.designer.edit.parts.ProcedureEditPart;
 import org.parallelj.designer.edit.parts.ProgramEditPart;
@@ -49,6 +49,7 @@ import org.parallelj.designer.edit.parts.ProgramProgramCompartmentEditPart;
 import org.parallelj.designer.edit.parts.SpecificationEditPart;
 import org.parallelj.designer.edit.parts.WhileLoopEditPart;
 import org.parallelj.designer.providers.ParallelJElementTypes;
+import org.parallelj.model.Block;
 import org.parallelj.model.Condition;
 import org.parallelj.model.Data;
 import org.parallelj.model.Element;
@@ -58,7 +59,6 @@ import org.parallelj.model.InputCondition;
 import org.parallelj.model.Link;
 import org.parallelj.model.OutputCondition;
 import org.parallelj.model.ParallelJPackage;
-import org.parallelj.model.Pipeline;
 import org.parallelj.model.Predicate;
 import org.parallelj.model.Procedure;
 import org.parallelj.model.Program;
@@ -79,8 +79,8 @@ public class ParallelJDiagramUpdater {
 			return getSpecification_1000SemanticChildren(view);
 		case ProgramProgramCompartmentEditPart.VISUAL_ID:
 			return getProgramProgramCompartment_7001SemanticChildren(view);
-		case PipelinePipelineCompartmentEditPart.VISUAL_ID:
-			return getPipelinePipelineCompartment_7002SemanticChildren(view);
+		case BlockBlockCompartmentEditPart.VISUAL_ID:
+			return getBlockBlockCompartment_7003SemanticChildren(view);
 		}
 		return Collections.emptyList();
 	}
@@ -163,7 +163,7 @@ public class ParallelJDiagramUpdater {
 				result.add(new ParallelJNodeDescriptor(childElement, visualID));
 				continue;
 			}
-			if (visualID == PipelineEditPart.VISUAL_ID) {
+			if (visualID == BlockEditPart.VISUAL_ID) {
 				result.add(new ParallelJNodeDescriptor(childElement, visualID));
 				continue;
 			}
@@ -193,7 +193,7 @@ public class ParallelJDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<ParallelJNodeDescriptor> getPipelinePipelineCompartment_7002SemanticChildren(
+	public static List<ParallelJNodeDescriptor> getBlockBlockCompartment_7003SemanticChildren(
 			View view) {
 		if (false == view.eContainer() instanceof View) {
 			return Collections.emptyList();
@@ -202,14 +202,14 @@ public class ParallelJDiagramUpdater {
 		if (!containerView.isSetElement()) {
 			return Collections.emptyList();
 		}
-		Pipeline modelElement = (Pipeline) containerView.getElement();
+		Block modelElement = (Block) containerView.getElement();
 		LinkedList<ParallelJNodeDescriptor> result = new LinkedList<ParallelJNodeDescriptor>();
 		for (Iterator<?> it = modelElement.getProcedures().iterator(); it
 				.hasNext();) {
 			Procedure childElement = (Procedure) it.next();
 			int visualID = ParallelJVisualIDRegistry.getNodeVisualID(view,
 					childElement);
-			if (visualID == PipelineProcedureEditPart.VISUAL_ID) {
+			if (visualID == BlockProcedureEditPart.VISUAL_ID) {
 				result.add(new ParallelJNodeDescriptor(childElement, visualID));
 				continue;
 			}
@@ -242,10 +242,10 @@ public class ParallelJDiagramUpdater {
 			return getWhileLoop_3007ContainedLinks(view);
 		case HandlerEditPart.VISUAL_ID:
 			return getHandler_3008ContainedLinks(view);
-		case PipelineEditPart.VISUAL_ID:
-			return getPipeline_3009ContainedLinks(view);
-		case PipelineProcedureEditPart.VISUAL_ID:
-			return getProcedure_3010ContainedLinks(view);
+		case BlockEditPart.VISUAL_ID:
+			return getBlock_3012ContainedLinks(view);
+		case BlockProcedureEditPart.VISUAL_ID:
+			return getProcedure_3013ContainedLinks(view);
 		case DataEditPart.VISUAL_ID:
 			return getData_3011ContainedLinks(view);
 		case LinkEditPart.VISUAL_ID:
@@ -277,10 +277,10 @@ public class ParallelJDiagramUpdater {
 			return getWhileLoop_3007IncomingLinks(view);
 		case HandlerEditPart.VISUAL_ID:
 			return getHandler_3008IncomingLinks(view);
-		case PipelineEditPart.VISUAL_ID:
-			return getPipeline_3009IncomingLinks(view);
-		case PipelineProcedureEditPart.VISUAL_ID:
-			return getProcedure_3010IncomingLinks(view);
+		case BlockEditPart.VISUAL_ID:
+			return getBlock_3012IncomingLinks(view);
+		case BlockProcedureEditPart.VISUAL_ID:
+			return getProcedure_3013IncomingLinks(view);
 		case DataEditPart.VISUAL_ID:
 			return getData_3011IncomingLinks(view);
 		case LinkEditPart.VISUAL_ID:
@@ -312,10 +312,10 @@ public class ParallelJDiagramUpdater {
 			return getWhileLoop_3007OutgoingLinks(view);
 		case HandlerEditPart.VISUAL_ID:
 			return getHandler_3008OutgoingLinks(view);
-		case PipelineEditPart.VISUAL_ID:
-			return getPipeline_3009OutgoingLinks(view);
-		case PipelineProcedureEditPart.VISUAL_ID:
-			return getProcedure_3010OutgoingLinks(view);
+		case BlockEditPart.VISUAL_ID:
+			return getBlock_3012OutgoingLinks(view);
+		case BlockProcedureEditPart.VISUAL_ID:
+			return getProcedure_3013OutgoingLinks(view);
 		case DataEditPart.VISUAL_ID:
 			return getData_3011OutgoingLinks(view);
 		case LinkEditPart.VISUAL_ID:
@@ -428,9 +428,9 @@ public class ParallelJDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<ParallelJLinkDescriptor> getPipeline_3009ContainedLinks(
+	public static List<ParallelJLinkDescriptor> getBlock_3012ContainedLinks(
 			View view) {
-		Pipeline modelElement = (Pipeline) view.getElement();
+		Block modelElement = (Block) view.getElement();
 		LinkedList<ParallelJLinkDescriptor> result = new LinkedList<ParallelJLinkDescriptor>();
 		result.addAll(getContainedTypeModelFacetLinks_Link_4001(modelElement));
 		return result;
@@ -439,7 +439,7 @@ public class ParallelJDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<ParallelJLinkDescriptor> getProcedure_3010ContainedLinks(
+	public static List<ParallelJLinkDescriptor> getProcedure_3013ContainedLinks(
 			View view) {
 		Procedure modelElement = (Procedure) view.getElement();
 		LinkedList<ParallelJLinkDescriptor> result = new LinkedList<ParallelJLinkDescriptor>();
@@ -580,9 +580,9 @@ public class ParallelJDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<ParallelJLinkDescriptor> getPipeline_3009IncomingLinks(
+	public static List<ParallelJLinkDescriptor> getBlock_3012IncomingLinks(
 			View view) {
-		Pipeline modelElement = (Pipeline) view.getElement();
+		Block modelElement = (Block) view.getElement();
 		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
 				.find(view.eResource().getResourceSet().getResources());
 		LinkedList<ParallelJLinkDescriptor> result = new LinkedList<ParallelJLinkDescriptor>();
@@ -594,7 +594,7 @@ public class ParallelJDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<ParallelJLinkDescriptor> getProcedure_3010IncomingLinks(
+	public static List<ParallelJLinkDescriptor> getProcedure_3013IncomingLinks(
 			View view) {
 		Procedure modelElement = (Procedure) view.getElement();
 		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
@@ -717,9 +717,9 @@ public class ParallelJDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<ParallelJLinkDescriptor> getPipeline_3009OutgoingLinks(
+	public static List<ParallelJLinkDescriptor> getBlock_3012OutgoingLinks(
 			View view) {
-		Pipeline modelElement = (Pipeline) view.getElement();
+		Block modelElement = (Block) view.getElement();
 		LinkedList<ParallelJLinkDescriptor> result = new LinkedList<ParallelJLinkDescriptor>();
 		result.addAll(getContainedTypeModelFacetLinks_Link_4001(modelElement));
 		return result;
@@ -728,7 +728,7 @@ public class ParallelJDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List<ParallelJLinkDescriptor> getProcedure_3010OutgoingLinks(
+	public static List<ParallelJLinkDescriptor> getProcedure_3013OutgoingLinks(
 			View view) {
 		Procedure modelElement = (Procedure) view.getElement();
 		LinkedList<ParallelJLinkDescriptor> result = new LinkedList<ParallelJLinkDescriptor>();

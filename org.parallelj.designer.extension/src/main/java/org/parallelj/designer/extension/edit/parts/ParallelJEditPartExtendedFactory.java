@@ -39,12 +39,12 @@ import org.parallelj.designer.edit.parts.LinkPredicateInfoEditPart;
 import org.parallelj.designer.edit.parts.OutputConditionEditPart;
 import org.parallelj.designer.edit.parts.OutputConditionNameEditPart;
 import org.parallelj.designer.edit.parts.ParallelJEditPartFactory;
-import org.parallelj.designer.edit.parts.PipelineEditPart;
-import org.parallelj.designer.edit.parts.PipelineIconEditPart;
-import org.parallelj.designer.edit.parts.PipelinePipelineCompartmentEditPart;
-import org.parallelj.designer.edit.parts.PipelineProcedureEditPart;
-import org.parallelj.designer.edit.parts.PipelineProcedureExecutableEditPart;
-import org.parallelj.designer.edit.parts.PipelineProcedureNameEditPart;
+import org.parallelj.designer.edit.parts.BlockEditPart;
+import org.parallelj.designer.edit.parts.BlockIconEditPart;
+import org.parallelj.designer.edit.parts.BlockBlockCompartmentEditPart;
+import org.parallelj.designer.edit.parts.BlockProcedureEditPart;
+import org.parallelj.designer.edit.parts.BlockProcedureExecutableEditPart;
+import org.parallelj.designer.edit.parts.BlockProcedureNameEditPart;
 import org.parallelj.designer.edit.parts.PredicateEditPart;
 import org.parallelj.designer.edit.parts.PredicateNameEditPart;
 import org.parallelj.designer.edit.parts.ProcedureEditPart;
@@ -117,18 +117,18 @@ public class ParallelJEditPartExtendedFactory extends ParallelJEditPartFactory {
 				return new HandlerNameExtendedEditPart(view);
 			case LinkPredicateInfoEditPart.VISUAL_ID:
 				return new LinkPredicateInfoExtendedEditPart(view);
-			case PipelineEditPart.VISUAL_ID:
-				return new PipelineExtendedEditPart(view);
-			case PipelineIconEditPart.VISUAL_ID:
-				return new PipelineIconExtendedEditPart(view);
-			case PipelineProcedureEditPart.VISUAL_ID:
-				return new PipelineProcedureExtendedEditPart(view);
-			case PipelineProcedureNameEditPart.VISUAL_ID:
-				return new PipelineProcedureNameExtendedEditPart(view);
-			case PipelineProcedureExecutableEditPart.VISUAL_ID:
-				return new PipelineProcedureExecutableExtendedEditPart(view);
-			case PipelinePipelineCompartmentEditPart.VISUAL_ID:
-				return new PipelinePipelineCompartmentExtendedEditPart(view);
+			case BlockEditPart.VISUAL_ID:
+				return new BlockExtendedEditPart(view);
+			case BlockIconEditPart.VISUAL_ID:
+				return new BlockIconExtendedEditPart(view);
+			case BlockProcedureEditPart.VISUAL_ID:
+				return new BlockProcedureExtendedEditPart(view);
+			case BlockProcedureNameEditPart.VISUAL_ID:
+				return new BlockProcedureNameExtendedEditPart(view);
+			case BlockProcedureExecutableEditPart.VISUAL_ID:
+				return new BlockProcedureExecutableExtendedEditPart(view);
+			case BlockBlockCompartmentEditPart.VISUAL_ID:
+				return new BlockBlockCompartmentExtendedEditPart(view);
 			case ProgramProgramCompartmentEditPart.VISUAL_ID:
 				return new ProgramProgramCompartmentExtendedEditPart(view);
 			case WhileLoopPredicateEditPart.VISUAL_ID:

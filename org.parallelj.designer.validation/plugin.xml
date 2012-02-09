@@ -112,7 +112,7 @@
             mode="Live"
             severity="ERROR" statusCode="200">
             <description><![CDATA[]]></description>
-            <message>ForEachLoop must have one executable.</message>
+            <message>ForEachLoop &quot;{0}&quot; must have one executable.</message>
             <target class="ForEachLoop"/>
          		</constraint>
           <constraint
@@ -133,7 +133,7 @@
                    class="Data"></target>
           </constraint>
           <constraint
-                class="org.parallelj.designer.validation.constraints.ProcedureNameDuplicationConstraint"
+                class="org.parallelj.designer.validation.constraints.BlockNameDuplicationConstraint"
                 id="ProcedureNameDuplicationConstraint"
                 lang="Java"
                 mode="Live"
@@ -169,21 +169,21 @@
              </target>
           </constraint>
           <constraint
-                class="org.parallelj.designer.validation.constraints.PipelineProcedureConstraint"
-                id="PipelineProcedureConstraint"
+                class="org.parallelj.designer.validation.constraints.BlockProcedureConstraint"
+                id="BlockProcedureConstraint"
                 lang="Java"
                 mode="Live"
-                name="PipelineProcedureConstraint"
+                name="BlockProcedureConstraint"
                 severity="ERROR"
                 statusCode="200">
              <message>
-                A Pipeline  must contain at least one Procedure.
+                A Block &quot;{0}&quot; must contain at least one Procedure.
              </message>
              <description>
                 description body text
              </description>
              <target
-                   class="Pipeline">
+                   class="Block">
              </target>
           </constraint>
           <constraint
@@ -387,7 +387,7 @@
                ref="org.parallelj.designer.validation.ProgramNameDuplicationConstraint">
          </constraint>
          <constraint
-               ref="org.parallelj.designer.validation.PipelineProcedureConstraint">
+               ref="org.parallelj.designer.validation.BlockProcedureConstraint">
          </constraint>
          <constraint
                ref="org.parallelj.designer.validation.ProgramNameConstraint">

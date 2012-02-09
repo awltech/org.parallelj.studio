@@ -80,6 +80,9 @@ public class ParallelJNavigatorLinkHelper implements ILinkHelper {
 			return StructuredSelection.EMPTY;
 		}
 		Diagram diagram = document.getDiagram();
+		if (diagram == null || diagram.eResource() == null) {
+			return StructuredSelection.EMPTY;
+		}
 		IFile file = WorkspaceSynchronizer.getFile(diagram.eResource());
 		if (file != null) {
 			ParallelJNavigatorItem item = new ParallelJNavigatorItem(diagram,

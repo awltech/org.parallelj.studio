@@ -351,10 +351,10 @@ public class ForEachLoopEditPart extends ShapeNodeEditPart {
 		if (targetEditPart instanceof HandlerEditPart) {
 			types.add(ParallelJElementTypes.Link_4001);
 		}
-		if (targetEditPart instanceof PipelineEditPart) {
+		if (targetEditPart instanceof BlockEditPart) {
 			types.add(ParallelJElementTypes.Link_4001);
 		}
-		if (targetEditPart instanceof PipelineProcedureEditPart) {
+		if (targetEditPart instanceof BlockProcedureEditPart) {
 			types.add(ParallelJElementTypes.Link_4001);
 		}
 		return types;
@@ -373,8 +373,8 @@ public class ForEachLoopEditPart extends ShapeNodeEditPart {
 			types.add(ParallelJElementTypes.ForEachLoop_3006);
 			types.add(ParallelJElementTypes.WhileLoop_3007);
 			types.add(ParallelJElementTypes.Handler_3008);
-			types.add(ParallelJElementTypes.Pipeline_3009);
-			types.add(ParallelJElementTypes.Procedure_3010);
+			types.add(ParallelJElementTypes.Block_3012);
+			types.add(ParallelJElementTypes.Procedure_3013);
 		}
 		return types;
 	}
@@ -401,8 +401,8 @@ public class ForEachLoopEditPart extends ShapeNodeEditPart {
 			types.add(ParallelJElementTypes.ForEachLoop_3006);
 			types.add(ParallelJElementTypes.WhileLoop_3007);
 			types.add(ParallelJElementTypes.Handler_3008);
-			types.add(ParallelJElementTypes.Pipeline_3009);
-			types.add(ParallelJElementTypes.Procedure_3010);
+			types.add(ParallelJElementTypes.Block_3012);
+			types.add(ParallelJElementTypes.Procedure_3013);
 		}
 		return types;
 	}
@@ -445,6 +445,11 @@ public class ForEachLoopEditPart extends ShapeNodeEditPart {
 		 * @generated
 		 */
 		private WrappingLabel fFigureForEachLoopIterablePrecedingFigure;
+
+		/**
+		 * @generated
+		 */
+		private WrappingLabel fFigureForEachLoopExecutionModeFigure;
 
 		/**
 		 * @generated
@@ -731,6 +736,11 @@ public class ForEachLoopEditPart extends ShapeNodeEditPart {
 			this.add(fFigureForEachLoopSplitFigure,
 					constraintFFigureForEachLoopSplitFigure);
 
+			fFigureForEachLoopExecutionModeFigure = new WrappingLabel();
+			fFigureForEachLoopExecutionModeFigure.setText("<...>");
+
+			this.add(fFigureForEachLoopExecutionModeFigure);
+
 		}
 
 		/**
@@ -787,6 +797,13 @@ public class ForEachLoopEditPart extends ShapeNodeEditPart {
 		 */
 		public WrappingLabel getFigureForEachLoopIterablePrecedingFigure() {
 			return fFigureForEachLoopIterablePrecedingFigure;
+		}
+
+		/**
+		 * @generated
+		 */
+		public WrappingLabel getFigureForEachLoopExecutionModeFigure() {
+			return fFigureForEachLoopExecutionModeFigure;
 		}
 
 	}

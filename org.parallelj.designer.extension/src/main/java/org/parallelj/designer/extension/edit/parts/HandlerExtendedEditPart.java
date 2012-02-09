@@ -96,7 +96,7 @@ public class HandlerExtendedEditPart extends HandlerEditPart {
 
 	/**
 	 * This will find the all the managed
-	 * procedures/forEachLoops/whileLoops/handlers/pipelines and based on
+	 * procedures/forEachLoops/whileLoops/handlers/blocks and based on
 	 * parameter it will show object highlighted or will clear.
 	 * 
 	 */
@@ -180,20 +180,20 @@ public class HandlerExtendedEditPart extends HandlerEditPart {
 						handlerExtendedEditPart.clearSelection();
 					}
 				}
-			} else if (object instanceof PipelineExtendedEditPart) {
-				PipelineExtendedEditPart pipelineExtendedEditPart = (PipelineExtendedEditPart) object;
-				EObject element = ((View) pipelineExtendedEditPart.getModel())
+			} else if (object instanceof BlockExtendedEditPart) {
+				BlockExtendedEditPart blockExtendedEditPart = (BlockExtendedEditPart) object;
+				EObject element = ((View) blockExtendedEditPart.getModel())
 						.getElement();
 				if (element instanceof Procedure) {
 					innerProcedure = (Procedure) element;
 					if (checkMatch(procedures, innerProcedure)) {
 						if (isSelected) {
-							pipelineExtendedEditPart.showSelected();
+							blockExtendedEditPart.showSelected();
 						} else {
-							pipelineExtendedEditPart.clearSelection();
+							blockExtendedEditPart.clearSelection();
 						}
 					} else {
-						pipelineExtendedEditPart.clearSelection();
+						blockExtendedEditPart.clearSelection();
 					}
 				}
 			}

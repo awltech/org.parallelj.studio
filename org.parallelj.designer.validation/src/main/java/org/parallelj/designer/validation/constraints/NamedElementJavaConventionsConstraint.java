@@ -90,7 +90,7 @@ public class NamedElementJavaConventionsConstraint extends AbstractModelConstrai
 		formattingPerClass.put(ParallelJPackage.eINSTANCE.getHandler(), Formatting.METHOD);
 		formattingPerClass.put(ParallelJPackage.eINSTANCE.getForEachLoop(), Formatting.METHOD);
 		formattingPerClass.put(ParallelJPackage.eINSTANCE.getWhileLoop(), Formatting.METHOD);
-		formattingPerClass.put(ParallelJPackage.eINSTANCE.getPipeline(), Formatting.METHOD);
+		formattingPerClass.put(ParallelJPackage.eINSTANCE.getBlock(), Formatting.METHOD);
 		formattingPerClass.put(ParallelJPackage.eINSTANCE.getCondition(), Formatting.FIELD);
 		formattingPerClass.put(ParallelJPackage.eINSTANCE.getProgram(), Formatting.CLASS);
 		formattingPerClass.put(ParallelJPackage.eINSTANCE.getData(), Formatting.FIELD);

@@ -33,15 +33,15 @@ import org.eclipse.gmf.runtime.common.ui.services.parser.ParserService;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.emf.ui.services.parser.ParserHintAdapter;
 import org.eclipse.gmf.runtime.notation.View;
+import org.parallelj.designer.edit.parts.BlockNameEditPart;
+import org.parallelj.designer.edit.parts.BlockProcedureExecutableEditPart;
+import org.parallelj.designer.edit.parts.BlockProcedureNameEditPart;
 import org.parallelj.designer.edit.parts.ConditionNameEditPart;
 import org.parallelj.designer.edit.parts.DataNameEditPart;
 import org.parallelj.designer.edit.parts.DataTypeEditPart;
 import org.parallelj.designer.edit.parts.ForEachLoopExecutableEditPart;
 import org.parallelj.designer.edit.parts.ForEachLoopNameEditPart;
 import org.parallelj.designer.edit.parts.HandlerNameEditPart;
-import org.parallelj.designer.edit.parts.PipelineNameEditPart;
-import org.parallelj.designer.edit.parts.PipelineProcedureExecutableEditPart;
-import org.parallelj.designer.edit.parts.PipelineProcedureNameEditPart;
 import org.parallelj.designer.edit.parts.PredicateNameEditPart;
 import org.parallelj.designer.edit.parts.ProcedureExecutableEditPart;
 import org.parallelj.designer.edit.parts.ProcedureNameEditPart;
@@ -241,55 +241,55 @@ public class ParallelJParserProvider extends AbstractProvider implements
 	/**
 	 * @generated
 	 */
-	private IParser pipelineName_5016Parser;
+	private IParser blockName_5023Parser;
 
 	/**
 	 * @generated
 	 */
-	private IParser getPipelineName_5016Parser() {
-		if (pipelineName_5016Parser == null) {
+	private IParser getBlockName_5023Parser() {
+		if (blockName_5023Parser == null) {
 			EAttribute[] features = new EAttribute[] { ParallelJPackage.eINSTANCE
 					.getNamedElement_Name() };
 			MessageFormatParser parser = new MessageFormatParser(features);
-			pipelineName_5016Parser = parser;
+			blockName_5023Parser = parser;
 		}
-		return pipelineName_5016Parser;
+		return blockName_5023Parser;
 	}
 
 	/**
 	 * @generated
 	 */
-	private IParser procedureName_5014Parser;
+	private IParser procedureName_5021Parser;
 
 	/**
 	 * @generated
 	 */
-	private IParser getProcedureName_5014Parser() {
-		if (procedureName_5014Parser == null) {
+	private IParser getProcedureName_5021Parser() {
+		if (procedureName_5021Parser == null) {
 			EAttribute[] features = new EAttribute[] { ParallelJPackage.eINSTANCE
 					.getNamedElement_Name() };
 			MessageFormatParser parser = new MessageFormatParser(features);
-			procedureName_5014Parser = parser;
+			procedureName_5021Parser = parser;
 		}
-		return procedureName_5014Parser;
+		return procedureName_5021Parser;
 	}
 
 	/**
 	 * @generated
 	 */
-	private IParser procedureExecutable_5015Parser;
+	private IParser procedureExecutable_5022Parser;
 
 	/**
 	 * @generated
 	 */
-	private IParser getProcedureExecutable_5015Parser() {
-		if (procedureExecutable_5015Parser == null) {
+	private IParser getProcedureExecutable_5022Parser() {
+		if (procedureExecutable_5022Parser == null) {
 			EAttribute[] features = new EAttribute[] { ParallelJPackage.eINSTANCE
 					.getProcedure_Executable() };
 			MessageFormatParser parser = new MessageFormatParser(features);
-			procedureExecutable_5015Parser = parser;
+			procedureExecutable_5022Parser = parser;
 		}
-		return procedureExecutable_5015Parser;
+		return procedureExecutable_5022Parser;
 	}
 
 	/**
@@ -353,12 +353,12 @@ public class ParallelJParserProvider extends AbstractProvider implements
 			return getWhileLoopExecutable_5011Parser();
 		case HandlerNameEditPart.VISUAL_ID:
 			return getHandlerName_5013Parser();
-		case PipelineNameEditPart.VISUAL_ID:
-			return getPipelineName_5016Parser();
-		case PipelineProcedureNameEditPart.VISUAL_ID:
-			return getProcedureName_5014Parser();
-		case PipelineProcedureExecutableEditPart.VISUAL_ID:
-			return getProcedureExecutable_5015Parser();
+		case BlockNameEditPart.VISUAL_ID:
+			return getBlockName_5023Parser();
+		case BlockProcedureNameEditPart.VISUAL_ID:
+			return getProcedureName_5021Parser();
+		case BlockProcedureExecutableEditPart.VISUAL_ID:
+			return getProcedureExecutable_5022Parser();
 		case DataNameEditPart.VISUAL_ID:
 			return getDataName_5018Parser();
 		case DataTypeEditPart.VISUAL_ID:

@@ -100,9 +100,9 @@
 				tab="Base">
 			</propertySection>
 			<propertySection
-				class="org.parallelj.designer.properties.sections.PipelineBasePropertySection"
-				filter="org.parallelj.designer.properties.filters.PipelineBasePropertyFilter"
-				id="org.parallelj.section.PipelineBasePropertySection"
+				class="org.parallelj.designer.properties.sections.BlockBasePropertySection"
+				filter="org.parallelj.designer.properties.filters.BlockBasePropertyFilter"
+				id="org.parallelj.section.BlockBasePropertySection"
 				tab="Base">
 			</propertySection>
   			<propertySection

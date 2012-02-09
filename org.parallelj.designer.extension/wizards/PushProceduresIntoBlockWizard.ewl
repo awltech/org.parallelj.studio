@@ -1,0 +1,112 @@
+wizard PushProcedures {
+
+	// if one or more simple procedures (i.e. not block procedures) selected then only execute the wizard.
+	guard {
+			if(self.isKindOf(Collection)){
+				for(selectedObject in self){
+					if(not selectedObject.isTypeOf(Procedure) or selectedObject.eContainer.isKindOf(Block)){
+						return false;
+					}
+				}
+				return true;
+			}
+			// for single procedure
+			else if(self.isTypeOf(Procedure) and not self.eContainer.isKindOf(Block)){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+
+	// sub-menu title
+	title : 'Push into Block'
+
+	do {
+		if (UserInput.confirm('This wizard may result in the loss of some data from the former object. Do you confirm ?')) 
+		{
+			// asking user to enter name for new Block
+			var newName : String;
+			var message : String := 'Please provide a name for new Block';
+			newName := UserInput.prompt(message);
+			
+			// don't create Block if name enter is empty
+			if(newName = ''){return;}
+			
+			var referenceProcedure = null;
+			
+			// if multiple procedures selected
+			if(self.isKindOf(Collection)){
+				referenceProcedure = self[0];
+			}
+			// for single procedure
+			else if(self.isTypeOf(Procedure)){
+				referenceProcedure = self;
+			}
+			
+			var parent = referenceProcedure.eContainer;
+			
+			// creating new Block object and giving name which is enter by user
+			var blockClass = referenceProcedure.eClass().ePackage.getEClassifier('Block');
+			var blockObject = referenceProcedure.eClass().ePackage.eFactoryInstance.create(blockClass);
+			blockObject.name := newName;
+			
+			// for mutiple selection
+			if(self.isKindOf(Collection)){
+				var count = 0;
+				// clearing procedure incoming and outgoing links 
+				while (count < self.size()) {
+					
+					
+					// removing all input links coming from source object
+					for(inputLinks in self[count].inputLinks){
+						inputLinks.eContainer.outputLinks.remove(inputLinks);
+					}
+					
+					// removing all out going links coming from source object
+					for(outputLinks in self[count].outputLinks){
+						outputLinks.destination.inputLinks.remove(outputLinks);
+					}
+					
+					// clearing all self reference
+					self[count].outputLinks.clear();
+					self[count].inputLinks.clear();
+					
+					self[count].join = JoinType#AND;
+					self[count].split = SplitType#AND;
+				
+					// push selected procedures in block	
+					blockObject.procedures.add(self[count]);
+		
+					// next selected procedure
+					count = count + 1;
+				}
+			}
+			// clearing incoming and outgoing likns, when only single procedure is selected
+			else if(self.isTypeOf(Procedure)){
+			
+				// removing all input links coming from source object
+				for(inputLinks in self.inputLinks){
+					inputLinks.eContainer.outputLinks.remove(inputLinks);
+				}
+					
+				// removing all out going links coming from source object
+				for(outputLinks in self.outputLinks){
+					outputLinks.destination.inputLinks.remove(outputLinks);
+				}
+				
+				self.outputLinks.clear();
+				self.inputLinks.clear();
+				
+				self.join = JoinType#AND;
+				self.split = SplitType#AND;
+				
+				// push selected procedure in block
+				blockObject.procedures.add(self);
+			}
+			
+			// adding to new object to container
+			parent.elements.add(blockObject);
+		}
+	}
+}

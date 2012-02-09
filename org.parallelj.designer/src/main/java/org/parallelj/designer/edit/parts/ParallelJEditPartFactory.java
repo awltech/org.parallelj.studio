@@ -121,23 +121,23 @@ public class ParallelJEditPartFactory implements EditPartFactory {
 			case HandlerNameEditPart.VISUAL_ID:
 				return new HandlerNameEditPart(view);
 
-			case PipelineEditPart.VISUAL_ID:
-				return new PipelineEditPart(view);
+			case BlockEditPart.VISUAL_ID:
+				return new BlockEditPart(view);
 
-			case PipelineNameEditPart.VISUAL_ID:
-				return new PipelineNameEditPart(view);
+			case BlockNameEditPart.VISUAL_ID:
+				return new BlockNameEditPart(view);
 
-			case PipelineIconEditPart.VISUAL_ID:
-				return new PipelineIconEditPart(view);
+			case BlockIconEditPart.VISUAL_ID:
+				return new BlockIconEditPart(view);
 
-			case PipelineProcedureEditPart.VISUAL_ID:
-				return new PipelineProcedureEditPart(view);
+			case BlockProcedureEditPart.VISUAL_ID:
+				return new BlockProcedureEditPart(view);
 
-			case PipelineProcedureNameEditPart.VISUAL_ID:
-				return new PipelineProcedureNameEditPart(view);
+			case BlockProcedureNameEditPart.VISUAL_ID:
+				return new BlockProcedureNameEditPart(view);
 
-			case PipelineProcedureExecutableEditPart.VISUAL_ID:
-				return new PipelineProcedureExecutableEditPart(view);
+			case BlockProcedureExecutableEditPart.VISUAL_ID:
+				return new BlockProcedureExecutableEditPart(view);
 
 			case DataEditPart.VISUAL_ID:
 				return new DataEditPart(view);
@@ -151,8 +151,8 @@ public class ParallelJEditPartFactory implements EditPartFactory {
 			case ProgramProgramCompartmentEditPart.VISUAL_ID:
 				return new ProgramProgramCompartmentEditPart(view);
 
-			case PipelinePipelineCompartmentEditPart.VISUAL_ID:
-				return new PipelinePipelineCompartmentEditPart(view);
+			case BlockBlockCompartmentEditPart.VISUAL_ID:
+				return new BlockBlockCompartmentEditPart(view);
 
 			case LinkEditPart.VISUAL_ID:
 				return new LinkEditPart(view);
