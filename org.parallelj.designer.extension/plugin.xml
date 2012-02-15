@@ -25,53 +25,6 @@
       </editpartProvider>
    </extension>
    <extension
-         point="org.eclipse.epsilon.ewl.emf.wizards">
-      <wizards
-            file="wizards/InsertProcedureWizard.ewl"
-            namespaceURI="http://www.parallelj.org/0.5.0">
-      </wizards>
-      <wizards
-            file="wizards/ConvertToWhileLoopWizard.ewl"
-            namespaceURI="http://www.parallelj.org/0.5.0">
-      </wizards>
-      <wizards
-            file="wizards/ConvertToForEachLoopWizard.ewl"
-            namespaceURI="http://www.parallelj.org/0.5.0">
-      </wizards>
-      <wizards
-            file="wizards/ConvertToHandlerWizard.ewl"
-            namespaceURI="http://www.parallelj.org/0.5.0">
-      </wizards>
-      <wizards
-            file="wizards/ConvertToProcedureWizard.ewl"
-            namespaceURI="http://www.parallelj.org/0.5.0">
-      </wizards>
-      <wizards
-            file="wizards/ConvertToBlockWizard.ewl"
-            namespaceURI="http://www.parallelj.org/0.5.0">
-      </wizards>
-      <wizards
-            file="wizards/InsertForEachLoopWizard.ewl"
-            namespaceURI="http://www.parallelj.org/0.5.0">
-      </wizards>
-      <wizards
-            file="wizards/InsertBlockWizard.ewl"
-            namespaceURI="http://www.parallelj.org/0.5.0">
-      </wizards>
-      <wizards
-            file="wizards/InsertWhileLoopWizard.ewl"
-            namespaceURI="http://www.parallelj.org/0.5.0">
-      </wizards>
-      <wizards
-            file="wizards/ExtractProceduresWizard.ewl"
-            namespaceURI="http://www.parallelj.org/0.5.0">
-      </wizards>
-      <wizards
-            file="wizards/PushProceduresIntoBlockWizard.ewl"
-            namespaceURI="http://www.parallelj.org/0.5.0">
-      </wizards>
-   </extension>
-   <extension
          point="org.eclipse.gmf.runtime.emf.type.core.elementTypes">
       <metamodel
             nsURI="http://www.parallelj.org/0.5.0">
