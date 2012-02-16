@@ -7,19 +7,9 @@
         <features name="org.eclipselabs.resourceselector.processor.java.feature.group" validConfigurations="//@configurations.2 //@configurations.3 //@configurations.4 //@configurations.5 //@configurations.0 //@configurations.1"/>
         <features name="org.eclipselabs.resourceselector.processor.uml.feature.group" validConfigurations="//@configurations.2 //@configurations.3 //@configurations.4 //@configurations.5 //@configurations.0 //@configurations.1"/>
       </repositories>
-      <repositories location="http://download.eclipse.org/modeling/gmt/epsilon/marketplace/" description="This update site is the Epsilon one, and contains some dependencies used by ParallelJ." mirrorArtifacts="false">
-        <features name="org.eclipse.epsilon.concordance.dependencies.feature.feature.group"/>
-        <features name="org.eclipse.epsilon.concordance.feature.feature.group"/>
-        <features name="org.eclipse.epsilon.dependencies.feature.feature.group"/>
-        <features name="org.eclipse.epsilon.evl.emf.validation.feature.feature.group"/>
-        <features name="org.eclipse.epsilon.feature.feature.group"/>
-        <features name="org.eclipse.epsilon.gmf.feature.feature.group"/>
-        <features name="org.eclipse.epsilon.hutn.dependencies.feature.feature.group"/>
-        <features name="org.eclipse.epsilon.hutn.feature.feature.group"/>
-      </repositories>
     </contributions>
     <contributions description="This contribution set corresponds actually to all the internal deliveries from ParallelJ. It stores all the ParallelJ components references." label="ParallelJ-Contribution" contacts="//@contacts[email='parallelj-dev@googlegroups.com']">
-      <repositories location="http://www.parallelj.org/repository/eclipse/binaries/e37x/0.8.0.e37x-M1" description="This repository is actually the ParallelJ Studio one, which contains all the ParallelJ binaries for Eclipse. Regarding our release process, we don't build complete metadatas for this repository, and let b3 aggregator manage this part of the job." mirrorArtifacts="false">
+      <repositories location="http://www.parallelj.org/repository/eclipse/binaries/e37x/0.9.0.e37x-M1" description="This repository is actually the ParallelJ Studio one, which contains all the ParallelJ binaries for Eclipse. Regarding our release process, we don't build complete metadatas for this repository, and let b3 aggregator manage this part of the job." mirrorArtifacts="false">
         <features description="This is actually the main feature of ParallelJ, matching to the Studio part. It contains the whole ParallelJ Studio, including the editor, the validator, but also the code generator." name="org.parallelj.feature.feature.group" versionRange="0.8.0" validConfigurations="//@configurations.2 //@configurations.3 //@configurations.4 //@configurations.5 //@configurations.0 //@configurations.1" categories="//@customCategories[identifier='parallelj']"/>
       </repositories>
     </contributions>

@@ -12,7 +12,7 @@
 
 	<groupId>org.parallelj.studio</groupId>
 	<artifactId>parallelj-studio</artifactId>
-	<version>0.8.0-SNAPSHOT</version>
+	<version>0.9.0-SNAPSHOT</version>
 	<name>ParallelJ-Studio</name>
 	<packaging>pom</packaging>
 
@@ -100,7 +100,6 @@
 		<eclipse-mirror>http://eclipse.ialto.com</eclipse-mirror>
 		<eclipse-site>${eclipse-mirror}/releases/${platform-version-name}</eclipse-site>
 		<resourceselector-site>http://xa-labs.github.com/ResourceSelector/site</resourceselector-site>
-		<epsilon-site>${eclipse-mirror}/modeling/gmt/epsilon/marketplace/</epsilon-site>
 	</properties>
 
 	<profiles>
@@ -232,11 +231,6 @@
 			<id>resourceselecotr</id>
 			<layout>p2</layout>
 			<url>${resourceselector-site}</url>
-		</repository>
-		<repository>
-			<id>epsilon</id>
-			<layout>p2</layout>
-			<url>${epsilon-site}</url>
 		</repository>
 	</repositories>
 </project>
