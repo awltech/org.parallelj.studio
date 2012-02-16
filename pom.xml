@@ -100,7 +100,7 @@
 		<eclipse-mirror>http://eclipse.ialto.com</eclipse-mirror>
 		<eclipse-site>${eclipse-mirror}/releases/${platform-version-name}</eclipse-site>
 		<resourceselector-site>http://xa-labs.github.com/ResourceSelector/site</resourceselector-site>
-		<release-type>milestone</release-type>
+		<release-type>m1</release-type>
 	</properties>
 
 	<profiles>
@@ -182,8 +182,7 @@
 				<artifactId>tycho-packaging-plugin</artifactId>
 				<version>${tycho-version}</version>
 				<configuration>
-					<includeSources>true</includeSources>
-					<format>${platform-version-name}.${release-type}.yyyyMMddHHmm</format>
+					<format>yyyyMMddHHmm'-${platform-version-name}-${release-type}'</format>
 				</configuration>
 			</plugin>
 			<plugin>
