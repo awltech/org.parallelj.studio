@@ -9,9 +9,7 @@
       </repositories>
     </contributions>
     <contributions description="This contribution set corresponds actually to all the internal deliveries from ParallelJ. It stores all the ParallelJ components references." label="ParallelJ-Contribution" contacts="//@contacts[email='parallelj-dev@googlegroups.com']">
-      <repositories location="http://www.parallelj.org/repository/eclipse/binaries/e37x/0.9.0.e37x-M1" description="This repository is actually the ParallelJ Studio one, which contains all the ParallelJ binaries for Eclipse. Regarding our release process, we don't build complete metadatas for this repository, and let b3 aggregator manage this part of the job." mirrorArtifacts="false">
-        <features description="This is actually the main feature of ParallelJ, matching to the Studio part. It contains the whole ParallelJ Studio, including the editor, the validator, but also the code generator." name="org.parallelj.feature.feature.group" versionRange="0.8.0" validConfigurations="//@configurations.2 //@configurations.3 //@configurations.4 //@configurations.5 //@configurations.0 //@configurations.1" categories="//@customCategories[identifier='parallelj']"/>
-      </repositories>
+      <repositories location="http://www.parallelj.org/repository/eclipse/binaries/e37x/0.9.0.201202161042-indigo-m1" description="This repository is actually the ParallelJ Studio one, which contains all the ParallelJ binaries for Eclipse. Regarding our release process, we don't build complete metadatas for this repository, and let b3 aggregator manage this part of the job." mirrorArtifacts="false"/>
     </contributions>
     <validationRepositories location="http://download.eclipse.org/releases/indigo"/>
   </validationSets>
@@ -21,6 +19,5 @@
   <configurations operatingSystem="linux" windowSystem="gtk" architecture="x86_64"/>
   <configurations operatingSystem="macosx" windowSystem="cocoa"/>
   <configurations operatingSystem="macosx" windowSystem="cocoa" architecture="x86_64"/>
-  <customCategories identifier="parallelj" label="ParallelJ" description="ParallelJ is a Java Open Source framework for parallel computing, distributed under LGPL license. It is based on the MDA approach, and it allows you to design a process through the Studio part." features="//@validationSets[label='parallelj']/@contributions[label='ParallelJ-Contribution']/@repositories.0/@features.0"/>
   <contacts name="ParallelJ" email="parallelj-dev@googlegroups.com"/>
 </aggregator:Aggregation>
