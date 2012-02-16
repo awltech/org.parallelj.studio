@@ -54,13 +54,6 @@ public class BlockBasePropertySection extends Section {
 				"helpProcedures",
 				new HelpZone(getBackGround(), false,
 						ParallelJPropertiesMessages.help_procedures.message()));
-		getZones().put("outputLinksZone",
-				new OutputLinksZone(getBackGround(), false));
-		getZones()
-				.put("helpOutputLinks",
-						new HelpZone(getBackGround(), false,
-								ParallelJPropertiesMessages.help_outputlinks
-										.message()));
 		getZones().put("descriptionZone",
 				new DescriptionZone(getBackGround(), false));
 		getZones()
@@ -87,14 +80,8 @@ public class BlockBasePropertySection extends Section {
 				.right(getZone("helpProcedures")).apply(getZone("proceduresZone"));
 
 		new FormDataBuilder().top(getZone("proceduresZone")).right()
-				.apply(getZone("helpOutputLinks"));
-		new FormDataBuilder().top(getZone("proceduresZone")).left()
-				.right(getZone("helpOutputLinks"))
-				.apply(getZone("outputLinksZone"));
-
-		new FormDataBuilder().top(getZone("outputLinksZone")).right()
 				.apply(getZone("helpDescription"));
-		new FormDataBuilder().top(getZone("outputLinksZone")).left()
+		new FormDataBuilder().top(getZone("proceduresZone")).left()
 				.right(getZone("helpDescription")).bottom()
 				.apply(getZone("descriptionZone"));
 	}
