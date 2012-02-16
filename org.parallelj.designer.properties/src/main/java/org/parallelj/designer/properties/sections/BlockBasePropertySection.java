@@ -25,11 +25,8 @@ import org.parallelj.designer.properties.helpers.ParallelJPropertiesMessages;
 import org.parallelj.designer.properties.zones.CapacityZone;
 import org.parallelj.designer.properties.zones.DescriptionZone;
 import org.parallelj.designer.properties.zones.HelpZone;
-import org.parallelj.designer.properties.zones.JoinZone;
 import org.parallelj.designer.properties.zones.NameZone;
-import org.parallelj.designer.properties.zones.OutputLinksZone;
 import org.parallelj.designer.properties.zones.ProceduresZone;
-import org.parallelj.designer.properties.zones.SplitZone;
 import org.parallelj.ixea.Section;
 import org.parallelj.ixea.tools.FormDataBuilder;
 
@@ -77,7 +74,8 @@ public class BlockBasePropertySection extends Section {
 		new FormDataBuilder().top(getZone("helpCapacity")).right()
 				.apply(getZone("helpProcedures"));
 		new FormDataBuilder().top(getZone("helpCapacity")).left()
-				.right(getZone("helpProcedures")).apply(getZone("proceduresZone"));
+				.right(getZone("helpProcedures"))
+				.apply(getZone("proceduresZone"));
 
 		new FormDataBuilder().top(getZone("proceduresZone")).right()
 				.apply(getZone("helpDescription"));

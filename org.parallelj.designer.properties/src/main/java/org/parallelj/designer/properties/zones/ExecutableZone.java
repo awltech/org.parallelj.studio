@@ -25,7 +25,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 
-import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jdt.core.IJavaElement;
@@ -43,7 +42,6 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Text;
-import org.eclipselabs.resourceselector.core.processor.ResourceProcessor;
 import org.eclipselabs.resourceselector.core.processor.ResourceProcessorFactory;
 import org.eclipselabs.resourceselector.core.resources.ResourceInfo;
 import org.eclipselabs.resourceselector.core.selector.ResourceSelector;
@@ -56,14 +54,8 @@ import org.parallelj.ixea.Zone;
 import org.parallelj.ixea.helpers.TextChangeHelper;
 import org.parallelj.ixea.tools.Commands;
 import org.parallelj.ixea.tools.FormDataBuilder;
-import org.parallelj.model.Block;
-import org.parallelj.model.Element;
 import org.parallelj.model.ParallelJPackage;
 import org.parallelj.model.Procedure;
-import org.parallelj.model.Program;
-import org.parallelj.model.impl.BlockImpl;
-import org.parallelj.model.impl.ForEachLoopImpl;
-import org.parallelj.model.impl.WhileLoopImpl;
 
 @SuppressWarnings("restriction")
 public class ExecutableZone extends Zone {

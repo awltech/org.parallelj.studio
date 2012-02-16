@@ -616,7 +616,7 @@
          <context decoratorTargets="PRIMARY_VIEW"/>
       </decoratorProvider>
    </extension>
-<extension point="org.eclipse.ui.editors" id="gmf-editor">
+<!--extension point="org.eclipse.ui.editors" id="gmf-editor">
       <?gmfgen generated="true"?>
       <editor
          id="org.parallelj.designer.part.ParallelJDiagramEditorID"
@@ -628,7 +628,7 @@
          matchingStrategy="org.parallelj.designer.part.ParallelJMatchingStrategy"
          contributorClass="org.parallelj.designer.part.ParallelJDiagramActionBarContributor">
       </editor>
-   </extension>
+   </extension-->
 
 
 
