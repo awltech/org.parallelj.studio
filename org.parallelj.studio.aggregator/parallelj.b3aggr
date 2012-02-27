@@ -7,6 +7,9 @@
         <features name="org.eclipselabs.resourceselector.processor.java.feature.group" validConfigurations="//@configurations.2 //@configurations.3 //@configurations.4 //@configurations.5 //@configurations.0 //@configurations.1"/>
         <features name="org.eclipselabs.resourceselector.processor.uml.feature.group" validConfigurations="//@configurations.2 //@configurations.3 //@configurations.4 //@configurations.5 //@configurations.0 //@configurations.1"/>
       </repositories>
+      <repositories location="http://dist.springsource.org/release/AJDT/composite/" description="This repository hosts the m2e connector for AJDT which is used by ParallelJ projects. Using this, users won't face any problem when invoking parallelj archetype in a fresh Eclipse." mirrorArtifacts="false">
+        <features name="org.maven.ide.eclipse.ajdt.feature.feature.group" validConfigurations="//@configurations.2 //@configurations.3 //@configurations.4 //@configurations.5 //@configurations.0 //@configurations.1"/>
+      </repositories>
     </contributions>
     <contributions description="This contribution set corresponds actually to all the internal deliveries from ParallelJ. It stores all the ParallelJ components references." label="ParallelJ-Contribution" contacts="//@contacts[email='parallelj-dev@googlegroups.com']">
       <repositories location="http://www.parallelj.org/repository/eclipse/binaries/e37x/0.9.0.201202161605-indigo-m1" description="This repository is actually the ParallelJ Studio one, which contains all the ParallelJ binaries for Eclipse. Regarding our release process, we don't build complete metadatas for this repository, and let b3 aggregator manage this part of the job." mirrorArtifacts="false"/>
