@@ -166,7 +166,10 @@ public class IterableZone extends Zone {
 				if (parentProgram.getData() != null) {
 					for (Data d : parentProgram.getData()) {
 						try {
-							if (IterableDataUtils.isIterable(d.getType())) {
+							if (d != null
+									&& d.getType() != null
+									&& IterableDataUtils
+											.isIterable(d.getType())) {
 								iterableData.add(d);
 							}
 						} catch (ClassNotFoundException e) {
