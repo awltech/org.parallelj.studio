@@ -38,7 +38,9 @@ public enum ParallelJPropertiesMessages {
 
 	pattern_link,
 
-	error_cast_int
+	error_cast_int,
+	
+	error_runnable_creation
 
 	;
 
