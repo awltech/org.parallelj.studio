@@ -101,6 +101,7 @@
 		<eclipse-site>${eclipse-mirror}/releases/${platform-version-name}</eclipse-site>
 		<resourceselector-site>http://xa-labs.github.com/ResourceSelector/site</resourceselector-site>
 		<release-type>m1</release-type>
+		<ajdt-connector-site>http://dist.springsource.org/release/AJDT/composite/</ajdt-connector-site>
 	</properties>
 
 	<profiles>
@@ -240,6 +241,11 @@
 			<id>resourceselecotr</id>
 			<layout>p2</layout>
 			<url>${resourceselector-site}</url>
+		</repository>
+		<repository>
+			<id>ajdt-connector</id>
+			<layout>p2</layout>
+			<url>${ajdt-connector-site}</url>
 		</repository>
 	</repositories>
 </project>
