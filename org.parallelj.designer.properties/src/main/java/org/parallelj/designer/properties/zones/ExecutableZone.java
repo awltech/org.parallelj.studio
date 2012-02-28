@@ -45,6 +45,7 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipselabs.resourceselector.core.processor.ResourceProcessorFactory;
 import org.eclipselabs.resourceselector.core.resources.ResourceInfo;
 import org.eclipselabs.resourceselector.core.selector.ResourceSelector;
+import org.parallelj.designer.properties.Activator;
 import org.parallelj.designer.properties.helpers.ParallelJPropertiesMessages;
 import org.parallelj.designer.properties.helpers.Tools;
 import org.parallelj.designer.typeselector.processor.annotation.AnnotationTypeProcessorFactory;
@@ -208,12 +209,20 @@ public class ExecutableZone extends Zone {
 		@Override
 		protected void finishPage(IProgressMonitor monitor)
 				throws InterruptedException, CoreException {
-			page.createType(monitor);
+			try {
+				page.createType(monitor);
+			} catch (NullPointerException npe) {
+				Activator
+						.getDefault()
+						.logError(
+								ParallelJPropertiesMessages.error_runnable_creation
+										.message(), npe);
+			}
 		}
 
 		@Override
 		public boolean performFinish() {
-			warnAboutTypeCommentDeprecation();
+			// warnAboutTypeCommentDeprecation();
 			return super.performFinish();
 		}
 
