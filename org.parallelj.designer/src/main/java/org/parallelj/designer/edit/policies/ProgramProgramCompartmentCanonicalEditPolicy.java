@@ -44,6 +44,7 @@ import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
 import org.parallelj.designer.edit.parts.BlockEditPart;
+import org.parallelj.designer.edit.parts.BusinessProcedureEditPart;
 import org.parallelj.designer.edit.parts.ConditionEditPart;
 import org.parallelj.designer.edit.parts.DataEditPart;
 import org.parallelj.designer.edit.parts.ForEachLoopEditPart;
@@ -137,6 +138,7 @@ public class ProgramProgramCompartmentCanonicalEditPolicy extends
 		case HandlerEditPart.VISUAL_ID:
 		case BlockEditPart.VISUAL_ID:
 		case DataEditPart.VISUAL_ID:
+		case BusinessProcedureEditPart.VISUAL_ID:
 			return true;
 		}
 		return false;

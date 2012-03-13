@@ -208,7 +208,7 @@
       <viewProvider class="org.parallelj.designer.providers.ParallelJViewProvider">
          <Priority name="Lowest"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="ParallelJ"/>
-         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2001,3001,3002,3003,3004,3005,3006,3007,3008,3012,3013,3011"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2001,3001,3002,3003,3004,3005,3006,3007,3008,3012,3013,3011,3014"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="4001"/>
       </viewProvider>
    </extension>
@@ -221,13 +221,13 @@
             <method name="getType()" value="ParallelJ"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-nodes">
-            <method name="getType()" value="2001,3001,3002,3003,3004,3005,3006,3007,3008,3012,3013,3011"/>
+            <method name="getType()" value="2001,3001,3002,3003,3004,3005,3006,3007,3008,3012,3013,3011,3014"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Edge" id="generated-links">
             <method name="getType()" value="4001"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-labels">
-            <method name="getType()" value="5020,5001,5002,5003,5004,5005,5006,5007,5008,5009,5010,5011,5012,5013,5023,5024,5021,5022,5018,5019"/>
+            <method name="getType()" value="5020,5001,5002,5003,5004,5005,5006,5007,5008,5009,5010,5011,5012,5013,5023,5024,5021,5022,5018,5019,5025"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-compartments">
             <method name="getType()" value="7001,7003"/>
@@ -393,6 +393,16 @@
       </metamodel>
       <metamodel nsURI="http://www.parallelj.org/0.5.0">
          <metamodelType
+               id="org.parallelj.designer.BusinessProcedure_3014"
+               name="%metatype.name.BusinessProcedure_3014"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="BusinessProcedure"
+               edithelper="org.parallelj.designer.edit.helpers.BusinessProcedureEditHelper">
+            <param name="semanticHint" value="3014"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://www.parallelj.org/0.5.0">
+         <metamodelType
                id="org.parallelj.designer.Link_4001"
                name="%metatype.name.Link_4001"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
@@ -426,6 +436,7 @@
          <elementType ref="org.parallelj.designer.Block_3012"/>
          <elementType ref="org.parallelj.designer.Procedure_3013"/>
          <elementType ref="org.parallelj.designer.Data_3011"/>
+         <elementType ref="org.parallelj.designer.BusinessProcedure_3014"/>
          <elementType ref="org.parallelj.designer.Link_4001"/>
          <advice ref="org.eclipse.gmf.runtime.diagram.core.advice.notationDepdendents"/>
       </binding>
@@ -616,6 +627,20 @@
          <context decoratorTargets="PRIMARY_VIEW"/>
       </decoratorProvider>
    </extension>
+<extension point="org.eclipse.ui.editors" id="gmf-editor">
+      <?gmfgen generated="true"?>
+      <editor
+         id="org.parallelj.designer.part.ParallelJDiagramEditorID"
+         name="%editorName"
+         icon="icons/obj16/ParallelJDiagramFile.png"
+         extensions="pjd"
+         default="true"
+         class="org.parallelj.designer.part.ParallelJDiagramEditor"
+         matchingStrategy="org.parallelj.designer.part.ParallelJMatchingStrategy"
+         contributorClass="org.parallelj.designer.part.ParallelJDiagramActionBarContributor">
+      </editor>
+   </extension>
+
 <!--extension point="org.eclipse.ui.editors" id="gmf-editor">
       <?gmfgen generated="true"?>
       <editor

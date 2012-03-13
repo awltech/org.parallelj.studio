@@ -33,6 +33,8 @@ import org.parallelj.designer.edit.parts.BlockNameEditPart;
 import org.parallelj.designer.edit.parts.BlockProcedureEditPart;
 import org.parallelj.designer.edit.parts.BlockProcedureExecutableEditPart;
 import org.parallelj.designer.edit.parts.BlockProcedureNameEditPart;
+import org.parallelj.designer.edit.parts.BusinessProcedureEditPart;
+import org.parallelj.designer.edit.parts.BusinessProcedureNameEditPart;
 import org.parallelj.designer.edit.parts.ConditionEditPart;
 import org.parallelj.designer.edit.parts.ConditionNameEditPart;
 import org.parallelj.designer.edit.parts.DataEditPart;
@@ -223,6 +225,10 @@ public class ParallelJVisualIDRegistry {
 					domainElement.eClass())) {
 				return DataEditPart.VISUAL_ID;
 			}
+			if (ParallelJPackage.eINSTANCE.getBusinessProcedure()
+					.isSuperTypeOf(domainElement.eClass())) {
+				return BusinessProcedureEditPart.VISUAL_ID;
+			}
 			break;
 		case BlockBlockCompartmentEditPart.VISUAL_ID:
 			if (ParallelJPackage.eINSTANCE.getProcedure().isSuperTypeOf(
@@ -350,6 +356,11 @@ public class ParallelJVisualIDRegistry {
 				return true;
 			}
 			break;
+		case BusinessProcedureEditPart.VISUAL_ID:
+			if (BusinessProcedureNameEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
 		case ProgramProgramCompartmentEditPart.VISUAL_ID:
 			if (InputConditionEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
@@ -379,6 +390,9 @@ public class ParallelJVisualIDRegistry {
 				return true;
 			}
 			if (DataEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (BusinessProcedureEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;

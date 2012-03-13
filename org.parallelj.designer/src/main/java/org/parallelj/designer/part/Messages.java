@@ -459,6 +459,16 @@ public class Messages extends NLS {
 	/**
 	 * @generated
 	 */
+	public static String NavigatorGroupName_BusinessProcedure_3014_incominglinks;
+
+	/**
+	 * @generated
+	 */
+	public static String NavigatorGroupName_BusinessProcedure_3014_outgoinglinks;
+
+	/**
+	 * @generated
+	 */
 	public static String NavigatorGroupName_WhileLoop_3007_incominglinks;
 
 	/**

@@ -38,6 +38,7 @@ import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.swt.graphics.Image;
 import org.parallelj.designer.edit.parts.BlockEditPart;
 import org.parallelj.designer.edit.parts.BlockProcedureEditPart;
+import org.parallelj.designer.edit.parts.BusinessProcedureEditPart;
 import org.parallelj.designer.edit.parts.ConditionEditPart;
 import org.parallelj.designer.edit.parts.DataEditPart;
 import org.parallelj.designer.edit.parts.ForEachLoopEditPart;
@@ -133,6 +134,11 @@ public class ParallelJElementTypes {
 	 * @generated
 	 */
 	public static final IElementType Data_3011 = getElementType("org.parallelj.designer.Data_3011"); //$NON-NLS-1$
+	/**
+	 * @generated
+	 */
+	public static final IElementType BusinessProcedure_3014 = getElementType("org.parallelj.designer.BusinessProcedure_3014"); //$NON-NLS-1$
+
 	/**
 	 * @generated
 	 */
@@ -284,6 +290,9 @@ public class ParallelJElementTypes {
 
 			elements.put(Data_3011, ParallelJPackage.eINSTANCE.getData());
 
+			elements.put(BusinessProcedure_3014,
+					ParallelJPackage.eINSTANCE.getBusinessProcedure());
+
 			elements.put(Link_4001, ParallelJPackage.eINSTANCE.getLink());
 		}
 		return (ENamedElement) elements.get(type);
@@ -315,6 +324,7 @@ public class ParallelJElementTypes {
 			KNOWN_ELEMENT_TYPES.add(Block_3012);
 			KNOWN_ELEMENT_TYPES.add(Procedure_3013);
 			KNOWN_ELEMENT_TYPES.add(Data_3011);
+			KNOWN_ELEMENT_TYPES.add(BusinessProcedure_3014);
 			KNOWN_ELEMENT_TYPES.add(Link_4001);
 		}
 		return KNOWN_ELEMENT_TYPES.contains(elementType);
@@ -351,6 +361,8 @@ public class ParallelJElementTypes {
 			return Procedure_3013;
 		case DataEditPart.VISUAL_ID:
 			return Data_3011;
+		case BusinessProcedureEditPart.VISUAL_ID:
+			return BusinessProcedure_3014;
 		case LinkEditPart.VISUAL_ID:
 			return Link_4001;
 		}

@@ -36,6 +36,7 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.parallelj.designer.edit.parts.BlockNameEditPart;
 import org.parallelj.designer.edit.parts.BlockProcedureExecutableEditPart;
 import org.parallelj.designer.edit.parts.BlockProcedureNameEditPart;
+import org.parallelj.designer.edit.parts.BusinessProcedureNameEditPart;
 import org.parallelj.designer.edit.parts.ConditionNameEditPart;
 import org.parallelj.designer.edit.parts.DataNameEditPart;
 import org.parallelj.designer.edit.parts.DataTypeEditPart;
@@ -331,6 +332,24 @@ public class ParallelJParserProvider extends AbstractProvider implements
 	/**
 	 * @generated
 	 */
+	private IParser businessProcedureName_5025Parser;
+
+	/**
+	 * @generated
+	 */
+	private IParser getBusinessProcedureName_5025Parser() {
+		if (businessProcedureName_5025Parser == null) {
+			EAttribute[] features = new EAttribute[] { ParallelJPackage.eINSTANCE
+					.getNamedElement_Name() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			businessProcedureName_5025Parser = parser;
+		}
+		return businessProcedureName_5025Parser;
+	}
+
+	/**
+	 * @generated
+	 */
 	protected IParser getParser(int visualID) {
 		switch (visualID) {
 		case ProgramNameEditPart.VISUAL_ID:
@@ -363,6 +382,8 @@ public class ParallelJParserProvider extends AbstractProvider implements
 			return getDataName_5018Parser();
 		case DataTypeEditPart.VISUAL_ID:
 			return getDataType_5019Parser();
+		case BusinessProcedureNameEditPart.VISUAL_ID:
+			return getBusinessProcedureName_5025Parser();
 		}
 		return null;
 	}

@@ -35,6 +35,7 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.parallelj.designer.edit.parts.BlockBlockCompartmentEditPart;
 import org.parallelj.designer.edit.parts.BlockEditPart;
 import org.parallelj.designer.edit.parts.BlockProcedureEditPart;
+import org.parallelj.designer.edit.parts.BusinessProcedureEditPart;
 import org.parallelj.designer.edit.parts.ConditionEditPart;
 import org.parallelj.designer.edit.parts.DataEditPart;
 import org.parallelj.designer.edit.parts.ForEachLoopEditPart;
@@ -50,6 +51,7 @@ import org.parallelj.designer.edit.parts.SpecificationEditPart;
 import org.parallelj.designer.edit.parts.WhileLoopEditPart;
 import org.parallelj.designer.providers.ParallelJElementTypes;
 import org.parallelj.model.Block;
+import org.parallelj.model.BusinessProcedure;
 import org.parallelj.model.Condition;
 import org.parallelj.model.Data;
 import org.parallelj.model.Element;
@@ -167,6 +169,10 @@ public class ParallelJDiagramUpdater {
 				result.add(new ParallelJNodeDescriptor(childElement, visualID));
 				continue;
 			}
+			if (visualID == BusinessProcedureEditPart.VISUAL_ID) {
+				result.add(new ParallelJNodeDescriptor(childElement, visualID));
+				continue;
+			}
 		}
 		for (Iterator<?> it = modelElement.getPredicates().iterator(); it
 				.hasNext();) {
@@ -248,6 +254,8 @@ public class ParallelJDiagramUpdater {
 			return getProcedure_3013ContainedLinks(view);
 		case DataEditPart.VISUAL_ID:
 			return getData_3011ContainedLinks(view);
+		case BusinessProcedureEditPart.VISUAL_ID:
+			return getBusinessProcedure_3014ContainedLinks(view);
 		case LinkEditPart.VISUAL_ID:
 			return getLink_4001ContainedLinks(view);
 		}
@@ -283,6 +291,8 @@ public class ParallelJDiagramUpdater {
 			return getProcedure_3013IncomingLinks(view);
 		case DataEditPart.VISUAL_ID:
 			return getData_3011IncomingLinks(view);
+		case BusinessProcedureEditPart.VISUAL_ID:
+			return getBusinessProcedure_3014IncomingLinks(view);
 		case LinkEditPart.VISUAL_ID:
 			return getLink_4001IncomingLinks(view);
 		}
@@ -318,6 +328,8 @@ public class ParallelJDiagramUpdater {
 			return getProcedure_3013OutgoingLinks(view);
 		case DataEditPart.VISUAL_ID:
 			return getData_3011OutgoingLinks(view);
+		case BusinessProcedureEditPart.VISUAL_ID:
+			return getBusinessProcedure_3014OutgoingLinks(view);
 		case LinkEditPart.VISUAL_ID:
 			return getLink_4001OutgoingLinks(view);
 		}
@@ -453,6 +465,17 @@ public class ParallelJDiagramUpdater {
 	public static List<ParallelJLinkDescriptor> getData_3011ContainedLinks(
 			View view) {
 		return Collections.emptyList();
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<ParallelJLinkDescriptor> getBusinessProcedure_3014ContainedLinks(
+			View view) {
+		BusinessProcedure modelElement = (BusinessProcedure) view.getElement();
+		LinkedList<ParallelJLinkDescriptor> result = new LinkedList<ParallelJLinkDescriptor>();
+		result.addAll(getContainedTypeModelFacetLinks_Link_4001(modelElement));
+		return result;
 	}
 
 	/**
@@ -616,6 +639,20 @@ public class ParallelJDiagramUpdater {
 	/**
 	 * @generated
 	 */
+	public static List<ParallelJLinkDescriptor> getBusinessProcedure_3014IncomingLinks(
+			View view) {
+		BusinessProcedure modelElement = (BusinessProcedure) view.getElement();
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList<ParallelJLinkDescriptor> result = new LinkedList<ParallelJLinkDescriptor>();
+		result.addAll(getIncomingTypeModelFacetLinks_Link_4001(modelElement,
+				crossReferences));
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
 	public static List<ParallelJLinkDescriptor> getLink_4001IncomingLinks(
 			View view) {
 		return Collections.emptyList();
@@ -742,6 +779,17 @@ public class ParallelJDiagramUpdater {
 	public static List<ParallelJLinkDescriptor> getData_3011OutgoingLinks(
 			View view) {
 		return Collections.emptyList();
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<ParallelJLinkDescriptor> getBusinessProcedure_3014OutgoingLinks(
+			View view) {
+		BusinessProcedure modelElement = (BusinessProcedure) view.getElement();
+		LinkedList<ParallelJLinkDescriptor> result = new LinkedList<ParallelJLinkDescriptor>();
+		result.addAll(getContainedTypeModelFacetLinks_Link_4001(modelElement));
+		return result;
 	}
 
 	/**

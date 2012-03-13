@@ -23,6 +23,8 @@ package org.parallelj.designer.extension.edit.parts;
 
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.notation.View;
+import org.parallelj.designer.edit.parts.BusinessProcedureEditPart;
+import org.parallelj.designer.edit.parts.BusinessProcedureNameEditPart;
 import org.parallelj.designer.edit.parts.ConditionEditPart;
 import org.parallelj.designer.edit.parts.DataEditPart;
 import org.parallelj.designer.edit.parts.DataNameEditPart;
@@ -83,6 +85,10 @@ public class ParallelJEditPartExtendedFactory extends ParallelJEditPartFactory {
 				return new ProcedureNameExtendedEditPart(view);
 			case ProcedureExecutableEditPart.VISUAL_ID:
 				return new ProcedureExecutableExtendedEditPart(view);
+			case BusinessProcedureEditPart.VISUAL_ID:
+				return new BusinessProcedureExtendedEditPart(view);
+			case BusinessProcedureNameEditPart.VISUAL_ID:
+				return new BusinessProcedureNameExtendedEditPart(view);
 			case InputConditionEditPart.VISUAL_ID:
 				return new InputConditionExtendedEditPart(view);
 			case InputConditionNameEditPart.VISUAL_ID:

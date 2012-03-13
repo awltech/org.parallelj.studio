@@ -2,6 +2,7 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension-point id="IEditorContribution" name="IEditorContribution" schema="schema/IEditorContribution.exsd"/>
+   <extension-point id="IBusinessProcedureContribution" name="IBusinessProcedureContribution" schema="schema/IBusinessProcedureContribution.exsd"/>
    <extension point="org.eclipse.ui.editors" id="gmf-editor">
       <?gmfgen generated="true"?>
       <editor

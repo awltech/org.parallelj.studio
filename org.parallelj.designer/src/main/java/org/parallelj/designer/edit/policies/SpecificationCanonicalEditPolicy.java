@@ -51,6 +51,7 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
 import org.parallelj.designer.edit.parts.BlockEditPart;
 import org.parallelj.designer.edit.parts.BlockProcedureEditPart;
+import org.parallelj.designer.edit.parts.BusinessProcedureEditPart;
 import org.parallelj.designer.edit.parts.ConditionEditPart;
 import org.parallelj.designer.edit.parts.DataEditPart;
 import org.parallelj.designer.edit.parts.ForEachLoopEditPart;
@@ -407,6 +408,17 @@ public class SpecificationCanonicalEditPolicy extends CanonicalEditPolicy {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
 				result.addAll(ParallelJDiagramUpdater
 						.getData_3011ContainedLinks(view));
+			}
+			if (!domain2NotationMap.containsKey(view.getElement())
+					|| view.getEAnnotation("Shortcut") == null) { //$NON-NLS-1$
+				domain2NotationMap.put(view.getElement(), view);
+			}
+			break;
+		}
+		case BusinessProcedureEditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(ParallelJDiagramUpdater
+						.getBusinessProcedure_3014ContainedLinks(view));
 			}
 			if (!domain2NotationMap.containsKey(view.getElement())
 					|| view.getEAnnotation("Shortcut") == null) { //$NON-NLS-1$

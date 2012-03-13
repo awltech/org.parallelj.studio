@@ -120,7 +120,7 @@
           <domainMetaElement
               href="../../org.parallelj.model/model/parallelj.ecore#//Procedure"/>
           <domainSpecialization
-              body="not self.oclIsTypeOf(ForEachLoop) and not self.oclIsTypeOf(WhileLoop) and not self.oclIsTypeOf(Handler) and not self.oclIsTypeOf(Block)"/>
+              body="not self.oclIsTypeOf(ForEachLoop) and not self.oclIsTypeOf(WhileLoop) and not self.oclIsTypeOf(Handler) and not self.oclIsTypeOf(Block) and not self.oclIsTypeOf(BusinessProcedure)"/>
           <labelMappings
               xsi:type="gmfmap:FeatureLabelMapping">
             <diagramLabel
@@ -324,8 +324,27 @@
               href="parallelj.gmfgraph#Data"/>
         </ownedChild>
       </children>
+      <children
+          compartment="//@nodes.0/@ownedChild/@compartments.0"
+          referencedChild="//@nodes.0/@ownedChild">
+        <containmentFeature
+            href="../../org.parallelj.model/model/parallelj.ecore#//Program/elements"/>
+        <ownedChild>
+          <domainMetaElement
+              href="../../org.parallelj.model/model/parallelj.ecore#//BusinessProcedure"/>
+          <labelMappings
+              xsi:type="gmfmap:FeatureLabelMapping">
+            <diagramLabel
+                href="parallelj.gmfgraph#BusinessProcedureName"/>
+            <features
+                href="../../org.parallelj.model/model/parallelj.ecore#//NamedElement/name"/>
+          </labelMappings>
+          <diagramNode
+              href="parallelj.gmfgraph#BusinessProcedure"/>
+        </ownedChild>
+      </children>
       <compartments
-          children="//@nodes.0/@ownedChild/@children.9 //@nodes.0/@ownedChild/@children.8 //@nodes.0/@ownedChild/@children.2 //@nodes.0/@ownedChild/@children.5 //@nodes.0/@ownedChild/@children.7 //@nodes.0/@ownedChild/@children.3 //@nodes.0/@ownedChild/@children.4 //@nodes.0/@ownedChild/@children.6 //@nodes.0/@ownedChild/@children.0 //@nodes.0/@ownedChild/@children.1">
+          children="//@nodes.0/@ownedChild/@children.9 //@nodes.0/@ownedChild/@children.8 //@nodes.0/@ownedChild/@children.2 //@nodes.0/@ownedChild/@children.5 //@nodes.0/@ownedChild/@children.7 //@nodes.0/@ownedChild/@children.3 //@nodes.0/@ownedChild/@children.4 //@nodes.0/@ownedChild/@children.6 //@nodes.0/@ownedChild/@children.0 //@nodes.0/@ownedChild/@children.1 //@nodes.0/@ownedChild/@children.10">
         <compartment
             href="parallelj.gmfgraph#ProgramCompartment"/>
       </compartments>

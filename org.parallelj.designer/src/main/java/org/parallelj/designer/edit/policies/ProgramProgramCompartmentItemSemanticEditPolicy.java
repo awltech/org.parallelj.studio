@@ -24,6 +24,7 @@ package org.parallelj.designer.edit.policies;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
 import org.parallelj.designer.edit.commands.BlockCreateCommand;
+import org.parallelj.designer.edit.commands.BusinessProcedureCreateCommand;
 import org.parallelj.designer.edit.commands.ConditionCreateCommand;
 import org.parallelj.designer.edit.commands.DataCreateCommand;
 import org.parallelj.designer.edit.commands.ForEachLoopCreateCommand;
@@ -81,6 +82,10 @@ public class ProgramProgramCompartmentItemSemanticEditPolicy extends
 		}
 		if (ParallelJElementTypes.Data_3011 == req.getElementType()) {
 			return getGEFWrapper(new DataCreateCommand(req));
+		}
+		if (ParallelJElementTypes.BusinessProcedure_3014 == req
+				.getElementType()) {
+			return getGEFWrapper(new BusinessProcedureCreateCommand(req));
 		}
 		return super.getCreateCommand(req);
 	}

@@ -1295,6 +1295,101 @@
           accessor="getFigureBlockCompartmentFigure"
           figure="//@figures.0/@descriptors.11/@actualFigure/@children.1/@children.0"/>
     </descriptors>
+    <descriptors
+        name="BusinessProcedureFigure">
+      <actualFigure
+          xsi:type="gmfgraph:RoundedRectangle"
+          name="BusinessProcedureFigure"
+          cornerWidth="12"
+          cornerHeight="12">
+        <layout
+            xsi:type="gmfgraph:GridLayout"
+            numColumns="3">
+          <margins/>
+          <spacing/>
+        </layout>
+        <preferredSize
+            dx="265"
+            dy="43"/>
+        <children
+            xsi:type="gmfgraph:Label"
+            name="BusinessProcedureJoinFigure">
+          <layoutData
+              xsi:type="gmfgraph:GridLayoutData"
+              horizontalAlignment="BEGINNING">
+            <sizeHint
+                dx="43"
+                dy="43"/>
+          </layoutData>
+          <border
+              xsi:type="gmfgraph:MarginBorder">
+            <insets
+                top="1"
+                left="3"/>
+          </border>
+        </children>
+        <children
+            xsi:type="gmfgraph:Rectangle"
+            name="BusinessProcedureNameHolder"
+            outline="false"
+            fill="false">
+          <layoutData
+              xsi:type="gmfgraph:GridLayoutData"
+              grabExcessHorizontalSpace="true"
+              verticalAlignment="BEGINNING"/>
+          <layout
+              xsi:type="gmfgraph:GridLayout">
+            <margins/>
+            <spacing/>
+          </layout>
+          <border
+              xsi:type="gmfgraph:MarginBorder">
+            <insets
+                top="3"/>
+          </border>
+          <children
+              xsi:type="gmfgraph:Label"
+              name="BusinessProcedureNameFigure"
+              text="&lt;...>">
+            <layoutData
+                xsi:type="gmfgraph:GridLayoutData"
+                grabExcessHorizontalSpace="true"
+                verticalSpan="0"
+                horizontalSpan="0"/>
+            <font
+                xsi:type="gmfgraph:BasicFont"
+                height="10"
+                style="BOLD"/>
+          </children>
+        </children>
+        <children
+            xsi:type="gmfgraph:Label"
+            name="BusinessProcedureSplitFigure">
+          <layoutData
+              xsi:type="gmfgraph:GridLayoutData"
+              horizontalAlignment="END">
+            <sizeHint
+                dx="43"
+                dy="43"/>
+          </layoutData>
+          <border
+              xsi:type="gmfgraph:MarginBorder">
+            <insets
+                top="1"
+                left="1"/>
+          </border>
+        </children>
+      </actualFigure>
+      <accessors
+          accessor="getFigureBusinessProcedureNameFigure"
+          figure="//@figures.0/@descriptors.12/@actualFigure/@children.1/@children.0"/>
+      <accessors
+          accessor="getFigureBusinessProcedureJoinFigure"
+          figure="//@figures.0/@descriptors.12/@actualFigure/@children.0"/>
+      <accessors
+          accessor="getFigureBusinessProcedureSplitFigure"
+          figure="//@figures.0/@descriptors.12/@actualFigure/@children.2"/>
+    </descriptors>
   </figures>
   <nodes
       name="Program"
@@ -1338,6 +1433,10 @@
   <nodes
       name="Block"
       figure="BlockFigure"
+      resizeConstraint="EAST_WEST"/>
+  <nodes
+      name="BusinessProcedure"
+      figure="BusinessProcedureFigure"
       resizeConstraint="EAST_WEST"/>
   <connections
       name="Link"
@@ -1520,4 +1619,18 @@
       figure="WhileLoopFigure"
       elementIcon="false"
       accessor="//@figures.0/@descriptors.7/@accessors.8"/>
+  <labels
+      name="BusinessProcedureName"
+      figure="BusinessProcedureFigure"
+      accessor="//@figures.0/@descriptors.12/@accessors.0"/>
+  <labels
+      name="BusinessProcedureJoin"
+      figure="BusinessProcedureFigure"
+      affixedParentSide="WEST"
+      accessor="//@figures.0/@descriptors.12/@accessors.1"/>
+  <labels
+      name="BusinessProcedureSplit"
+      figure="BusinessProcedureFigure"
+      affixedParentSide="EAST"
+      accessor="//@figures.0/@descriptors.12/@accessors.2"/>
 </gmfgraph:Canvas>

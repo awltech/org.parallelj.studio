@@ -111,7 +111,13 @@
            filter="org.parallelj.designer.properties.filters.ColorPropertyFilter"
            id="org.parallelj.designer.properties.propertyColorSection"
            tab="Colors">
-		   </propertySection>			
+		   </propertySection>
+     <propertySection
+           class="org.parallelj.designer.properties.sections.BusinessProcedureBasePropertySection"
+           filter="org.parallelj.designer.properties.filters.BusinessProcedureBasePropertyFilter"
+           id="org.parallelj.section.BusinessProcedureBasePropertySection"
+           tab="Base">
+     </propertySection>			
 		</propertySections>
 	</extension>
 

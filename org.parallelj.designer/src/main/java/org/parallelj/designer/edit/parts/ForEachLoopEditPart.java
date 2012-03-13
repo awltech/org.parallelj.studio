@@ -357,6 +357,9 @@ public class ForEachLoopEditPart extends ShapeNodeEditPart {
 		if (targetEditPart instanceof BlockProcedureEditPart) {
 			types.add(ParallelJElementTypes.Link_4001);
 		}
+		if (targetEditPart instanceof BusinessProcedureEditPart) {
+			types.add(ParallelJElementTypes.Link_4001);
+		}
 		return types;
 	}
 
@@ -375,6 +378,7 @@ public class ForEachLoopEditPart extends ShapeNodeEditPart {
 			types.add(ParallelJElementTypes.Handler_3008);
 			types.add(ParallelJElementTypes.Block_3012);
 			types.add(ParallelJElementTypes.Procedure_3013);
+			types.add(ParallelJElementTypes.BusinessProcedure_3014);
 		}
 		return types;
 	}
@@ -403,6 +407,7 @@ public class ForEachLoopEditPart extends ShapeNodeEditPart {
 			types.add(ParallelJElementTypes.Handler_3008);
 			types.add(ParallelJElementTypes.Block_3012);
 			types.add(ParallelJElementTypes.Procedure_3013);
+			types.add(ParallelJElementTypes.BusinessProcedure_3014);
 		}
 		return types;
 	}

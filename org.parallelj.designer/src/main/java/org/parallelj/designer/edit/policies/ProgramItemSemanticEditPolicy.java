@@ -34,6 +34,7 @@ import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
 import org.parallelj.designer.edit.parts.BlockEditPart;
+import org.parallelj.designer.edit.parts.BusinessProcedureEditPart;
 import org.parallelj.designer.edit.parts.ConditionEditPart;
 import org.parallelj.designer.edit.parts.DataEditPart;
 import org.parallelj.designer.edit.parts.ForEachLoopEditPart;
@@ -367,6 +368,39 @@ public class ProgramItemSemanticEditPolicy extends
 						// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), cnode));
 						break;
 					case DataEditPart.VISUAL_ID:
+						cmd.add(new DestroyElementCommand(
+								new DestroyElementRequest(getEditingDomain(),
+										cnode.getElement(), false))); // directlyOwned: true
+						// don't need explicit deletion of cnode as parent's view deletion would clean child views as well 
+						// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), cnode));
+						break;
+					case BusinessProcedureEditPart.VISUAL_ID:
+						for (Iterator<?> it = cnode.getTargetEdges().iterator(); it
+								.hasNext();) {
+							Edge incomingLink = (Edge) it.next();
+							if (ParallelJVisualIDRegistry
+									.getVisualID(incomingLink) == LinkEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(
+										incomingLink.getElement(), false);
+								cmd.add(new DestroyElementCommand(r));
+								cmd.add(new DeleteCommand(getEditingDomain(),
+										incomingLink));
+								continue;
+							}
+						}
+						for (Iterator<?> it = cnode.getSourceEdges().iterator(); it
+								.hasNext();) {
+							Edge outgoingLink = (Edge) it.next();
+							if (ParallelJVisualIDRegistry
+									.getVisualID(outgoingLink) == LinkEditPart.VISUAL_ID) {
+								DestroyElementRequest r = new DestroyElementRequest(
+										outgoingLink.getElement(), false);
+								cmd.add(new DestroyElementCommand(r));
+								cmd.add(new DeleteCommand(getEditingDomain(),
+										outgoingLink));
+								continue;
+							}
+						}
 						cmd.add(new DestroyElementCommand(
 								new DestroyElementRequest(getEditingDomain(),
 										cnode.getElement(), false))); // directlyOwned: true

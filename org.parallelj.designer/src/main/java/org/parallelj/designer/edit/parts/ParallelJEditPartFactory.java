@@ -148,6 +148,12 @@ public class ParallelJEditPartFactory implements EditPartFactory {
 			case DataTypeEditPart.VISUAL_ID:
 				return new DataTypeEditPart(view);
 
+			case BusinessProcedureEditPart.VISUAL_ID:
+				return new BusinessProcedureEditPart(view);
+
+			case BusinessProcedureNameEditPart.VISUAL_ID:
+				return new BusinessProcedureNameEditPart(view);
+
 			case ProgramProgramCompartmentEditPart.VISUAL_ID:
 				return new ProgramProgramCompartmentEditPart(view);
 

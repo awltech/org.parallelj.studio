@@ -802,6 +802,62 @@
         </modelFacet>
       </labels>
     </childNodes>
+    <childNodes
+        visualID="3014"
+        editPartClassName="BusinessProcedureEditPart"
+        itemSemanticEditPolicyClassName="BusinessProcedureItemSemanticEditPolicy"
+        canonicalEditPolicyClassName="BusinessProcedureCanonicalEditPolicy"
+        graphicalNodeEditPolicyClassName="BusinessProcedureGraphicalNodeEditPolicy"
+        createCommandClassName="BusinessProcedureCreateCommand"
+        containers="//@diagram/@compartments.0">
+      <diagramRunTimeClass
+          href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+      <elementType
+          xsi:type="gmfgen:MetamodelType"
+          editHelperClassName="BusinessProcedureEditHelper"/>
+      <viewmap
+          xsi:type="gmfgen:InnerClassViewmap"
+          className="BusinessProcedureFigure"
+          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class BusinessProcedureFigure extends org.eclipse.draw2d.RoundedRectangle {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureBusinessProcedureNameFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureBusinessProcedureJoinFigure; &#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureBusinessProcedureSplitFigure; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public BusinessProcedureFigure() {&#xA;&#x9;&#x9;&#xA;&#x9;org.eclipse.draw2d.GridLayout layoutThis = new org.eclipse.draw2d.GridLayout();&#xA;&#x9;layoutThis.numColumns = 3;&#xA;&#x9;layoutThis.makeColumnsEqualWidth = true;&#xA;&#x9;layoutThis.horizontalSpacing = 0;&#xA;&#x9;layoutThis.verticalSpacing = 0;&#xA;&#x9;layoutThis.marginWidth = 0;&#xA;&#x9;layoutThis.marginHeight = 0;&#xA;&#x9;this.setLayoutManager(layoutThis);&#xA;&#xA;&#x9;&#x9;this.setCornerDimensions(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(12)&#xA;, getMapMode().DPtoLP(12)&#xA;));&#xA;this.setPreferredSize(new org.eclipse.draw2d.geometry.Dimension(getMapMode().DPtoLP(265)&#xA;, getMapMode().DPtoLP(43)&#xA;));&#xA;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureBusinessProcedureJoinFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureBusinessProcedureJoinFigure.setText(&quot;&quot;);&#xA;fFigureBusinessProcedureJoinFigure.setBorder(new org.eclipse.draw2d.MarginBorder(getMapMode().DPtoLP(1)&#xA;, getMapMode().DPtoLP(3)&#xA;, getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(0)&#xA;));&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureBusinessProcedureJoinFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureBusinessProcedureJoinFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureBusinessProcedureJoinFigure.horizontalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintFFigureBusinessProcedureJoinFigure.horizontalIndent = 0;&#xA;constraintFFigureBusinessProcedureJoinFigure.horizontalSpan = 1;&#xA;constraintFFigureBusinessProcedureJoinFigure.verticalSpan = 1;&#xA;constraintFFigureBusinessProcedureJoinFigure.grabExcessHorizontalSpace = false;&#xA;constraintFFigureBusinessProcedureJoinFigure.grabExcessVerticalSpace = false;&#xA;constraintFFigureBusinessProcedureJoinFigure.widthHint = 43;&#xA;constraintFFigureBusinessProcedureJoinFigure.heightHint = 43;&#xA;this.add(fFigureBusinessProcedureJoinFigure, constraintFFigureBusinessProcedureJoinFigure);&#xA;&#xA;&#xA;&#xA;&#xA;org.eclipse.draw2d.RectangleFigure businessProcedureNameHolder0 = new org.eclipse.draw2d.RectangleFigure();&#xA;businessProcedureNameHolder0.setFill(false);&#xA;businessProcedureNameHolder0.setOutline(false);&#xA;businessProcedureNameHolder0.setBorder(new org.eclipse.draw2d.MarginBorder(getMapMode().DPtoLP(3)&#xA;, getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(0)&#xA;));&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintBusinessProcedureNameHolder0 = new org.eclipse.draw2d.GridData();&#xA;constraintBusinessProcedureNameHolder0.verticalAlignment = org.eclipse.draw2d.GridData.BEGINNING;&#xA;constraintBusinessProcedureNameHolder0.horizontalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintBusinessProcedureNameHolder0.horizontalIndent = 0;&#xA;constraintBusinessProcedureNameHolder0.horizontalSpan = 1;&#xA;constraintBusinessProcedureNameHolder0.verticalSpan = 1;&#xA;constraintBusinessProcedureNameHolder0.grabExcessHorizontalSpace = true;&#xA;constraintBusinessProcedureNameHolder0.grabExcessVerticalSpace = false;&#xA;this.add(businessProcedureNameHolder0, constraintBusinessProcedureNameHolder0);&#xA;&#xA;&#xA;&#x9;org.eclipse.draw2d.GridLayout layoutBusinessProcedureNameHolder0 = new org.eclipse.draw2d.GridLayout();&#xA;&#x9;layoutBusinessProcedureNameHolder0.numColumns = 1;&#xA;&#x9;layoutBusinessProcedureNameHolder0.makeColumnsEqualWidth = true;&#xA;&#x9;layoutBusinessProcedureNameHolder0.horizontalSpacing = 0;&#xA;&#x9;layoutBusinessProcedureNameHolder0.verticalSpacing = 0;&#xA;&#x9;layoutBusinessProcedureNameHolder0.marginWidth = 0;&#xA;&#x9;layoutBusinessProcedureNameHolder0.marginHeight = 0;&#xA;&#x9;businessProcedureNameHolder0.setLayoutManager(layoutBusinessProcedureNameHolder0);&#xA;&#xA;&#xA;&#xA;fFigureBusinessProcedureNameFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureBusinessProcedureNameFigure.setText(&quot;&lt;...>&quot;);&#xA;&#xA;fFigureBusinessProcedureNameFigure.setFont(FFIGUREBUSINESSPROCEDURENAMEFIGURE_FONT);&#xA;&#xA;&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureBusinessProcedureNameFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureBusinessProcedureNameFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureBusinessProcedureNameFigure.horizontalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureBusinessProcedureNameFigure.horizontalIndent = 0;&#xA;constraintFFigureBusinessProcedureNameFigure.horizontalSpan = 0;&#xA;constraintFFigureBusinessProcedureNameFigure.verticalSpan = 0;&#xA;constraintFFigureBusinessProcedureNameFigure.grabExcessHorizontalSpace = true;&#xA;constraintFFigureBusinessProcedureNameFigure.grabExcessVerticalSpace = false;&#xA;businessProcedureNameHolder0.add(fFigureBusinessProcedureNameFigure, constraintFFigureBusinessProcedureNameFigure);&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;fFigureBusinessProcedureSplitFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureBusinessProcedureSplitFigure.setText(&quot;&quot;);&#xA;fFigureBusinessProcedureSplitFigure.setBorder(new org.eclipse.draw2d.MarginBorder(getMapMode().DPtoLP(1)&#xA;, getMapMode().DPtoLP(1)&#xA;, getMapMode().DPtoLP(0)&#xA;, getMapMode().DPtoLP(0)&#xA;));&#xA;&#xA;&#xA;org.eclipse.draw2d.GridData constraintFFigureBusinessProcedureSplitFigure = new org.eclipse.draw2d.GridData();&#xA;constraintFFigureBusinessProcedureSplitFigure.verticalAlignment = org.eclipse.draw2d.GridData.CENTER;&#xA;constraintFFigureBusinessProcedureSplitFigure.horizontalAlignment = org.eclipse.draw2d.GridData.END;&#xA;constraintFFigureBusinessProcedureSplitFigure.horizontalIndent = 0;&#xA;constraintFFigureBusinessProcedureSplitFigure.horizontalSpan = 1;&#xA;constraintFFigureBusinessProcedureSplitFigure.verticalSpan = 1;&#xA;constraintFFigureBusinessProcedureSplitFigure.grabExcessHorizontalSpace = false;&#xA;constraintFFigureBusinessProcedureSplitFigure.grabExcessVerticalSpace = false;&#xA;constraintFFigureBusinessProcedureSplitFigure.widthHint = 43;&#xA;constraintFFigureBusinessProcedureSplitFigure.heightHint = 43;&#xA;this.add(fFigureBusinessProcedureSplitFigure, constraintFFigureBusinessProcedureSplitFigure);&#xA;&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureBusinessProcedureNameFigure() {&#xA;&#x9;&#x9;return fFigureBusinessProcedureNameFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureBusinessProcedureJoinFigure() {&#xA;&#x9;&#x9;return fFigureBusinessProcedureJoinFigure;&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureBusinessProcedureSplitFigure() {&#xA;&#x9;&#x9;return fFigureBusinessProcedureSplitFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;/**&#xA; * @generated&#xA; */&#xA;static final org.eclipse.swt.graphics.Font FFIGUREBUSINESSPROCEDURENAMEFIGURE_FONT = new org.eclipse.swt.graphics.Font(org.eclipse.swt.widgets.Display.getCurrent(), org.eclipse.swt.widgets.Display.getDefault().getSystemFont().getFontData()[0].getName(), 10, org.eclipse.swt.SWT.BOLD);&#xA;&#xA;">
+        <attributes
+            xsi:type="gmfgen:ResizeConstraints"
+            resizeHandles="24"/>
+        <attributes
+            xsi:type="gmfgen:DefaultSizeAttributes"
+            width="265"
+            height="43"/>
+      </viewmap>
+      <modelFacet>
+        <metaClass
+            href="../../org.parallelj.model/model/parallelj.genmodel#//parallelj/BusinessProcedure"/>
+        <containmentMetaFeature
+            href="../../org.parallelj.model/model/parallelj.genmodel#//parallelj/Program/elements"/>
+        <childMetaFeature
+            href="../../org.parallelj.model/model/parallelj.genmodel#//parallelj/Program/elements"/>
+      </modelFacet>
+      <labels
+          visualID="5025"
+          editPartClassName="BusinessProcedureNameEditPart"
+          itemSemanticEditPolicyClassName="BusinessProcedureNameItemSemanticEditPolicy"
+          elementIcon="true">
+        <diagramRunTimeClass
+            href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap
+            xsi:type="gmfgen:ParentAssignedViewmap"
+            getterName="getFigureBusinessProcedureNameFigure"
+            figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel">
+          <attributes
+              xsi:type="gmfgen:StyleAttributes"
+              fixedFont="true"/>
+        </viewmap>
+        <modelFacet
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.1">
+          <metaFeatures
+              href="../../org.parallelj.model/model/parallelj.genmodel#//parallelj/NamedElement/name"/>
+        </modelFacet>
+      </labels>
+    </childNodes>
     <topLevelNodes
         visualID="2001"
         editPartClassName="ProgramEditPart"
@@ -917,7 +973,7 @@
         itemSemanticEditPolicyClassName="ProgramProgramCompartmentItemSemanticEditPolicy"
         notationViewFactoryClassName="ProgramProgramCompartmentViewFactory"
         canonicalEditPolicyClassName="ProgramProgramCompartmentCanonicalEditPolicy"
-        childNodes="//@diagram/@childNodes.0 //@diagram/@childNodes.1 //@diagram/@childNodes.2 //@diagram/@childNodes.3 //@diagram/@childNodes.4 //@diagram/@childNodes.5 //@diagram/@childNodes.6 //@diagram/@childNodes.7 //@diagram/@childNodes.8 //@diagram/@childNodes.10"
+        childNodes="//@diagram/@childNodes.0 //@diagram/@childNodes.1 //@diagram/@childNodes.2 //@diagram/@childNodes.3 //@diagram/@childNodes.4 //@diagram/@childNodes.5 //@diagram/@childNodes.6 //@diagram/@childNodes.7 //@diagram/@childNodes.8 //@diagram/@childNodes.10 //@diagram/@childNodes.11"
         title="ProgramCompartment"
         canCollapse="false"
         needsTitle="false"
@@ -1104,6 +1160,9 @@
         parent="//@diagram/@topLevelNodes.0"
         child="//@diagram/@childNodes.10"/>
     <childReferences
+        parent="//@diagram/@topLevelNodes.0"
+        child="//@diagram/@childNodes.11"/>
+    <childReferences
         parent="//@diagram"
         child="//@diagram/@topLevelNodes.0"/>
     <childReferences
@@ -1221,6 +1280,18 @@
         groupIcon="icons/incomingLinksNavigatorGroup.gif"/>
     <childReferences
         parent="//@diagram/@links.0"
+        child="//@diagram/@childNodes.11"
+        referenceType="out_target"
+        groupName="target"
+        groupIcon="icons/linkTargetNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@childNodes.11"
+        child="//@diagram/@links.0"
+        referenceType="in_source"
+        groupName="incoming links"
+        groupIcon="icons/incomingLinksNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@links.0"
         child="//@diagram/@childNodes.0"
         referenceType="in_source"
         groupName="source"
@@ -1327,6 +1398,18 @@
         referenceType="out_target"
         groupName="outgoing links"
         groupIcon="icons/outgoingLinksNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@links.0"
+        child="//@diagram/@childNodes.11"
+        referenceType="in_source"
+        groupName="source"
+        groupIcon="icons/linkSourceNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@childNodes.11"
+        child="//@diagram/@links.0"
+        referenceType="out_target"
+        groupName="outgoing links"
+        groupIcon="icons/outgoingLinksNavigatorGroup.gif"/>
   </navigator>
   <diagramUpdater/>
   <propertySheet>
@@ -1355,7 +1438,7 @@
         xsi:type="gmfgen:GenExpressionInterpreter">
       <expressions
           xsi:type="gmfgen:GenConstraint"
-          body="not self.oclIsTypeOf(ForEachLoop) and not self.oclIsTypeOf(WhileLoop) and not self.oclIsTypeOf(Handler) and not self.oclIsTypeOf(Block)"/>
+          body="not self.oclIsTypeOf(ForEachLoop) and not self.oclIsTypeOf(WhileLoop) and not self.oclIsTypeOf(Handler) and not self.oclIsTypeOf(Block) and not self.oclIsTypeOf(BusinessProcedure)"/>
       <expressions
           xsi:type="gmfgen:GenConstraint"
           body="not oclIsKindOf(OutputCondition) and not eContainer().oclIsKindOf(Block) and not oclIsKindOf(Data) and not oclIsKindOf(Predicate) and not oclIsKindOf(Block)"/>
@@ -1371,7 +1454,7 @@
         uses="//@diagram/@childNodes.0/@labels.0/@modelFacet //@diagram/@childNodes.1/@labels.0/@modelFacet //@diagram/@childNodes.5/@labels.2/@modelFacet //@diagram/@childNodes.6/@labels.2/@modelFacet //@diagram/@childNodes.8/@labels.1/@modelFacet //@diagram/@links.0/@labels.0/@modelFacet"/>
     <implementations
         xsi:type="gmfgen:PredefinedParser"
-        uses="//@diagram/@childNodes.2/@labels.0/@modelFacet //@diagram/@childNodes.3/@labels.0/@modelFacet //@diagram/@childNodes.4/@labels.0/@modelFacet //@diagram/@childNodes.4/@labels.1/@modelFacet //@diagram/@childNodes.5/@labels.0/@modelFacet //@diagram/@childNodes.5/@labels.1/@modelFacet //@diagram/@childNodes.6/@labels.0/@modelFacet //@diagram/@childNodes.6/@labels.1/@modelFacet //@diagram/@childNodes.7/@labels.0/@modelFacet //@diagram/@childNodes.9/@labels.0/@modelFacet //@diagram/@childNodes.9/@labels.1/@modelFacet //@diagram/@childNodes.8/@labels.0/@modelFacet //@diagram/@childNodes.10/@labels.0/@modelFacet //@diagram/@childNodes.10/@labels.1/@modelFacet //@diagram/@topLevelNodes.0/@labels.0/@modelFacet"/>
+        uses="//@diagram/@childNodes.2/@labels.0/@modelFacet //@diagram/@childNodes.3/@labels.0/@modelFacet //@diagram/@childNodes.4/@labels.0/@modelFacet //@diagram/@childNodes.4/@labels.1/@modelFacet //@diagram/@childNodes.5/@labels.0/@modelFacet //@diagram/@childNodes.5/@labels.1/@modelFacet //@diagram/@childNodes.6/@labels.0/@modelFacet //@diagram/@childNodes.6/@labels.1/@modelFacet //@diagram/@childNodes.7/@labels.0/@modelFacet //@diagram/@childNodes.9/@labels.0/@modelFacet //@diagram/@childNodes.9/@labels.1/@modelFacet //@diagram/@childNodes.8/@labels.0/@modelFacet //@diagram/@childNodes.10/@labels.0/@modelFacet //@diagram/@childNodes.10/@labels.1/@modelFacet //@diagram/@childNodes.11/@labels.0/@modelFacet //@diagram/@topLevelNodes.0/@labels.0/@modelFacet"/>
   </labelParsers>
   <contextMenus
       context="//@diagram">

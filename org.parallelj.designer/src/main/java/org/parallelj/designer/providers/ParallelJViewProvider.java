@@ -69,6 +69,8 @@ import org.parallelj.designer.edit.parts.BlockNameEditPart;
 import org.parallelj.designer.edit.parts.BlockProcedureEditPart;
 import org.parallelj.designer.edit.parts.BlockProcedureExecutableEditPart;
 import org.parallelj.designer.edit.parts.BlockProcedureNameEditPart;
+import org.parallelj.designer.edit.parts.BusinessProcedureEditPart;
+import org.parallelj.designer.edit.parts.BusinessProcedureNameEditPart;
 import org.parallelj.designer.edit.parts.ConditionEditPart;
 import org.parallelj.designer.edit.parts.ConditionNameEditPart;
 import org.parallelj.designer.edit.parts.DataEditPart;
@@ -205,6 +207,7 @@ public class ParallelJViewProvider extends AbstractProvider implements
 				case HandlerEditPart.VISUAL_ID:
 				case BlockEditPart.VISUAL_ID:
 				case DataEditPart.VISUAL_ID:
+				case BusinessProcedureEditPart.VISUAL_ID:
 				case BlockProcedureEditPart.VISUAL_ID:
 					if (domainElement == null
 							|| visualID != ParallelJVisualIDRegistry
@@ -229,7 +232,8 @@ public class ParallelJViewProvider extends AbstractProvider implements
 				|| HandlerEditPart.VISUAL_ID == visualID
 				|| BlockEditPart.VISUAL_ID == visualID
 				|| BlockProcedureEditPart.VISUAL_ID == visualID
-				|| DataEditPart.VISUAL_ID == visualID;
+				|| DataEditPart.VISUAL_ID == visualID
+				|| BusinessProcedureEditPart.VISUAL_ID == visualID;
 	}
 
 	/**
@@ -322,6 +326,9 @@ public class ParallelJViewProvider extends AbstractProvider implements
 		case DataEditPart.VISUAL_ID:
 			return createData_3011(domainElement, containerView, index,
 					persisted, preferencesHint);
+		case BusinessProcedureEditPart.VISUAL_ID:
+			return createBusinessProcedure_3014(domainElement, containerView,
+					index, persisted, preferencesHint);
 		}
 		// can't happen, provided #provides(CreateNodeViewOperation) is correct
 		return null;
@@ -911,6 +918,52 @@ public class ParallelJViewProvider extends AbstractProvider implements
 				ParallelJVisualIDRegistry.getType(DataNameEditPart.VISUAL_ID));
 		Node label5019 = createLabel(node,
 				ParallelJVisualIDRegistry.getType(DataTypeEditPart.VISUAL_ID));
+		return node;
+	}
+
+	/**
+	 * @generated
+	 */
+	public Node createBusinessProcedure_3014(EObject domainElement,
+			View containerView, int index, boolean persisted,
+			PreferencesHint preferencesHint) {
+		Shape node = NotationFactory.eINSTANCE.createShape();
+		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
+		node.setType(ParallelJVisualIDRegistry
+				.getType(BusinessProcedureEditPart.VISUAL_ID));
+		ViewUtil.insertChildView(containerView, node, index, persisted);
+		node.setElement(domainElement);
+		// initializeFromPreferences 
+		final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint
+				.getPreferenceStore();
+
+		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(
+				prefStore, IPreferenceConstants.PREF_LINE_COLOR);
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
+		FontStyle nodeFontStyle = (FontStyle) node
+				.getStyle(NotationPackage.Literals.FONT_STYLE);
+		if (nodeFontStyle != null) {
+			FontData fontData = PreferenceConverter.getFontData(prefStore,
+					IPreferenceConstants.PREF_DEFAULT_FONT);
+			nodeFontStyle.setFontName(fontData.getName());
+			nodeFontStyle.setFontHeight(fontData.getHeight());
+			nodeFontStyle.setBold((fontData.getStyle() & SWT.BOLD) != 0);
+			nodeFontStyle.setItalic((fontData.getStyle() & SWT.ITALIC) != 0);
+			org.eclipse.swt.graphics.RGB fontRGB = PreferenceConverter
+					.getColor(prefStore, IPreferenceConstants.PREF_FONT_COLOR);
+			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB)
+					.intValue());
+		}
+		org.eclipse.swt.graphics.RGB fillRGB = PreferenceConverter.getColor(
+				prefStore, IPreferenceConstants.PREF_FILL_COLOR);
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getFillStyle_FillColor(),
+				FigureUtilities.RGBToInteger(fillRGB));
+		Node label5025 = createLabel(node,
+				ParallelJVisualIDRegistry
+						.getType(BusinessProcedureNameEditPart.VISUAL_ID));
 		return node;
 	}
 
