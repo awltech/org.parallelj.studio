@@ -402,6 +402,23 @@
     <element xmi:type="ecore:EEnum" href="parallelj.ecore#//ExecutionMode"/>
     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zmuSglCOEeGaOvPc5RpoLw" x="687" y="502"/>
   </children>
+  <children xmi:type="notation:Shape" xmi:id="_rj4T0Wc_EeGTfNN4fUrlKA" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_rj4T02c_EeGTfNN4fUrlKA" type="5001"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_rj4T1Gc_EeGTfNN4fUrlKA" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_rj4T1Wc_EeGTfNN4fUrlKA"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_rj4T1mc_EeGTfNN4fUrlKA"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_rj4T12c_EeGTfNN4fUrlKA" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_rj4T2Gc_EeGTfNN4fUrlKA"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_rj4T2Wc_EeGTfNN4fUrlKA"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_rj4T2mc_EeGTfNN4fUrlKA" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_rj4T22c_EeGTfNN4fUrlKA"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_rj4T3Gc_EeGTfNN4fUrlKA"/>
+    </children>
+    <element xmi:type="ecore:EClass" href="parallelj.ecore#//BusinessProcedure"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_rj4T0mc_EeGTfNN4fUrlKA" x="264" y="624"/>
+  </children>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_AOVD0p8cEd-XM-YWhlSJ4A"/>
   <element xmi:type="ecore:EPackage" href="parallelj.ecore#/"/>
   <edges xmi:type="notation:Connector" xmi:id="_8LkjkJ8cEd-XM-YWhlSJ4A" type="4004" source="_zz0OcJ8cEd-XM-YWhlSJ4A" target="_yuSw0J8cEd-XM-YWhlSJ4A">
@@ -696,5 +713,12 @@
     <element xmi:type="ecore:EReference" href="parallelj.ecore#//ForEachLoop/iterable"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_sD51UiJWEeCDRczUB-VnyA" points="[0, -26, -134, 276]$[0, -133, -134, 169]$[134, -133, 0, 169]$[134, -282, 0, 20]"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_sEDmUCJWEeCDRczUB-VnyA" id="(0.1981981981981982,0.6610169491525424)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_5mq5IGc_EeGTfNN4fUrlKA" type="4004" source="_rj4T0Wc_EeGTfNN4fUrlKA" target="_zz0OcJ8cEd-XM-YWhlSJ4A">
+    <styles xmi:type="notation:FontStyle" xmi:id="_5mq5IWc_EeGTfNN4fUrlKA"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_5mq5Imc_EeGTfNN4fUrlKA" points="[1, -8, 0, 46]$[-9, -34, -10, 20]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5mq5I2c_EeGTfNN4fUrlKA" id="(0.3416666666666667,0.15384615384615385)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5mq5JGc_EeGTfNN4fUrlKA" id="(0.33884297520661155,0.8373983739837398)"/>
   </edges>
 </notation:Diagram>

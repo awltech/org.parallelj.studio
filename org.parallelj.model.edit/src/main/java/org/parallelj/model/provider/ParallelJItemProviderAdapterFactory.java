@@ -483,6 +483,29 @@ public class ParallelJItemProviderAdapterFactory extends ParallelJAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.parallelj.model.BusinessProcedure} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected BusinessProcedureItemProvider businessProcedureItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.parallelj.model.BusinessProcedure}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createBusinessProcedureAdapter() {
+		if (businessProcedureItemProvider == null) {
+			businessProcedureItemProvider = new BusinessProcedureItemProvider(this);
+		}
+
+		return businessProcedureItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -598,6 +621,7 @@ public class ParallelJItemProviderAdapterFactory extends ParallelJAdapterFactory
 		if (handlerItemProvider != null) handlerItemProvider.dispose();
 		if (blockItemProvider != null) blockItemProvider.dispose();
 		if (namedElementItemProvider != null) namedElementItemProvider.dispose();
+		if (businessProcedureItemProvider != null) businessProcedureItemProvider.dispose();
 	}
 
 }

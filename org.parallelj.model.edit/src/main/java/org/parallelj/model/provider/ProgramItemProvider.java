@@ -293,6 +293,11 @@ public class ProgramItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
+				(ParallelJPackage.Literals.PROGRAM__ELEMENTS,
+				 ParallelJFactory.eINSTANCE.createBusinessProcedure()));
+
+		newChildDescriptors.add
+			(createChildParameter
 				(ParallelJPackage.Literals.PROGRAM__DATA,
 				 ParallelJFactory.eINSTANCE.createData()));
 	}

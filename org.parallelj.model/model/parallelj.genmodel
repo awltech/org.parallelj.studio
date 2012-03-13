@@ -3,10 +3,9 @@
     xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.parallelj.model/src/main/java"
     editDirectory="/org.parallelj.model.edit/src/main/java" editorDirectory="/org.parallelj.model.editor/src/main/java"
-    modelPluginID="org.parallelj.model" modelName="ParallelJ" editPluginClass="org.parallelj.model.provider.ParallelJEditPlugin"
-    editorPluginClass="org.parallelj.model.presentation.ParallelJEditorPlugin" testsDirectory="/org.parallelj.model.tests/src/main/java"
-    testSuiteClass="org.parallelj.model.tests.ParallelJAllTests" importerID="org.eclipse.emf.importer.ecore"
-    complianceLevel="6.0" copyrightFields="false">
+    modelPluginID="org.parallelj.model" modelName="ParallelJ" editorPluginClass="org.parallelj.model.presentation.ParallelJEditorPlugin"
+    testsDirectory="/org.parallelj.model.tests/src/main/java" testSuiteClass="org.parallelj.model.tests.ParallelJAllTests"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false">
   <foreignModel>parallelj.ecore</foreignModel>
   <genPackages prefix="ParallelJ" basePackage="org" disposableProviderFactory="true"
       interfacePackageSuffix="model" metaDataPackageSuffix="model" classPackageSuffix="model.impl"
@@ -81,5 +80,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute parallelj.ecore#//NamedElement/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute parallelj.ecore#//NamedElement/description"/>
     </genClasses>
+    <genClasses ecoreClass="parallelj.ecore#//BusinessProcedure"/>
   </genPackages>
 </genmodel:GenModel>

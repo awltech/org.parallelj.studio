@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.parallelj.model.Block;
+import org.parallelj.model.BusinessProcedure;
 import org.parallelj.model.Condition;
 import org.parallelj.model.Data;
 import org.parallelj.model.Element;
@@ -177,6 +178,13 @@ public class ParallelJPackageImpl extends EPackageImpl implements ParallelJPacka
 	 * @generated
 	 */
 	private EClass namedElementEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass businessProcedureEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -643,6 +651,15 @@ public class ParallelJPackageImpl extends EPackageImpl implements ParallelJPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getBusinessProcedure() {
+		return businessProcedureEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getSplitType() {
 		return splitTypeEEnum;
 	}
@@ -752,6 +769,8 @@ public class ParallelJPackageImpl extends EPackageImpl implements ParallelJPacka
 		createEAttribute(namedElementEClass, NAMED_ELEMENT__NAME);
 		createEAttribute(namedElementEClass, NAMED_ELEMENT__DESCRIPTION);
 
+		businessProcedureEClass = createEClass(BUSINESS_PROCEDURE);
+
 		// Create enums
 		splitTypeEEnum = createEEnum(SPLIT_TYPE);
 		joinTypeEEnum = createEEnum(JOIN_TYPE);
@@ -799,6 +818,7 @@ public class ParallelJPackageImpl extends EPackageImpl implements ParallelJPacka
 		dataEClass.getESuperTypes().add(this.getNamedElement());
 		handlerEClass.getESuperTypes().add(this.getProcedure());
 		blockEClass.getESuperTypes().add(this.getProcedure());
+		businessProcedureEClass.getESuperTypes().add(this.getProcedure());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(programEClass, Program.class, "Program", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -859,6 +879,8 @@ public class ParallelJPackageImpl extends EPackageImpl implements ParallelJPacka
 		initEClass(namedElementEClass, NamedElement.class, "NamedElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNamedElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getNamedElement_Description(), ecorePackage.getEString(), "description", null, 0, 1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(businessProcedureEClass, BusinessProcedure.class, "BusinessProcedure", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize enums and add enum literals
 		initEEnum(splitTypeEEnum, SplitType.class, "SplitType");

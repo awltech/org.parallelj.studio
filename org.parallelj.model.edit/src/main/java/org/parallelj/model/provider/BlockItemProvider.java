@@ -190,6 +190,11 @@ public class BlockItemProvider
 			(createChildParameter
 				(ParallelJPackage.Literals.BLOCK__PROCEDURES,
 				 ParallelJFactory.eINSTANCE.createBlock()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ParallelJPackage.Literals.BLOCK__PROCEDURES,
+				 ParallelJFactory.eINSTANCE.createBusinessProcedure()));
 	}
 
 }

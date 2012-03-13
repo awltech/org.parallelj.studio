@@ -93,6 +93,7 @@ public class ParallelJFactoryImpl extends EFactoryImpl implements ParallelJFacto
 			case ParallelJPackage.HANDLER: return createHandler();
 			case ParallelJPackage.BLOCK: return createBlock();
 			case ParallelJPackage.NAMED_ELEMENT: return createNamedElement();
+			case ParallelJPackage.BUSINESS_PROCEDURE: return createBusinessProcedure();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -304,6 +305,16 @@ public class ParallelJFactoryImpl extends EFactoryImpl implements ParallelJFacto
 	public NamedElement createNamedElement() {
 		NamedElementImpl namedElement = new NamedElementImpl();
 		return namedElement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public BusinessProcedure createBusinessProcedure() {
+		BusinessProcedureImpl businessProcedure = new BusinessProcedureImpl();
+		return businessProcedure;
 	}
 
 	/**

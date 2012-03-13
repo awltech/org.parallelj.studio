@@ -1182,6 +1182,106 @@ public interface ParallelJPackage extends EPackage {
 	int BLOCK_FEATURE_COUNT = PROCEDURE_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link org.parallelj.model.impl.BusinessProcedureImpl <em>Business Procedure</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.parallelj.model.impl.BusinessProcedureImpl
+	 * @see org.parallelj.model.impl.ParallelJPackageImpl#getBusinessProcedure()
+	 * @generated
+	 */
+	int BUSINESS_PROCEDURE = 17;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUSINESS_PROCEDURE__NAME = PROCEDURE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUSINESS_PROCEDURE__DESCRIPTION = PROCEDURE__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Input Links</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUSINESS_PROCEDURE__INPUT_LINKS = PROCEDURE__INPUT_LINKS;
+
+	/**
+	 * The feature id for the '<em><b>Output Links</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUSINESS_PROCEDURE__OUTPUT_LINKS = PROCEDURE__OUTPUT_LINKS;
+
+	/**
+	 * The feature id for the '<em><b>Executable</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUSINESS_PROCEDURE__EXECUTABLE = PROCEDURE__EXECUTABLE;
+
+	/**
+	 * The feature id for the '<em><b>Join</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUSINESS_PROCEDURE__JOIN = PROCEDURE__JOIN;
+
+	/**
+	 * The feature id for the '<em><b>Split</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUSINESS_PROCEDURE__SPLIT = PROCEDURE__SPLIT;
+
+	/**
+	 * The feature id for the '<em><b>Capacity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUSINESS_PROCEDURE__CAPACITY = PROCEDURE__CAPACITY;
+
+	/**
+	 * The feature id for the '<em><b>Execution Mode</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUSINESS_PROCEDURE__EXECUTION_MODE = PROCEDURE__EXECUTION_MODE;
+
+	/**
+	 * The number of structural features of the '<em>Business Procedure</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUSINESS_PROCEDURE_FEATURE_COUNT = PROCEDURE_FEATURE_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.parallelj.model.SplitType <em>Split Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1189,7 +1289,7 @@ public interface ParallelJPackage extends EPackage {
 	 * @see org.parallelj.model.impl.ParallelJPackageImpl#getSplitType()
 	 * @generated
 	 */
-	int SPLIT_TYPE = 17;
+	int SPLIT_TYPE = 18;
 
 	/**
 	 * The meta object id for the '{@link org.parallelj.model.JoinType <em>Join Type</em>}' enum.
@@ -1199,7 +1299,7 @@ public interface ParallelJPackage extends EPackage {
 	 * @see org.parallelj.model.impl.ParallelJPackageImpl#getJoinType()
 	 * @generated
 	 */
-	int JOIN_TYPE = 18;
+	int JOIN_TYPE = 19;
 
 
 	/**
@@ -1210,7 +1310,7 @@ public interface ParallelJPackage extends EPackage {
 	 * @see org.parallelj.model.impl.ParallelJPackageImpl#getExecutionMode()
 	 * @generated
 	 */
-	int EXECUTION_MODE = 19;
+	int EXECUTION_MODE = 20;
 
 
 	/**
@@ -1659,6 +1759,16 @@ public interface ParallelJPackage extends EPackage {
 	EAttribute getNamedElement_Description();
 
 	/**
+	 * Returns the meta object for class '{@link org.parallelj.model.BusinessProcedure <em>Business Procedure</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Business Procedure</em>'.
+	 * @see org.parallelj.model.BusinessProcedure
+	 * @generated
+	 */
+	EClass getBusinessProcedure();
+
+	/**
 	 * Returns the meta object for enum '{@link org.parallelj.model.SplitType <em>Split Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2079,6 +2189,16 @@ public interface ParallelJPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute NAMED_ELEMENT__DESCRIPTION = eINSTANCE.getNamedElement_Description();
+
+		/**
+		 * The meta object literal for the '{@link org.parallelj.model.impl.BusinessProcedureImpl <em>Business Procedure</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.parallelj.model.impl.BusinessProcedureImpl
+		 * @see org.parallelj.model.impl.ParallelJPackageImpl#getBusinessProcedure()
+		 * @generated
+		 */
+		EClass BUSINESS_PROCEDURE = eINSTANCE.getBusinessProcedure();
 
 		/**
 		 * The meta object literal for the '{@link org.parallelj.model.SplitType <em>Split Type</em>}' enum.

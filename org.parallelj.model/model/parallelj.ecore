@@ -90,4 +90,5 @@
     <eLiterals name="ITERATIVE" value="1"/>
     <eLiterals name="STREAM" value="2"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BusinessProcedure" eSuperTypes="#//Procedure"/>
 </ecore:EPackage>
