@@ -1,5 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
+   <extension
+         point="org.eclipse.ui.bindings">
+         <key
+            commandId="GenerateCodeFromShortCut"
+            contextId="org.parallelj.designer.ui.diagramContext"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+M2+G">
+      </key>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="org.parallelj.codegen.GenerateCodeFromShortCutKey"
+            id="GenerateCodeFromShortCut"
+            name="Generate Code From KeyBoard ShortCut">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+         <objectContribution
+            adaptable="false"
+            id="ObjectContributionGenerateCode"
+            objectClass="org.eclipse.gef.GraphicalEditPart">
+         <menu
+               id="org.eclipse.emf.validationMenuID"
+               label="ParallelJ">
+            <separator
+                  name="CodeGenSeparator">
+            </separator>
+         </menu>
+         <action
+               class="org.parallelj.codegen.GenerateCodeAction"
+               icon="icons/obj16/pjgen-16.png"
+               id="GenerateCode"
+               label="Generate Code"
+               menubarPath="org.eclipse.emf.validationMenuID/CodeGenSeparator"
+               style="push">
+         </action>
+         <visibility>
+               <objectClass
+                     name="org.parallelj.designer.edit.parts.SpecificationEditPart">
+               </objectClass>
+         </visibility>
+      </objectContribution>
+   </extension>
 
 </plugin>

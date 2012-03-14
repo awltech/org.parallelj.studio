@@ -317,31 +317,6 @@
       </objectContribution>
       <objectContribution
             adaptable="false"
-            id="ObjectContributionGenerateCode"
-            objectClass="org.eclipse.gef.GraphicalEditPart">
-         <menu
-               id="org.eclipse.emf.validationMenuID"
-               label="ParallelJ">
-            <separator
-                  name="CodeGenSeparator">
-            </separator>
-         </menu>
-         <action
-               class="org.parallelj.designer.extension.actions.GenerateCodeAction"
-               icon="icons/obj16/pjgen-16.png"
-               id="GenerateCode"
-               label="Generate Code"
-               menubarPath="org.eclipse.emf.validationMenuID/CodeGenSeparator"
-               style="push">
-         </action>
-         <visibility>
-               <objectClass
-                     name="org.parallelj.designer.edit.parts.SpecificationEditPart">
-               </objectClass>
-         </visibility>
-      </objectContribution>
-      <objectContribution
-            adaptable="false"
             id="ObjectContributionOpenJavaFile"
             objectClass="org.parallelj.designer.edit.parts.ProgramEditPart">
          <menu
@@ -371,12 +346,6 @@
     <extension
          point="org.eclipse.ui.bindings">
       <key
-            commandId="GenerateCodeFromShortCut"
-            contextId="org.parallelj.designer.ui.diagramContext"
-            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
-            sequence="M1+M2+G">
-      </key>
-      <key
             commandId="OpenJavaFile"
             contextId="org.parallelj.designer.ui.diagramContext"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
@@ -385,11 +354,6 @@
    </extension>
    <extension
          point="org.eclipse.ui.commands">
-      <command
-            defaultHandler="org.parallelj.designer.extension.command.GenerateCodeFromShortCutKey"
-            id="GenerateCodeFromShortCut"
-            name="Generate Code From KeyBoard ShortCut">
-      </command>
       <command
             defaultHandler="org.parallelj.designer.extension.command.OpenJavaFileFromShortCutKey"
             id="OpenJavaFile"
