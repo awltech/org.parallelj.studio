@@ -475,9 +475,6 @@
                id="org.eclipse.emf.validationMenuID"
                label="ParallelJ">
             <separator name="forCreation"/>
-            <separator
-                  name="forGeneration">
-            </separator>
          </menu>
          <action
                class="org.parallelj.designer.validation.actions.NewParallelJDiagramAction"
@@ -486,14 +483,6 @@
                id="newParallelJDiagramFromProject"
                label="Create New ParallelJ Diagram"
                menubarPath="org.eclipse.emf.validationMenuID/forCreation"/>
-         <action
-               class="org.parallelj.designer.validation.actions.GenerateCodeFromProjectAction"
-               enablesFor="1"
-               icon="icons/elcl16/pjgen-16.png"
-               id="generateJavaCodeFromProject"
-               label="Generate Code From Diagrams"
-               menubarPath="org.eclipse.emf.validationMenuID/forGeneration">
-         </action>
          <visibility>
             <objectState
                   name="projectNature"
@@ -509,9 +498,6 @@
           <separator
                 name="forCreation">
           </separator>
-          <separator
-                name="forGeneration">
-          </separator>
        </menu>
        <action
              class="org.parallelj.designer.validation.actions.NewParallelJDiagramAction"
@@ -520,14 +506,6 @@
              id="newParallelJDiagramFromProject"
              label="Create New ParallelJ Diagram"
              menubarPath="org.eclipse.emf.validationMenuID/forCreation">
-       </action>
-       <action
-             class="org.parallelj.designer.validation.actions.GenerateCodeFromProjectAction"
-             enablesFor="1"
-             icon="icons/elcl16/pjgen-16.png"
-             id="generateJavaCodeFromProject"
-             label="Generate Code From Diagrams"
-             menubarPath="org.eclipse.emf.validationMenuID/forGeneration">
        </action>
        <visibility>
           <objectState
@@ -558,28 +536,6 @@
                   value="org.parallelj.designer.validation.ParallelJNature"/>
          </visibility>
       </objectContribution>
-     <objectContribution
-            adaptable="false"
-            id="DiagramRoot"
-            nameFilter="*.pjd"
-            objectClass="org.eclipse.core.resources.IFile">
-         <action
-               class="org.parallelj.designer.validation.actions.GenerateCodeFromFilesAction"
-               icon="icons/elcl16/pjgen-16.png"
-               id="generateJavaCodeFromFile"
-               label="Generate Code From File"
-               menubarPath="org.eclipse.emf.validationMenuID/forGeneration">
-         </action>
-         <menu
-               id="org.eclipse.emf.validationMenuID"
-               label="ParallelJ">
-            <separator
-                  name="forGeneration">
-            </separator>
-         </menu>
-      </objectContribution>
-      
-      
  </extension>
  <extension
        id="ParallelJBuilder"
