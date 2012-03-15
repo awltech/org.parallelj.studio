@@ -27,6 +27,7 @@ import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.swt.widgets.Shell;
 import org.parallelj.designer.validation.DiagramValidationEngine;
 import org.parallelj.designer.validation.DiagramValidationPlugin;
+import org.parallelj.model.impl.BusinessProcedureImpl;
 
 /**
  * LiveValidationContentAdapter is an adapter that maintains itself as an
@@ -39,17 +40,18 @@ public class LiveValidationContentAdapter extends EContentAdapter {
 	 * shell
 	 */
 	private final Shell shell;
-	
+
 	/**
 	 * diagram
 	 */
 	private final Diagram diagram;
-	
+
 	// This is commented for further discussion.
 	// private ILiveValidator validator = null;
 
 	/**
-	 * Constructor 
+	 * Constructor
+	 * 
 	 * @param enableLiveValidationDelegate
 	 */
 	public LiveValidationContentAdapter(Shell shell, Diagram diagram) {
@@ -71,8 +73,9 @@ public class LiveValidationContentAdapter extends EContentAdapter {
 		// If the Notification#getEventType is same as
 		// Notification.REMOVING_ADAPTER then don't perform the live Validation
 		// to avoid errors.
-		if (notification.getEventType() != Notification.REMOVING_ADAPTER) {
-			
+		if (notification.getEventType() != Notification.REMOVING_ADAPTER
+				&& isBusinessProcedureToCheck(notification)) {
+
 			// This is commented explicitly to discuss further.
 			// if (validator == null) {
 			// validator = ModelValidationService.getInstance().newValidator(
@@ -83,10 +86,9 @@ public class LiveValidationContentAdapter extends EContentAdapter {
 			// if (notification.getEventType() == Notification.SET) {
 			// DiagramValidationEngine.runValidation(this.diagram);
 			// }
-	
+
 			// Checks that Live Validation is enabled
-			if (DiagramValidationPlugin.getDefault().isLiveValidationEnabled())
-			{
+			if (DiagramValidationPlugin.getDefault().isLiveValidationEnabled()) {
 				// Performs Validation
 				this.shell.getDisplay().asyncExec(new Runnable() {
 					public void run() {
@@ -95,11 +97,29 @@ public class LiveValidationContentAdapter extends EContentAdapter {
 						// .newValidator(EvaluationMode.LIVE);
 						// }
 						// IStatus status = validator.validate(notification);
-		
 						DiagramValidationEngine.runValidation(diagram);
 					}
 				});
 			}
+		}
+	}
+
+	/**
+	 * This method checks is notification is new, since for BusinessProcedure
+	 * notification goes in infinite loop
+	 * 
+	 * @param notification
+	 * @return
+	 */
+	private boolean isBusinessProcedureToCheck(Notification notification) {
+		if (notification.getNotifier() instanceof BusinessProcedureImpl
+				&& notification.getEventType() == Notification.SET
+				&& notification.getOldValue() != null
+				&& (notification.getNewValue().toString().equals(notification
+						.getOldValue().toString()))) {
+			return false;
+		} else {
+			return true;
 		}
 	}
 }
