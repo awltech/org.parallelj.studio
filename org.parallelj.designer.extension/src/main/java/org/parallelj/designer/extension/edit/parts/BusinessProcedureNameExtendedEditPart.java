@@ -22,8 +22,11 @@
 package org.parallelj.designer.extension.edit.parts;
 
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.swt.graphics.Image;
 import org.parallelj.designer.edit.parts.BusinessProcedureNameEditPart;
+import org.parallelj.designer.extension.Activator;
+import org.parallelj.designer.extension.tools.ImageLoader;
 
 public class BusinessProcedureNameExtendedEditPart extends
 		BusinessProcedureNameEditPart {
@@ -33,21 +36,32 @@ public class BusinessProcedureNameExtendedEditPart extends
 	}
 
 	/**
-	 * @return icon image for ProcedureName label
+	 * @return icon image for BusinessProcedureName label
 	 */
 	@Override
 	protected Image getLabelIcon() {
+		// this will retrieve image path from preference or from businesscontribution
 		if (this.getParent() instanceof BusinessProcedureExtendedEditPart) {
+			
+			String path = null;
 			BusinessProcedureExtendedEditPart businessProcedureExtendedEditPart = (BusinessProcedureExtendedEditPart) this
 					.getParent();
+			IPreferenceStore preferenceStore = Activator.getDefault()
+					.getPreferenceStore();
+
 			if (businessProcedureExtendedEditPart
-					.getBusinessProcedureContribution() != null) {
-				return businessProcedureExtendedEditPart
-						.getBusinessProcedureContribution().getImage();
+					.getBusinessProcedureContribution() == null) {
+				path = preferenceStore
+						.getString(this.getLabelText());
+			} else {
+				path = businessProcedureExtendedEditPart
+						.getBusinessProcedureContribution().getImgPath();
+				preferenceStore.putValue(this.getLabelText(), path);
 			}
+			
+			String[] split = path.split(":");
+			return ImageLoader.getImage(split[0], split[1]);
 		}
 		return null;
 	}
-	
-	
 }

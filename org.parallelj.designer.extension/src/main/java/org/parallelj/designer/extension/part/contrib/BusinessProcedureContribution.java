@@ -62,6 +62,12 @@ public class BusinessProcedureContribution {
 	 * Procedure
 	 */
 	private Image image;
+	
+	/**
+	 * The image path to be used as the graphical representation of Business
+	 * Procedure
+	 */
+	private String imgPath;
 
 	public String getName() {
 		return name;
@@ -120,7 +126,7 @@ public class BusinessProcedureContribution {
 	}
 
 	/**
-	 * Temp. method will be removed once color picker issue solved
+	 * Temp. method will be removed once color picker is available
 	 * @return
 	 */
 	public RGB getRGBColor() {
@@ -131,5 +137,13 @@ public class BusinessProcedureContribution {
 
 		}
 		return null;
+	}
+	
+	public String getImgPath() {
+		return imgPath;
+	}
+
+	public void setImgPath(String imgPath) {
+		this.imgPath = imgPath;
 	}
 }

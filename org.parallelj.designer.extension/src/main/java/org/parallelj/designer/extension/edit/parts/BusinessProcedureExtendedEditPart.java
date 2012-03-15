@@ -29,7 +29,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.GraphicalViewer;
-import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gef.palette.ToolEntry;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
@@ -40,10 +39,12 @@ import org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand;
 import org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.swt.graphics.RGB;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
 import org.parallelj.designer.edit.parts.BusinessProcedureEditPart;
+import org.parallelj.designer.extension.Activator;
 import org.parallelj.designer.extension.adapters.BusinessProcedureAdapter;
 import org.parallelj.designer.extension.adapters.LinkPredicateRefreshmentOnLinkAddRemAdapter;
 import org.parallelj.designer.extension.adapters.LinkPredicateRefreshmentOnSplitAdapter;
@@ -60,7 +61,7 @@ public class BusinessProcedureExtendedEditPart extends
 	/**
 	 * Default main color of this object
 	 */
-	private/* final */RGB preferredColor = new RGB(116, 155, 194);
+	private RGB preferredColor = new RGB(116, 155, 194);
 
 	/**
 	 * Actual colors of this object
@@ -80,7 +81,7 @@ public class BusinessProcedureExtendedEditPart extends
 
 	public BusinessProcedureExtendedEditPart(View view) {
 		super(view);
-		// for color provided by user
+		// for color provided by user in extension point
 		this.populateBusinessProcedureContribution();
 		if (businessProcedureContribution != null) {
 			preferredColor = businessProcedureContribution.getRGBColor();
@@ -122,17 +123,6 @@ public class BusinessProcedureExtendedEditPart extends
 	@Override
 	public void activate() {
 		super.activate();
-		if (businessProcedureContribution != null) {
-			this.setValues(getEditingDomain(), getBusinessProcedure(),
-					ParallelJPackage.eINSTANCE.getNamedElement_Name(),
-					businessProcedureContribution.getName());
-			this.setValues(getEditingDomain(), getBusinessProcedure(),
-					ParallelJPackage.eINSTANCE.getProcedure_Executable(),
-					businessProcedureContribution.getExecutable());
-			this.setValues(getEditingDomain(), getBusinessProcedure(),
-					ParallelJPackage.eINSTANCE.getNamedElement_Description(),
-					businessProcedureContribution.getDescription());
-		}
 		updateSplitJoin();
 	}
 
@@ -188,7 +178,7 @@ public class BusinessProcedureExtendedEditPart extends
 				.getPrimaryShape().getFigureBusinessProcedureSplitFigure());
 	}
 
-	private BusinessProcedure getBusinessProcedure() {
+	public BusinessProcedure getBusinessProcedure() {
 		return (BusinessProcedure) ((View) this.getModel()).getElement();
 	}
 
@@ -217,6 +207,9 @@ public class BusinessProcedureExtendedEditPart extends
 			this.updateColor(newRGBColor, true);
 		} else if (notification.getEventType() == Notification.ADD) {
 			Drawer.drawWithDefault(notification, this);
+			// this will set all attributes in Business procedure like name,
+			// executable specified by user in extension point
+			setBusinessProcedureAttributes();
 		}
 	}
 
@@ -263,12 +256,53 @@ public class BusinessProcedureExtendedEditPart extends
 		}
 	}
 
+	/**
+	 * This will update the preference value for icon on name change event
+	 * 
+	 * @param newKey
+	 * @param oldKey
+	 */
+	public void updatePreference(String newKey, String oldKey) {
+		IPreferenceStore preferenceStore = Activator.getDefault()
+				.getPreferenceStore();
+		String path = preferenceStore.getString(oldKey);
+		preferenceStore.putValue(newKey, path);
+	}
+
+	/**
+	 * Setting all businessProcedure attributes contributed in extension point
+	 */
+	private void setBusinessProcedureAttributes() {
+		if (businessProcedureContribution != null) {
+			CompoundCommand cc = new CompoundCommand();
+			cc.add(getCommand(getEditingDomain(), getBusinessProcedure(),
+					ParallelJPackage.eINSTANCE.getNamedElement_Name(),
+					businessProcedureContribution.getName()));
+			cc.add(getCommand(getEditingDomain(), getBusinessProcedure(),
+					ParallelJPackage.eINSTANCE.getProcedure_Executable(),
+					businessProcedureContribution.getExecutable()));
+			cc.add(getCommand(getEditingDomain(), getBusinessProcedure(),
+					ParallelJPackage.eINSTANCE.getNamedElement_Description(),
+					businessProcedureContribution.getDescription()));
+			if (cc.canExecute()) {
+				cc.execute();
+			}
+		}
+	}
+
+	/**
+	 * This method will populate all required data from palette tool
+	 */
 	private void populateBusinessProcedureContribution() {
 
-		IEditorPart editor = PlatformUI.getWorkbench()
-				.getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+		if (PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+				.getActivePage() != null
+				&& PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+						.getActivePage().getActiveEditor() != null) {
 
-		if (editor != null) {
+			IEditorPart editor = PlatformUI.getWorkbench()
+					.getActiveWorkbenchWindow().getActivePage()
+					.getActiveEditor();
 
 			DiagramEditor diagramEditor = (DiagramEditor) editor;
 
@@ -289,6 +323,21 @@ public class BusinessProcedureExtendedEditPart extends
 		}
 	}
 
+	/**
+	 * This will provide the setcommand
+	 * 
+	 * @param ted
+	 * @param eo
+	 * @param esf
+	 * @param value
+	 * @return
+	 */
+	private ICommandProxy getCommand(TransactionalEditingDomain ted,
+			EObject eo, EStructuralFeature esf, Object value) {
+		SetRequest request = new SetRequest(ted, eo, esf, value);
+		return new ICommandProxy(new SetValueCommand(request));
+	}
+	
 	public BusinessProcedureContribution getBusinessProcedureContribution() {
 		return businessProcedureContribution;
 	}
@@ -297,30 +346,4 @@ public class BusinessProcedureExtendedEditPart extends
 			BusinessProcedureContribution businessProcedureContribution) {
 		this.businessProcedureContribution = businessProcedureContribution;
 	}
-
-	private void setValues(TransactionalEditingDomain ted, EObject eo,
-			EStructuralFeature esf, Object value) {
-		//try {
-			CompoundCommand cc = new CompoundCommand();
-			SetRequest request = new SetRequest(ted, eo, esf, value);
-
-			//SetValueCommand command = new SetValueCommand(request);
-			Command setCommand = new ICommandProxy(new SetValueCommand(request));
-			cc.add(setCommand);
-			
-			if(cc.canExecute()){
-				cc.execute();
-			}
-			
-			/*IStatus iStatus = command.execute(new NullProgressMonitor(), null);
-			if (!iStatus.isOK()) {
-				Activator
-						.logWarn("An exception has been thrown while executing Command");
-			}*/
-		//} catch (ExecutionException e) {
-			/*Activator
-					.logError("An exception has been thrown while executing Command");*/
-		//}
-	}
-
 }

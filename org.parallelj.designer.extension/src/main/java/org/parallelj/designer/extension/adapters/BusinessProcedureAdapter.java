@@ -61,7 +61,8 @@ public class BusinessProcedureAdapter extends AdapterImpl {
 		// and JOIN icon
 		if (notification.getEventType() == Notification.ADD
 				|| notification.getEventType() == Notification.REMOVE) {
-			((BusinessProcedureExtendedEditPart) this.editPart).updateSplitJoin();
+			((BusinessProcedureExtendedEditPart) this.editPart)
+					.updateSplitJoin();
 		}
 		// if any value set from property view.
 		else if (notification.getEventType() == Notification.SET) {
@@ -71,8 +72,8 @@ public class BusinessProcedureAdapter extends AdapterImpl {
 					&& currentFeature == ParallelJPackage.eINSTANCE
 							.getProcedure_Join()) {
 				JoinType newJoin = (JoinType) notification.getNewValue();
-				((BusinessProcedureExtendedEditPart) this.editPart).setJoinIcon(newJoin
-						.getName());
+				((BusinessProcedureExtendedEditPart) this.editPart)
+						.setJoinIcon(newJoin.getName());
 			}
 			// if SPLIT value set/changed, update SPLIT icon
 			else if (currentFeature instanceof EAttribute
@@ -81,6 +82,14 @@ public class BusinessProcedureAdapter extends AdapterImpl {
 				SplitType newSplit = (SplitType) notification.getNewValue();
 				((BusinessProcedureExtendedEditPart) this.editPart)
 						.setSplitIcon(newSplit.getName());
+			} else if (currentFeature instanceof EAttribute
+					&& currentFeature == ParallelJPackage.eINSTANCE
+							.getNamedElement_Name()
+					&& notification.getOldValue() != null) {
+				((BusinessProcedureExtendedEditPart) this.editPart)
+						.updatePreference(
+								notification.getNewValue().toString(),
+								notification.getOldValue().toString());
 			}
 		}
 	}

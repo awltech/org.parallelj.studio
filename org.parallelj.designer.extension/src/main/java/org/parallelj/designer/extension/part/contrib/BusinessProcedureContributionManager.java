@@ -127,8 +127,10 @@ public class BusinessProcedureContributionManager {
 					BusinessProcedureContribution businessProcedureContribution = new BusinessProcedureContribution();
 
 					String icon = configurationElement.getAttribute(IMAGE);
+					
 					String extendingPluginId = configurationElement
 							.getNamespaceIdentifier();
+					businessProcedureContribution.setImgPath(extendingPluginId+":"+icon);
 					Image image = ImageLoader.getImage(extendingPluginId, icon);
 
 					businessProcedureContribution.setName(configurationElement
