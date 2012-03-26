@@ -627,19 +627,6 @@
          <context decoratorTargets="PRIMARY_VIEW"/>
       </decoratorProvider>
    </extension>
-<extension point="org.eclipse.ui.editors" id="gmf-editor">
-      <?gmfgen generated="true"?>
-      <editor
-         id="org.parallelj.designer.part.ParallelJDiagramEditorID"
-         name="%editorName"
-         icon="icons/obj16/ParallelJDiagramFile.png"
-         extensions="pjd"
-         default="true"
-         class="org.parallelj.designer.part.ParallelJDiagramEditor"
-         matchingStrategy="org.parallelj.designer.part.ParallelJMatchingStrategy"
-         contributorClass="org.parallelj.designer.part.ParallelJDiagramActionBarContributor">
-      </editor>
-   </extension>
 
 <!--extension point="org.eclipse.ui.editors" id="gmf-editor">
       <?gmfgen generated="true"?>
