@@ -1,27 +1,27 @@
 Manifest-Version: 1.0
+Require-Bundle: org.eclipse.ui;bundle-version="3.7.0",
+ org.eclipse.ui.ide;bundle-version="3.7.0",
+ org.eclipse.gmf.runtime.diagram.ui.properties;bundle-version="1.4.0",
+ org.eclipse.gmf.runtime.diagram.ui.resources.editor;bundle-version="1.4.0",
+ org.parallelj.designer.extension;bundle-version="1.0.0",
+ org.eclipse.jdt.core;bundle-version="3.7.0",
+ org.eclipse.jdt.launching;bundle-version="3.6.0",
+ org.eclipse.debug.ui;bundle-version="3.7.0"
 Export-Package: org.parallelj.designer.validation,org.parallelj.design
  er.validation.actions,org.parallelj.designer.validation.builder;uses:
  ="org.eclipse.core.resources,org.eclipse.core.runtime",org.parallelj.
  designer.validation.constraints,org.parallelj.designer.validation.nat
  ure;uses:="org.eclipse.jface.viewers,org.eclipse.core.resources",org.
  parallelj.designer.validation.providers
-Require-Bundle: org.eclipse.ui;bundle-version="3.7.0",
- org.eclipse.ui.ide;bundle-version="3.7.0",
- org.eclipse.gmf.runtime.diagram.ui.properties;bundle-version="1.4.0",
- org.eclipse.gmf.runtime.diagram.ui.resources.editor;bundle-version="1.4.0",
- org.parallelj.designer.extension;bundle-version="0.8.0",
- org.eclipse.jdt.core;bundle-version="3.7.0",
- org.eclipse.jdt.launching;bundle-version="3.6.0",
- org.eclipse.debug.ui;bundle-version="3.7.0"
 Bundle-Vendor: Parallelj.org
 Bundle-ActivationPolicy: lazy
-Bundle-Version: 0.9.0.qualifier
+Bundle-Version: 1.0.0.qualifier
 Bundle-Name: //J Diagram Validation
+Bundle-ManifestVersion: 2
 Bundle-Activator: org.parallelj.designer.validation.DiagramValidationP
  lugin
-Bundle-ManifestVersion: 2
+Bundle-SymbolicName: org.parallelj.designer.validation;singleton:=true
 Import-Package: org.eclipse.gmf.runtime.notation,org.eclipse.ui.naviga
  tor.resources
-Bundle-SymbolicName: org.parallelj.designer.validation;singleton:=true
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 

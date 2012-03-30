@@ -1,17 +1,17 @@
 Manifest-Version: 1.0
-Export-Package: org.parallelj.common.jdt.checkers,org.parallelj.common
- .jdt.helpers,org.parallelj.common.jdt.imports,org.parallelj.common.jd
- t.mergers
 Require-Bundle: org.eclipse.ui;bundle-version="3.7.0",org.eclipse.core
  .runtime;bundle-version="3.7.0",org.eclipse.jdt.core;bundle-version="
  3.7.0",org.eclipse.jface.text;bundle-version="3.7.0",org.eclipse.core
  .resources;bundle-version="3.7.0",org.junit;bundle-version="4.8.2"
+Export-Package: org.parallelj.common.jdt.checkers,org.parallelj.common
+ .jdt.helpers,org.parallelj.common.jdt.imports,org.parallelj.common.jd
+ t.mergers
 Bundle-Vendor: Parallelj.org
 Bundle-ActivationPolicy: lazy
-Bundle-Version: 0.9.0.qualifier
+Bundle-Version: 1.0.0.qualifier
 Bundle-Name: //J Common JDT
-Bundle-Activator: org.parallelj.common.jdt.Activator
 Bundle-ManifestVersion: 2
+Bundle-Activator: org.parallelj.common.jdt.Activator
 Bundle-SymbolicName: org.parallelj.common.jdt
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 

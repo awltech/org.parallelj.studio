@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/org.parallelj.feature_0.9.0.qualifier.jar" id="org.parallelj.feature" version="0.9.0.qualifier">
+   <feature url="features/org.parallelj.feature_1.0.0.qualifier.jar" id="org.parallelj.feature" version="1.0.0.qualifier">
       <category name="ParallelJ Studio"/>
    </feature>
    <category-def name="ParallelJ Studio" label="ParallelJ Studio">

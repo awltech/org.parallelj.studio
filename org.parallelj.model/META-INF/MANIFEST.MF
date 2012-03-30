@@ -1,14 +1,14 @@
 Manifest-Version: 1.0
-Require-Bundle: org.eclipse.core.runtime;bundle-version="3.7.0",org.ec
- lipse.emf.ecore;bundle-version="2.7.0";visibility:=reexport
 Export-Package: org.parallelj.model,org.parallelj.model.impl,org.paral
  lelj.model.util
+Require-Bundle: org.eclipse.core.runtime;bundle-version="3.7.0",org.ec
+ lipse.emf.ecore;bundle-version="2.7.0";visibility:=reexport
 Bundle-Vendor: %providerName
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .
-Bundle-Version: 0.9.0.qualifier
-Bundle-Localization: plugin
+Bundle-Version: 1.0.0.qualifier
 Bundle-Name: %pluginName
+Bundle-Localization: plugin
 Bundle-ManifestVersion: 2
 Bundle-SymbolicName: org.parallelj.model;singleton:=true
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
