@@ -120,11 +120,13 @@ public class TypeZone extends Zone {
 							IJavaElementSearchConstants.CONSIDER_CLASSES_AND_INTERFACES,
 							false);
 			dialog.open();
-			IType result = (IType) (dialog.getResult()[0]);
-			this.typeText.setText(result.getFullyQualifiedName());
-			Commands.doSetValue(getEditingDomain(), getEObject(),
-					ParallelJPackage.eINSTANCE.getData_Type(),
-					result.getFullyQualifiedName(), getEditPart());
+			if (dialog.getResult() != null) {
+				IType result = (IType) (dialog.getResult()[0]);
+				this.typeText.setText(result.getFullyQualifiedName());
+				Commands.doSetValue(getEditingDomain(), getEObject(),
+						ParallelJPackage.eINSTANCE.getData_Type(),
+						result.getFullyQualifiedName(), getEditPart());
+			}
 		} catch (JavaModelException e) {
 			e.printStackTrace();
 		}
