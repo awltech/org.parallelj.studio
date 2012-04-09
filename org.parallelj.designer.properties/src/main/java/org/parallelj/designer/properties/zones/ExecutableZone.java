@@ -232,7 +232,11 @@ public class ExecutableZone extends Zone {
 		}
 
 		public String getCreatedType() {
-			return page.getCreatedType().getFullyQualifiedName();
+			if (page != null && page.getCreatedType() != null) {
+				return page.getCreatedType().getFullyQualifiedName();
+			} else {
+				return null;
+			}
 		}
 
 	}
