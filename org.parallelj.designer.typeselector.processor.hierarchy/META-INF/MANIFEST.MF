@@ -15,5 +15,5 @@ Bundle-Activator: org.parallelj.designer.typeselector.processor.hierar
  chy.JavaExecutableActivator
 Bundle-SymbolicName: org.parallelj.designer.typeselector.processor.hie
  rarchy;singleton:=true
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 

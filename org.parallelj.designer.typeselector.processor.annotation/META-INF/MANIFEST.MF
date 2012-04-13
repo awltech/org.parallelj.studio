@@ -17,5 +17,5 @@ Bundle-Activator: org.parallelj.designer.typeselector.processor.annota
  tion.AnnotationActivator
 Bundle-SymbolicName: org.parallelj.designer.typeselector.processor.ann
  otation;singleton:=true
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 
