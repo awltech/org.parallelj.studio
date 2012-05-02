@@ -26,6 +26,13 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.IResourceChangeEvent;
+import org.eclipse.core.resources.IResourceChangeListener;
+import org.eclipse.core.resources.IResourceDelta;
+import org.eclipse.core.resources.IResourceDeltaVisitor;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.gef.Tool;
 import org.eclipse.gef.palette.PaletteContainer;
 import org.eclipse.gef.palette.PaletteDrawer;
@@ -43,7 +50,9 @@ import org.parallelj.designer.extension.part.contrib.BusinessProcedureContributi
 import org.parallelj.designer.extension.part.contrib.IParallelJDiagramEditorContribution;
 import org.parallelj.designer.extension.part.contrib.ParallelJDiagramEditorContributionManager;
 import org.parallelj.designer.part.ParallelJDiagramEditor;
+import org.parallelj.designer.part.ParallelJDiagramEditorPlugin;
 import org.parallelj.designer.providers.ParallelJElementTypes;
+import org.parallelj.designer.typeselector.processor.hierarchy.JavaExecutableScopesCache;
 
 /**
  * ParallelJ Designer Diagram Editor Extension.
@@ -88,6 +97,10 @@ public class ParallelJDiagramExtendedEditor extends ParallelJDiagramEditor {
 
 		businessProcedureContributions = BusinessProcedureContributionManager
 				.getInstance().getContributions();
+
+		ResourcesPlugin.getWorkspace().addResourceChangeListener(
+				resourceChangeListener, IResourceChangeEvent.POST_CHANGE);
+
 	}
 
 	@Override
@@ -112,9 +125,9 @@ public class ParallelJDiagramExtendedEditor extends ParallelJDiagramEditor {
 
 		int count = 1;
 		for (BusinessProcedureContribution businessProcedureContribution : businessProcedureContributions) {
-			createUserProcedureGroup
-					.add(createBusinessProcedureTool(businessProcedureContribution, count));
-			count ++;
+			createUserProcedureGroup.add(createBusinessProcedureTool(
+					businessProcedureContribution, count));
+			count++;
 		}
 
 		if (createUserProcedureGroup != null) {
@@ -140,14 +153,15 @@ public class ParallelJDiagramExtendedEditor extends ParallelJDiagramEditor {
 	 * @return
 	 */
 	private ToolEntry createBusinessProcedureTool(
-			BusinessProcedureContribution businessProcedureContribution, int count) {
+			BusinessProcedureContribution businessProcedureContribution,
+			int count) {
 
 		NodeToolEntry entry = new NodeToolEntry(
 				businessProcedureContribution.getName(),
 				businessProcedureContribution.getDescription(),
 				Collections
 						.singletonList(ParallelJElementTypes.BusinessProcedure_3014));
-		entry.setId("createBusinessProcedureTool"+count); //$NON-NLS-1$
+		entry.setId("createBusinessProcedureTool" + count); //$NON-NLS-1$
 
 		entry.setSmallIcon(ImageDescriptor
 				.createFromImage(businessProcedureContribution.getImage()));
@@ -197,4 +211,38 @@ public class ParallelJDiagramExtendedEditor extends ParallelJDiagramEditor {
 			return tool;
 		}
 	}
+
+	/**
+	 * This listens for workspace changes.
+	 * 
+	 */
+	protected IResourceChangeListener resourceChangeListener = new IResourceChangeListener() {
+
+		@Override
+		public void resourceChanged(IResourceChangeEvent event) {
+			IResourceDelta delta = event.getDelta();
+
+			class ResourceDeltaVisitor implements IResourceDeltaVisitor {
+				public boolean visit(IResourceDelta delta) {
+					if (delta.getResource().getType() == IResource.FILE
+							&& delta.getResource().getName().endsWith(".java")
+							&& (delta.getKind() == IResourceDelta.REMOVED
+									|| delta.getKind() == IResourceDelta.CHANGED || delta
+									.getKind() == IResourceDelta.ADDED)) {
+
+						JavaExecutableScopesCache.getInstance().clear();
+					}
+					return true;
+				}
+			}
+
+			final ResourceDeltaVisitor visitor = new ResourceDeltaVisitor();
+			try {
+				delta.accept(visitor);
+			} catch (CoreException e) {
+				ParallelJDiagramEditorPlugin.getInstance().logError(
+						"visitor failed with :", e);
+			}
+		}
+	};
 }
