@@ -43,6 +43,26 @@ public class BusinessProcedureContribution {
 	private String executable;
 
 	/**
+	 * groupId of dependency jar of Business Procedure
+	 */
+	private String groupId;
+
+	/**
+	 * artifactId of dependency jar of Business Procedure
+	 */
+	private String artifactId;
+
+	/**
+	 * version of dependency jar of Business Procedure
+	 */
+	private String version;
+
+	/**
+	 * scope of dependency jar of Business Procedure
+	 */
+	private String scope;
+
+	/**
 	 * A text describing the inputs needs by the business executable
 	 */
 	private String inputs;
@@ -62,7 +82,7 @@ public class BusinessProcedureContribution {
 	 * Procedure
 	 */
 	private Image image;
-	
+
 	/**
 	 * The image path to be used as the graphical representation of Business
 	 * Procedure
@@ -91,6 +111,38 @@ public class BusinessProcedureContribution {
 
 	public void setExecutable(String executable) {
 		this.executable = executable;
+	}
+
+	public String getGroupId() {
+		return groupId;
+	}
+
+	public void setGroupId(String groupId) {
+		this.groupId = groupId;
+	}
+
+	public String getArtifactId() {
+		return artifactId;
+	}
+
+	public void setArtifactId(String artifactId) {
+		this.artifactId = artifactId;
+	}
+
+	public String getVersion() {
+		return version;
+	}
+
+	public void setVersion(String version) {
+		this.version = version;
+	}
+
+	public String getScope() {
+		return scope;
+	}
+
+	public void setScope(String scope) {
+		this.scope = scope;
 	}
 
 	public String getInputs() {
@@ -127,6 +179,7 @@ public class BusinessProcedureContribution {
 
 	/**
 	 * Temp. method will be removed once color picker is available
+	 * 
 	 * @return
 	 */
 	public RGB getRGBColor() {
@@ -138,7 +191,7 @@ public class BusinessProcedureContribution {
 		}
 		return null;
 	}
-	
+
 	public String getImgPath() {
 		return imgPath;
 	}

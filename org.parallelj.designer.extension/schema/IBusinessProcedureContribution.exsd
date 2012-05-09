@@ -78,10 +78,49 @@
                <documentation>
                   The Executable linked to Business Procedure (this is the executable in the business process api)
                </documentation>
-               <appinfo>
-                  <meta.attribute kind="java"/>
-               </appinfo>
             </annotation>
+         </attribute>
+         <attribute name="groupId" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="artifactId" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="version" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="scope" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+            <simpleType>
+               <restriction base="string">
+                  <enumeration value="compile">
+                  </enumeration>
+                  <enumeration value="provided">
+                  </enumeration>
+                  <enumeration value="runtime">
+                  </enumeration>
+                  <enumeration value="test">
+                  </enumeration>
+                  <enumeration value="system">
+                  </enumeration>
+               </restriction>
+            </simpleType>
          </attribute>
          <attribute name="inputs" type="string" use="required">
             <annotation>

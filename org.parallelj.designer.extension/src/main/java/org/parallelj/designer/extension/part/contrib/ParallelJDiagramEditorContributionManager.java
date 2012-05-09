@@ -31,7 +31,7 @@ import org.eclipse.core.runtime.IExtension;
 import org.eclipse.core.runtime.IExtensionPoint;
 import org.eclipse.core.runtime.Platform;
 import org.parallelj.designer.extension.Activator;
-import org.parallelj.designer.extension.ParallelJDiagramExtendedEditorMessages;
+import org.parallelj.designer.extension.Messages;
 
 /**
  * Singleton that manages the reading of the Extension Point related to the
@@ -100,9 +100,7 @@ public class ParallelJDiagramEditorContributionManager {
 						Activator.PLUGIN_ID,
 						ParallelJDiagramEditorContributionManager.EXTENSION_POINT_NAME);
 		if (extensionPoint == null) {
-			Activator
-					.logError(ParallelJDiagramExtendedEditorMessages.NULL_CONTRIB_EXTPOINT
-							.getMessage());
+			Activator.logError(Messages.NULL_CONTRIB_EXTPOINT.getMessage());
 			return;
 		}
 
@@ -121,7 +119,7 @@ public class ParallelJDiagramEditorContributionManager {
 					} catch (CoreException e) {
 						Activator
 								.logException(
-										ParallelJDiagramExtendedEditorMessages.EXCEPTION_IN_CONTRIB_LOAD
+										Messages.EXCEPTION_IN_CONTRIB_LOAD
 												.getMessage(), e);
 					}
 				}

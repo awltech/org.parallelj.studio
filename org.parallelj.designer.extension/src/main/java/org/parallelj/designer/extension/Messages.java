@@ -26,25 +26,31 @@ import java.util.ResourceBundle;
 
 /**
  * Enumeration Messages, for ParallelJ Designer Extension Internationalization
+ * and other jobs
  * 
  * @author mvanbesien
  * 
  */
-public enum ParallelJDiagramExtendedEditorMessages {
+public enum Messages {
 
-	NULL_CONTRIB_EXTPOINT, EXCEPTION_IN_CONTRIB_LOAD;
+	NULL_CONTRIB_EXTPOINT, EXCEPTION_IN_CONTRIB_LOAD,
+
+	JOB01E, JOB01I, JOB02I, JOB03I, JOB04I, JOB02E,
+
+	UI_DIALOG_TITLE, UI_DIALOG_MESSAGE, UI_ALL_BUTTON_MESSAGE_PROJECT, UI_SELECT_BUTTON_MESSAGE
+
+	;
 
 	/*
 	 * Resource Bundle Name
 	 */
-	private static final String RESOURCE_BUNDLE_NAME = "ParallelJDiagramExtendedEditorMessages";
+	private static final String RESOURCE_BUNDLE_NAME = "messages";
 
 	/*
 	 * Static ResourceBundle instance
 	 */
 	private static ResourceBundle resourceBundle = ResourceBundle.getBundle(
-			ParallelJDiagramExtendedEditorMessages.RESOURCE_BUNDLE_NAME,
-			Locale.getDefault());
+			Messages.RESOURCE_BUNDLE_NAME, Locale.getDefault());
 
 	/**
 	 * Returns message, as it is available in resource bundle. If resource
@@ -53,11 +59,10 @@ public enum ParallelJDiagramExtendedEditorMessages {
 	 * @return message
 	 */
 	public String getMessage() {
-		if (ParallelJDiagramExtendedEditorMessages.resourceBundle == null) {
+		if (Messages.resourceBundle == null) {
 			return this.toString();
 		}
-		String message = ParallelJDiagramExtendedEditorMessages.resourceBundle
-				.getString(this.toString());
+		String message = Messages.resourceBundle.getString(this.toString());
 		return message == null ? this.toString() : message;
 	}
 
@@ -69,11 +74,10 @@ public enum ParallelJDiagramExtendedEditorMessages {
 	 * @return formatted message
 	 */
 	public String getMessage(Object... varargs) {
-		if (ParallelJDiagramExtendedEditorMessages.resourceBundle == null) {
+		if (Messages.resourceBundle == null) {
 			return this.toString();
 		}
-		String message = ParallelJDiagramExtendedEditorMessages.resourceBundle
-				.getString(this.toString());
+		String message = Messages.resourceBundle.getString(this.toString());
 		return message == null ? this.toString() : String.format(message,
 				varargs);
 	}

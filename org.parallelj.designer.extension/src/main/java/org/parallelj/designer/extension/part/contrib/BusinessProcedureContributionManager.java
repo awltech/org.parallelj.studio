@@ -61,6 +61,26 @@ public class BusinessProcedureContributionManager {
 	private static final String EXECUTABLE = "executable";
 
 	/**
+	 * Dependency groupId for Business procedure
+	 */
+	private static final String GROUPID = "groupId";
+
+	/**
+	 * Dependency artifactID for Business procedure
+	 */
+	private static final String ARTIFACTID = "artifactId";
+
+	/**
+	 * Dependency version for Business procedure
+	 */
+	private static final String VERSION = "version";
+
+	/**
+	 * Dependency image for Business procedure
+	 */
+	private static final String SCOPE = "scope";
+
+	/**
 	 * Business procedure inputs
 	 */
 	private static final String INPUTS = "inputs";
@@ -127,10 +147,11 @@ public class BusinessProcedureContributionManager {
 					BusinessProcedureContribution businessProcedureContribution = new BusinessProcedureContribution();
 
 					String icon = configurationElement.getAttribute(IMAGE);
-					
+
 					String extendingPluginId = configurationElement
 							.getNamespaceIdentifier();
-					businessProcedureContribution.setImgPath(extendingPluginId+":"+icon);
+					businessProcedureContribution.setImgPath(extendingPluginId
+							+ ":" + icon);
 					Image image = ImageLoader.getImage(extendingPluginId, icon);
 
 					businessProcedureContribution.setName(configurationElement
@@ -140,6 +161,17 @@ public class BusinessProcedureContributionManager {
 					businessProcedureContribution
 							.setExecutable(configurationElement
 									.getAttribute(EXECUTABLE));
+					businessProcedureContribution
+							.setGroupId(configurationElement
+									.getAttribute(GROUPID));
+					businessProcedureContribution
+							.setArtifactId(configurationElement
+									.getAttribute(ARTIFACTID));
+					businessProcedureContribution
+							.setVersion(configurationElement
+									.getAttribute(VERSION));
+					businessProcedureContribution.setScope(configurationElement
+							.getAttribute(SCOPE));
 					businessProcedureContribution
 							.setInputs(configurationElement
 									.getAttribute(INPUTS));
