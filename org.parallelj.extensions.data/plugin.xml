@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="org.parallelj.extensions.data.contribution"
+            nameFilter="*.xsd"
+            objectClass="org.eclipse.core.resources.IFile">
+         <menu
+               label="XA Toolbox"
+               path="additions"
+               id="net.atos.xa.toolbox.menu">
+            <separator
+                  name="group">
+            </separator>
+         </menu>
+         <action
+               label="Generate JAXB pojos from XSD file"
+               class="org.parallelj.extensions.data.generator.actions.DataGeneratorAction"
+               menubarPath="net.atos.xa.toolbox.menu/group"
+               enablesFor="1"
+               id="net.atos.xa.easyflow.datagenerator.newAction">
+         </action>
+      </objectContribution>
+   </extension>
+
+</plugin>
