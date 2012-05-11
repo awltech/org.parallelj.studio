@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.debug.core.launchConfigurationTypes">
+      <launchConfigurationType
+            delegate="org.parallelj.designer.launching.ApplicationLaunchConfigurationDelegate"
+            id="org.parallelj.designer.launching.ParalleljApplication"
+            modes="run, debug"
+            name="ParallelJ"
+            sourceLocatorId="org.eclipse.jdt.launching.sourceLocator.JavaSourceLookupDirector"
+            sourcePathComputerId="org.eclipse.jdt.launching.sourceLookup.javaSourcePathComputer">
+      </launchConfigurationType>
+   </extension>
+   <extension
+         point="org.eclipse.debug.ui.launchConfigurationTypeImages">
+      <launchConfigurationTypeImage
+            configTypeID="org.parallelj.designer.launching.ParalleljApplication"
+            icon="icons/actions/ParallelJDiagramFile.png"
+            id="org.parallelj.designer.launching.ltwlaunchimage">
+      </launchConfigurationTypeImage>
+   </extension>
+   <extension
+         point="org.eclipse.debug.ui.launchConfigurationTabGroups">
+      <launchConfigurationTabGroup
+            class="org.parallelj.designer.launching.ParalleljTabGroup"
+            id="org.parallelj.designer.launchingParalleljLaunchConfigurationTabGroup"
+            type="org.parallelj.designer.launching.ParalleljApplication">
+         <launchMode
+               description="Create a configuration that will launch a ParallelJ Program"
+               mode="debug"
+               perspective="org.eclipse.debug.ui.DebugPerspective">
+         </launchMode>
+         <launchMode
+               description="Create a configuration that will launch a ParallelJ Program"
+               mode="run">
+         </launchMode>
+      </launchConfigurationTabGroup>
+   </extension>
+   <extension
+         point="org.eclipse.debug.ui.launchShortcuts">
+      <shortcut
+            class="org.parallelj.designer.launching.ParalleljApplicationLaunchShortcut"
+            icon="icons/actions/ParallelJDiagramFile.png"
+            id="org.parallelj.designer.launching.runShortcut"
+            label="ParallelJ program"
+            modes="run, debug">
+         <contextualLaunch>
+            <enablement>
+               <with
+                     variable="selection">
+                  <count
+                        value="1">
+                  </count>
+                  <iterate>
+                     <adapt
+                           type="org.eclipse.jdt.core.IJavaElement">
+                        <test
+                              property="org.eclipse.jdt.core.isInJavaProject">
+                        </test>
+                        <test
+                              property="org.eclipse.jdt.core.hasTypeOnClasspath"
+                              value="org.parallelj.Program">
+                        </test>
+                        <test
+                              forcePluginActivation="true"
+                              property="org.parallelj.designer.launching.canLaunchAsParallelj">
+                        </test>
+                     </adapt>
+                  </iterate>
+               </with>
+            </enablement>
+         </contextualLaunch>
+         <configurationType
+               id="org.parallelj.designer.launching.ParalleljApplication">
+         </configurationType>
+         <description
+               description="Debug as ParallelJ Program"
+               mode="debug">
+         </description>
+         <description
+               description="Run as ParallelJ Program"
+               mode="run">
+         </description>
+      </shortcut>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            categoryId="org.eclipse.debug.ui.category.run"
+            description="Debug ParallelJ Program"
+            id="org.parallelj.designer.launching.runShortcut.debug"
+            name="Debug ParallelJ Program">
+      </command>
+      <command
+            categoryId="org.eclipse.debug.ui.category.run"
+            description="Run ParallelJ Program"
+            id="org.parallelj.designer.launching.runShortcut.run"
+            name="Run ParallelJ Program">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.core.expressions.propertyTesters">
+      <propertyTester
+            class="org.parallelj.designer.launching.internal.ParallelJPropertyTester"
+            id="org.parallelj.designer.launching.ParalleljPropertyTester1"
+            namespace="org.parallelj.designer.launching"
+            properties="canLaunchAsParallelj"
+            type="org.eclipse.core.runtime.IAdaptable">
+      </propertyTester>
+   </extension>
+
+</plugin>

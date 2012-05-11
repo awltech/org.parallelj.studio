@@ -168,6 +168,7 @@
 			that kind of tests for the moment. -->
 		<!--module>org.parallelj.model.tests</module -->
 		<module>org.parallelj.studio.updatesite</module>
+		<module>org.parallelj.designer.launching</module>
 	</modules>
 
 	<build>
