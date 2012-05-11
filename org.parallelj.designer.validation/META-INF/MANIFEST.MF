@@ -15,7 +15,7 @@ Export-Package: org.parallelj.designer.validation,org.parallelj.design
  parallelj.designer.validation.providers
 Bundle-Vendor: Parallelj.org
 Bundle-ActivationPolicy: lazy
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.1.0.qualifier
 Bundle-Name: //J Diagram Validation
 Bundle-ManifestVersion: 2
 Bundle-Activator: org.parallelj.designer.validation.DiagramValidationP

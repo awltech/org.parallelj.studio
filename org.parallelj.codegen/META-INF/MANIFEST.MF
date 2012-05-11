@@ -19,7 +19,7 @@ Export-Package: org.parallelj.codegen,org.parallelj.codegen.constants,
  org.parallelj.codegen.jobs
 Bundle-Vendor: Parallelj.org
 Bundle-ActivationPolicy: lazy
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.1.0.qualifier
 Bundle-Name: //J Code Generator
 Bundle-ManifestVersion: 2
 Bundle-Activator: org.parallelj.codegen.Activator

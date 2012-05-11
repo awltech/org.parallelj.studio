@@ -35,7 +35,7 @@ Require-Bundle: org.eclipse.core.runtime;bundle-version="3.7.0",
  org.eclipse.emf.validation;bundle-version="1.4.0";visibility:=reexport,
  org.eclipse.gef;bundle-version="3.7.0";visibility:=reexport
 Bundle-Vendor: Parallelj.org
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.1.0.qualifier
 Bundle-ManifestVersion: 2
 Bundle-Activator: org.parallelj.designer.part.ParallelJDiagramEditorPl
  ugin

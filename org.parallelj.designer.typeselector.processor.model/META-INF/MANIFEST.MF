@@ -8,7 +8,7 @@ Require-Bundle: org.eclipse.core.resources;bundle-version="3.7.0",
 Export-Package: org.parallelj.designer.typeselector.processor.model
 Bundle-Vendor: Parallelj.org
 Bundle-ActivationPolicy: lazy
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.1.0.qualifier
 Bundle-Name: //J Model Type Processor for Resource Selector
 Bundle-ManifestVersion: 2
 Bundle-Activator: org.parallelj.designer.typeselector.processor.model.
