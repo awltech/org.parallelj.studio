@@ -180,7 +180,8 @@ public class PredicateZone extends Zone {
 						.eContainer()) : null;
 			else if (inputElement instanceof Link) {
 				Link link = (Link) inputElement;
-				if (link.eContainer().eContainer() != null
+				if (link.eContainer() != null
+						&& link.eContainer().eContainer() != null
 						&& link.eContainer().eContainer() instanceof Program)
 					parentProgram = (Program) link.eContainer().eContainer();
 			}
