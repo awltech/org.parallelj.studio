@@ -9,9 +9,8 @@
             nameFilter="*.xsd"
             objectClass="org.eclipse.core.resources.IFile">
          <menu
-               label="XA Toolbox"
-               path="additions"
-               id="net.atos.xa.toolbox.menu">
+               label="ParallelJ"
+               id="org.eclipse.emf.validationMenuID">
             <separator
                   name="group">
             </separator>
@@ -19,9 +18,9 @@
          <action
                label="Generate JAXB pojos from XSD file"
                class="org.parallelj.extensions.data.generator.actions.DataGeneratorAction"
-               menubarPath="net.atos.xa.toolbox.menu/group"
+               menubarPath="org.eclipse.emf.validationMenuID/group"
                enablesFor="1"
-               id="net.atos.xa.easyflow.datagenerator.newAction">
+               id="org.parallelj.extensions.data.newAction">
          </action>
       </objectContribution>
    </extension>
