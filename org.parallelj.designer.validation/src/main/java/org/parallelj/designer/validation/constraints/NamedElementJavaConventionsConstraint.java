@@ -32,50 +32,70 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.AbstractModelConstraint;
 import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.jdt.core.JavaConventions;
+import org.eclipse.jdt.internal.core.util.Messages;
 import org.parallelj.model.NamedElement;
 import org.parallelj.model.ParallelJPackage;
 
 /**
  * Checks if the given element's name complies with the Java Conventions
  * depending on the element's nature.
- *
+ * 
  */
-public class NamedElementJavaConventionsConstraint extends AbstractModelConstraint {
+@SuppressWarnings("restriction")
+public class NamedElementJavaConventionsConstraint extends
+		AbstractModelConstraint {
 
 	private static enum Formatting {
 		CLASS, PACKAGE, TYPE, METHOD, FIELD;
 
 		// Simple FQN compatible Java Type pattern
-		private Pattern classPattern = Pattern.compile("^(\\w+\\.)*\\w+$");
-		
+		private Pattern classPattern = Pattern.compile("^(\\w+\\.)+\\w+$");
+
 		/**
 		 * Return a status based on the element's nature and name
+		 * 
 		 * @param ctx
 		 * @param namedElement
 		 * @return
 		 */
-		public IStatus getStatus(IValidationContext ctx, NamedElement namedElement) {
+		public IStatus getStatus(IValidationContext ctx,
+				NamedElement namedElement) {
 			switch (this) {
 			case CLASS:
 				// Use of a RegExp as a workaround to the buggy
 				// JavaConventions.validateJavaTypeName Eclipse method which
 				// actually ignores the white spaces within the element's name
 				Matcher m = classPattern.matcher(namedElement.getName());
-				
-				if (m.matches() &&
-						(JavaConventions.validateJavaTypeName(namedElement.getName(), "5.0", "5.0").getSeverity() != IStatus.ERROR))
-					return ctx.createSuccessStatus();
+
+				IStatus validateJavaTypeName = JavaConventions
+						.validateJavaTypeName(namedElement.getName(), "5.0",
+								"5.0");
+
+				int severity = validateJavaTypeName.getSeverity();
+
+				String message = validateJavaTypeName.getMessage();
+
+				if (!m.matches()
+						|| (severity == IStatus.ERROR)
+						|| ((severity == IStatus.WARNING) && (message
+								.equals(Messages.convention_type_lowercaseName))))
+					return ctx.createFailureStatus("'" + namedElement.getName()
+							+ "' is not a valid Java class identifier");
 				else
-					return ctx.createFailureStatus("'" + namedElement.getName() + "' is not a valid Java class identifier");
-						
+					return ctx.createSuccessStatus();
+
 			case PACKAGE:
-				return JavaConventions.validatePackageName(namedElement.getName(), "5.0", "5.0");
+				return JavaConventions.validatePackageName(
+						namedElement.getName(), "5.0", "5.0");
 			case TYPE:
-				return JavaConventions.validateTypeVariableName(namedElement.getName(), "5.0", "5.0");
+				return JavaConventions.validateTypeVariableName(
+						namedElement.getName(), "5.0", "5.0");
 			case FIELD:
-				return JavaConventions.validateFieldName(namedElement.getName(), "5.0", "5.0");
+				return JavaConventions.validateFieldName(
+						namedElement.getName(), "5.0", "5.0");
 			case METHOD:
-				return JavaConventions.validateMethodName(namedElement.getName(), "5.0", "5.0");
+				return JavaConventions.validateMethodName(
+						namedElement.getName(), "5.0", "5.0");
 			default:
 				return ctx.createSuccessStatus();
 			}
@@ -86,16 +106,27 @@ public class NamedElementJavaConventionsConstraint extends AbstractModelConstrai
 
 	static {
 		formattingPerClass = new LinkedHashMap<EClass, Formatting>();
-		formattingPerClass.put(ParallelJPackage.eINSTANCE.getProcedure(), Formatting.METHOD);
-		formattingPerClass.put(ParallelJPackage.eINSTANCE.getHandler(), Formatting.METHOD);
-		formattingPerClass.put(ParallelJPackage.eINSTANCE.getForEachLoop(), Formatting.METHOD);
-		formattingPerClass.put(ParallelJPackage.eINSTANCE.getWhileLoop(), Formatting.METHOD);
-		formattingPerClass.put(ParallelJPackage.eINSTANCE.getBlock(), Formatting.METHOD);
-		formattingPerClass.put(ParallelJPackage.eINSTANCE.getCondition(), Formatting.FIELD);
-		formattingPerClass.put(ParallelJPackage.eINSTANCE.getProgram(), Formatting.CLASS);
-		formattingPerClass.put(ParallelJPackage.eINSTANCE.getData(), Formatting.FIELD);
-		formattingPerClass.put(ParallelJPackage.eINSTANCE.getPredicate(), Formatting.METHOD);
-		formattingPerClass.put(ParallelJPackage.eINSTANCE.getBusinessProcedure(), Formatting.METHOD);
+		formattingPerClass.put(ParallelJPackage.eINSTANCE.getProcedure(),
+				Formatting.METHOD);
+		formattingPerClass.put(ParallelJPackage.eINSTANCE.getHandler(),
+				Formatting.METHOD);
+		formattingPerClass.put(ParallelJPackage.eINSTANCE.getForEachLoop(),
+				Formatting.METHOD);
+		formattingPerClass.put(ParallelJPackage.eINSTANCE.getWhileLoop(),
+				Formatting.METHOD);
+		formattingPerClass.put(ParallelJPackage.eINSTANCE.getBlock(),
+				Formatting.METHOD);
+		formattingPerClass.put(ParallelJPackage.eINSTANCE.getCondition(),
+				Formatting.FIELD);
+		formattingPerClass.put(ParallelJPackage.eINSTANCE.getProgram(),
+				Formatting.CLASS);
+		formattingPerClass.put(ParallelJPackage.eINSTANCE.getData(),
+				Formatting.FIELD);
+		formattingPerClass.put(ParallelJPackage.eINSTANCE.getPredicate(),
+				Formatting.METHOD);
+		formattingPerClass.put(
+				ParallelJPackage.eINSTANCE.getBusinessProcedure(),
+				Formatting.METHOD);
 	}
 
 	@Override
@@ -106,13 +137,16 @@ public class NamedElementJavaConventionsConstraint extends AbstractModelConstrai
 		if (formatting == null)
 			return ctx.createSuccessStatus();
 		NamedElement namedElement = (NamedElement) eObject;
-		if (namedElement.getName() == null || namedElement.getName().length() == 0)
-			return ctx.createFailureStatus(eObjectEClass.getName() + " " + namedElement.getName() + ": null values are not allowed");
+		if (namedElement.getName() == null
+				|| namedElement.getName().length() == 0)
+			return ctx.createFailureStatus(eObjectEClass.getName() + " "
+					+ namedElement.getName() + ": null values are not allowed");
 		IStatus highStatus = formatting.getStatus(ctx, namedElement);
-		
+
 		if (highStatus.getSeverity() == IStatus.OK)
 			return ctx.createSuccessStatus();
 		else
-			return ctx.createFailureStatus(eObjectEClass.getName() + " " + namedElement.getName() + ": " + highStatus.getMessage());
+			return ctx.createFailureStatus(eObjectEClass.getName() + " "
+					+ namedElement.getName() + ": " + highStatus.getMessage());
 	}
 }
