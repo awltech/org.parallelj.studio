@@ -36,8 +36,7 @@ Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.7.0",
  org.eclipselabs.resourceselector.processor.java.primitives;bundle-version="0.3.0",
  org.parallelj.designer.typeselector.processor.hierarchy;bundle-version="1.0.0",
  org.parallelj.designer.typeselector.processor.annotation;bundle-version="1.0.0",
- org.parallelj.designer.typeselector.processor.model;bundle-version="1.0.0",
- org.eclipse.gmt.modisco.xml;bundle-version="0.9.1"
+ org.parallelj.designer.typeselector.processor.model;bundle-version="1.0.0"
 Export-Package: org.parallelj.designer.extension.dialog,org.parallelj.
  designer.extension.part.contrib,org.parallelj.designer.extension.tool
  s
@@ -49,4 +48,8 @@ Bundle-ManifestVersion: 2
 Bundle-Activator: org.parallelj.designer.extension.Activator
 Bundle-SymbolicName: org.parallelj.designer.extension;singleton:=true
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ClassPath: lib/jaxen-1.1.1.jar,
+ lib/jdom-1.1.1.jar,
+ lib/saxpath-1.0.jar,
+ .
 

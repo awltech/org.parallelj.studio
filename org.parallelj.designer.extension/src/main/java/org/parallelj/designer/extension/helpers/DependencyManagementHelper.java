@@ -21,28 +21,29 @@
  */
 package org.parallelj.designer.extension.helpers;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IPath;
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.gmt.modisco.xml.Element;
-import org.eclipse.gmt.modisco.xml.Node;
-import org.eclipse.gmt.modisco.xml.Root;
-import org.eclipse.gmt.modisco.xml.Text;
-import org.eclipse.gmt.modisco.xml.emf.MoDiscoXMLFactory;
 import org.eclipse.jdt.core.IJavaProject;
+import org.jdom.Document;
+import org.jdom.Element;
+import org.jdom.JDOMException;
+import org.jdom.Namespace;
+import org.jdom.Text;
+import org.jdom.input.SAXBuilder;
+import org.jdom.output.Format;
+import org.jdom.output.XMLOutputter;
 import org.parallelj.designer.extension.part.contrib.BusinessProcedureContribution;
 
 public class DependencyManagementHelper {
 
 	private static final String FILENAME = "pom.xml";
-
-	private static final String PROJECT = "project";
 
 	private static final String DEPENDENCIES = "dependencies";
 
@@ -55,6 +56,8 @@ public class DependencyManagementHelper {
 	private static final String VERSION = "version";
 
 	private static final String SCOPE = "scope";
+
+	private static Namespace rootNameSpace;
 
 	private DependencyManagementHelper() {
 
@@ -69,56 +72,47 @@ public class DependencyManagementHelper {
 	 * @param contributions
 	 * @throws IOException
 	 * @throws CoreException
+	 * @throws JDOMException
 	 */
 	public static void updatePom(ResourceSet sharedResourceSet,
 			IJavaProject selectedJavaProject,
 			List<BusinessProcedureContribution> contributions)
-			throws IOException, CoreException {
+			throws IOException, CoreException, JDOMException {
 
 		// At first, we load the resource
 		final IResource foundMember = selectedJavaProject.getProject()
 				.findMember(FILENAME);
-		Resource resource = null;
 
-		// if file found the ready to append else create new
-		if (foundMember != null) {
-			final IPath foundMemberPath = foundMember.getFullPath();
-			final URI uri = URI.createPlatformResourceURI(
-					foundMemberPath.toString(), true);
-			resource = foundMember.exists() ? sharedResourceSet.getResource(
-					uri, true) : sharedResourceSet.createResource(uri);
-		} else {
-			final URI uri = URI.createPlatformResourceURI(selectedJavaProject
-					.getProject().getFullPath().append(FILENAME).toString(),
-					true);
-			resource = sharedResourceSet.createResource(uri);
+		if (foundMember != null && foundMember instanceof IFile) {
+
+			IFile iFile = (IFile) foundMember;
+
+			Document document;
+			document = new SAXBuilder().build(iFile.getContents());
+			Element rootElement = document.getRootElement();
+			rootNameSpace = rootElement.getNamespace();
+
+			// Then, we find or create the dependencies tag
+			final Element dependencies = findOrCreateDependencies(rootElement);
+
+			// Based on Business Procedure contribution add the dependency tag
+			// in pom
+			for (BusinessProcedureContribution contribution : contributions) {
+				// Then, we find or create the beans tag
+				findOrCreateDependency(dependencies, contribution);
+			}
+
+			File file = new File(iFile.getLocation().toString());
+			file.createNewFile();
+			FileOutputStream fos = new FileOutputStream(file);
+			new XMLOutputter(Format.getPrettyFormat()).output(document, fos);
+			fos.close();
+
 		}
 
-		if (resource == null)
-			return;
-
-		Root root = resource.getContents().size() > 0 ? (Root) resource
-				.getContents().get(0) : null;
-		if (root == null) {
-			root = MoDiscoXMLFactory.eINSTANCE.createRoot();
-			root.setName(PROJECT);
-			resource.getContents().add(root);
-		}
-
-		// Then, we find or create the dependencies tag
-		final Element dependencies = findOrCreateDependencies(root);
-
-		// Based on Business Procedure contribution add the dependency tag in
-		// pom
-		for (BusinessProcedureContribution contribution : contributions) {
-			// Then, we find or create the beans tag
-			findOrCreateDependency(dependencies, contribution);
-		}
-
-		// And finally, we save !
-		resource.save(null);
-		selectedJavaProject.getProject()
-				.refreshLocal(IResource.DEPTH_ONE, null);
+		// refresh
+		selectedJavaProject.getProject().refreshLocal(IResource.DEPTH_INFINITE,
+				null);
 
 	}
 
@@ -128,9 +122,9 @@ public class DependencyManagementHelper {
 	 * @param root
 	 * @return
 	 */
-	private static Element findOrCreateDependencies(Root root) {
+	private static Element findOrCreateDependencies(Element root) {
 
-		for (final Node rootChild : root.getChildren()) {
+		for (final Object rootChild : root.getChildren()) {
 			if (rootChild instanceof Element) {
 				final Element element = (Element) rootChild;
 				if (DEPENDENCIES.equals(element.getName())) {
@@ -160,45 +154,47 @@ public class DependencyManagementHelper {
 		boolean scopeMatch = false;
 
 		// Is same dependency already present
-		for (final Node dependency : dependencies.getChildren()) {
+		for (final Object dependency : dependencies.getChildren()) {
 			if (dependency instanceof Element) {
 				final Element dependencyElement = (Element) dependency;
-				for (final Node element : dependencyElement.getChildren()) {
+				for (final Object element : dependencyElement.getChildren()) {
 					if (element instanceof Element) {
 
-						if (element.getName().equals(GROUP_ID)) {
+						if (((Element) element).getName().equals(GROUP_ID)) {
 							final Element groupId = (Element) element;
-							Node node = groupId.getChildren().get(0);
+							Object node = groupId.getContent().get(0);
 
 							if (node instanceof Text
-									&& ((Text) node).getName().equals(
+									&& ((Text) node).getText().equals(
 											contribution.getGroupId())) {
 								groupIdMatch = true;
 							}
-						} else if (element.getName().equals(ARTIFACT_ID)) {
+						} else if (((Element) element).getName().equals(
+								ARTIFACT_ID)) {
 							final Element artifactId = (Element) element;
-							Node node = artifactId.getChildren().get(0);
+							Object node = artifactId.getContent().get(0);
 
 							if (node instanceof Text
-									&& ((Text) node).getName().equals(
+									&& ((Text) node).getText().equals(
 											contribution.getArtifactId())) {
 								artifactIdMatch = true;
 							}
-						} else if (element.getName().equals(VERSION)) {
+						} else if (((Element) element).getName()
+								.equals(VERSION)) {
 							final Element version = (Element) element;
-							Node node = version.getChildren().get(0);
+							Object node = version.getContent().get(0);
 
 							if (node instanceof Text
-									&& ((Text) node).getName().equals(
+									&& ((Text) node).getText().equals(
 											contribution.getVersion())) {
 								versionMatch = true;
 							}
-						} else if (element.getName().equals(SCOPE)) {
+						} else if (((Element) element).getName().equals(SCOPE)) {
 							final Element scope = (Element) element;
-							Node node = scope.getChildren().get(0);
+							Object node = scope.getContent().get(0);
 
 							if (node instanceof Text
-									&& ((Text) node).getName().equals(
+									&& ((Text) node).getText().equals(
 											contribution.getScope())) {
 								scopeMatch = true;
 							}
@@ -211,7 +207,6 @@ public class DependencyManagementHelper {
 						&& scopeMatch) {
 					return dependencyElement;
 				}
-
 			}
 		}
 
@@ -220,7 +215,6 @@ public class DependencyManagementHelper {
 				DEPENDENCY);
 		createDependencyChildren(dependencyElement, contribution);
 		return dependencyElement;
-
 	}
 
 	/**
@@ -246,7 +240,6 @@ public class DependencyManagementHelper {
 
 		final Element scopeElement = createElement(dependencyElement, SCOPE);
 		createText(scopeElement, contribution.getScope());
-
 	}
 
 	/*
@@ -254,11 +247,8 @@ public class DependencyManagementHelper {
 	 */
 	private static Element createElement(final Element element,
 			final String name) {
-
-		final Element createdElement = MoDiscoXMLFactory.eINSTANCE
-				.createElement();
-		createdElement.setName(name);
-		createdElement.setParent(element);
+		final Element createdElement = new Element(name, rootNameSpace);
+		element.addContent(createdElement);
 		return createdElement;
 	}
 
@@ -266,10 +256,8 @@ public class DependencyManagementHelper {
 	 * Creates a new XML Attribute with name and value, in element provided
 	 */
 	private static Text createText(final Element element, final String name) {
-		final Text text = MoDiscoXMLFactory.eINSTANCE.createText();
-		text.setName(name);
-		text.setParent(element);
+		final Text text = new Text(name);
+		element.addContent(text);
 		return text;
 	}
-
 }

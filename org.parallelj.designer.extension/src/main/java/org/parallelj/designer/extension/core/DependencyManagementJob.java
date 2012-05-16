@@ -32,6 +32,7 @@ import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.jdt.core.IJavaProject;
+import org.jdom.JDOMException;
 import org.parallelj.designer.extension.Activator;
 import org.parallelj.designer.extension.Messages;
 import org.parallelj.designer.extension.helpers.DependencyManagementHelper;
@@ -76,6 +77,10 @@ public class DependencyManagementJob extends Job {
 			return new Status(Status.ERROR, Activator.PLUGIN_ID,
 					Messages.JOB02E.getMessage(e.getMessage()));
 		} catch (CoreException e) {
+			return new Status(Status.ERROR, Activator.PLUGIN_ID,
+					Messages.JOB02E.getMessage(e.getMessage()));
+		}
+		catch (JDOMException e) {
 			return new Status(Status.ERROR, Activator.PLUGIN_ID,
 					Messages.JOB02E.getMessage(e.getMessage()));
 		}
