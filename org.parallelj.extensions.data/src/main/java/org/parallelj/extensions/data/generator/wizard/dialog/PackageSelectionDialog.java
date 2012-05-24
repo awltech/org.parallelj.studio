@@ -29,7 +29,6 @@ import org.eclipse.core.resources.IFolder;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.IPackageFragment;
 import org.eclipse.jdt.core.IPackageFragmentRoot;
-import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.IDialogSettings;
@@ -75,9 +74,11 @@ public class PackageSelectionDialog extends Dialog {
 	private CLabel errorWarningLabel;
 	private Label separatorLabel;
 	private Label packageLabel;
+	private Label optionLabel;
 	private FormData formData;
 	private FormData formData_2;
 	private Text packageText;
+	private Text optionText;
 	private Button selectPackageButton;
 	private HashMap<Integer, Button> buttons = new HashMap<Integer, Button>();
 	private DataConfiguration wizardOutput;
@@ -133,6 +134,8 @@ public class PackageSelectionDialog extends Dialog {
 		createTopComposite(container);
 		createHorizontalSeparator(container);
 		createMiddleComposite(container);
+		createHorizontalSeparator(container);
+		createBottomComposite(container);
 		createHorizontalSeparator(container);
 		return container;
 	}
@@ -265,6 +268,26 @@ public class PackageSelectionDialog extends Dialog {
 	}
 
 	/**
+	 * this method design the middle part of the dialog box
+	 * 
+	 * @param container
+	 */
+
+	protected void createBottomComposite(Composite container) {
+		Composite composite_1 = new Composite(container, SWT.NONE);
+		composite_1.setLayout(new FormLayout());
+		{
+			GridData gridData = new GridData(SWT.FILL, SWT.FILL, true, true, 1,
+					1);
+			gridData.heightHint = 25;
+			gridData.widthHint = 587;
+			composite_1.setLayoutData(gridData);
+		}
+		createOptionLabel(composite_1);
+		createOptionText(composite_1);
+	}
+
+	/**
 	 * 
 	 * @param composite
 	 */
@@ -278,6 +301,22 @@ public class PackageSelectionDialog extends Dialog {
 			packageLabel.setLayoutData(formData);
 		}
 		packageLabel.setText(Messages.PACKAGE_LABEL.message());
+	}
+
+	/**
+	 * 
+	 * @param composite
+	 */
+
+	protected void createOptionLabel(Composite composite) {
+		optionLabel = new Label(composite, SWT.NONE);
+		{
+			formData = new FormData();
+			formData.left = new FormAttachment(0, 10);
+			formData.top = new FormAttachment(0, 1);
+			optionLabel.setLayoutData(formData);
+		}
+		optionLabel.setText(Messages.OPTION_LABEL.message());
 	}
 
 	/**
@@ -310,6 +349,27 @@ public class PackageSelectionDialog extends Dialog {
 			formData_2.right = new FormAttachment(selectPackageButton, -3,
 					SWT.LEFT);
 			packageText.setLayoutData(formData_2);
+		}
+	}
+
+	/**
+	 * 
+	 * @param composite
+	 */
+
+	protected void createOptionText(Composite composite) {
+		optionText = new Text(composite, SWT.BORDER);
+
+		if (settings.get("OPTION_FRAGMENT") != null)
+			optionText.setText(settings.get("OPTION_FRAGMENT"));
+
+		{
+			formData_2 = new FormData();
+
+			formData_2.left = new FormAttachment(0, 20);
+			formData_2.top = new FormAttachment(optionLabel, 5);
+			formData_2.right = new FormAttachment(86, -3);
+			optionText.setLayoutData(formData_2);
 		}
 	}
 
@@ -398,16 +458,8 @@ public class PackageSelectionDialog extends Dialog {
 			errorWarningLabel.setText(Messages.INVALID_XMLPACKAGE_ERROR
 					.message());
 			enableDisableOKButton(false);
-		} else if (packageTextFilterEvent(packageFragment)) {
-
-			errorWarningLabel.setImage(Activator.getDefault().getImage(
-					WizardConstants.WARNING_IMAGE));
-			errorWarningLabel.setText(Messages.EXISTINGJAXB_ANNOTED_POJO_INFO
-					.message());
-			enableDisableOKButton(true);
 		} else {
-			errorWarningLabel.setImage(Activator.getDefault().getImage(
-					WizardConstants.INFO_IMAGE));
+			errorWarningLabel.setImage(null);
 			errorWarningLabel.setText(Messages.JAXBANNOTED_POJO_INFO.message());
 			enableDisableOKButton(true);
 			IFolder mainSourceFolder = javaProject.getProject().getFolder(
@@ -418,49 +470,6 @@ public class PackageSelectionDialog extends Dialog {
 				dialogData.setPackageFragment(mainPackageFragmentRoot
 						.getPackageFragment(packageText.getText()));
 		}
-	}
-
-	/**
-	 * this method filters the Target Package field
-	 * 
-	 * @param lpackageFragments
-	 *            :lpackageFragments contains a list of IPackageFragment
-	 * @return boolean returns true or false based on the condition
-	 */
-
-	private boolean packageTextFilterEvent(
-			java.util.List<IPackageFragment> lpackageFragments) {
-		boolean found = false;
-		if (lpackageFragments != null) {
-			for (IPackageFragment pck : lpackageFragments) {
-				if (pck.getElementName().trim().matches(packageText.getText())) {
-					dialogData.setPackageFragment(pck);
-					found = true;
-					break;
-				} else
-					continue;
-			}
-		}
-		if (found) {
-			try {
-				if (dialogData.getFileType().getID()
-						.equals(GenerationType.XML.getID())) {
-					if (((IPackageFragment) dialogData.getPackageFragment())
-							.containsJavaResources()) {
-						return true;
-					} else {
-						return false;
-					}
-				}
-			} catch (JavaModelException e) {
-				Activator.sendErrorToErrorLog(Messages.PACKAGE_TEXT_ERROR
-						.message(e.getMessage()));
-			} catch (Exception e) {
-				Activator.sendErrorToErrorLog(Messages.PACKAGE_TEXT_ERROR
-						.message(e.getMessage()));
-			}
-		}
-		return found;
 	}
 
 	/**
@@ -502,9 +511,12 @@ public class PackageSelectionDialog extends Dialog {
 
 	protected void setWizardData() {
 		if (dialogData != null) {
+
+			dialogData.setOptions(optionText.getText());
+
 			this.wizardOutput = new DataConfiguration(dialogData.getFileType(),
 					dialogData.getPackageFragment(), true,
-					dialogData.getSchemaFileName());
+					dialogData.getSchemaFileName(), dialogData.getOptions());
 		}
 	}
 
@@ -580,7 +592,7 @@ public class PackageSelectionDialog extends Dialog {
 
 	@Override
 	protected Point getInitialSize() {
-		return new Point(600, 250);
+		return new Point(600, 350);
 	}
 
 	/**
@@ -599,6 +611,7 @@ public class PackageSelectionDialog extends Dialog {
 
 	private void setDialogSettings() {
 		settings.put("PACKAGE_FRAGMENT", packageText.getText());
+		settings.put("OPTION_FRAGMENT", optionText.getText());
 	}
 
 	protected IDialogSettings getDialogSettings() {
@@ -624,6 +637,7 @@ public class PackageSelectionDialog extends Dialog {
 		private String dialogSelect;
 		private GenerationType fileType;
 		private java.util.List<IPackageFragment> lallXMLPackageFragments;
+		private String options;
 
 		public GenerationType getFileType() {
 			return fileType;
@@ -672,6 +686,14 @@ public class PackageSelectionDialog extends Dialog {
 		public void setLallXMLPackageFragments(
 				java.util.List<IPackageFragment> lallXMLPackageFragments) {
 			this.lallXMLPackageFragments = lallXMLPackageFragments;
+		}
+
+		public String getOptions() {
+			return options;
+		}
+
+		public void setOptions(String options) {
+			this.options = options;
 		}
 	}
 }

@@ -57,6 +57,8 @@ public class DataConfiguration {
 	 */
 	private IFile xsdModel;
 
+	private String options;
+
 	/**
 	 * (Private Constructor. Should use public static methods instead)
 	 * 
@@ -73,10 +75,11 @@ public class DataConfiguration {
 	 */
 	public DataConfiguration(GenerationType generationType,
 			IPackageFragment generationPackage, boolean shouldGenerateFromXSD,
-			IFile xsdModel) {
+			IFile xsdModel, String options) {
 		this.generateXMLFromXSD = shouldGenerateFromXSD;
 		this.generationPackage = generationPackage;
 		this.xsdModel = xsdModel;
+		this.options = options;
 	}
 
 	/**
@@ -108,5 +111,9 @@ public class DataConfiguration {
 	 */
 	public boolean isGenerateXMLFromXSD() {
 		return this.generateXMLFromXSD;
+	}
+
+	public String getOptions() {
+		return options;
 	}
 }

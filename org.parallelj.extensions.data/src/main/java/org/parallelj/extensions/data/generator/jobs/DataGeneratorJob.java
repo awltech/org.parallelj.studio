@@ -69,9 +69,10 @@ public class DataGeneratorJob extends WorkspaceJob {
 		monitor.subTask(Messages.JOB02I.message());
 		XjcGenerator xjc = new XjcGenerator(this.generationConfiguration
 				.getXSDModel().getProjectRelativePath(),
-				this.generationConfiguration.getGenerationPackage(), null,
+				this.generationConfiguration.getGenerationPackage(),
 				this.generationConfiguration.getGenerationPackage()
-						.getJavaProject());
+						.getJavaProject(),
+				this.generationConfiguration.getOptions());
 		try {
 			xjc.run();
 			monitor.worked(1);
@@ -90,7 +91,7 @@ public class DataGeneratorJob extends WorkspaceJob {
 		}
 
 		monitor.done();
-		
+
 		// If arrived here, it means everything went well. So returns OK status.
 		return new Status(Status.OK, Activator.PLUGIN_ID,
 				Messages.JOB04I.message());

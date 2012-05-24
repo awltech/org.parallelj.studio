@@ -35,7 +35,6 @@ import java.util.List;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IPath;
@@ -46,7 +45,6 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.IPackageFragment;
 import org.eclipse.jdt.core.IType;
-import org.eclipse.jdt.core.JavaCore;
 
 import com.sun.tools.xjc.Driver;
 
@@ -56,37 +54,16 @@ public class XjcGenerator {
 
 	private IPath xsdFile;
 	private IPackageFragment pckGeneration;
-	private IFile bindingFile;
 	private IJavaProject selectedProject;
-	private String bindingFileName = "/binding.xml";
+	private String options;
 
 	public XjcGenerator(IPath xsdFile, IPackageFragment pckGeneration,
-			IFile bindingFile, IJavaProject selectedProject) {
+			IJavaProject selectedProject, String options) {
 		this.xsdFile = xsdFile;
 		this.pckGeneration = pckGeneration;
-		this.bindingFile = bindingFile;
 		this.selectedProject = selectedProject;
-
-		IProject userProject = ResourcesPlugin.getWorkspace().getRoot()
-				.getProject(selectedProject.getElementName());
-		IJavaProject javaProject = JavaCore.create(userProject);
-
-		// remove for v2.1.2
-		if (bindingFile == null) {
-			copyTextFileFromPluginToProject(bindingFileName, "target"
-					+ bindingFileName, this.selectedProject.getProject());
-			try {
-				userProject.refreshLocal(IResource.DEPTH_INFINITE,
-						new org.eclipse.core.runtime.NullProgressMonitor());
-			} catch (CoreException e) {
-				logger.log(new Status(IStatus.ERROR, Activator.PLUGIN_ID,
-						IStatus.ERROR, "Unable to refresh Project : "
-								+ javaProject.getProject().getName(), e));
-			}
-			this.bindingFile = ResourcesPlugin.getWorkspace().getRoot()
-					.getProject(this.selectedProject.getElementName())
-					.getFile("target" + bindingFileName);
-		}
+		this.options = options;
+		
 	}
 
 	public void run() throws Exception {
@@ -103,7 +80,6 @@ public class XjcGenerator {
 						.getPath()).toOSString());
 
 		// For xa:date, xa:dateTime, xs:time transformation in java.util.Date
-		// remove for v2.1.2
 		xjcArgs.add("-extension");
 
 		// Package for the JAXB pojos generation
@@ -115,12 +91,13 @@ public class XjcGenerator {
 		xjcArgs.add(currentProjectPath.toString() + Path.SEPARATOR
 				+ xsdFile.toString());
 
-		// For xa:date, xa:dateTime, xs:time transformation in java.util.Date
-		// remove for v2.1.2
-		if (this.bindingFile != null) {
-			xjcArgs.add("-b");
-			xjcArgs.add(currentProjectPath.toString() + Path.SEPARATOR
-					+ "target" + bindingFileName);
+		// for xjc option
+		if (this.options != null && this.options.trim().length() > 0) {
+
+			String[] split = this.options.split(" ");
+			for (String string : split) {
+				xjcArgs.add(string);
+			}
 		}
 
 		String[] a = new String[xjcArgs.size()];
@@ -135,6 +112,7 @@ public class XjcGenerator {
 		if (result != 0) {
 			logger.log(new Status(IStatus.ERROR, Activator.PLUGIN_ID,
 					IStatus.ERROR, "Error generation Pojos : " + output, null));
+			throw new Exception("Error generation Pojos : " + output);
 		}
 
 		try {
