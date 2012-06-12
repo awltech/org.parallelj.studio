@@ -150,16 +150,25 @@
 	</profiles>
 
 	<modules>
+		<!-- Features -->
+
+		<module>org.parallelj.feature</module>
+		<module>org.parallelj.feature.pjl</module>
+		<module>org.parallelj.feature.tools</module>
+		<module>org.parallelj.feature.codegen</module>
+		<module>org.parallelj.feature.all</module>
+
+		<!-- XPAND Codegen -->
+
 		<module>org.parallelj.codegen</module>
 		<module>org.parallelj.common.jdt</module>
+
+		<!-- EMF/GMF part -->
+
 		<module>org.parallelj.designer</module>
 		<module>org.parallelj.designer.extension</module>
 		<module>org.parallelj.designer.properties</module>
-		<module>org.parallelj.designer.typeselector.processor.annotation</module>
-		<module>org.parallelj.designer.typeselector.processor.hierarchy</module>
-		<module>org.parallelj.designer.typeselector.processor.model</module>
 		<module>org.parallelj.designer.validation</module>
-		<module>org.parallelj.feature</module>
 		<module>org.parallelj.model</module>
 		<module>org.parallelj.model.edit</module>
 		<module>org.parallelj.model.editor</module>
@@ -167,16 +176,30 @@
 			by Eclipse and must be executed in Eclipse. It seems that Maven can't run 
 			that kind of tests for the moment. -->
 		<!--module>org.parallelj.model.tests</module -->
-		<module>org.parallelj.studio.updatesite</module>
+
+		<!-- Resource Selector processors -->
+
+		<module>org.parallelj.designer.typeselector.processor.annotation</module>
+		<module>org.parallelj.designer.typeselector.processor.hierarchy</module>
+		<module>org.parallelj.designer.typeselector.processor.model</module>
+
+		<!-- Launcher plugin -->
+
 		<module>org.parallelj.designer.launching</module>
+
+		<!-- Tools -->
+
 		<module>org.parallelj.extensions.data</module>
+
+		<!-- DSL part -->
+
 		<module>org.parallelj.pjl</module>
 		<module>org.parallelj.pjl.tests</module>
 		<module>org.parallelj.pjl.ui</module>
-		<module>org.parallelj.feature.pjl</module>
-		<module>org.parallelj.feature.tools</module>
-		<module>org.parallelj.feature.codegen</module>
-		<module>org.parallelj.feature.all</module>
+
+		<!-- Update site -->
+
+		<module>org.parallelj.studio.updatesite</module>
 	</modules>
 
 	<build>
