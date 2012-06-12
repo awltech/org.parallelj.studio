@@ -114,6 +114,26 @@
           </objectState>
        </visibility>
     </objectContribution>
+    <objectContribution
+          adaptable="false"
+          id="DiagramRoot"
+          nameFilter="*.pjl"
+          objectClass="org.eclipse.core.resources.IFile">
+       <action
+             class="org.parallelj.codegen.GenerateCodeFromFilesAction"
+             icon="icons/elcl16/pjgen-16.png"
+             id="generateJavaCodeFromFile"
+             label="Generate Code From File"
+             menubarPath="org.eclipse.emf.validationMenuID/forGeneration">
+       </action>
+       <menu
+             id="org.eclipse.emf.validationMenuID"
+             label="ParallelJ">
+          <separator
+                name="forGeneration">
+          </separator>
+       </menu>
+    </objectContribution>
    </extension>
 
 </plugin>
