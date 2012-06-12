@@ -9,7 +9,6 @@
             nameFilter="*.xsd"
             objectClass="org.eclipse.core.resources.IFile">
          <menu
-               icon="icons/ParallelJDiagramFile.png"
                id="org.eclipse.emf.validationMenuID"
                label="ParallelJ">
             <separator
@@ -17,11 +16,12 @@
             </separator>
          </menu>
          <action
-               label="Generate JAXB pojos from XSD file"
                class="org.parallelj.extensions.data.generator.actions.DataGeneratorAction"
-               menubarPath="org.eclipse.emf.validationMenuID/group"
                enablesFor="1"
-               id="org.parallelj.extensions.data.newAction">
+               icon="icons/ParallelJDiagramFile.png"
+               id="org.parallelj.extensions.data.newAction"
+               label="Generate JAXB pojos from XSD file"
+               menubarPath="org.eclipse.emf.validationMenuID/group">
          </action>
       </objectContribution>
    </extension>

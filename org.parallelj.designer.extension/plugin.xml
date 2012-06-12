@@ -371,11 +371,11 @@
             allPopups="true"
             locationURI="popup:org.eclipse.ui.popup.any?after=additions">
          <menu
-               icon="icons/obj16/ParallelJDiagramFile.png"
                id="org.eclipse.emf.validationMenuID"
                label="ParallelJ">
             <command
                   commandId="org.parallelj.designer.extension.dependencyManagement"
+                  icon="icons/obj16/ParallelJDiagramFile.png"
                   label="Add Maven dependencies for Business Procedure contributions"
                   style="push">
                <visibleWhen

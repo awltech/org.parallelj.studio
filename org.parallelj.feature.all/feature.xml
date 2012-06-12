@@ -7,7 +7,9 @@
 
    <description url="http://www.parallelj.org">
       ParallelJ is a Java framework for tasks parallelization.
-      This is the ParallelJ Model Driven Editor.
+This is the ParallelJ Model Driven Editor.
+
+This bundle contains everything from //J except the incubation features.
    </description>
 
    <copyright>
