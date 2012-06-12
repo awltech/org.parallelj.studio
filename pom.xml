@@ -169,10 +169,12 @@
 		<!--module>org.parallelj.model.tests</module -->
 		<module>org.parallelj.studio.updatesite</module>
 		<module>org.parallelj.designer.launching</module>
+		<module>org.parallelj.extensions.data</module>
 		<module>org.parallelj.pjl</module>
 		<module>org.parallelj.pjl.tests</module>
 		<module>org.parallelj.pjl.ui</module>
 		<module>org.parallelj.feature.pjl</module>
+		<module>org.parallelj.feature.tools</module>
 	</modules>
 
 	<build>
