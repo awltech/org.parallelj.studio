@@ -1,8 +1,10 @@
 Manifest-Version: 1.0
-Require-Bundle: org.eclipse.ui;bundle-version="3.7.0",org.eclipse.core
- .runtime;bundle-version="3.7.0",org.eclipse.jdt.core;bundle-version="
- 3.7.0",org.eclipse.jface.text;bundle-version="3.7.0",org.eclipse.core
- .resources;bundle-version="3.7.0",org.junit;bundle-version="4.8.2"
+Require-Bundle: org.eclipse.ui;bundle-version="3.7.0",
+ org.eclipse.core.runtime;bundle-version="3.7.0",
+ org.eclipse.jdt.core;bundle-version="3.7.0",
+ org.eclipse.jface.text;bundle-version="3.7.0",
+ org.eclipse.core.resources;bundle-version="3.7.0",
+ org.junit;bundle-version="4.8.0"
 Export-Package: org.parallelj.common.jdt.checkers,org.parallelj.common
  .jdt.helpers,org.parallelj.common.jdt.imports,org.parallelj.common.jd
  t.mergers

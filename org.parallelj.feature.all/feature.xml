@@ -537,7 +537,6 @@ That&apos;s all there is to it!
    <requires>
       <import feature="org.parallelj.feature" version="1.1.0"/>
       <import feature="org.parallelj.feature.codegen" version="1.1.0"/>
-      <import feature="org.parallelj.feature.pjl" version="1.1.0"/>
       <import feature="org.parallelj.feature.tools" version="1.1.0"/>
    </requires>
 
