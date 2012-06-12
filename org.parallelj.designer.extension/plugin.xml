@@ -371,6 +371,7 @@
             allPopups="true"
             locationURI="popup:org.eclipse.ui.popup.any?after=additions">
          <menu
+               icon="icons/obj16/ParallelJDiagramFile.png"
                id="org.eclipse.emf.validationMenuID"
                label="ParallelJ">
             <command

@@ -9,8 +9,9 @@
             nameFilter="*.xsd"
             objectClass="org.eclipse.core.resources.IFile">
          <menu
-               label="ParallelJ"
-               id="org.eclipse.emf.validationMenuID">
+               icon="icons/ParallelJDiagramFile.png"
+               id="org.eclipse.emf.validationMenuID"
+               label="ParallelJ">
             <separator
                   name="group">
             </separator>
