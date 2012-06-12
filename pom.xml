@@ -175,6 +175,8 @@
 		<module>org.parallelj.pjl.ui</module>
 		<module>org.parallelj.feature.pjl</module>
 		<module>org.parallelj.feature.tools</module>
+		<module>org.parallelj.feature.codegen</module>
+		<module>org.parallelj.feature.all</module>
 	</modules>
 
 	<build>

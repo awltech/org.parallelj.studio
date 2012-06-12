@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.parallelj.feature"
-      label="ParallelJ"
+      label="ParallelJ (minimal installation)"
       version="1.1.0.qualifier"
       provider-name="Parallelj.org">
 
@@ -587,20 +587,6 @@ That&apos;s all there is to it!
       <import feature="org.maven.ide.eclipse.ajdt.feature" version="0.13.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.ajdt" version="2.1.3" match="compatible"/>
    </requires>
-
-   <plugin
-         id="org.parallelj.codegen"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.parallelj.common.jdt"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
 
    <plugin
          id="org.parallelj.designer"
