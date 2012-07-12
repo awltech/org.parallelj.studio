@@ -101,7 +101,8 @@
 		<eclipse-site>${eclipse-mirror}/releases/${platform-version-name}</eclipse-site>
 		<resourceselector-site>http://xa-labs.github.com/ResourceSelector/site</resourceselector-site>
 		<release-type>final</release-type>
-		<ajdt-connector-site>http://dist.springsource.org/release/AJDT/composite/</ajdt-connector-site>
+		<ajdt-connector-site>http://dist.springsource.org/release/AJDT/configurator/</ajdt-connector-site>
+		<ajdt-site>http://download.eclipse.org/tools/ajdt/37/update</ajdt-site>
 	</properties>
 
 	<profiles>
@@ -279,6 +280,11 @@
 			<id>ajdt-connector</id>
 			<layout>p2</layout>
 			<url>${ajdt-connector-site}</url>
+		</repository>
+		<repository>
+			<id>ajdt</id>
+			<layout>p2</layout>
+			<url>${ajdt-site}</url>
 		</repository>
 	</repositories>
 </project>
