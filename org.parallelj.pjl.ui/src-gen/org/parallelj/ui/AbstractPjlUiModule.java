@@ -4,8 +4,8 @@
  */
 package org.parallelj.ui;
 
-import org.eclipse.xtext.ui.DefaultUiModule;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.xtext.ui.DefaultUiModule;
 
 /**
  * Manual modifications go to {org.parallelj.ui.PjlUiModule}
@@ -40,7 +40,7 @@ public abstract class AbstractPjlUiModule extends DefaultUiModule {
 
 	// contributed by org.eclipse.xtext.generator.exporting.SimpleNamesFragment
 	public Class<? extends org.eclipse.xtext.ui.refactoring.IDependentElementsCalculator> bindIDependentElementsCalculator() {
-		return org.eclipse.xtext.ui.refactoring.IDependentElementsCalculator.Null.class;
+		return org.eclipse.xtext.ui.refactoring.IDependentElementsCalculator.class;
 	}
 
 	// contributed by org.eclipse.xtext.ui.generator.labeling.LabelProviderFragment
