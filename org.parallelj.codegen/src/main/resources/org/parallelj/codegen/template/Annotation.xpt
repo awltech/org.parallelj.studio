@@ -86,4 +86,7 @@
 «ENDDEFINE»
 
 «DEFINE forEach  FOR ForEachLoop-»
+@org.parallelj.ForEach("«this.iterable.name»") Object val «ENDDEFINE»
+«REM»
 @org.parallelj.ForEach("«this.iterable.name»") «getGeneric(this.iterable.type)» val «ENDDEFINE»
+«ENDREM»
