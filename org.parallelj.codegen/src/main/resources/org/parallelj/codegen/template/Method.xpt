@@ -98,7 +98,7 @@
 	 */
 	 «EXPAND Annotation::generatedWithHashToBeComputed FOR this»
 	 «EXPAND Annotation::split FOR this»
-	 void «this.getElementName()»(«this.executable» executable, «getCallableGeneric(this.executable,this)» result){
+	 public void «this.getElementName()»(«this.executable» executable, «getCallableGeneric(this.executable,this)» result){
 	 	// TODO : to be implemented
 	 	
 	 }
