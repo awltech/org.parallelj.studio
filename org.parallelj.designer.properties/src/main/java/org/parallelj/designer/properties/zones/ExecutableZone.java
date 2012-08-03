@@ -189,9 +189,7 @@ public class ExecutableZone extends Zone {
 			setDialogSettings(JavaPlugin.getDefault().getDialogSettings());
 			setWindowTitle(NewWizardMessages.NewClassCreationWizard_title);
 			page = new NewClassWizardPage();
-			List<String> interfaces = new ArrayList<String>();
-			interfaces.add("java.lang.Runnable");
-			page.setSuperInterfaces(interfaces, false);
+			page.addSuperInterface(Runnable.class.getCanonicalName());
 			page.setMethodStubSelection(false, true, true, false);
 		}
 
