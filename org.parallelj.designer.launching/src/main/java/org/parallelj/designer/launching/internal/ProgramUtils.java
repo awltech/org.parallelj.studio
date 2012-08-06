@@ -19,34 +19,38 @@ public class ProgramUtils {
 			String mainJavaType, Map<Object, Object> parametersFromConfig) {
 		Map<Object, Object> input = new HashMap<Object, Object>();
 		IType mainType = null;
-		try {
-			mainType = JavaCore
-					.create(ResourcesPlugin.getWorkspace().getRoot())
-					.getJavaProject(project).findType(mainJavaType);
-			String[] compilationUnitSource = mainType.getCompilationUnit()
-					.getSource().split(";");
-			if (mainType instanceof SourceType) {
-				IField[] fields = mainType.getFields();
-				for (IField iField : fields) {
-					if (fieldContainsAnnotation(compilationUnitSource, iField,
-							ConfigurationConstants.PARALLELJ_IN_ANNOTATION)) {
-						if (!input.containsKey(iField.getElementName())) {
-							input.put(iField.getElementName(), "");
+		if (project != null && !project.equals("")) {
+			try {
+				mainType = JavaCore
+						.create(ResourcesPlugin.getWorkspace().getRoot())
+						.getJavaProject(project).findType(mainJavaType);
+				if (mainType != null) {
+					String[] compilationUnitSource = mainType.getCompilationUnit()
+							.getSource().split(";");
+					if (mainType instanceof SourceType) {
+						IField[] fields = mainType.getFields();
+						for (IField iField : fields) {
+							if (fieldContainsAnnotation(compilationUnitSource, iField,
+									ConfigurationConstants.PARALLELJ_IN_ANNOTATION)) {
+								if (!input.containsKey(iField.getElementName())) {
+									input.put(iField.getElementName(), "");
+								}
+							}
 						}
 					}
 				}
+			} catch (JavaModelException e1) {
 			}
-		} catch (JavaModelException e1) {
-		}
 
-		if (parametersFromConfig != null) {
-			Object[] keys = parametersFromConfig.keySet().toArray();
-			for (Object obj : keys) {
-				if (!input.containsKey(obj)) {
-					parametersFromConfig.remove(obj);
+			if (parametersFromConfig != null) {
+				Object[] keys = parametersFromConfig.keySet().toArray();
+				for (Object obj : keys) {
+					if (!input.containsKey(obj)) {
+						parametersFromConfig.remove(obj);
+					}
 				}
+				input.putAll(parametersFromConfig);
 			}
-			input.putAll(parametersFromConfig);
 		}
 
 		return input;
