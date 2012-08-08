@@ -46,6 +46,7 @@ import org.parallelj.designer.extension.tools.Drawer;
 import org.parallelj.designer.extension.tools.JoinSplitUpdater;
 import org.parallelj.model.Handler;
 import org.parallelj.model.Procedure;
+import org.parallelj.model.impl.HandlerImpl;
 
 public class HandlerExtendedEditPart extends HandlerEditPart {
 
@@ -102,6 +103,7 @@ public class HandlerExtendedEditPart extends HandlerEditPart {
 	 */
 	public void findLinkedProcedures() {
 		// getting all managed procedures
+		if ( (((View) this.getModel()).getElement() instanceof HandlerImpl) && getHandler() != null) {
 		EList<Procedure> procedures = getHandler().getProcedures();
 
 		EditPart compartment = this.getParent();
@@ -198,6 +200,7 @@ public class HandlerExtendedEditPart extends HandlerEditPart {
 				}
 			}
 		}
+		}
 	}
 
 	/**
@@ -292,6 +295,9 @@ public class HandlerExtendedEditPart extends HandlerEditPart {
 	}
 
 	private Handler getHandler() {
+		if (! (((View) this.getModel()) instanceof HandlerImpl)) {
+			return null;
+		}
 		return (Handler) ((View) this.getModel()).getElement();
 	}
 
