@@ -160,9 +160,7 @@ public class ProceduresZone extends Zone {
 			upButton.addSelectionListener(new SelectionAdapter() {
 				@Override
 				public void widgetSelected(SelectionEvent e) {
-					Commands.doMoveValue(
-							getEditingDomain(),
-							getEObject(),
+					Commands.doMoveValue(getEditingDomain(), getEObject(),
 							ParallelJPackage.eINSTANCE.getBlock_Procedures(),
 							ProceduresZone.this.selectedProcedure,
 							Commands.MOVE_UP, getEditPart());
@@ -180,9 +178,7 @@ public class ProceduresZone extends Zone {
 			downButton.addSelectionListener(new SelectionAdapter() {
 				@Override
 				public void widgetSelected(SelectionEvent e) {
-					Commands.doMoveValue(
-							getEditingDomain(),
-							getEObject(),
+					Commands.doMoveValue(getEditingDomain(), getEObject(),
 							ParallelJPackage.eINSTANCE.getBlock_Procedures(),
 							ProceduresZone.this.selectedProcedure,
 							Commands.MOVE_DOWN, getEditPart());
@@ -258,10 +254,10 @@ public class ProceduresZone extends Zone {
 			if (program != null) {
 				for (Element e : program.getElements()) {
 					if (e instanceof Procedure && !isAlreadyUsed((Procedure) e)) {
-						if (this.pattern == null
-								|| "*".equals(this.pattern)
-								|| ((Procedure) e).getName().startsWith(
-										this.pattern))
+						if ((((Procedure) e).getName() != null)
+								&& (this.pattern == null
+										|| "*".equals(this.pattern) || ((Procedure) e)
+										.getName().startsWith(this.pattern)))
 							this.searchResults
 									.add(new ProgramElementResourceInfo(
 											((Procedure) e).getName(), "",
