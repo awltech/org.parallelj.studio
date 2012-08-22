@@ -89,8 +89,8 @@ public class BlockExtendedEditPart extends BlockEditPart {
 	}
 
 	/**
-	 * Fixing the height and width of the Block node and updating diagram
-	 * with last saved color when diagram closed and opened.
+	 * Fixing the height and width of the Block node and updating diagram with
+	 * last saved color when diagram closed and opened.
 	 */
 	@Override
 	protected void refreshBounds() {
@@ -102,8 +102,7 @@ public class BlockExtendedEditPart extends BlockEditPart {
 		// when block is not in fold mode
 		if (innerHeight != 35) {
 			// calculating height as per inner procedures
-			Block block = (Block) (((View) this.getModel())
-					.getElement());
+			Block block = (Block) (((View) this.getModel()).getElement());
 			if (block.getProcedures().size() <= 1) {
 				BoundsRefreshment.refreshBounds(this, null, 89);
 			} else {
@@ -161,10 +160,9 @@ public class BlockExtendedEditPart extends BlockEditPart {
 						if (procedureObject instanceof BlockProcedureEditPart) {
 							// make width of sequence procedure to match the
 							// width of compartment
-							BoundsRefreshment
-									.refreshBounds(
-											(BlockProcedureEditPart) procedureObject,
-											(parentWidth - 18), 43);
+							BoundsRefreshment.refreshBounds(
+									(BlockProcedureEditPart) procedureObject,
+									(parentWidth - 18), 43);
 						}
 					}
 				}
@@ -237,8 +235,8 @@ public class BlockExtendedEditPart extends BlockEditPart {
 	}
 
 	/**
-	 * This will remove the bottom margin, called at the time when block is
-	 * in fold mode.
+	 * This will remove the bottom margin, called at the time when block is in
+	 * fold mode.
 	 */
 	public void clearBottomMargin() {
 		this.getPrimaryShape().setBorder(
@@ -277,8 +275,33 @@ public class BlockExtendedEditPart extends BlockEditPart {
 	public void showSelected() {
 		if (this.getFigure().getBorder() == null) {
 			showSelected = true;
-			BoundsRefreshment.refreshBounds(this, this.getSize().width + 2,
-					this.getSize().height + 4);
+
+			BlockFigure primaryShape = this.getPrimaryShape();
+			RectangleFigure rectangleFigure = (RectangleFigure) primaryShape
+					.getChildren().get(1);
+			// based on visibility status, hide or show the compartment
+			// this check is introduce, because when block is linked to
+			// more than one handler, switching between handlers creating width
+			// sizing issue which highlighting
+			if (rectangleFigure.isVisible()) {
+
+				if (this.getSize().height != 93 + ((this.getBlock()
+						.getProcedures().size() - 1) * 45)) {
+					BoundsRefreshment
+							.refreshBounds(this, this.getSize().width + 2,
+									this.getSize().height + 4);
+				} else {
+					BoundsRefreshment.refreshBounds(this, this.getSize().width,
+							this.getSize().height);
+				}
+			} else if (this.getSize().height != 39) {
+				BoundsRefreshment.refreshBounds(this, this.getSize().width + 2,
+						this.getSize().height + 4);
+			} else {
+				BoundsRefreshment.refreshBounds(this, this.getSize().width,
+						this.getSize().height);
+			}
+
 			RoundedRectangleBorder border = new RoundedRectangleBorder(10, 10);
 			border.setWidth(2);
 			border.setColor(ColorConstants.orange);
@@ -299,9 +322,10 @@ public class BlockExtendedEditPart extends BlockEditPart {
 			// based on visibility status, hide or show the compartment
 			if (rectangleFigure.isVisible()) {
 				BoundsRefreshment
-						.refreshBounds(this, this.getSize().width - 2,
-								89 + ((this.getBlock().getProcedures()
-										.size() - 1) * 45));
+						.refreshBounds(
+								this,
+								this.getSize().width - 2,
+								89 + ((this.getBlock().getProcedures().size() - 1) * 45));
 			} else {
 				BoundsRefreshment.refreshBounds(this, this.getSize().width - 2,
 						35);

@@ -24,6 +24,8 @@ package org.parallelj.designer.extension.adapters;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.gef.EditPart;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.parallelj.designer.extension.edit.parts.HandlerExtendedEditPart;
 import org.parallelj.model.ParallelJPackage;
@@ -58,12 +60,29 @@ public class HandlerAdapter extends AdapterImpl {
 	public final void notifyChanged(Notification notification) {
 
 		// if any link (outgoing) added/removed than update the SPILT
-		// icon
+		// icon and if any procedure added or removed then highlight them
+		// accordingly
 		if (notification.getEventType() == Notification.ADD
-				|| notification.getEventType() == Notification.REMOVE) {
-			((HandlerExtendedEditPart) this.editPart)
-					.findLinkedProcedures();
-			((HandlerExtendedEditPart) this.editPart).updateSplitJoin();
+				|| notification.getEventType() == Notification.REMOVE
+				|| notification.getEventType() == Notification.REMOVE_MANY) {
+			Object currentFeature = notification.getFeature();
+			HandlerExtendedEditPart handlerExtendedEditPart = (HandlerExtendedEditPart) this.editPart;
+			if (currentFeature instanceof EReference
+					&& currentFeature == ParallelJPackage.eINSTANCE
+							.getHandler_Procedures()) {
+
+				// if handler itself removed
+				if (handlerExtendedEditPart.getHandler() == null) {
+					EditPart parent = handlerExtendedEditPart.getParent();
+					handlerExtendedEditPart.clearAllSelection(parent);
+				}
+				// removed procedures from handlers
+				else {
+					handlerExtendedEditPart.findLinkedProcedures();
+				}
+			} else {
+				handlerExtendedEditPart.updateSplitJoin();
+			}
 		}
 		// if any value set from property view.
 		else if (notification.getEventType() == Notification.SET) {

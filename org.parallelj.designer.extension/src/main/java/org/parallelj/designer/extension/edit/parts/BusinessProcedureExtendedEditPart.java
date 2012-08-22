@@ -235,7 +235,15 @@ public class BusinessProcedureExtendedEditPart extends
 	public void showSelected() {
 		if (this.getFigure().getBorder() == null) {
 			showSelected = true;
-			BoundsRefreshment.refreshBounds(this, this.getSize().width + 2, 47);
+			// this check is introduce, because when BusinessProcedure is linked
+			// to more than one handler, switching between handlers creating
+			// width sizing issue which highlighting
+			if (this.getSize().height != 47) {
+				BoundsRefreshment.refreshBounds(this, this.getSize().width + 2,
+						47);
+			} else {
+				BoundsRefreshment.refreshBounds(this, this.getSize().width, 47);
+			}
 			RoundedRectangleBorder border = new RoundedRectangleBorder(10, 10);
 			border.setWidth(2);
 			border.setColor(ColorConstants.orange);
@@ -337,7 +345,7 @@ public class BusinessProcedureExtendedEditPart extends
 		SetRequest request = new SetRequest(ted, eo, esf, value);
 		return new ICommandProxy(new SetValueCommand(request));
 	}
-	
+
 	public BusinessProcedureContribution getBusinessProcedureContribution() {
 		return businessProcedureContribution;
 	}

@@ -210,7 +210,15 @@ public class ProcedureExtendedEditPart extends ProcedureEditPart {
 	public void showSelected() {
 		if (this.getFigure().getBorder() == null) {
 			showSelected = true;
-			BoundsRefreshment.refreshBounds(this, this.getSize().width + 2, 47);
+			// this check is introduce, because when procedure is linked to more
+			// than one handler, switching between handlers creating width
+			// sizing issue which highlighting
+			if (this.getSize().height != 47) {
+				BoundsRefreshment.refreshBounds(this, this.getSize().width + 2,
+						47);
+			} else {
+				BoundsRefreshment.refreshBounds(this, this.getSize().width, 47);
+			}
 			RoundedRectangleBorder border = new RoundedRectangleBorder(10, 10);
 			border.setWidth(2);
 			border.setColor(ColorConstants.orange);

@@ -214,7 +214,15 @@ public class ForEachLoopExtendedEditPart extends ForEachLoopEditPart {
 	public void showSelected() {
 		if (this.getFigure().getBorder() == null) {
 			showSelected = true;
-			BoundsRefreshment.refreshBounds(this, this.getSize().width + 2, 59);
+			// this check is introduce, because when foreachloop is linked to
+			// more than one handler, switching between handlers creating width
+			// sizing issue which highlighting
+			if (this.getSize().height != 59) {
+				BoundsRefreshment.refreshBounds(this, this.getSize().width + 2,
+						59);
+			} else {
+				BoundsRefreshment.refreshBounds(this, this.getSize().width, 59);
+			}
 			RoundedRectangleBorder border = new RoundedRectangleBorder(10, 10);
 			border.setWidth(2);
 			border.setColor(DiagramColorRegistry.getInstance().getColor(

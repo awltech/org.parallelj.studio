@@ -97,109 +97,151 @@ public class HandlerExtendedEditPart extends HandlerEditPart {
 
 	/**
 	 * This will find the all the managed
-	 * procedures/forEachLoops/whileLoops/handlers/blocks and based on
-	 * parameter it will show object highlighted or will clear.
+	 * procedures/forEachLoops/whileLoops/handlers/blocks and based on parameter
+	 * it will show object highlighted or will clear.
 	 * 
 	 */
 	public void findLinkedProcedures() {
 		// getting all managed procedures
-		if ( (((View) this.getModel()).getElement() instanceof HandlerImpl) && getHandler() != null) {
-		EList<Procedure> procedures = getHandler().getProcedures();
+		if (getHandler() != null) {
+			EList<Procedure> procedures = getHandler().getProcedures();
+			EditPart compartment = this.getParent();
+			List children = compartment.getChildren();
 
-		EditPart compartment = this.getParent();
-		List childrens = compartment.getChildren();
-
-		for (Object object : childrens) {
-			Procedure innerProcedure = null;
-			if (object instanceof ProcedureExtendedEditPart) {
-				ProcedureExtendedEditPart procedureExtendedEditPart = (ProcedureExtendedEditPart) object;
-				EObject element = ((View) procedureExtendedEditPart.getModel())
-						.getElement();
-				if (element instanceof Procedure) {
-					innerProcedure = (Procedure) element;
-					/**
-					 * Finding edit part for Handler's managed procedures. If
-					 * inner procedure instance is matching with any instance
-					 * from handler's procedure, than based on showSelected
-					 * variable, it will highlight the current editpart or
-					 * clear.
-					 */
-					if (checkMatch(procedures, innerProcedure)) {
-						if (isSelected) {
-							procedureExtendedEditPart.showSelected();
+			for (Object object : children) {
+				Procedure innerProcedure = null;
+				if (object instanceof ProcedureExtendedEditPart) {
+					ProcedureExtendedEditPart procedureExtendedEditPart = (ProcedureExtendedEditPart) object;
+					EObject element = ((View) procedureExtendedEditPart
+							.getModel()).getElement();
+					if (element instanceof Procedure) {
+						innerProcedure = (Procedure) element;
+						/**
+						 * Finding edit part for Handler's managed procedures.
+						 * If inner procedure instance is matching with any
+						 * instance from handler's procedure, than based on
+						 * showSelected variable, it will highlight the current
+						 * editpart or clear.
+						 */
+						if (checkMatch(procedures, innerProcedure)) {
+							if (isSelected) {
+								procedureExtendedEditPart.showSelected();
+							} else {
+								procedureExtendedEditPart.clearSelection();
+							}
 						} else {
 							procedureExtendedEditPart.clearSelection();
 						}
-					} else {
-						procedureExtendedEditPart.clearSelection();
 					}
-				}
-			} else if (object instanceof WhileLoopExtendedEditPart) {
-				WhileLoopExtendedEditPart whileLoopExtendedEditPart = (WhileLoopExtendedEditPart) object;
-				EObject element = ((View) whileLoopExtendedEditPart.getModel())
-						.getElement();
-				if (element instanceof Procedure) {
-					innerProcedure = (Procedure) element;
-					if (checkMatch(procedures, innerProcedure)) {
-						if (isSelected) {
-							whileLoopExtendedEditPart.showSelected();
+				} else if (object instanceof WhileLoopExtendedEditPart) {
+					WhileLoopExtendedEditPart whileLoopExtendedEditPart = (WhileLoopExtendedEditPart) object;
+					EObject element = ((View) whileLoopExtendedEditPart
+							.getModel()).getElement();
+					if (element instanceof Procedure) {
+						innerProcedure = (Procedure) element;
+						if (checkMatch(procedures, innerProcedure)) {
+							if (isSelected) {
+								whileLoopExtendedEditPart.showSelected();
+							} else {
+								whileLoopExtendedEditPart.clearSelection();
+							}
 						} else {
 							whileLoopExtendedEditPart.clearSelection();
 						}
-					} else {
-						whileLoopExtendedEditPart.clearSelection();
 					}
-				}
-			} else if (object instanceof ForEachLoopExtendedEditPart) {
-				ForEachLoopExtendedEditPart forEachLoopExtendedEditPart = (ForEachLoopExtendedEditPart) object;
-				EObject element = ((View) forEachLoopExtendedEditPart
-						.getModel()).getElement();
-				if (element instanceof Procedure) {
-					innerProcedure = (Procedure) element;
-					if (checkMatch(procedures, innerProcedure)) {
-						if (isSelected) {
-							forEachLoopExtendedEditPart.showSelected();
+				} else if (object instanceof ForEachLoopExtendedEditPart) {
+					ForEachLoopExtendedEditPart forEachLoopExtendedEditPart = (ForEachLoopExtendedEditPart) object;
+					EObject element = ((View) forEachLoopExtendedEditPart
+							.getModel()).getElement();
+					if (element instanceof Procedure) {
+						innerProcedure = (Procedure) element;
+						if (checkMatch(procedures, innerProcedure)) {
+							if (isSelected) {
+								forEachLoopExtendedEditPart.showSelected();
+							} else {
+								forEachLoopExtendedEditPart.clearSelection();
+							}
 						} else {
 							forEachLoopExtendedEditPart.clearSelection();
 						}
-					} else {
-						forEachLoopExtendedEditPart.clearSelection();
 					}
-				}
-			} else if (object instanceof HandlerExtendedEditPart) {
-				HandlerExtendedEditPart handlerExtendedEditPart = (HandlerExtendedEditPart) object;
-				EObject element = ((View) handlerExtendedEditPart.getModel())
-						.getElement();
-				if (element instanceof Procedure) {
-					innerProcedure = (Procedure) element;
-					if (checkMatch(procedures, innerProcedure)) {
-						if (isSelected) {
-							handlerExtendedEditPart.showSelected();
+				} else if (object instanceof HandlerExtendedEditPart) {
+					HandlerExtendedEditPart handlerExtendedEditPart = (HandlerExtendedEditPart) object;
+					EObject element = ((View) handlerExtendedEditPart
+							.getModel()).getElement();
+					if (element instanceof Procedure) {
+						innerProcedure = (Procedure) element;
+						if (checkMatch(procedures, innerProcedure)) {
+							if (isSelected) {
+								handlerExtendedEditPart.showSelected();
+							} else {
+								handlerExtendedEditPart.clearSelection();
+							}
 						} else {
 							handlerExtendedEditPart.clearSelection();
 						}
-					} else {
-						handlerExtendedEditPart.clearSelection();
 					}
-				}
-			} else if (object instanceof BlockExtendedEditPart) {
-				BlockExtendedEditPart blockExtendedEditPart = (BlockExtendedEditPart) object;
-				EObject element = ((View) blockExtendedEditPart.getModel())
-						.getElement();
-				if (element instanceof Procedure) {
-					innerProcedure = (Procedure) element;
-					if (checkMatch(procedures, innerProcedure)) {
-						if (isSelected) {
-							blockExtendedEditPart.showSelected();
+				} else if (object instanceof BlockExtendedEditPart) {
+					BlockExtendedEditPart blockExtendedEditPart = (BlockExtendedEditPart) object;
+					EObject element = ((View) blockExtendedEditPart.getModel())
+							.getElement();
+					if (element instanceof Procedure) {
+						innerProcedure = (Procedure) element;
+						if (checkMatch(procedures, innerProcedure)) {
+							if (isSelected) {
+								blockExtendedEditPart.showSelected();
+							} else {
+								blockExtendedEditPart.clearSelection();
+							}
 						} else {
 							blockExtendedEditPart.clearSelection();
 						}
-					} else {
-						blockExtendedEditPart.clearSelection();
+					}
+				} else if (object instanceof BusinessProcedureExtendedEditPart) {
+					BusinessProcedureExtendedEditPart businessProcedureExtendedEditPart = (BusinessProcedureExtendedEditPart) object;
+					EObject element = ((View) businessProcedureExtendedEditPart
+							.getModel()).getElement();
+					if (element instanceof Procedure) {
+						innerProcedure = (Procedure) element;
+						if (checkMatch(procedures, innerProcedure)) {
+							if (isSelected) {
+								businessProcedureExtendedEditPart
+										.showSelected();
+							} else {
+								businessProcedureExtendedEditPart
+										.clearSelection();
+							}
+						} else {
+							businessProcedureExtendedEditPart.clearSelection();
+						}
 					}
 				}
 			}
 		}
+	}
+
+	/**
+	 * This method will clear all selection from Program
+	 * 
+	 * @param parent
+	 */
+	public void clearAllSelection(EditPart parent) {
+		List children = parent.getChildren();
+
+		for (Object object : children) {
+			if (object instanceof ProcedureExtendedEditPart) {
+				((ProcedureExtendedEditPart) object).clearSelection();
+			} else if (object instanceof WhileLoopExtendedEditPart) {
+				((WhileLoopExtendedEditPart) object).clearSelection();
+			} else if (object instanceof ForEachLoopExtendedEditPart) {
+				((ForEachLoopExtendedEditPart) object).clearSelection();
+			} else if (object instanceof HandlerExtendedEditPart) {
+				((HandlerExtendedEditPart) object).clearSelection();
+			} else if (object instanceof BlockExtendedEditPart) {
+				((BlockExtendedEditPart) object).clearSelection();
+			} else if (object instanceof BusinessProcedureExtendedEditPart) {
+				((BusinessProcedureExtendedEditPart) object).clearSelection();
+			}
 		}
 	}
 
@@ -294,8 +336,8 @@ public class HandlerExtendedEditPart extends HandlerEditPart {
 				.getPrimaryShape().getFigureHandlerSplitFigure());
 	}
 
-	private Handler getHandler() {
-		if (! (((View) this.getModel()) instanceof HandlerImpl)) {
+	public Handler getHandler() {
+		if (!(((View) this.getModel()).getElement() instanceof HandlerImpl)) {
 			return null;
 		}
 		return (Handler) ((View) this.getModel()).getElement();
