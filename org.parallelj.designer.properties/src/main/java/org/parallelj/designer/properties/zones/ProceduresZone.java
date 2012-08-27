@@ -253,7 +253,8 @@ public class ProceduresZone extends Zone {
 					.eContainer() : null;
 			if (program != null) {
 				for (Element e : program.getElements()) {
-					if (e instanceof Procedure && !isAlreadyUsed((Procedure) e)) {
+					if (e instanceof Procedure && !(e instanceof Handler)
+							&& !isAlreadyUsed((Procedure) e)) {
 						if ((((Procedure) e).getName() != null)
 								&& (this.pattern == null
 										|| "*".equals(this.pattern) || ((Procedure) e)
