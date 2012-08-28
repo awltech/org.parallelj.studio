@@ -32,6 +32,8 @@ public class «pgm»{
 
 «EXPAND Method::predicate FOREACH this.predicates»
 
+«EXPAND Method::dataType FOREACH this.data»
+
 }
 «ENDFILE»
 «ENDLET»

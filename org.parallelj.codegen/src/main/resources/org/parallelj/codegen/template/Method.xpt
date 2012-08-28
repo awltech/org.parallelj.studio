@@ -151,3 +151,25 @@
 	 }
 
 «ENDDEFINE»
+
+«DEFINE dataType FOR Data»
+
+	/**
+	 * Returns the «this.name.toFirstLower()» Data.
+	 * @return «this.type»
+	 */
+	 «EXPAND Annotation::generatedWithHashToBeComputed FOR this»
+	 public «type» get«this.name.toFirstUpper()»(){
+	 	return this.«this.name»;
+	 }
+	 
+	 /**
+	 * Sets the data «this.name.toFirstLower()»
+	 * @param <code>«this.type»</code> object.
+	 */
+	 «EXPAND Annotation::generatedWithHashToBeComputed FOR this»
+	 public void set«this.name.toFirstUpper()»(«this.type» «this.name.toFirstLower()»){
+	 	this.«this.name»=«this.name.toFirstLower()»;
+	 }
+
+«ENDDEFINE»
