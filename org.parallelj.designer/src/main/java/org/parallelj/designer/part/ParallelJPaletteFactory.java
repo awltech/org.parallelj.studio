@@ -104,7 +104,7 @@ public class ParallelJPaletteFactory {
 		paletteContainer.setId("createAdvanced4Group"); //$NON-NLS-1$
 		paletteContainer.add(createInputCondition1CreationTool());
 		paletteContainer.add(createOutputCondition2CreationTool());
-		paletteContainer.add(createCondition3CreationTool());
+		//paletteContainer.add(createCondition3CreationTool());
 		return paletteContainer;
 	}
 
