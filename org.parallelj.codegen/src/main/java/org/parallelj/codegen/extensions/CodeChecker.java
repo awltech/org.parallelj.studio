@@ -23,10 +23,13 @@ package org.parallelj.codegen.extensions;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaCore;
 import org.parallelj.model.Element;
+import org.parallelj.model.Pipeline;
+import org.parallelj.model.Procedure;
 
 public class CodeChecker {
 
@@ -120,6 +123,30 @@ public class CodeChecker {
 		return ret;
 	}
 	
+	public static boolean isFirstPipelineProcedure(Element elem) {
+
+		Pipeline pipeline = (Pipeline) elem.eContainer();
+		EList<Procedure> procedures = pipeline.getProcedures();
+
+		return procedures.indexOf((Procedure) elem) == 0 ? true : false;
+	}
+
+	public static String getNextPipelineProcedure(Element elem) {
+
+		Pipeline pipeline = (Pipeline) elem.eContainer();
+		EList<Procedure> procedures = pipeline.getProcedures();
+
+		int nextIndex = procedures.indexOf((Procedure) elem) + 1;
+
+		if (procedures.size() <= nextIndex) {
+			return "pipelineend";
+		} else {
+			return getConditionName(procedures.get(nextIndex));
+		}
+	}
 	
-	
+	public static String getConditionName(Element element) {
+		return element.getName().substring(0, 1).toLowerCase()
+				+ element.getName().substring(1);
+	}
 }

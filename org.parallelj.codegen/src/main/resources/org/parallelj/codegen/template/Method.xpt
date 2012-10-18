@@ -17,6 +17,8 @@
 «DEFINE procedure FOR Element»
 	«IF this.metaType == Handler -»
 		«EXPAND Method::handler FOR (Handler)this -»
+	«ELSEIF this.metaType == Pipeline -»
+		«EXPAND Method::pipeline FOR (Pipeline)this -»
 	«ELSE-»
 		«IF this.metaType.isAssignableFrom(Procedure) || this.metaType.superTypes.contains(Procedure) -»
 	 		«IF isRunnable(((Procedure)this).executable,this) -»
@@ -119,6 +121,165 @@
 	 }
 
 «ENDDEFINE»
+
+«DEFINE pipeline FOR Pipeline»
+
+	/**
+	 * Entry method of Pipeline «this.getElementName()».
+	 * Description : «this.description»
+	 * @generated «getGeneratorRawNameStr()»
+	 */
+	 «EXPAND Annotation::generatedWithHashToBeComputed FOR this»
+	 «EXPAND Annotation::join FOR this»
+	 «EXPAND Annotation::capacity FOR this»
+	 public «this.getElementName().toFirstUpper()»Class «this.getElementName()»(«EXPAND Annotation::pipelineParameter FOR (Pipeline)this -») {
+	 	// TODO : to be implemented
+	 	
+	 	return new «this.getElementName().toFirstUpper()»Class(«this.iterable.name»);
+	 }
+	 
+	/**
+	 * Exit method of pipeline «this.getElementName()».
+	 * Description : «this.description»
+	 * @generated «getGeneratorRawNameStr()»
+	 */
+	 «EXPAND Annotation::generatedWithHashToBeComputed FOR this»
+	 «EXPAND Annotation::split FOR this»
+	 public void «this.getElementName()»(«this.getElementName().toFirstUpper()»Class executable) {
+	 	// TODO : to be implemented
+	 	
+	 }
+	 
+	/**
+	 * Inner class for Pipeline «this.name»
+	 * Description : «this.description»	
+	 **/
+	 «EXPAND Annotation::pipelineClass FOR (Pipeline)this -»
+	 «EXPAND Annotation::capacity FOR this»
+	 public class «this.getElementName().toFirstUpper()»Class {
+	 	
+	 	/**
+ 		 * «this.name» field
+ 		 * Description : «this.description»	
+ 		 **/
+	 	«EXPAND Annotation::pipelineData FOR (Pipeline)this -»
+	 	«this.iterable.type» «this.iterable.name»;
+	 	
+	 	public «this.getElementName().toFirstUpper()»Class(«this.iterable.type» «this.iterable.name»){
+	 		this.«this.iterable.name» = «this.iterable.name»;
+	 	}
+	 	
+	 	«EXPAND Method::pipelineProcedure FOREACH this.procedures»
+	 	
+	   /**
+	 	* Returns the «this.iterable.name» Data.
+		* @return «this.iterable.type»
+		*/
+	 	«EXPAND Annotation::generatedWithHashToBeComputed FOR this»
+	 	 public «this.iterable.type» get«this.iterable.name.toFirstUpper()»(){
+	 		 return this.«this.iterable.name»;
+	 	}
+	 
+	   /**
+		* Sets the data «this.iterable.name.toFirstLower()»
+		* @param <code>«this.iterable.type»</code> object.
+		*/
+		«EXPAND Annotation::generatedWithHashToBeComputed FOR this»
+		public void set«this.iterable.name.toFirstUpper()»(«this.iterable.type» «this.iterable.name.toFirstLower()»){
+	 		 this.«this.iterable.name»=«this.iterable.name.toFirstLower()»;
+		}
+	 }
+«ENDDEFINE»
+
+«DEFINE pipelineProcedure FOR Procedure»
+	«IF isRunnable(((Procedure)this).executable,this) -»
+		«EXPAND Method::defaultPipelineProcedure FOR (Procedure)this -»
+	«ELSEIF isCallable(((Procedure)this).executable,this) -»
+		«EXPAND Method::callablePipelineProcedure FOR (Procedure)this -»
+	«ELSEIF ((Procedure)this).executable.length == null || ((Procedure)this).executable.length == 0-»
+		«EXPAND Method::noopPipelineProcedure FOR (Procedure)this -»
+	«ENDIF-»
+«ENDDEFINE»
+
+«DEFINE defaultPipelineProcedure FOR Procedure»
+
+	/**
+	 * Entry method of procedure «this.getElementName()».
+	 * This procedure is bound to «this.executable»
+	 * Description : «this.description»
+	 * @generated «getGeneratorRawNameStr()»
+	 */
+	 «EXPAND Annotation::generatedWithHashToBeComputed FOR this»
+	 «EXPAND Annotation::pipelineProcedureJoin FOR this»
+	 «EXPAND Annotation::capacity FOR this»
+	 public «this.executable» «this.getElementName()»(Object next) {
+	 	// TODO : to be implemented
+	 	
+	 	return new «this.executable»();
+	 }
+	 
+	/**
+	 * Exit method of procedure «this.getElementName()».
+	 * This procedure is bound to «this.executable»
+	 * Description : «this.description»
+	 * @generated «getGeneratorRawNameStr()»
+	 */
+	 «EXPAND Annotation::generatedWithHashToBeComputed FOR this»
+	 «EXPAND Annotation::pipelineProcedureSplit FOR this»
+	 public void «this.getElementName()»(«this.executable» executable) {
+	 	// TODO : to be implemented
+	 	
+	 }
+«ENDDEFINE»
+
+«DEFINE callablePipelineProcedure FOR Procedure»
+
+	/**
+	 * Entry method of procedure «this.getElementName()».
+	 * This procedure is bound to «this.executable»
+	 * Description : «this.description»
+	 * @generated «getGeneratorRawNameStr()»
+	 */
+	 «EXPAND Annotation::generatedWithHashToBeComputed FOR this»
+	 «EXPAND Annotation::pipelineProcedureJoin FOR this»
+	 «EXPAND Annotation::capacity FOR this»
+	 public «this.executable» «this.getElementName()»(Object next) {
+	 	// TODO : to be implemented
+	 	
+	 	return new «this.executable»();
+	 }
+
+	/**
+	 * Exit method of procedure  «this.getElementName()».
+	 * This procedure is bound to «this.executable»
+	 * Description : «this.description»
+	 * @generated «getGeneratorRawNameStr()»
+	 */
+	 «EXPAND Annotation::generatedWithHashToBeComputed FOR this»
+	 «EXPAND Annotation::pipelineProcedureSplit FOR this»
+	 public void «this.getElementName()»(«this.executable» executable, «getCallableGeneric(this.executable,this)» result){
+	 	// TODO : to be implemented
+	 	
+	 }
+«ENDDEFINE»
+
+«DEFINE noopPipelineProcedure FOR Procedure»
+	/**
+	 * Noop Procedure «this.getElementName()».
+	 * This procedure is not bound to an executable.
+	 * Description : «this.description»
+	 * @generated «getGeneratorRawNameStr()»
+	 */
+	 «EXPAND Annotation::generatedWithHashToBeComputed FOR this»
+	 «EXPAND Annotation::pipelineProcedureJoin FOR this»
+	 «EXPAND Annotation::pipelineProcedureSplit FOR this»
+	 public void «this.getElementName()» (Object next){
+	 	// TODO : to be implemented
+	 	
+	 }
+
+«ENDDEFINE»
+
 
 «DEFINE noopProcedure FOR Procedure»
 	/**

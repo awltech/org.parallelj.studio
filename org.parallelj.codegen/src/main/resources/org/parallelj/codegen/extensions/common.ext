@@ -41,3 +41,9 @@ String getGeneric(String str):
 		
 String getCallableGeneric(String name, parallelj::Element elem):
 		JAVA org.parallelj.codegen.extensions.CodeChecker.getCallableGeneric(java.lang.String, org.parallelj.model.Element);
+		
+boolean isFirstPipelineProcedure( parallelj::Element elem):
+		JAVA org.parallelj.codegen.extensions.CodeChecker.isFirstPipelineProcedure(org.parallelj.model.Element);
+		
+String getNextPipelineProcedure( parallelj::Element elem):
+		JAVA org.parallelj.codegen.extensions.CodeChecker.getNextPipelineProcedure(org.parallelj.model.Element);		

@@ -56,6 +56,14 @@
 «ENDIF-»
 «ENDDEFINE»
 
+«DEFINE pipelineProcedureJoin FOR Procedure-»
+«IF isFirstPipelineProcedure(((Procedure)this))»
+@org.parallelj.Begin
+«ELSEIF this.join.toString().matches("AND") -»
+@org.parallelj.AndJoin
+«ENDIF-»
+«ENDDEFINE»
+
 «DEFINE program FOR Program-»
 @org.parallelj.Program
 «ENDDEFINE»
@@ -70,6 +78,12 @@
 @org.parallelj.OrSplit({«EXPAND Annotation::elementSplitLinks FOREACH this.outputLinks SEPARATOR "," -»})
 	«ELSE-»
 @org.parallelj.XorSplit({«EXPAND Annotation::elementSplitLinks FOREACH this.outputLinks SEPARATOR "," -»})
+	«ENDIF-»
+«ENDDEFINE»
+
+«DEFINE pipelineProcedureSplit FOR Procedure-»
+	«IF this.split.toString().matches("AND")-»
+@org.parallelj.AndSplit({"«getNextPipelineProcedure(((Procedure)this)) -»"})
 	«ENDIF-»
 «ENDDEFINE»
  
@@ -87,6 +101,18 @@
 
 «DEFINE forEach  FOR ForEachLoop-»
 @org.parallelj.ForEach("«this.iterable.name»") Object val «ENDDEFINE»
+
+«DEFINE pipelineParameter  FOR Pipeline-»
+@org.parallelj.PipelineParameter("«this.iterable.name»") «this.iterable.type» «this.iterable.name» «ENDDEFINE»
+
+«DEFINE pipelineClass  FOR Pipeline-»
+@org.parallelj.Pipeline
+«ENDDEFINE»
+
+«DEFINE pipelineData  FOR Pipeline-»
+@org.parallelj.PipelineData
+«ENDDEFINE»
+
 «REM»
 @org.parallelj.ForEach("«this.iterable.name»") «getGeneric(this.iterable.type)» val «ENDDEFINE»
 «ENDREM»
