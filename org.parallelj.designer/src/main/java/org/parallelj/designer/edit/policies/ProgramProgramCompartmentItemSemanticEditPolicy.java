@@ -23,7 +23,6 @@ package org.parallelj.designer.edit.policies;
 
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
-import org.parallelj.designer.edit.commands.BlockCreateCommand;
 import org.parallelj.designer.edit.commands.BusinessProcedureCreateCommand;
 import org.parallelj.designer.edit.commands.ConditionCreateCommand;
 import org.parallelj.designer.edit.commands.DataCreateCommand;
@@ -31,6 +30,7 @@ import org.parallelj.designer.edit.commands.ForEachLoopCreateCommand;
 import org.parallelj.designer.edit.commands.HandlerCreateCommand;
 import org.parallelj.designer.edit.commands.InputConditionCreateCommand;
 import org.parallelj.designer.edit.commands.OutputConditionCreateCommand;
+import org.parallelj.designer.edit.commands.PipelineCreateCommand;
 import org.parallelj.designer.edit.commands.PredicateCreateCommand;
 import org.parallelj.designer.edit.commands.ProcedureCreateCommand;
 import org.parallelj.designer.edit.commands.WhileLoopCreateCommand;
@@ -77,8 +77,8 @@ public class ProgramProgramCompartmentItemSemanticEditPolicy extends
 		if (ParallelJElementTypes.Handler_3008 == req.getElementType()) {
 			return getGEFWrapper(new HandlerCreateCommand(req));
 		}
-		if (ParallelJElementTypes.Block_3012 == req.getElementType()) {
-			return getGEFWrapper(new BlockCreateCommand(req));
+		if (ParallelJElementTypes.Pipeline_3015 == req.getElementType()) {
+			return getGEFWrapper(new PipelineCreateCommand(req));
 		}
 		if (ParallelJElementTypes.Data_3011 == req.getElementType()) {
 			return getGEFWrapper(new DataCreateCommand(req));

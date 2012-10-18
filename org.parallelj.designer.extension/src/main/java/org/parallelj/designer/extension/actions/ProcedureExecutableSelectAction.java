@@ -35,7 +35,7 @@ import org.parallelj.model.ParallelJPackage;
 
 /**
  * Action based on AbstractDiagramPopupAction, for modifying Executable values
- * of Procedure and sub-type (but the Handler and Block)
+ * of Procedure and sub-type (but the Handler and Pipeline)
  */
 public class ProcedureExecutableSelectAction extends AbstractDiagramPopupAction {
 

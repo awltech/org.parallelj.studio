@@ -7,6 +7,8 @@ package org.parallelj.services;
 import com.google.inject.Singleton;
 import com.google.inject.Inject;
 
+import java.util.List;
+
 import org.eclipse.xtext.*;
 import org.eclipse.xtext.service.GrammarProvider;
 import org.eclipse.xtext.service.AbstractElementFinder.*;
@@ -34,11 +36,14 @@ public class PjlGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cMetaInformationContainerMetaInformationContainerParserRuleCall_2_1_0 = (RuleCall)cMetaInformationContainerAssignment_2_1.eContents().get(0);
 		
 		//Specification:
+		//
 		//	{Specification} (programs+=Program ("," programs+=Program)*)? ("metaInformationContainer"
+		//
 		//	metaInformationContainer=MetaInformationContainer)?;
 		public ParserRule getRule() { return rule; }
 
 		//{Specification} (programs+=Program ("," programs+=Program)*)? ("metaInformationContainer"
+		//
 		//metaInformationContainer=MetaInformationContainer)?
 		public Group getGroup() { return cGroup; }
 
@@ -77,96 +82,6 @@ public class PjlGrammarAccess extends AbstractGrammarElementFinder {
 
 		//MetaInformationContainer
 		public RuleCall getMetaInformationContainerMetaInformationContainerParserRuleCall_2_1_0() { return cMetaInformationContainerMetaInformationContainerParserRuleCall_2_1_0; }
-	}
-
-	public class ElementElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Element");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cElement_ImplParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cInputConditionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cOutputConditionParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		private final RuleCall cCondition_ImplParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
-		private final RuleCall cProcedure_ImplParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
-		private final RuleCall cForEachLoopParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
-		private final RuleCall cWhileLoopParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
-		private final RuleCall cHandlerParserRuleCall_7 = (RuleCall)cAlternatives.eContents().get(7);
-		private final RuleCall cBlockParserRuleCall_8 = (RuleCall)cAlternatives.eContents().get(8);
-		private final RuleCall cBusinessProcedureParserRuleCall_9 = (RuleCall)cAlternatives.eContents().get(9);
-		
-		//Element:
-		//	Element_Impl | InputCondition | OutputCondition | Condition_Impl | Procedure_Impl | ForEachLoop | WhileLoop | Handler
-		//	| Block | BusinessProcedure;
-		public ParserRule getRule() { return rule; }
-
-		//Element_Impl | InputCondition | OutputCondition | Condition_Impl | Procedure_Impl | ForEachLoop | WhileLoop | Handler |
-		//Block | BusinessProcedure
-		public Alternatives getAlternatives() { return cAlternatives; }
-
-		//Element_Impl
-		public RuleCall getElement_ImplParserRuleCall_0() { return cElement_ImplParserRuleCall_0; }
-
-		//InputCondition
-		public RuleCall getInputConditionParserRuleCall_1() { return cInputConditionParserRuleCall_1; }
-
-		//OutputCondition
-		public RuleCall getOutputConditionParserRuleCall_2() { return cOutputConditionParserRuleCall_2; }
-
-		//Condition_Impl
-		public RuleCall getCondition_ImplParserRuleCall_3() { return cCondition_ImplParserRuleCall_3; }
-
-		//Procedure_Impl
-		public RuleCall getProcedure_ImplParserRuleCall_4() { return cProcedure_ImplParserRuleCall_4; }
-
-		//ForEachLoop
-		public RuleCall getForEachLoopParserRuleCall_5() { return cForEachLoopParserRuleCall_5; }
-
-		//WhileLoop
-		public RuleCall getWhileLoopParserRuleCall_6() { return cWhileLoopParserRuleCall_6; }
-
-		//Handler
-		public RuleCall getHandlerParserRuleCall_7() { return cHandlerParserRuleCall_7; }
-
-		//Block
-		public RuleCall getBlockParserRuleCall_8() { return cBlockParserRuleCall_8; }
-
-		//BusinessProcedure
-		public RuleCall getBusinessProcedureParserRuleCall_9() { return cBusinessProcedureParserRuleCall_9; }
-	}
-
-	public class ProcedureElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Procedure");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cProcedure_ImplParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cForEachLoopParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cWhileLoopParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		private final RuleCall cHandlerParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
-		private final RuleCall cBlockParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
-		private final RuleCall cBusinessProcedureParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
-		
-		//Procedure:
-		//	Procedure_Impl | ForEachLoop | WhileLoop | Handler | Block | BusinessProcedure;
-		public ParserRule getRule() { return rule; }
-
-		//Procedure_Impl | ForEachLoop | WhileLoop | Handler | Block | BusinessProcedure
-		public Alternatives getAlternatives() { return cAlternatives; }
-
-		//Procedure_Impl
-		public RuleCall getProcedure_ImplParserRuleCall_0() { return cProcedure_ImplParserRuleCall_0; }
-
-		//ForEachLoop
-		public RuleCall getForEachLoopParserRuleCall_1() { return cForEachLoopParserRuleCall_1; }
-
-		//WhileLoop
-		public RuleCall getWhileLoopParserRuleCall_2() { return cWhileLoopParserRuleCall_2; }
-
-		//Handler
-		public RuleCall getHandlerParserRuleCall_3() { return cHandlerParserRuleCall_3; }
-
-		//Block
-		public RuleCall getBlockParserRuleCall_4() { return cBlockParserRuleCall_4; }
-
-		//BusinessProcedure
-		public RuleCall getBusinessProcedureParserRuleCall_5() { return cBusinessProcedureParserRuleCall_5; }
 	}
 
 	public class ProgramElements extends AbstractParserRuleElementFinder {
@@ -222,15 +137,22 @@ public class PjlGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_12 = (Keyword)cGroup.eContents().get(12);
 		
 		//Program:
+		//
 		//	"Program" name=EString "{" ("description" description=EString)? ("capacity" capacity=EInt)? "inputCondition"
+		//
 		//	inputCondition=[InputCondition|EString] "outputCondition" outputCondition=[OutputCondition|EString] ("predicates" "{"
+		//
 		//	predicates+=Predicate ("," predicates+=Predicate)* "}")? (elements+=Element ("," elements+=Element)*)? ("data" "{"
+		//
 		//	data+=Data ("," data+=Data)* "}")? "}";
 		public ParserRule getRule() { return rule; }
 
 		//"Program" name=EString "{" ("description" description=EString)? ("capacity" capacity=EInt)? "inputCondition"
+		//
 		//inputCondition=[InputCondition|EString] "outputCondition" outputCondition=[OutputCondition|EString] ("predicates" "{"
+		//
 		//predicates+=Predicate ("," predicates+=Predicate)* "}")? (elements+=Element ("," elements+=Element)*)? ("data" "{"
+		//
 		//data+=Data ("," data+=Data)* "}")? "}"
 		public Group getGroup() { return cGroup; }
 
@@ -398,11 +320,14 @@ public class PjlGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//MetaInformationContainer:
-		//	{MetaInformationContainer} "MetaInformationContainer" "{" ("metaInformation" "{" metaInformation+=MetaInformation (","
-		//	metaInformation+=MetaInformation)* "}")? "}";
+		//
+		//	{MetaInformationContainer} "MetaInformationContainer" "{" ("metaInformation" "{" metaInformation+=MetaInformation
+		//
+		//	("," metaInformation+=MetaInformation)* "}")? "}";
 		public ParserRule getRule() { return rule; }
 
 		//{MetaInformationContainer} "MetaInformationContainer" "{" ("metaInformation" "{" metaInformation+=MetaInformation (","
+		//
 		//metaInformation+=MetaInformation)* "}")? "}"
 		public Group getGroup() { return cGroup; }
 
@@ -449,6 +374,338 @@ public class PjlGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
 	}
 
+	public class MetaInformationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MetaInformation");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cMetaInformationAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cMetaInformationKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		
+		//MetaInformation:
+		//
+		//	{MetaInformation} "MetaInformation";
+		public ParserRule getRule() { return rule; }
+
+		//{MetaInformation} "MetaInformation"
+		public Group getGroup() { return cGroup; }
+
+		//{MetaInformation}
+		public Action getMetaInformationAction_0() { return cMetaInformationAction_0; }
+
+		//"MetaInformation"
+		public Keyword getMetaInformationKeyword_1() { return cMetaInformationKeyword_1; }
+	}
+
+	public class BusinessProcedureElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "BusinessProcedure");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cBusinessProcedureAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cBusinessProcedureKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameEStringParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Keyword cDescriptionKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Assignment cDescriptionAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final RuleCall cDescriptionEStringParserRuleCall_4_1_0 = (RuleCall)cDescriptionAssignment_4_1.eContents().get(0);
+		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
+		private final Keyword cExecutableKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
+		private final Assignment cExecutableAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
+		private final RuleCall cExecutableEStringParserRuleCall_5_1_0 = (RuleCall)cExecutableAssignment_5_1.eContents().get(0);
+		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
+		private final Keyword cJoinKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
+		private final Assignment cJoinAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
+		private final RuleCall cJoinJoinTypeEnumRuleCall_6_1_0 = (RuleCall)cJoinAssignment_6_1.eContents().get(0);
+		private final Group cGroup_7 = (Group)cGroup.eContents().get(7);
+		private final Keyword cSplitKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
+		private final Assignment cSplitAssignment_7_1 = (Assignment)cGroup_7.eContents().get(1);
+		private final RuleCall cSplitSplitTypeEnumRuleCall_7_1_0 = (RuleCall)cSplitAssignment_7_1.eContents().get(0);
+		private final Group cGroup_8 = (Group)cGroup.eContents().get(8);
+		private final Keyword cCapacityKeyword_8_0 = (Keyword)cGroup_8.eContents().get(0);
+		private final Assignment cCapacityAssignment_8_1 = (Assignment)cGroup_8.eContents().get(1);
+		private final RuleCall cCapacityEIntParserRuleCall_8_1_0 = (RuleCall)cCapacityAssignment_8_1.eContents().get(0);
+		private final Group cGroup_9 = (Group)cGroup.eContents().get(9);
+		private final Keyword cInputLinksKeyword_9_0 = (Keyword)cGroup_9.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_9_1 = (Keyword)cGroup_9.eContents().get(1);
+		private final Assignment cInputLinksAssignment_9_2 = (Assignment)cGroup_9.eContents().get(2);
+		private final CrossReference cInputLinksLinkCrossReference_9_2_0 = (CrossReference)cInputLinksAssignment_9_2.eContents().get(0);
+		private final RuleCall cInputLinksLinkEStringParserRuleCall_9_2_0_1 = (RuleCall)cInputLinksLinkCrossReference_9_2_0.eContents().get(1);
+		private final Group cGroup_9_3 = (Group)cGroup_9.eContents().get(3);
+		private final Keyword cCommaKeyword_9_3_0 = (Keyword)cGroup_9_3.eContents().get(0);
+		private final Assignment cInputLinksAssignment_9_3_1 = (Assignment)cGroup_9_3.eContents().get(1);
+		private final CrossReference cInputLinksLinkCrossReference_9_3_1_0 = (CrossReference)cInputLinksAssignment_9_3_1.eContents().get(0);
+		private final RuleCall cInputLinksLinkEStringParserRuleCall_9_3_1_0_1 = (RuleCall)cInputLinksLinkCrossReference_9_3_1_0.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_9_4 = (Keyword)cGroup_9.eContents().get(4);
+		private final Group cGroup_10 = (Group)cGroup.eContents().get(10);
+		private final Keyword cOutputLinksKeyword_10_0 = (Keyword)cGroup_10.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_10_1 = (Keyword)cGroup_10.eContents().get(1);
+		private final Assignment cOutputLinksAssignment_10_2 = (Assignment)cGroup_10.eContents().get(2);
+		private final RuleCall cOutputLinksLinkParserRuleCall_10_2_0 = (RuleCall)cOutputLinksAssignment_10_2.eContents().get(0);
+		private final Group cGroup_10_3 = (Group)cGroup_10.eContents().get(3);
+		private final Keyword cCommaKeyword_10_3_0 = (Keyword)cGroup_10_3.eContents().get(0);
+		private final Assignment cOutputLinksAssignment_10_3_1 = (Assignment)cGroup_10_3.eContents().get(1);
+		private final RuleCall cOutputLinksLinkParserRuleCall_10_3_1_0 = (RuleCall)cOutputLinksAssignment_10_3_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_10_4 = (Keyword)cGroup_10.eContents().get(4);
+		private final Keyword cRightCurlyBracketKeyword_11 = (Keyword)cGroup.eContents().get(11);
+		
+		//BusinessProcedure:
+		//
+		//	{BusinessProcedure} "BusinessProcedure" name=EString "{" ("description" description=EString)? ("executable"
+		//
+		//	executable=EString)? ("join" join=JoinType)? ("split" split=SplitType)? ("capacity" capacity=EInt)? ("inputLinks" "("
+		//
+		//	inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")? ("outputLinks" "{" outputLinks+=Link (","
+		//
+		//	outputLinks+=Link)* "}")? "}";
+		public ParserRule getRule() { return rule; }
+
+		//{BusinessProcedure} "BusinessProcedure" name=EString "{" ("description" description=EString)? ("executable"
+		//
+		//executable=EString)? ("join" join=JoinType)? ("split" split=SplitType)? ("capacity" capacity=EInt)? ("inputLinks" "("
+		//
+		//inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")? ("outputLinks" "{" outputLinks+=Link (","
+		//
+		//outputLinks+=Link)* "}")? "}"
+		public Group getGroup() { return cGroup; }
+
+		//{BusinessProcedure}
+		public Action getBusinessProcedureAction_0() { return cBusinessProcedureAction_0; }
+
+		//"BusinessProcedure"
+		public Keyword getBusinessProcedureKeyword_1() { return cBusinessProcedureKeyword_1; }
+
+		//name=EString
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+
+		//EString
+		public RuleCall getNameEStringParserRuleCall_2_0() { return cNameEStringParserRuleCall_2_0; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
+
+		//("description" description=EString)?
+		public Group getGroup_4() { return cGroup_4; }
+
+		//"description"
+		public Keyword getDescriptionKeyword_4_0() { return cDescriptionKeyword_4_0; }
+
+		//description=EString
+		public Assignment getDescriptionAssignment_4_1() { return cDescriptionAssignment_4_1; }
+
+		//EString
+		public RuleCall getDescriptionEStringParserRuleCall_4_1_0() { return cDescriptionEStringParserRuleCall_4_1_0; }
+
+		//("executable" executable=EString)?
+		public Group getGroup_5() { return cGroup_5; }
+
+		//"executable"
+		public Keyword getExecutableKeyword_5_0() { return cExecutableKeyword_5_0; }
+
+		//executable=EString
+		public Assignment getExecutableAssignment_5_1() { return cExecutableAssignment_5_1; }
+
+		//EString
+		public RuleCall getExecutableEStringParserRuleCall_5_1_0() { return cExecutableEStringParserRuleCall_5_1_0; }
+
+		//("join" join=JoinType)?
+		public Group getGroup_6() { return cGroup_6; }
+
+		//"join"
+		public Keyword getJoinKeyword_6_0() { return cJoinKeyword_6_0; }
+
+		//join=JoinType
+		public Assignment getJoinAssignment_6_1() { return cJoinAssignment_6_1; }
+
+		//JoinType
+		public RuleCall getJoinJoinTypeEnumRuleCall_6_1_0() { return cJoinJoinTypeEnumRuleCall_6_1_0; }
+
+		//("split" split=SplitType)?
+		public Group getGroup_7() { return cGroup_7; }
+
+		//"split"
+		public Keyword getSplitKeyword_7_0() { return cSplitKeyword_7_0; }
+
+		//split=SplitType
+		public Assignment getSplitAssignment_7_1() { return cSplitAssignment_7_1; }
+
+		//SplitType
+		public RuleCall getSplitSplitTypeEnumRuleCall_7_1_0() { return cSplitSplitTypeEnumRuleCall_7_1_0; }
+
+		//("capacity" capacity=EInt)?
+		public Group getGroup_8() { return cGroup_8; }
+
+		//"capacity"
+		public Keyword getCapacityKeyword_8_0() { return cCapacityKeyword_8_0; }
+
+		//capacity=EInt
+		public Assignment getCapacityAssignment_8_1() { return cCapacityAssignment_8_1; }
+
+		//EInt
+		public RuleCall getCapacityEIntParserRuleCall_8_1_0() { return cCapacityEIntParserRuleCall_8_1_0; }
+
+		//("inputLinks" "(" inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")?
+		public Group getGroup_9() { return cGroup_9; }
+
+		//"inputLinks"
+		public Keyword getInputLinksKeyword_9_0() { return cInputLinksKeyword_9_0; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_9_1() { return cLeftParenthesisKeyword_9_1; }
+
+		//inputLinks+=[Link|EString]
+		public Assignment getInputLinksAssignment_9_2() { return cInputLinksAssignment_9_2; }
+
+		//[Link|EString]
+		public CrossReference getInputLinksLinkCrossReference_9_2_0() { return cInputLinksLinkCrossReference_9_2_0; }
+
+		//EString
+		public RuleCall getInputLinksLinkEStringParserRuleCall_9_2_0_1() { return cInputLinksLinkEStringParserRuleCall_9_2_0_1; }
+
+		//("," inputLinks+=[Link|EString])*
+		public Group getGroup_9_3() { return cGroup_9_3; }
+
+		//","
+		public Keyword getCommaKeyword_9_3_0() { return cCommaKeyword_9_3_0; }
+
+		//inputLinks+=[Link|EString]
+		public Assignment getInputLinksAssignment_9_3_1() { return cInputLinksAssignment_9_3_1; }
+
+		//[Link|EString]
+		public CrossReference getInputLinksLinkCrossReference_9_3_1_0() { return cInputLinksLinkCrossReference_9_3_1_0; }
+
+		//EString
+		public RuleCall getInputLinksLinkEStringParserRuleCall_9_3_1_0_1() { return cInputLinksLinkEStringParserRuleCall_9_3_1_0_1; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_9_4() { return cRightParenthesisKeyword_9_4; }
+
+		//("outputLinks" "{" outputLinks+=Link ("," outputLinks+=Link)* "}")?
+		public Group getGroup_10() { return cGroup_10; }
+
+		//"outputLinks"
+		public Keyword getOutputLinksKeyword_10_0() { return cOutputLinksKeyword_10_0; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_10_1() { return cLeftCurlyBracketKeyword_10_1; }
+
+		//outputLinks+=Link
+		public Assignment getOutputLinksAssignment_10_2() { return cOutputLinksAssignment_10_2; }
+
+		//Link
+		public RuleCall getOutputLinksLinkParserRuleCall_10_2_0() { return cOutputLinksLinkParserRuleCall_10_2_0; }
+
+		//("," outputLinks+=Link)*
+		public Group getGroup_10_3() { return cGroup_10_3; }
+
+		//","
+		public Keyword getCommaKeyword_10_3_0() { return cCommaKeyword_10_3_0; }
+
+		//outputLinks+=Link
+		public Assignment getOutputLinksAssignment_10_3_1() { return cOutputLinksAssignment_10_3_1; }
+
+		//Link
+		public RuleCall getOutputLinksLinkParserRuleCall_10_3_1_0() { return cOutputLinksLinkParserRuleCall_10_3_1_0; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_10_4() { return cRightCurlyBracketKeyword_10_4; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_11() { return cRightCurlyBracketKeyword_11; }
+	}
+
+	public class ElementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Element");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cElement_ImplParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cInputConditionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cOutputConditionParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cCondition_ImplParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cProcedure_ImplParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		private final RuleCall cForEachLoopParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
+		private final RuleCall cWhileLoopParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
+		private final RuleCall cHandlerParserRuleCall_7 = (RuleCall)cAlternatives.eContents().get(7);
+		private final RuleCall cPipelineParserRuleCall_8 = (RuleCall)cAlternatives.eContents().get(8);
+		private final RuleCall cBusinessProcedureParserRuleCall_9 = (RuleCall)cAlternatives.eContents().get(9);
+		
+		//Element:
+		//
+		//	Element_Impl | InputCondition | OutputCondition | Condition_Impl | Procedure_Impl | ForEachLoop | WhileLoop | Handler
+		//
+		//	| Pipeline | BusinessProcedure;
+		public ParserRule getRule() { return rule; }
+
+		//Element_Impl | InputCondition | OutputCondition | Condition_Impl | Procedure_Impl | ForEachLoop | WhileLoop | Handler |
+		//
+		//Pipeline | BusinessProcedure
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//Element_Impl
+		public RuleCall getElement_ImplParserRuleCall_0() { return cElement_ImplParserRuleCall_0; }
+
+		//InputCondition
+		public RuleCall getInputConditionParserRuleCall_1() { return cInputConditionParserRuleCall_1; }
+
+		//OutputCondition
+		public RuleCall getOutputConditionParserRuleCall_2() { return cOutputConditionParserRuleCall_2; }
+
+		//Condition_Impl
+		public RuleCall getCondition_ImplParserRuleCall_3() { return cCondition_ImplParserRuleCall_3; }
+
+		//Procedure_Impl
+		public RuleCall getProcedure_ImplParserRuleCall_4() { return cProcedure_ImplParserRuleCall_4; }
+
+		//ForEachLoop
+		public RuleCall getForEachLoopParserRuleCall_5() { return cForEachLoopParserRuleCall_5; }
+
+		//WhileLoop
+		public RuleCall getWhileLoopParserRuleCall_6() { return cWhileLoopParserRuleCall_6; }
+
+		//Handler
+		public RuleCall getHandlerParserRuleCall_7() { return cHandlerParserRuleCall_7; }
+
+		//Pipeline
+		public RuleCall getPipelineParserRuleCall_8() { return cPipelineParserRuleCall_8; }
+
+		//BusinessProcedure
+		public RuleCall getBusinessProcedureParserRuleCall_9() { return cBusinessProcedureParserRuleCall_9; }
+	}
+
+	public class ProcedureElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Procedure");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cProcedure_ImplParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cForEachLoopParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cWhileLoopParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cHandlerParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cPipelineParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		private final RuleCall cBusinessProcedureParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
+		
+		//Procedure:
+		//
+		//	Procedure_Impl | ForEachLoop | WhileLoop | Handler | Pipeline | BusinessProcedure;
+		public ParserRule getRule() { return rule; }
+
+		//Procedure_Impl | ForEachLoop | WhileLoop | Handler | Pipeline | BusinessProcedure
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//Procedure_Impl
+		public RuleCall getProcedure_ImplParserRuleCall_0() { return cProcedure_ImplParserRuleCall_0; }
+
+		//ForEachLoop
+		public RuleCall getForEachLoopParserRuleCall_1() { return cForEachLoopParserRuleCall_1; }
+
+		//WhileLoop
+		public RuleCall getWhileLoopParserRuleCall_2() { return cWhileLoopParserRuleCall_2; }
+
+		//Handler
+		public RuleCall getHandlerParserRuleCall_3() { return cHandlerParserRuleCall_3; }
+
+		//Pipeline
+		public RuleCall getPipelineParserRuleCall_4() { return cPipelineParserRuleCall_4; }
+
+		//BusinessProcedure
+		public RuleCall getBusinessProcedureParserRuleCall_5() { return cBusinessProcedureParserRuleCall_5; }
+	}
+
 	public class EStringElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "EString");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
@@ -456,6 +713,7 @@ public class PjlGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cIDTerminalRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		//EString returns ecore::EString:
+		//
 		//	STRING | ID;
 		public ParserRule getRule() { return rule; }
 
@@ -467,6 +725,316 @@ public class PjlGrammarAccess extends AbstractGrammarElementFinder {
 
 		//ID
 		public RuleCall getIDTerminalRuleCall_1() { return cIDTerminalRuleCall_1; }
+	}
+
+	public class LinkElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Link");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cLinkKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameEStringParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cDescriptionKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Assignment cDescriptionAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final RuleCall cDescriptionEStringParserRuleCall_3_1_0 = (RuleCall)cDescriptionAssignment_3_1.eContents().get(0);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Keyword cPredicateKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Assignment cPredicateAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final CrossReference cPredicatePredicateCrossReference_4_1_0 = (CrossReference)cPredicateAssignment_4_1.eContents().get(0);
+		private final RuleCall cPredicatePredicateEStringParserRuleCall_4_1_0_1 = (RuleCall)cPredicatePredicateCrossReference_4_1_0.eContents().get(1);
+		private final Keyword cDestinationKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cDestinationAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final CrossReference cDestinationElementCrossReference_6_0 = (CrossReference)cDestinationAssignment_6.eContents().get(0);
+		private final RuleCall cDestinationElementEStringParserRuleCall_6_0_1 = (RuleCall)cDestinationElementCrossReference_6_0.eContents().get(1);
+		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		
+		//Link:
+		//
+		//	"Link" name=EString "{" ("description" description=EString)? ("predicate" predicate=[Predicate|EString])?
+		//
+		//	"destination" destination=[Element|EString] "}";
+		public ParserRule getRule() { return rule; }
+
+		//"Link" name=EString "{" ("description" description=EString)? ("predicate" predicate=[Predicate|EString])? "destination"
+		//
+		//destination=[Element|EString] "}"
+		public Group getGroup() { return cGroup; }
+
+		//"Link"
+		public Keyword getLinkKeyword_0() { return cLinkKeyword_0; }
+
+		//name=EString
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//EString
+		public RuleCall getNameEStringParserRuleCall_1_0() { return cNameEStringParserRuleCall_1_0; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
+
+		//("description" description=EString)?
+		public Group getGroup_3() { return cGroup_3; }
+
+		//"description"
+		public Keyword getDescriptionKeyword_3_0() { return cDescriptionKeyword_3_0; }
+
+		//description=EString
+		public Assignment getDescriptionAssignment_3_1() { return cDescriptionAssignment_3_1; }
+
+		//EString
+		public RuleCall getDescriptionEStringParserRuleCall_3_1_0() { return cDescriptionEStringParserRuleCall_3_1_0; }
+
+		//("predicate" predicate=[Predicate|EString])?
+		public Group getGroup_4() { return cGroup_4; }
+
+		//"predicate"
+		public Keyword getPredicateKeyword_4_0() { return cPredicateKeyword_4_0; }
+
+		//predicate=[Predicate|EString]
+		public Assignment getPredicateAssignment_4_1() { return cPredicateAssignment_4_1; }
+
+		//[Predicate|EString]
+		public CrossReference getPredicatePredicateCrossReference_4_1_0() { return cPredicatePredicateCrossReference_4_1_0; }
+
+		//EString
+		public RuleCall getPredicatePredicateEStringParserRuleCall_4_1_0_1() { return cPredicatePredicateEStringParserRuleCall_4_1_0_1; }
+
+		//"destination"
+		public Keyword getDestinationKeyword_5() { return cDestinationKeyword_5; }
+
+		//destination=[Element|EString]
+		public Assignment getDestinationAssignment_6() { return cDestinationAssignment_6; }
+
+		//[Element|EString]
+		public CrossReference getDestinationElementCrossReference_6_0() { return cDestinationElementCrossReference_6_0; }
+
+		//EString
+		public RuleCall getDestinationElementEStringParserRuleCall_6_0_1() { return cDestinationElementEStringParserRuleCall_6_0_1; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
+	}
+
+	public class EIntElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "EInt");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cHyphenMinusKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final RuleCall cINTTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		
+		//EInt returns ecore::EInt:
+		//
+		//	"-"? INT;
+		public ParserRule getRule() { return rule; }
+
+		//"-"? INT
+		public Group getGroup() { return cGroup; }
+
+		//"-"?
+		public Keyword getHyphenMinusKeyword_0() { return cHyphenMinusKeyword_0; }
+
+		//INT
+		public RuleCall getINTTerminalRuleCall_1() { return cINTTerminalRuleCall_1; }
+	}
+
+	public class PredicateElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Predicate");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cPredicateAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cPredicateKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameEStringParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Keyword cDescriptionKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Assignment cDescriptionAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final RuleCall cDescriptionEStringParserRuleCall_4_1_0 = (RuleCall)cDescriptionAssignment_4_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		
+		//Predicate:
+		//
+		//	{Predicate} "Predicate" name=EString "{" ("description" description=EString)? "}";
+		public ParserRule getRule() { return rule; }
+
+		//{Predicate} "Predicate" name=EString "{" ("description" description=EString)? "}"
+		public Group getGroup() { return cGroup; }
+
+		//{Predicate}
+		public Action getPredicateAction_0() { return cPredicateAction_0; }
+
+		//"Predicate"
+		public Keyword getPredicateKeyword_1() { return cPredicateKeyword_1; }
+
+		//name=EString
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+
+		//EString
+		public RuleCall getNameEStringParserRuleCall_2_0() { return cNameEStringParserRuleCall_2_0; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
+
+		//("description" description=EString)?
+		public Group getGroup_4() { return cGroup_4; }
+
+		//"description"
+		public Keyword getDescriptionKeyword_4_0() { return cDescriptionKeyword_4_0; }
+
+		//description=EString
+		public Assignment getDescriptionAssignment_4_1() { return cDescriptionAssignment_4_1; }
+
+		//EString
+		public RuleCall getDescriptionEStringParserRuleCall_4_1_0() { return cDescriptionEStringParserRuleCall_4_1_0; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
+	}
+
+	public class Element_ImplElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Element_Impl");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cElementAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cElementKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameEStringParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Keyword cDescriptionKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Assignment cDescriptionAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final RuleCall cDescriptionEStringParserRuleCall_4_1_0 = (RuleCall)cDescriptionAssignment_4_1.eContents().get(0);
+		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
+		private final Keyword cInputLinksKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_5_1 = (Keyword)cGroup_5.eContents().get(1);
+		private final Assignment cInputLinksAssignment_5_2 = (Assignment)cGroup_5.eContents().get(2);
+		private final CrossReference cInputLinksLinkCrossReference_5_2_0 = (CrossReference)cInputLinksAssignment_5_2.eContents().get(0);
+		private final RuleCall cInputLinksLinkEStringParserRuleCall_5_2_0_1 = (RuleCall)cInputLinksLinkCrossReference_5_2_0.eContents().get(1);
+		private final Group cGroup_5_3 = (Group)cGroup_5.eContents().get(3);
+		private final Keyword cCommaKeyword_5_3_0 = (Keyword)cGroup_5_3.eContents().get(0);
+		private final Assignment cInputLinksAssignment_5_3_1 = (Assignment)cGroup_5_3.eContents().get(1);
+		private final CrossReference cInputLinksLinkCrossReference_5_3_1_0 = (CrossReference)cInputLinksAssignment_5_3_1.eContents().get(0);
+		private final RuleCall cInputLinksLinkEStringParserRuleCall_5_3_1_0_1 = (RuleCall)cInputLinksLinkCrossReference_5_3_1_0.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_5_4 = (Keyword)cGroup_5.eContents().get(4);
+		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
+		private final Keyword cOutputLinksKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_6_1 = (Keyword)cGroup_6.eContents().get(1);
+		private final Assignment cOutputLinksAssignment_6_2 = (Assignment)cGroup_6.eContents().get(2);
+		private final RuleCall cOutputLinksLinkParserRuleCall_6_2_0 = (RuleCall)cOutputLinksAssignment_6_2.eContents().get(0);
+		private final Group cGroup_6_3 = (Group)cGroup_6.eContents().get(3);
+		private final Keyword cCommaKeyword_6_3_0 = (Keyword)cGroup_6_3.eContents().get(0);
+		private final Assignment cOutputLinksAssignment_6_3_1 = (Assignment)cGroup_6_3.eContents().get(1);
+		private final RuleCall cOutputLinksLinkParserRuleCall_6_3_1_0 = (RuleCall)cOutputLinksAssignment_6_3_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_6_4 = (Keyword)cGroup_6.eContents().get(4);
+		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		
+		//Element_Impl returns Element:
+		//
+		//	{Element} "Element" name=EString "{" ("description" description=EString)? ("inputLinks" "("
+		//
+		//	inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")? ("outputLinks" "{" outputLinks+=Link (","
+		//
+		//	outputLinks+=Link)* "}")? "}";
+		public ParserRule getRule() { return rule; }
+
+		//{Element} "Element" name=EString "{" ("description" description=EString)? ("inputLinks" "(" inputLinks+=[Link|EString]
+		//
+		//("," inputLinks+=[Link|EString])* ")")? ("outputLinks" "{" outputLinks+=Link ("," outputLinks+=Link)* "}")? "}"
+		public Group getGroup() { return cGroup; }
+
+		//{Element}
+		public Action getElementAction_0() { return cElementAction_0; }
+
+		//"Element"
+		public Keyword getElementKeyword_1() { return cElementKeyword_1; }
+
+		//name=EString
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+
+		//EString
+		public RuleCall getNameEStringParserRuleCall_2_0() { return cNameEStringParserRuleCall_2_0; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
+
+		//("description" description=EString)?
+		public Group getGroup_4() { return cGroup_4; }
+
+		//"description"
+		public Keyword getDescriptionKeyword_4_0() { return cDescriptionKeyword_4_0; }
+
+		//description=EString
+		public Assignment getDescriptionAssignment_4_1() { return cDescriptionAssignment_4_1; }
+
+		//EString
+		public RuleCall getDescriptionEStringParserRuleCall_4_1_0() { return cDescriptionEStringParserRuleCall_4_1_0; }
+
+		//("inputLinks" "(" inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")?
+		public Group getGroup_5() { return cGroup_5; }
+
+		//"inputLinks"
+		public Keyword getInputLinksKeyword_5_0() { return cInputLinksKeyword_5_0; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_5_1() { return cLeftParenthesisKeyword_5_1; }
+
+		//inputLinks+=[Link|EString]
+		public Assignment getInputLinksAssignment_5_2() { return cInputLinksAssignment_5_2; }
+
+		//[Link|EString]
+		public CrossReference getInputLinksLinkCrossReference_5_2_0() { return cInputLinksLinkCrossReference_5_2_0; }
+
+		//EString
+		public RuleCall getInputLinksLinkEStringParserRuleCall_5_2_0_1() { return cInputLinksLinkEStringParserRuleCall_5_2_0_1; }
+
+		//("," inputLinks+=[Link|EString])*
+		public Group getGroup_5_3() { return cGroup_5_3; }
+
+		//","
+		public Keyword getCommaKeyword_5_3_0() { return cCommaKeyword_5_3_0; }
+
+		//inputLinks+=[Link|EString]
+		public Assignment getInputLinksAssignment_5_3_1() { return cInputLinksAssignment_5_3_1; }
+
+		//[Link|EString]
+		public CrossReference getInputLinksLinkCrossReference_5_3_1_0() { return cInputLinksLinkCrossReference_5_3_1_0; }
+
+		//EString
+		public RuleCall getInputLinksLinkEStringParserRuleCall_5_3_1_0_1() { return cInputLinksLinkEStringParserRuleCall_5_3_1_0_1; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_5_4() { return cRightParenthesisKeyword_5_4; }
+
+		//("outputLinks" "{" outputLinks+=Link ("," outputLinks+=Link)* "}")?
+		public Group getGroup_6() { return cGroup_6; }
+
+		//"outputLinks"
+		public Keyword getOutputLinksKeyword_6_0() { return cOutputLinksKeyword_6_0; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_6_1() { return cLeftCurlyBracketKeyword_6_1; }
+
+		//outputLinks+=Link
+		public Assignment getOutputLinksAssignment_6_2() { return cOutputLinksAssignment_6_2; }
+
+		//Link
+		public RuleCall getOutputLinksLinkParserRuleCall_6_2_0() { return cOutputLinksLinkParserRuleCall_6_2_0; }
+
+		//("," outputLinks+=Link)*
+		public Group getGroup_6_3() { return cGroup_6_3; }
+
+		//","
+		public Keyword getCommaKeyword_6_3_0() { return cCommaKeyword_6_3_0; }
+
+		//outputLinks+=Link
+		public Assignment getOutputLinksAssignment_6_3_1() { return cOutputLinksAssignment_6_3_1; }
+
+		//Link
+		public RuleCall getOutputLinksLinkParserRuleCall_6_3_1_0() { return cOutputLinksLinkParserRuleCall_6_3_1_0; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_6_4() { return cRightCurlyBracketKeyword_6_4; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
 	}
 
 	public class InputConditionElements extends AbstractParserRuleElementFinder {
@@ -506,13 +1074,18 @@ public class PjlGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//InputCondition:
+		//
 		//	{InputCondition} "InputCondition" name=EString "{" ("description" description=EString)? ("inputLinks" "("
+		//
 		//	inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")? ("outputLinks" "{" outputLinks+=Link (","
+		//
 		//	outputLinks+=Link)* "}")? "}";
 		public ParserRule getRule() { return rule; }
 
 		//{InputCondition} "InputCondition" name=EString "{" ("description" description=EString)? ("inputLinks" "("
+		//
 		//inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")? ("outputLinks" "{" outputLinks+=Link (","
+		//
 		//outputLinks+=Link)* "}")? "}"
 		public Group getGroup() { return cGroup; }
 
@@ -650,13 +1223,18 @@ public class PjlGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//OutputCondition:
+		//
 		//	{OutputCondition} "OutputCondition" name=EString "{" ("description" description=EString)? ("inputLinks" "("
+		//
 		//	inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")? ("outputLinks" "{" outputLinks+=Link (","
+		//
 		//	outputLinks+=Link)* "}")? "}";
 		public ParserRule getRule() { return rule; }
 
 		//{OutputCondition} "OutputCondition" name=EString "{" ("description" description=EString)? ("inputLinks" "("
+		//
 		//inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")? ("outputLinks" "{" outputLinks+=Link (","
+		//
 		//outputLinks+=Link)* "}")? "}"
 		public Group getGroup() { return cGroup; }
 
@@ -757,374 +1335,6 @@ public class PjlGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
 	}
 
-	public class PredicateElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Predicate");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cPredicateAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cPredicateKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNameEStringParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cDescriptionKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Assignment cDescriptionAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
-		private final RuleCall cDescriptionEStringParserRuleCall_4_1_0 = (RuleCall)cDescriptionAssignment_4_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		
-		//Predicate:
-		//	{Predicate} "Predicate" name=EString "{" ("description" description=EString)? "}";
-		public ParserRule getRule() { return rule; }
-
-		//{Predicate} "Predicate" name=EString "{" ("description" description=EString)? "}"
-		public Group getGroup() { return cGroup; }
-
-		//{Predicate}
-		public Action getPredicateAction_0() { return cPredicateAction_0; }
-
-		//"Predicate"
-		public Keyword getPredicateKeyword_1() { return cPredicateKeyword_1; }
-
-		//name=EString
-		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
-
-		//EString
-		public RuleCall getNameEStringParserRuleCall_2_0() { return cNameEStringParserRuleCall_2_0; }
-
-		//"{"
-		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
-
-		//("description" description=EString)?
-		public Group getGroup_4() { return cGroup_4; }
-
-		//"description"
-		public Keyword getDescriptionKeyword_4_0() { return cDescriptionKeyword_4_0; }
-
-		//description=EString
-		public Assignment getDescriptionAssignment_4_1() { return cDescriptionAssignment_4_1; }
-
-		//EString
-		public RuleCall getDescriptionEStringParserRuleCall_4_1_0() { return cDescriptionEStringParserRuleCall_4_1_0; }
-
-		//"}"
-		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
-	}
-
-	public class Element_ImplElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Element_Impl");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cElementAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cElementKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNameEStringParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cDescriptionKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Assignment cDescriptionAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
-		private final RuleCall cDescriptionEStringParserRuleCall_4_1_0 = (RuleCall)cDescriptionAssignment_4_1.eContents().get(0);
-		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
-		private final Keyword cInputLinksKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_5_1 = (Keyword)cGroup_5.eContents().get(1);
-		private final Assignment cInputLinksAssignment_5_2 = (Assignment)cGroup_5.eContents().get(2);
-		private final CrossReference cInputLinksLinkCrossReference_5_2_0 = (CrossReference)cInputLinksAssignment_5_2.eContents().get(0);
-		private final RuleCall cInputLinksLinkEStringParserRuleCall_5_2_0_1 = (RuleCall)cInputLinksLinkCrossReference_5_2_0.eContents().get(1);
-		private final Group cGroup_5_3 = (Group)cGroup_5.eContents().get(3);
-		private final Keyword cCommaKeyword_5_3_0 = (Keyword)cGroup_5_3.eContents().get(0);
-		private final Assignment cInputLinksAssignment_5_3_1 = (Assignment)cGroup_5_3.eContents().get(1);
-		private final CrossReference cInputLinksLinkCrossReference_5_3_1_0 = (CrossReference)cInputLinksAssignment_5_3_1.eContents().get(0);
-		private final RuleCall cInputLinksLinkEStringParserRuleCall_5_3_1_0_1 = (RuleCall)cInputLinksLinkCrossReference_5_3_1_0.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_5_4 = (Keyword)cGroup_5.eContents().get(4);
-		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
-		private final Keyword cOutputLinksKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_6_1 = (Keyword)cGroup_6.eContents().get(1);
-		private final Assignment cOutputLinksAssignment_6_2 = (Assignment)cGroup_6.eContents().get(2);
-		private final RuleCall cOutputLinksLinkParserRuleCall_6_2_0 = (RuleCall)cOutputLinksAssignment_6_2.eContents().get(0);
-		private final Group cGroup_6_3 = (Group)cGroup_6.eContents().get(3);
-		private final Keyword cCommaKeyword_6_3_0 = (Keyword)cGroup_6_3.eContents().get(0);
-		private final Assignment cOutputLinksAssignment_6_3_1 = (Assignment)cGroup_6_3.eContents().get(1);
-		private final RuleCall cOutputLinksLinkParserRuleCall_6_3_1_0 = (RuleCall)cOutputLinksAssignment_6_3_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_6_4 = (Keyword)cGroup_6.eContents().get(4);
-		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
-		
-		//Element_Impl returns Element:
-		//	{Element} "Element" name=EString "{" ("description" description=EString)? ("inputLinks" "(" inputLinks+=[Link|EString]
-		//	("," inputLinks+=[Link|EString])* ")")? ("outputLinks" "{" outputLinks+=Link ("," outputLinks+=Link)* "}")? "}";
-		public ParserRule getRule() { return rule; }
-
-		//{Element} "Element" name=EString "{" ("description" description=EString)? ("inputLinks" "(" inputLinks+=[Link|EString]
-		//("," inputLinks+=[Link|EString])* ")")? ("outputLinks" "{" outputLinks+=Link ("," outputLinks+=Link)* "}")? "}"
-		public Group getGroup() { return cGroup; }
-
-		//{Element}
-		public Action getElementAction_0() { return cElementAction_0; }
-
-		//"Element"
-		public Keyword getElementKeyword_1() { return cElementKeyword_1; }
-
-		//name=EString
-		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
-
-		//EString
-		public RuleCall getNameEStringParserRuleCall_2_0() { return cNameEStringParserRuleCall_2_0; }
-
-		//"{"
-		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
-
-		//("description" description=EString)?
-		public Group getGroup_4() { return cGroup_4; }
-
-		//"description"
-		public Keyword getDescriptionKeyword_4_0() { return cDescriptionKeyword_4_0; }
-
-		//description=EString
-		public Assignment getDescriptionAssignment_4_1() { return cDescriptionAssignment_4_1; }
-
-		//EString
-		public RuleCall getDescriptionEStringParserRuleCall_4_1_0() { return cDescriptionEStringParserRuleCall_4_1_0; }
-
-		//("inputLinks" "(" inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")?
-		public Group getGroup_5() { return cGroup_5; }
-
-		//"inputLinks"
-		public Keyword getInputLinksKeyword_5_0() { return cInputLinksKeyword_5_0; }
-
-		//"("
-		public Keyword getLeftParenthesisKeyword_5_1() { return cLeftParenthesisKeyword_5_1; }
-
-		//inputLinks+=[Link|EString]
-		public Assignment getInputLinksAssignment_5_2() { return cInputLinksAssignment_5_2; }
-
-		//[Link|EString]
-		public CrossReference getInputLinksLinkCrossReference_5_2_0() { return cInputLinksLinkCrossReference_5_2_0; }
-
-		//EString
-		public RuleCall getInputLinksLinkEStringParserRuleCall_5_2_0_1() { return cInputLinksLinkEStringParserRuleCall_5_2_0_1; }
-
-		//("," inputLinks+=[Link|EString])*
-		public Group getGroup_5_3() { return cGroup_5_3; }
-
-		//","
-		public Keyword getCommaKeyword_5_3_0() { return cCommaKeyword_5_3_0; }
-
-		//inputLinks+=[Link|EString]
-		public Assignment getInputLinksAssignment_5_3_1() { return cInputLinksAssignment_5_3_1; }
-
-		//[Link|EString]
-		public CrossReference getInputLinksLinkCrossReference_5_3_1_0() { return cInputLinksLinkCrossReference_5_3_1_0; }
-
-		//EString
-		public RuleCall getInputLinksLinkEStringParserRuleCall_5_3_1_0_1() { return cInputLinksLinkEStringParserRuleCall_5_3_1_0_1; }
-
-		//")"
-		public Keyword getRightParenthesisKeyword_5_4() { return cRightParenthesisKeyword_5_4; }
-
-		//("outputLinks" "{" outputLinks+=Link ("," outputLinks+=Link)* "}")?
-		public Group getGroup_6() { return cGroup_6; }
-
-		//"outputLinks"
-		public Keyword getOutputLinksKeyword_6_0() { return cOutputLinksKeyword_6_0; }
-
-		//"{"
-		public Keyword getLeftCurlyBracketKeyword_6_1() { return cLeftCurlyBracketKeyword_6_1; }
-
-		//outputLinks+=Link
-		public Assignment getOutputLinksAssignment_6_2() { return cOutputLinksAssignment_6_2; }
-
-		//Link
-		public RuleCall getOutputLinksLinkParserRuleCall_6_2_0() { return cOutputLinksLinkParserRuleCall_6_2_0; }
-
-		//("," outputLinks+=Link)*
-		public Group getGroup_6_3() { return cGroup_6_3; }
-
-		//","
-		public Keyword getCommaKeyword_6_3_0() { return cCommaKeyword_6_3_0; }
-
-		//outputLinks+=Link
-		public Assignment getOutputLinksAssignment_6_3_1() { return cOutputLinksAssignment_6_3_1; }
-
-		//Link
-		public RuleCall getOutputLinksLinkParserRuleCall_6_3_1_0() { return cOutputLinksLinkParserRuleCall_6_3_1_0; }
-
-		//"}"
-		public Keyword getRightCurlyBracketKeyword_6_4() { return cRightCurlyBracketKeyword_6_4; }
-
-		//"}"
-		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
-	}
-
-	public class DataElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Data");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cDataAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cDataKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNameEStringParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cDescriptionKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Assignment cDescriptionAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
-		private final RuleCall cDescriptionEStringParserRuleCall_4_1_0 = (RuleCall)cDescriptionAssignment_4_1.eContents().get(0);
-		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
-		private final Keyword cTypeKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
-		private final Assignment cTypeAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
-		private final RuleCall cTypeEStringParserRuleCall_5_1_0 = (RuleCall)cTypeAssignment_5_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		
-		//Data:
-		//	{Data} "Data" name=EString "{" ("description" description=EString)? ("type" type=EString)? "}";
-		public ParserRule getRule() { return rule; }
-
-		//{Data} "Data" name=EString "{" ("description" description=EString)? ("type" type=EString)? "}"
-		public Group getGroup() { return cGroup; }
-
-		//{Data}
-		public Action getDataAction_0() { return cDataAction_0; }
-
-		//"Data"
-		public Keyword getDataKeyword_1() { return cDataKeyword_1; }
-
-		//name=EString
-		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
-
-		//EString
-		public RuleCall getNameEStringParserRuleCall_2_0() { return cNameEStringParserRuleCall_2_0; }
-
-		//"{"
-		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
-
-		//("description" description=EString)?
-		public Group getGroup_4() { return cGroup_4; }
-
-		//"description"
-		public Keyword getDescriptionKeyword_4_0() { return cDescriptionKeyword_4_0; }
-
-		//description=EString
-		public Assignment getDescriptionAssignment_4_1() { return cDescriptionAssignment_4_1; }
-
-		//EString
-		public RuleCall getDescriptionEStringParserRuleCall_4_1_0() { return cDescriptionEStringParserRuleCall_4_1_0; }
-
-		//("type" type=EString)?
-		public Group getGroup_5() { return cGroup_5; }
-
-		//"type"
-		public Keyword getTypeKeyword_5_0() { return cTypeKeyword_5_0; }
-
-		//type=EString
-		public Assignment getTypeAssignment_5_1() { return cTypeAssignment_5_1; }
-
-		//EString
-		public RuleCall getTypeEStringParserRuleCall_5_1_0() { return cTypeEStringParserRuleCall_5_1_0; }
-
-		//"}"
-		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
-	}
-
-	public class EIntElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "EInt");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cHyphenMinusKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final RuleCall cINTTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
-		
-		//EInt returns ecore::EInt:
-		//	"-"? INT;
-		public ParserRule getRule() { return rule; }
-
-		//"-"? INT
-		public Group getGroup() { return cGroup; }
-
-		//"-"?
-		public Keyword getHyphenMinusKeyword_0() { return cHyphenMinusKeyword_0; }
-
-		//INT
-		public RuleCall getINTTerminalRuleCall_1() { return cINTTerminalRuleCall_1; }
-	}
-
-	public class LinkElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Link");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cLinkKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameEStringParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cDescriptionKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Assignment cDescriptionAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final RuleCall cDescriptionEStringParserRuleCall_3_1_0 = (RuleCall)cDescriptionAssignment_3_1.eContents().get(0);
-		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cPredicateKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Assignment cPredicateAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
-		private final CrossReference cPredicatePredicateCrossReference_4_1_0 = (CrossReference)cPredicateAssignment_4_1.eContents().get(0);
-		private final RuleCall cPredicatePredicateEStringParserRuleCall_4_1_0_1 = (RuleCall)cPredicatePredicateCrossReference_4_1_0.eContents().get(1);
-		private final Keyword cDestinationKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		private final Assignment cDestinationAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final CrossReference cDestinationElementCrossReference_6_0 = (CrossReference)cDestinationAssignment_6.eContents().get(0);
-		private final RuleCall cDestinationElementEStringParserRuleCall_6_0_1 = (RuleCall)cDestinationElementCrossReference_6_0.eContents().get(1);
-		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
-		
-		//Link:
-		//	"Link" name=EString "{" ("description" description=EString)? ("predicate" predicate=[Predicate|EString])?
-		//	"destination" destination=[Element|EString] "}";
-		public ParserRule getRule() { return rule; }
-
-		//"Link" name=EString "{" ("description" description=EString)? ("predicate" predicate=[Predicate|EString])? "destination"
-		//destination=[Element|EString] "}"
-		public Group getGroup() { return cGroup; }
-
-		//"Link"
-		public Keyword getLinkKeyword_0() { return cLinkKeyword_0; }
-
-		//name=EString
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
-
-		//EString
-		public RuleCall getNameEStringParserRuleCall_1_0() { return cNameEStringParserRuleCall_1_0; }
-
-		//"{"
-		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
-
-		//("description" description=EString)?
-		public Group getGroup_3() { return cGroup_3; }
-
-		//"description"
-		public Keyword getDescriptionKeyword_3_0() { return cDescriptionKeyword_3_0; }
-
-		//description=EString
-		public Assignment getDescriptionAssignment_3_1() { return cDescriptionAssignment_3_1; }
-
-		//EString
-		public RuleCall getDescriptionEStringParserRuleCall_3_1_0() { return cDescriptionEStringParserRuleCall_3_1_0; }
-
-		//("predicate" predicate=[Predicate|EString])?
-		public Group getGroup_4() { return cGroup_4; }
-
-		//"predicate"
-		public Keyword getPredicateKeyword_4_0() { return cPredicateKeyword_4_0; }
-
-		//predicate=[Predicate|EString]
-		public Assignment getPredicateAssignment_4_1() { return cPredicateAssignment_4_1; }
-
-		//[Predicate|EString]
-		public CrossReference getPredicatePredicateCrossReference_4_1_0() { return cPredicatePredicateCrossReference_4_1_0; }
-
-		//EString
-		public RuleCall getPredicatePredicateEStringParserRuleCall_4_1_0_1() { return cPredicatePredicateEStringParserRuleCall_4_1_0_1; }
-
-		//"destination"
-		public Keyword getDestinationKeyword_5() { return cDestinationKeyword_5; }
-
-		//destination=[Element|EString]
-		public Assignment getDestinationAssignment_6() { return cDestinationAssignment_6; }
-
-		//[Element|EString]
-		public CrossReference getDestinationElementCrossReference_6_0() { return cDestinationElementCrossReference_6_0; }
-
-		//EString
-		public RuleCall getDestinationElementEStringParserRuleCall_6_0_1() { return cDestinationElementEStringParserRuleCall_6_0_1; }
-
-		//"}"
-		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
-	}
-
 	public class Condition_ImplElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Condition_Impl");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -1162,13 +1372,18 @@ public class PjlGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//Condition_Impl returns Condition:
+		//
 		//	{Condition} "Condition" name=EString "{" ("description" description=EString)? ("inputLinks" "("
+		//
 		//	inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")? ("outputLinks" "{" outputLinks+=Link (","
+		//
 		//	outputLinks+=Link)* "}")? "}";
 		public ParserRule getRule() { return rule; }
 
 		//{Condition} "Condition" name=EString "{" ("description" description=EString)? ("inputLinks" "("
+		//
 		//inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")? ("outputLinks" "{" outputLinks+=Link (","
+		//
 		//outputLinks+=Link)* "}")? "}"
 		public Group getGroup() { return cGroup; }
 
@@ -1298,44 +1513,45 @@ public class PjlGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cCapacityAssignment_8_1 = (Assignment)cGroup_8.eContents().get(1);
 		private final RuleCall cCapacityEIntParserRuleCall_8_1_0 = (RuleCall)cCapacityAssignment_8_1.eContents().get(0);
 		private final Group cGroup_9 = (Group)cGroup.eContents().get(9);
-		private final Keyword cExecutionModeKeyword_9_0 = (Keyword)cGroup_9.eContents().get(0);
-		private final Assignment cExecutionModeAssignment_9_1 = (Assignment)cGroup_9.eContents().get(1);
-		private final RuleCall cExecutionModeExecutionModeEnumRuleCall_9_1_0 = (RuleCall)cExecutionModeAssignment_9_1.eContents().get(0);
+		private final Keyword cInputLinksKeyword_9_0 = (Keyword)cGroup_9.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_9_1 = (Keyword)cGroup_9.eContents().get(1);
+		private final Assignment cInputLinksAssignment_9_2 = (Assignment)cGroup_9.eContents().get(2);
+		private final CrossReference cInputLinksLinkCrossReference_9_2_0 = (CrossReference)cInputLinksAssignment_9_2.eContents().get(0);
+		private final RuleCall cInputLinksLinkEStringParserRuleCall_9_2_0_1 = (RuleCall)cInputLinksLinkCrossReference_9_2_0.eContents().get(1);
+		private final Group cGroup_9_3 = (Group)cGroup_9.eContents().get(3);
+		private final Keyword cCommaKeyword_9_3_0 = (Keyword)cGroup_9_3.eContents().get(0);
+		private final Assignment cInputLinksAssignment_9_3_1 = (Assignment)cGroup_9_3.eContents().get(1);
+		private final CrossReference cInputLinksLinkCrossReference_9_3_1_0 = (CrossReference)cInputLinksAssignment_9_3_1.eContents().get(0);
+		private final RuleCall cInputLinksLinkEStringParserRuleCall_9_3_1_0_1 = (RuleCall)cInputLinksLinkCrossReference_9_3_1_0.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_9_4 = (Keyword)cGroup_9.eContents().get(4);
 		private final Group cGroup_10 = (Group)cGroup.eContents().get(10);
-		private final Keyword cInputLinksKeyword_10_0 = (Keyword)cGroup_10.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_10_1 = (Keyword)cGroup_10.eContents().get(1);
-		private final Assignment cInputLinksAssignment_10_2 = (Assignment)cGroup_10.eContents().get(2);
-		private final CrossReference cInputLinksLinkCrossReference_10_2_0 = (CrossReference)cInputLinksAssignment_10_2.eContents().get(0);
-		private final RuleCall cInputLinksLinkEStringParserRuleCall_10_2_0_1 = (RuleCall)cInputLinksLinkCrossReference_10_2_0.eContents().get(1);
+		private final Keyword cOutputLinksKeyword_10_0 = (Keyword)cGroup_10.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_10_1 = (Keyword)cGroup_10.eContents().get(1);
+		private final Assignment cOutputLinksAssignment_10_2 = (Assignment)cGroup_10.eContents().get(2);
+		private final RuleCall cOutputLinksLinkParserRuleCall_10_2_0 = (RuleCall)cOutputLinksAssignment_10_2.eContents().get(0);
 		private final Group cGroup_10_3 = (Group)cGroup_10.eContents().get(3);
 		private final Keyword cCommaKeyword_10_3_0 = (Keyword)cGroup_10_3.eContents().get(0);
-		private final Assignment cInputLinksAssignment_10_3_1 = (Assignment)cGroup_10_3.eContents().get(1);
-		private final CrossReference cInputLinksLinkCrossReference_10_3_1_0 = (CrossReference)cInputLinksAssignment_10_3_1.eContents().get(0);
-		private final RuleCall cInputLinksLinkEStringParserRuleCall_10_3_1_0_1 = (RuleCall)cInputLinksLinkCrossReference_10_3_1_0.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_10_4 = (Keyword)cGroup_10.eContents().get(4);
-		private final Group cGroup_11 = (Group)cGroup.eContents().get(11);
-		private final Keyword cOutputLinksKeyword_11_0 = (Keyword)cGroup_11.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_11_1 = (Keyword)cGroup_11.eContents().get(1);
-		private final Assignment cOutputLinksAssignment_11_2 = (Assignment)cGroup_11.eContents().get(2);
-		private final RuleCall cOutputLinksLinkParserRuleCall_11_2_0 = (RuleCall)cOutputLinksAssignment_11_2.eContents().get(0);
-		private final Group cGroup_11_3 = (Group)cGroup_11.eContents().get(3);
-		private final Keyword cCommaKeyword_11_3_0 = (Keyword)cGroup_11_3.eContents().get(0);
-		private final Assignment cOutputLinksAssignment_11_3_1 = (Assignment)cGroup_11_3.eContents().get(1);
-		private final RuleCall cOutputLinksLinkParserRuleCall_11_3_1_0 = (RuleCall)cOutputLinksAssignment_11_3_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_11_4 = (Keyword)cGroup_11.eContents().get(4);
-		private final Keyword cRightCurlyBracketKeyword_12 = (Keyword)cGroup.eContents().get(12);
+		private final Assignment cOutputLinksAssignment_10_3_1 = (Assignment)cGroup_10_3.eContents().get(1);
+		private final RuleCall cOutputLinksLinkParserRuleCall_10_3_1_0 = (RuleCall)cOutputLinksAssignment_10_3_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_10_4 = (Keyword)cGroup_10.eContents().get(4);
+		private final Keyword cRightCurlyBracketKeyword_11 = (Keyword)cGroup.eContents().get(11);
 		
 		//Procedure_Impl returns Procedure:
+		//
 		//	{Procedure} "Procedure" name=EString "{" ("description" description=EString)? ("executable" executable=EString)?
-		//	("join" join=JoinType)? ("split" split=SplitType)? ("capacity" capacity=EInt)? ("executionMode"
-		//	executionMode=ExecutionMode)? ("inputLinks" "(" inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")?
-		//	("outputLinks" "{" outputLinks+=Link ("," outputLinks+=Link)* "}")? "}";
+		//
+		//	("join" join=JoinType)? ("split" split=SplitType)? ("capacity" capacity=EInt)? ("inputLinks" "("
+		//
+		//	inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")? ("outputLinks" "{" outputLinks+=Link (","
+		//
+		//	outputLinks+=Link)* "}")? "}";
 		public ParserRule getRule() { return rule; }
 
 		//{Procedure} "Procedure" name=EString "{" ("description" description=EString)? ("executable" executable=EString)? ("join"
-		//join=JoinType)? ("split" split=SplitType)? ("capacity" capacity=EInt)? ("executionMode" executionMode=ExecutionMode)?
-		//("inputLinks" "(" inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")? ("outputLinks" "{"
-		//outputLinks+=Link ("," outputLinks+=Link)* "}")? "}"
+		//
+		//join=JoinType)? ("split" split=SplitType)? ("capacity" capacity=EInt)? ("inputLinks" "(" inputLinks+=[Link|EString]
+		//
+		//("," inputLinks+=[Link|EString])* ")")? ("outputLinks" "{" outputLinks+=Link ("," outputLinks+=Link)* "}")? "}"
 		public Group getGroup() { return cGroup; }
 
 		//{Procedure}
@@ -1413,86 +1629,74 @@ public class PjlGrammarAccess extends AbstractGrammarElementFinder {
 		//EInt
 		public RuleCall getCapacityEIntParserRuleCall_8_1_0() { return cCapacityEIntParserRuleCall_8_1_0; }
 
-		//("executionMode" executionMode=ExecutionMode)?
+		//("inputLinks" "(" inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")?
 		public Group getGroup_9() { return cGroup_9; }
 
-		//"executionMode"
-		public Keyword getExecutionModeKeyword_9_0() { return cExecutionModeKeyword_9_0; }
-
-		//executionMode=ExecutionMode
-		public Assignment getExecutionModeAssignment_9_1() { return cExecutionModeAssignment_9_1; }
-
-		//ExecutionMode
-		public RuleCall getExecutionModeExecutionModeEnumRuleCall_9_1_0() { return cExecutionModeExecutionModeEnumRuleCall_9_1_0; }
-
-		//("inputLinks" "(" inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")?
-		public Group getGroup_10() { return cGroup_10; }
-
 		//"inputLinks"
-		public Keyword getInputLinksKeyword_10_0() { return cInputLinksKeyword_10_0; }
+		public Keyword getInputLinksKeyword_9_0() { return cInputLinksKeyword_9_0; }
 
 		//"("
-		public Keyword getLeftParenthesisKeyword_10_1() { return cLeftParenthesisKeyword_10_1; }
+		public Keyword getLeftParenthesisKeyword_9_1() { return cLeftParenthesisKeyword_9_1; }
 
 		//inputLinks+=[Link|EString]
-		public Assignment getInputLinksAssignment_10_2() { return cInputLinksAssignment_10_2; }
+		public Assignment getInputLinksAssignment_9_2() { return cInputLinksAssignment_9_2; }
 
 		//[Link|EString]
-		public CrossReference getInputLinksLinkCrossReference_10_2_0() { return cInputLinksLinkCrossReference_10_2_0; }
+		public CrossReference getInputLinksLinkCrossReference_9_2_0() { return cInputLinksLinkCrossReference_9_2_0; }
 
 		//EString
-		public RuleCall getInputLinksLinkEStringParserRuleCall_10_2_0_1() { return cInputLinksLinkEStringParserRuleCall_10_2_0_1; }
+		public RuleCall getInputLinksLinkEStringParserRuleCall_9_2_0_1() { return cInputLinksLinkEStringParserRuleCall_9_2_0_1; }
 
 		//("," inputLinks+=[Link|EString])*
+		public Group getGroup_9_3() { return cGroup_9_3; }
+
+		//","
+		public Keyword getCommaKeyword_9_3_0() { return cCommaKeyword_9_3_0; }
+
+		//inputLinks+=[Link|EString]
+		public Assignment getInputLinksAssignment_9_3_1() { return cInputLinksAssignment_9_3_1; }
+
+		//[Link|EString]
+		public CrossReference getInputLinksLinkCrossReference_9_3_1_0() { return cInputLinksLinkCrossReference_9_3_1_0; }
+
+		//EString
+		public RuleCall getInputLinksLinkEStringParserRuleCall_9_3_1_0_1() { return cInputLinksLinkEStringParserRuleCall_9_3_1_0_1; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_9_4() { return cRightParenthesisKeyword_9_4; }
+
+		//("outputLinks" "{" outputLinks+=Link ("," outputLinks+=Link)* "}")?
+		public Group getGroup_10() { return cGroup_10; }
+
+		//"outputLinks"
+		public Keyword getOutputLinksKeyword_10_0() { return cOutputLinksKeyword_10_0; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_10_1() { return cLeftCurlyBracketKeyword_10_1; }
+
+		//outputLinks+=Link
+		public Assignment getOutputLinksAssignment_10_2() { return cOutputLinksAssignment_10_2; }
+
+		//Link
+		public RuleCall getOutputLinksLinkParserRuleCall_10_2_0() { return cOutputLinksLinkParserRuleCall_10_2_0; }
+
+		//("," outputLinks+=Link)*
 		public Group getGroup_10_3() { return cGroup_10_3; }
 
 		//","
 		public Keyword getCommaKeyword_10_3_0() { return cCommaKeyword_10_3_0; }
 
-		//inputLinks+=[Link|EString]
-		public Assignment getInputLinksAssignment_10_3_1() { return cInputLinksAssignment_10_3_1; }
-
-		//[Link|EString]
-		public CrossReference getInputLinksLinkCrossReference_10_3_1_0() { return cInputLinksLinkCrossReference_10_3_1_0; }
-
-		//EString
-		public RuleCall getInputLinksLinkEStringParserRuleCall_10_3_1_0_1() { return cInputLinksLinkEStringParserRuleCall_10_3_1_0_1; }
-
-		//")"
-		public Keyword getRightParenthesisKeyword_10_4() { return cRightParenthesisKeyword_10_4; }
-
-		//("outputLinks" "{" outputLinks+=Link ("," outputLinks+=Link)* "}")?
-		public Group getGroup_11() { return cGroup_11; }
-
-		//"outputLinks"
-		public Keyword getOutputLinksKeyword_11_0() { return cOutputLinksKeyword_11_0; }
-
-		//"{"
-		public Keyword getLeftCurlyBracketKeyword_11_1() { return cLeftCurlyBracketKeyword_11_1; }
-
 		//outputLinks+=Link
-		public Assignment getOutputLinksAssignment_11_2() { return cOutputLinksAssignment_11_2; }
+		public Assignment getOutputLinksAssignment_10_3_1() { return cOutputLinksAssignment_10_3_1; }
 
 		//Link
-		public RuleCall getOutputLinksLinkParserRuleCall_11_2_0() { return cOutputLinksLinkParserRuleCall_11_2_0; }
-
-		//("," outputLinks+=Link)*
-		public Group getGroup_11_3() { return cGroup_11_3; }
-
-		//","
-		public Keyword getCommaKeyword_11_3_0() { return cCommaKeyword_11_3_0; }
-
-		//outputLinks+=Link
-		public Assignment getOutputLinksAssignment_11_3_1() { return cOutputLinksAssignment_11_3_1; }
-
-		//Link
-		public RuleCall getOutputLinksLinkParserRuleCall_11_3_1_0() { return cOutputLinksLinkParserRuleCall_11_3_1_0; }
+		public RuleCall getOutputLinksLinkParserRuleCall_10_3_1_0() { return cOutputLinksLinkParserRuleCall_10_3_1_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_11_4() { return cRightCurlyBracketKeyword_11_4; }
+		public Keyword getRightCurlyBracketKeyword_10_4() { return cRightCurlyBracketKeyword_10_4; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_12() { return cRightCurlyBracketKeyword_12; }
+		public Keyword getRightCurlyBracketKeyword_11() { return cRightCurlyBracketKeyword_11; }
 	}
 
 	public class ForEachLoopElements extends AbstractParserRuleElementFinder {
@@ -1523,48 +1727,51 @@ public class PjlGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cCapacityAssignment_7_1 = (Assignment)cGroup_7.eContents().get(1);
 		private final RuleCall cCapacityEIntParserRuleCall_7_1_0 = (RuleCall)cCapacityAssignment_7_1.eContents().get(0);
 		private final Group cGroup_8 = (Group)cGroup.eContents().get(8);
-		private final Keyword cExecutionModeKeyword_8_0 = (Keyword)cGroup_8.eContents().get(0);
-		private final Assignment cExecutionModeAssignment_8_1 = (Assignment)cGroup_8.eContents().get(1);
-		private final RuleCall cExecutionModeExecutionModeEnumRuleCall_8_1_0 = (RuleCall)cExecutionModeAssignment_8_1.eContents().get(0);
-		private final Group cGroup_9 = (Group)cGroup.eContents().get(9);
-		private final Keyword cInputLinksKeyword_9_0 = (Keyword)cGroup_9.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_9_1 = (Keyword)cGroup_9.eContents().get(1);
-		private final Assignment cInputLinksAssignment_9_2 = (Assignment)cGroup_9.eContents().get(2);
-		private final CrossReference cInputLinksLinkCrossReference_9_2_0 = (CrossReference)cInputLinksAssignment_9_2.eContents().get(0);
-		private final RuleCall cInputLinksLinkEStringParserRuleCall_9_2_0_1 = (RuleCall)cInputLinksLinkCrossReference_9_2_0.eContents().get(1);
-		private final Group cGroup_9_3 = (Group)cGroup_9.eContents().get(3);
-		private final Keyword cCommaKeyword_9_3_0 = (Keyword)cGroup_9_3.eContents().get(0);
-		private final Assignment cInputLinksAssignment_9_3_1 = (Assignment)cGroup_9_3.eContents().get(1);
-		private final CrossReference cInputLinksLinkCrossReference_9_3_1_0 = (CrossReference)cInputLinksAssignment_9_3_1.eContents().get(0);
-		private final RuleCall cInputLinksLinkEStringParserRuleCall_9_3_1_0_1 = (RuleCall)cInputLinksLinkCrossReference_9_3_1_0.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_9_4 = (Keyword)cGroup_9.eContents().get(4);
-		private final Keyword cIterableKeyword_10 = (Keyword)cGroup.eContents().get(10);
-		private final Assignment cIterableAssignment_11 = (Assignment)cGroup.eContents().get(11);
-		private final CrossReference cIterableDataCrossReference_11_0 = (CrossReference)cIterableAssignment_11.eContents().get(0);
-		private final RuleCall cIterableDataEStringParserRuleCall_11_0_1 = (RuleCall)cIterableDataCrossReference_11_0.eContents().get(1);
-		private final Group cGroup_12 = (Group)cGroup.eContents().get(12);
-		private final Keyword cOutputLinksKeyword_12_0 = (Keyword)cGroup_12.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_12_1 = (Keyword)cGroup_12.eContents().get(1);
-		private final Assignment cOutputLinksAssignment_12_2 = (Assignment)cGroup_12.eContents().get(2);
-		private final RuleCall cOutputLinksLinkParserRuleCall_12_2_0 = (RuleCall)cOutputLinksAssignment_12_2.eContents().get(0);
-		private final Group cGroup_12_3 = (Group)cGroup_12.eContents().get(3);
-		private final Keyword cCommaKeyword_12_3_0 = (Keyword)cGroup_12_3.eContents().get(0);
-		private final Assignment cOutputLinksAssignment_12_3_1 = (Assignment)cGroup_12_3.eContents().get(1);
-		private final RuleCall cOutputLinksLinkParserRuleCall_12_3_1_0 = (RuleCall)cOutputLinksAssignment_12_3_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_12_4 = (Keyword)cGroup_12.eContents().get(4);
-		private final Keyword cRightCurlyBracketKeyword_13 = (Keyword)cGroup.eContents().get(13);
+		private final Keyword cInputLinksKeyword_8_0 = (Keyword)cGroup_8.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_8_1 = (Keyword)cGroup_8.eContents().get(1);
+		private final Assignment cInputLinksAssignment_8_2 = (Assignment)cGroup_8.eContents().get(2);
+		private final CrossReference cInputLinksLinkCrossReference_8_2_0 = (CrossReference)cInputLinksAssignment_8_2.eContents().get(0);
+		private final RuleCall cInputLinksLinkEStringParserRuleCall_8_2_0_1 = (RuleCall)cInputLinksLinkCrossReference_8_2_0.eContents().get(1);
+		private final Group cGroup_8_3 = (Group)cGroup_8.eContents().get(3);
+		private final Keyword cCommaKeyword_8_3_0 = (Keyword)cGroup_8_3.eContents().get(0);
+		private final Assignment cInputLinksAssignment_8_3_1 = (Assignment)cGroup_8_3.eContents().get(1);
+		private final CrossReference cInputLinksLinkCrossReference_8_3_1_0 = (CrossReference)cInputLinksAssignment_8_3_1.eContents().get(0);
+		private final RuleCall cInputLinksLinkEStringParserRuleCall_8_3_1_0_1 = (RuleCall)cInputLinksLinkCrossReference_8_3_1_0.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_8_4 = (Keyword)cGroup_8.eContents().get(4);
+		private final Keyword cIterableKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Assignment cIterableAssignment_10 = (Assignment)cGroup.eContents().get(10);
+		private final CrossReference cIterableDataCrossReference_10_0 = (CrossReference)cIterableAssignment_10.eContents().get(0);
+		private final RuleCall cIterableDataEStringParserRuleCall_10_0_1 = (RuleCall)cIterableDataCrossReference_10_0.eContents().get(1);
+		private final Group cGroup_11 = (Group)cGroup.eContents().get(11);
+		private final Keyword cOutputLinksKeyword_11_0 = (Keyword)cGroup_11.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_11_1 = (Keyword)cGroup_11.eContents().get(1);
+		private final Assignment cOutputLinksAssignment_11_2 = (Assignment)cGroup_11.eContents().get(2);
+		private final RuleCall cOutputLinksLinkParserRuleCall_11_2_0 = (RuleCall)cOutputLinksAssignment_11_2.eContents().get(0);
+		private final Group cGroup_11_3 = (Group)cGroup_11.eContents().get(3);
+		private final Keyword cCommaKeyword_11_3_0 = (Keyword)cGroup_11_3.eContents().get(0);
+		private final Assignment cOutputLinksAssignment_11_3_1 = (Assignment)cGroup_11_3.eContents().get(1);
+		private final RuleCall cOutputLinksLinkParserRuleCall_11_3_1_0 = (RuleCall)cOutputLinksAssignment_11_3_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_11_4 = (Keyword)cGroup_11.eContents().get(4);
+		private final Keyword cRightCurlyBracketKeyword_12 = (Keyword)cGroup.eContents().get(12);
 		
 		//ForEachLoop:
+		//
 		//	"ForEachLoop" name=EString "{" ("description" description=EString)? ("executable" executable=EString)? ("join"
-		//	join=JoinType)? ("split" split=SplitType)? ("capacity" capacity=EInt)? ("executionMode" executionMode=ExecutionMode)?
-		//	("inputLinks" "(" inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")? "iterable"
-		//	iterable=[Data|EString] ("outputLinks" "{" outputLinks+=Link ("," outputLinks+=Link)* "}")? "}";
+		//
+		//	join=JoinType)? ("split" split=SplitType)? ("capacity" capacity=EInt)? ("inputLinks" "(" inputLinks+=[Link|EString]
+		//
+		//	("," inputLinks+=[Link|EString])* ")")? "iterable" iterable=[Data|EString] ("outputLinks" "{" outputLinks+=Link (","
+		//
+		//	outputLinks+=Link)* "}")? "}";
 		public ParserRule getRule() { return rule; }
 
 		//"ForEachLoop" name=EString "{" ("description" description=EString)? ("executable" executable=EString)? ("join"
-		//join=JoinType)? ("split" split=SplitType)? ("capacity" capacity=EInt)? ("executionMode" executionMode=ExecutionMode)?
-		//("inputLinks" "(" inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")? "iterable" iterable=[Data|EString]
-		//("outputLinks" "{" outputLinks+=Link ("," outputLinks+=Link)* "}")? "}"
+		//
+		//join=JoinType)? ("split" split=SplitType)? ("capacity" capacity=EInt)? ("inputLinks" "(" inputLinks+=[Link|EString]
+		//
+		//("," inputLinks+=[Link|EString])* ")")? "iterable" iterable=[Data|EString] ("outputLinks" "{" outputLinks+=Link (","
+		//
+		//outputLinks+=Link)* "}")? "}"
 		public Group getGroup() { return cGroup; }
 
 		//"ForEachLoop"
@@ -1639,98 +1846,86 @@ public class PjlGrammarAccess extends AbstractGrammarElementFinder {
 		//EInt
 		public RuleCall getCapacityEIntParserRuleCall_7_1_0() { return cCapacityEIntParserRuleCall_7_1_0; }
 
-		//("executionMode" executionMode=ExecutionMode)?
+		//("inputLinks" "(" inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")?
 		public Group getGroup_8() { return cGroup_8; }
 
-		//"executionMode"
-		public Keyword getExecutionModeKeyword_8_0() { return cExecutionModeKeyword_8_0; }
-
-		//executionMode=ExecutionMode
-		public Assignment getExecutionModeAssignment_8_1() { return cExecutionModeAssignment_8_1; }
-
-		//ExecutionMode
-		public RuleCall getExecutionModeExecutionModeEnumRuleCall_8_1_0() { return cExecutionModeExecutionModeEnumRuleCall_8_1_0; }
-
-		//("inputLinks" "(" inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")?
-		public Group getGroup_9() { return cGroup_9; }
-
 		//"inputLinks"
-		public Keyword getInputLinksKeyword_9_0() { return cInputLinksKeyword_9_0; }
+		public Keyword getInputLinksKeyword_8_0() { return cInputLinksKeyword_8_0; }
 
 		//"("
-		public Keyword getLeftParenthesisKeyword_9_1() { return cLeftParenthesisKeyword_9_1; }
+		public Keyword getLeftParenthesisKeyword_8_1() { return cLeftParenthesisKeyword_8_1; }
 
 		//inputLinks+=[Link|EString]
-		public Assignment getInputLinksAssignment_9_2() { return cInputLinksAssignment_9_2; }
+		public Assignment getInputLinksAssignment_8_2() { return cInputLinksAssignment_8_2; }
 
 		//[Link|EString]
-		public CrossReference getInputLinksLinkCrossReference_9_2_0() { return cInputLinksLinkCrossReference_9_2_0; }
+		public CrossReference getInputLinksLinkCrossReference_8_2_0() { return cInputLinksLinkCrossReference_8_2_0; }
 
 		//EString
-		public RuleCall getInputLinksLinkEStringParserRuleCall_9_2_0_1() { return cInputLinksLinkEStringParserRuleCall_9_2_0_1; }
+		public RuleCall getInputLinksLinkEStringParserRuleCall_8_2_0_1() { return cInputLinksLinkEStringParserRuleCall_8_2_0_1; }
 
 		//("," inputLinks+=[Link|EString])*
-		public Group getGroup_9_3() { return cGroup_9_3; }
+		public Group getGroup_8_3() { return cGroup_8_3; }
 
 		//","
-		public Keyword getCommaKeyword_9_3_0() { return cCommaKeyword_9_3_0; }
+		public Keyword getCommaKeyword_8_3_0() { return cCommaKeyword_8_3_0; }
 
 		//inputLinks+=[Link|EString]
-		public Assignment getInputLinksAssignment_9_3_1() { return cInputLinksAssignment_9_3_1; }
+		public Assignment getInputLinksAssignment_8_3_1() { return cInputLinksAssignment_8_3_1; }
 
 		//[Link|EString]
-		public CrossReference getInputLinksLinkCrossReference_9_3_1_0() { return cInputLinksLinkCrossReference_9_3_1_0; }
+		public CrossReference getInputLinksLinkCrossReference_8_3_1_0() { return cInputLinksLinkCrossReference_8_3_1_0; }
 
 		//EString
-		public RuleCall getInputLinksLinkEStringParserRuleCall_9_3_1_0_1() { return cInputLinksLinkEStringParserRuleCall_9_3_1_0_1; }
+		public RuleCall getInputLinksLinkEStringParserRuleCall_8_3_1_0_1() { return cInputLinksLinkEStringParserRuleCall_8_3_1_0_1; }
 
 		//")"
-		public Keyword getRightParenthesisKeyword_9_4() { return cRightParenthesisKeyword_9_4; }
+		public Keyword getRightParenthesisKeyword_8_4() { return cRightParenthesisKeyword_8_4; }
 
 		//"iterable"
-		public Keyword getIterableKeyword_10() { return cIterableKeyword_10; }
+		public Keyword getIterableKeyword_9() { return cIterableKeyword_9; }
 
 		//iterable=[Data|EString]
-		public Assignment getIterableAssignment_11() { return cIterableAssignment_11; }
+		public Assignment getIterableAssignment_10() { return cIterableAssignment_10; }
 
 		//[Data|EString]
-		public CrossReference getIterableDataCrossReference_11_0() { return cIterableDataCrossReference_11_0; }
+		public CrossReference getIterableDataCrossReference_10_0() { return cIterableDataCrossReference_10_0; }
 
 		//EString
-		public RuleCall getIterableDataEStringParserRuleCall_11_0_1() { return cIterableDataEStringParserRuleCall_11_0_1; }
+		public RuleCall getIterableDataEStringParserRuleCall_10_0_1() { return cIterableDataEStringParserRuleCall_10_0_1; }
 
 		//("outputLinks" "{" outputLinks+=Link ("," outputLinks+=Link)* "}")?
-		public Group getGroup_12() { return cGroup_12; }
+		public Group getGroup_11() { return cGroup_11; }
 
 		//"outputLinks"
-		public Keyword getOutputLinksKeyword_12_0() { return cOutputLinksKeyword_12_0; }
+		public Keyword getOutputLinksKeyword_11_0() { return cOutputLinksKeyword_11_0; }
 
 		//"{"
-		public Keyword getLeftCurlyBracketKeyword_12_1() { return cLeftCurlyBracketKeyword_12_1; }
+		public Keyword getLeftCurlyBracketKeyword_11_1() { return cLeftCurlyBracketKeyword_11_1; }
 
 		//outputLinks+=Link
-		public Assignment getOutputLinksAssignment_12_2() { return cOutputLinksAssignment_12_2; }
+		public Assignment getOutputLinksAssignment_11_2() { return cOutputLinksAssignment_11_2; }
 
 		//Link
-		public RuleCall getOutputLinksLinkParserRuleCall_12_2_0() { return cOutputLinksLinkParserRuleCall_12_2_0; }
+		public RuleCall getOutputLinksLinkParserRuleCall_11_2_0() { return cOutputLinksLinkParserRuleCall_11_2_0; }
 
 		//("," outputLinks+=Link)*
-		public Group getGroup_12_3() { return cGroup_12_3; }
+		public Group getGroup_11_3() { return cGroup_11_3; }
 
 		//","
-		public Keyword getCommaKeyword_12_3_0() { return cCommaKeyword_12_3_0; }
+		public Keyword getCommaKeyword_11_3_0() { return cCommaKeyword_11_3_0; }
 
 		//outputLinks+=Link
-		public Assignment getOutputLinksAssignment_12_3_1() { return cOutputLinksAssignment_12_3_1; }
+		public Assignment getOutputLinksAssignment_11_3_1() { return cOutputLinksAssignment_11_3_1; }
 
 		//Link
-		public RuleCall getOutputLinksLinkParserRuleCall_12_3_1_0() { return cOutputLinksLinkParserRuleCall_12_3_1_0; }
+		public RuleCall getOutputLinksLinkParserRuleCall_11_3_1_0() { return cOutputLinksLinkParserRuleCall_11_3_1_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_12_4() { return cRightCurlyBracketKeyword_12_4; }
+		public Keyword getRightCurlyBracketKeyword_11_4() { return cRightCurlyBracketKeyword_11_4; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_13() { return cRightCurlyBracketKeyword_13; }
+		public Keyword getRightCurlyBracketKeyword_12() { return cRightCurlyBracketKeyword_12; }
 	}
 
 	public class WhileLoopElements extends AbstractParserRuleElementFinder {
@@ -1761,48 +1956,51 @@ public class PjlGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cCapacityAssignment_7_1 = (Assignment)cGroup_7.eContents().get(1);
 		private final RuleCall cCapacityEIntParserRuleCall_7_1_0 = (RuleCall)cCapacityAssignment_7_1.eContents().get(0);
 		private final Group cGroup_8 = (Group)cGroup.eContents().get(8);
-		private final Keyword cExecutionModeKeyword_8_0 = (Keyword)cGroup_8.eContents().get(0);
-		private final Assignment cExecutionModeAssignment_8_1 = (Assignment)cGroup_8.eContents().get(1);
-		private final RuleCall cExecutionModeExecutionModeEnumRuleCall_8_1_0 = (RuleCall)cExecutionModeAssignment_8_1.eContents().get(0);
-		private final Group cGroup_9 = (Group)cGroup.eContents().get(9);
-		private final Keyword cInputLinksKeyword_9_0 = (Keyword)cGroup_9.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_9_1 = (Keyword)cGroup_9.eContents().get(1);
-		private final Assignment cInputLinksAssignment_9_2 = (Assignment)cGroup_9.eContents().get(2);
-		private final CrossReference cInputLinksLinkCrossReference_9_2_0 = (CrossReference)cInputLinksAssignment_9_2.eContents().get(0);
-		private final RuleCall cInputLinksLinkEStringParserRuleCall_9_2_0_1 = (RuleCall)cInputLinksLinkCrossReference_9_2_0.eContents().get(1);
-		private final Group cGroup_9_3 = (Group)cGroup_9.eContents().get(3);
-		private final Keyword cCommaKeyword_9_3_0 = (Keyword)cGroup_9_3.eContents().get(0);
-		private final Assignment cInputLinksAssignment_9_3_1 = (Assignment)cGroup_9_3.eContents().get(1);
-		private final CrossReference cInputLinksLinkCrossReference_9_3_1_0 = (CrossReference)cInputLinksAssignment_9_3_1.eContents().get(0);
-		private final RuleCall cInputLinksLinkEStringParserRuleCall_9_3_1_0_1 = (RuleCall)cInputLinksLinkCrossReference_9_3_1_0.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_9_4 = (Keyword)cGroup_9.eContents().get(4);
-		private final Keyword cPredicateKeyword_10 = (Keyword)cGroup.eContents().get(10);
-		private final Assignment cPredicateAssignment_11 = (Assignment)cGroup.eContents().get(11);
-		private final CrossReference cPredicatePredicateCrossReference_11_0 = (CrossReference)cPredicateAssignment_11.eContents().get(0);
-		private final RuleCall cPredicatePredicateEStringParserRuleCall_11_0_1 = (RuleCall)cPredicatePredicateCrossReference_11_0.eContents().get(1);
-		private final Group cGroup_12 = (Group)cGroup.eContents().get(12);
-		private final Keyword cOutputLinksKeyword_12_0 = (Keyword)cGroup_12.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_12_1 = (Keyword)cGroup_12.eContents().get(1);
-		private final Assignment cOutputLinksAssignment_12_2 = (Assignment)cGroup_12.eContents().get(2);
-		private final RuleCall cOutputLinksLinkParserRuleCall_12_2_0 = (RuleCall)cOutputLinksAssignment_12_2.eContents().get(0);
-		private final Group cGroup_12_3 = (Group)cGroup_12.eContents().get(3);
-		private final Keyword cCommaKeyword_12_3_0 = (Keyword)cGroup_12_3.eContents().get(0);
-		private final Assignment cOutputLinksAssignment_12_3_1 = (Assignment)cGroup_12_3.eContents().get(1);
-		private final RuleCall cOutputLinksLinkParserRuleCall_12_3_1_0 = (RuleCall)cOutputLinksAssignment_12_3_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_12_4 = (Keyword)cGroup_12.eContents().get(4);
-		private final Keyword cRightCurlyBracketKeyword_13 = (Keyword)cGroup.eContents().get(13);
+		private final Keyword cInputLinksKeyword_8_0 = (Keyword)cGroup_8.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_8_1 = (Keyword)cGroup_8.eContents().get(1);
+		private final Assignment cInputLinksAssignment_8_2 = (Assignment)cGroup_8.eContents().get(2);
+		private final CrossReference cInputLinksLinkCrossReference_8_2_0 = (CrossReference)cInputLinksAssignment_8_2.eContents().get(0);
+		private final RuleCall cInputLinksLinkEStringParserRuleCall_8_2_0_1 = (RuleCall)cInputLinksLinkCrossReference_8_2_0.eContents().get(1);
+		private final Group cGroup_8_3 = (Group)cGroup_8.eContents().get(3);
+		private final Keyword cCommaKeyword_8_3_0 = (Keyword)cGroup_8_3.eContents().get(0);
+		private final Assignment cInputLinksAssignment_8_3_1 = (Assignment)cGroup_8_3.eContents().get(1);
+		private final CrossReference cInputLinksLinkCrossReference_8_3_1_0 = (CrossReference)cInputLinksAssignment_8_3_1.eContents().get(0);
+		private final RuleCall cInputLinksLinkEStringParserRuleCall_8_3_1_0_1 = (RuleCall)cInputLinksLinkCrossReference_8_3_1_0.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_8_4 = (Keyword)cGroup_8.eContents().get(4);
+		private final Keyword cPredicateKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Assignment cPredicateAssignment_10 = (Assignment)cGroup.eContents().get(10);
+		private final CrossReference cPredicatePredicateCrossReference_10_0 = (CrossReference)cPredicateAssignment_10.eContents().get(0);
+		private final RuleCall cPredicatePredicateEStringParserRuleCall_10_0_1 = (RuleCall)cPredicatePredicateCrossReference_10_0.eContents().get(1);
+		private final Group cGroup_11 = (Group)cGroup.eContents().get(11);
+		private final Keyword cOutputLinksKeyword_11_0 = (Keyword)cGroup_11.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_11_1 = (Keyword)cGroup_11.eContents().get(1);
+		private final Assignment cOutputLinksAssignment_11_2 = (Assignment)cGroup_11.eContents().get(2);
+		private final RuleCall cOutputLinksLinkParserRuleCall_11_2_0 = (RuleCall)cOutputLinksAssignment_11_2.eContents().get(0);
+		private final Group cGroup_11_3 = (Group)cGroup_11.eContents().get(3);
+		private final Keyword cCommaKeyword_11_3_0 = (Keyword)cGroup_11_3.eContents().get(0);
+		private final Assignment cOutputLinksAssignment_11_3_1 = (Assignment)cGroup_11_3.eContents().get(1);
+		private final RuleCall cOutputLinksLinkParserRuleCall_11_3_1_0 = (RuleCall)cOutputLinksAssignment_11_3_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_11_4 = (Keyword)cGroup_11.eContents().get(4);
+		private final Keyword cRightCurlyBracketKeyword_12 = (Keyword)cGroup.eContents().get(12);
 		
 		//WhileLoop:
+		//
 		//	"WhileLoop" name=EString "{" ("description" description=EString)? ("executable" executable=EString)? ("join"
-		//	join=JoinType)? ("split" split=SplitType)? ("capacity" capacity=EInt)? ("executionMode" executionMode=ExecutionMode)?
-		//	("inputLinks" "(" inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")? "predicate"
-		//	predicate=[Predicate|EString] ("outputLinks" "{" outputLinks+=Link ("," outputLinks+=Link)* "}")? "}";
+		//
+		//	join=JoinType)? ("split" split=SplitType)? ("capacity" capacity=EInt)? ("inputLinks" "(" inputLinks+=[Link|EString]
+		//
+		//	("," inputLinks+=[Link|EString])* ")")? "predicate" predicate=[Predicate|EString] ("outputLinks" "{"
+		//
+		//	outputLinks+=Link ("," outputLinks+=Link)* "}")? "}";
 		public ParserRule getRule() { return rule; }
 
 		//"WhileLoop" name=EString "{" ("description" description=EString)? ("executable" executable=EString)? ("join"
-		//join=JoinType)? ("split" split=SplitType)? ("capacity" capacity=EInt)? ("executionMode" executionMode=ExecutionMode)?
-		//("inputLinks" "(" inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")? "predicate"
-		//predicate=[Predicate|EString] ("outputLinks" "{" outputLinks+=Link ("," outputLinks+=Link)* "}")? "}"
+		//
+		//join=JoinType)? ("split" split=SplitType)? ("capacity" capacity=EInt)? ("inputLinks" "(" inputLinks+=[Link|EString]
+		//
+		//("," inputLinks+=[Link|EString])* ")")? "predicate" predicate=[Predicate|EString] ("outputLinks" "{" outputLinks+=Link
+		//
+		//("," outputLinks+=Link)* "}")? "}"
 		public Group getGroup() { return cGroup; }
 
 		//"WhileLoop"
@@ -1877,98 +2075,86 @@ public class PjlGrammarAccess extends AbstractGrammarElementFinder {
 		//EInt
 		public RuleCall getCapacityEIntParserRuleCall_7_1_0() { return cCapacityEIntParserRuleCall_7_1_0; }
 
-		//("executionMode" executionMode=ExecutionMode)?
+		//("inputLinks" "(" inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")?
 		public Group getGroup_8() { return cGroup_8; }
 
-		//"executionMode"
-		public Keyword getExecutionModeKeyword_8_0() { return cExecutionModeKeyword_8_0; }
-
-		//executionMode=ExecutionMode
-		public Assignment getExecutionModeAssignment_8_1() { return cExecutionModeAssignment_8_1; }
-
-		//ExecutionMode
-		public RuleCall getExecutionModeExecutionModeEnumRuleCall_8_1_0() { return cExecutionModeExecutionModeEnumRuleCall_8_1_0; }
-
-		//("inputLinks" "(" inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")?
-		public Group getGroup_9() { return cGroup_9; }
-
 		//"inputLinks"
-		public Keyword getInputLinksKeyword_9_0() { return cInputLinksKeyword_9_0; }
+		public Keyword getInputLinksKeyword_8_0() { return cInputLinksKeyword_8_0; }
 
 		//"("
-		public Keyword getLeftParenthesisKeyword_9_1() { return cLeftParenthesisKeyword_9_1; }
+		public Keyword getLeftParenthesisKeyword_8_1() { return cLeftParenthesisKeyword_8_1; }
 
 		//inputLinks+=[Link|EString]
-		public Assignment getInputLinksAssignment_9_2() { return cInputLinksAssignment_9_2; }
+		public Assignment getInputLinksAssignment_8_2() { return cInputLinksAssignment_8_2; }
 
 		//[Link|EString]
-		public CrossReference getInputLinksLinkCrossReference_9_2_0() { return cInputLinksLinkCrossReference_9_2_0; }
+		public CrossReference getInputLinksLinkCrossReference_8_2_0() { return cInputLinksLinkCrossReference_8_2_0; }
 
 		//EString
-		public RuleCall getInputLinksLinkEStringParserRuleCall_9_2_0_1() { return cInputLinksLinkEStringParserRuleCall_9_2_0_1; }
+		public RuleCall getInputLinksLinkEStringParserRuleCall_8_2_0_1() { return cInputLinksLinkEStringParserRuleCall_8_2_0_1; }
 
 		//("," inputLinks+=[Link|EString])*
-		public Group getGroup_9_3() { return cGroup_9_3; }
+		public Group getGroup_8_3() { return cGroup_8_3; }
 
 		//","
-		public Keyword getCommaKeyword_9_3_0() { return cCommaKeyword_9_3_0; }
+		public Keyword getCommaKeyword_8_3_0() { return cCommaKeyword_8_3_0; }
 
 		//inputLinks+=[Link|EString]
-		public Assignment getInputLinksAssignment_9_3_1() { return cInputLinksAssignment_9_3_1; }
+		public Assignment getInputLinksAssignment_8_3_1() { return cInputLinksAssignment_8_3_1; }
 
 		//[Link|EString]
-		public CrossReference getInputLinksLinkCrossReference_9_3_1_0() { return cInputLinksLinkCrossReference_9_3_1_0; }
+		public CrossReference getInputLinksLinkCrossReference_8_3_1_0() { return cInputLinksLinkCrossReference_8_3_1_0; }
 
 		//EString
-		public RuleCall getInputLinksLinkEStringParserRuleCall_9_3_1_0_1() { return cInputLinksLinkEStringParserRuleCall_9_3_1_0_1; }
+		public RuleCall getInputLinksLinkEStringParserRuleCall_8_3_1_0_1() { return cInputLinksLinkEStringParserRuleCall_8_3_1_0_1; }
 
 		//")"
-		public Keyword getRightParenthesisKeyword_9_4() { return cRightParenthesisKeyword_9_4; }
+		public Keyword getRightParenthesisKeyword_8_4() { return cRightParenthesisKeyword_8_4; }
 
 		//"predicate"
-		public Keyword getPredicateKeyword_10() { return cPredicateKeyword_10; }
+		public Keyword getPredicateKeyword_9() { return cPredicateKeyword_9; }
 
 		//predicate=[Predicate|EString]
-		public Assignment getPredicateAssignment_11() { return cPredicateAssignment_11; }
+		public Assignment getPredicateAssignment_10() { return cPredicateAssignment_10; }
 
 		//[Predicate|EString]
-		public CrossReference getPredicatePredicateCrossReference_11_0() { return cPredicatePredicateCrossReference_11_0; }
+		public CrossReference getPredicatePredicateCrossReference_10_0() { return cPredicatePredicateCrossReference_10_0; }
 
 		//EString
-		public RuleCall getPredicatePredicateEStringParserRuleCall_11_0_1() { return cPredicatePredicateEStringParserRuleCall_11_0_1; }
+		public RuleCall getPredicatePredicateEStringParserRuleCall_10_0_1() { return cPredicatePredicateEStringParserRuleCall_10_0_1; }
 
 		//("outputLinks" "{" outputLinks+=Link ("," outputLinks+=Link)* "}")?
-		public Group getGroup_12() { return cGroup_12; }
+		public Group getGroup_11() { return cGroup_11; }
 
 		//"outputLinks"
-		public Keyword getOutputLinksKeyword_12_0() { return cOutputLinksKeyword_12_0; }
+		public Keyword getOutputLinksKeyword_11_0() { return cOutputLinksKeyword_11_0; }
 
 		//"{"
-		public Keyword getLeftCurlyBracketKeyword_12_1() { return cLeftCurlyBracketKeyword_12_1; }
+		public Keyword getLeftCurlyBracketKeyword_11_1() { return cLeftCurlyBracketKeyword_11_1; }
 
 		//outputLinks+=Link
-		public Assignment getOutputLinksAssignment_12_2() { return cOutputLinksAssignment_12_2; }
+		public Assignment getOutputLinksAssignment_11_2() { return cOutputLinksAssignment_11_2; }
 
 		//Link
-		public RuleCall getOutputLinksLinkParserRuleCall_12_2_0() { return cOutputLinksLinkParserRuleCall_12_2_0; }
+		public RuleCall getOutputLinksLinkParserRuleCall_11_2_0() { return cOutputLinksLinkParserRuleCall_11_2_0; }
 
 		//("," outputLinks+=Link)*
-		public Group getGroup_12_3() { return cGroup_12_3; }
+		public Group getGroup_11_3() { return cGroup_11_3; }
 
 		//","
-		public Keyword getCommaKeyword_12_3_0() { return cCommaKeyword_12_3_0; }
+		public Keyword getCommaKeyword_11_3_0() { return cCommaKeyword_11_3_0; }
 
 		//outputLinks+=Link
-		public Assignment getOutputLinksAssignment_12_3_1() { return cOutputLinksAssignment_12_3_1; }
+		public Assignment getOutputLinksAssignment_11_3_1() { return cOutputLinksAssignment_11_3_1; }
 
 		//Link
-		public RuleCall getOutputLinksLinkParserRuleCall_12_3_1_0() { return cOutputLinksLinkParserRuleCall_12_3_1_0; }
+		public RuleCall getOutputLinksLinkParserRuleCall_11_3_1_0() { return cOutputLinksLinkParserRuleCall_11_3_1_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_12_4() { return cRightCurlyBracketKeyword_12_4; }
+		public Keyword getRightCurlyBracketKeyword_11_4() { return cRightCurlyBracketKeyword_11_4; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_13() { return cRightCurlyBracketKeyword_13; }
+		public Keyword getRightCurlyBracketKeyword_12() { return cRightCurlyBracketKeyword_12; }
 	}
 
 	public class HandlerElements extends AbstractParserRuleElementFinder {
@@ -2000,58 +2186,59 @@ public class PjlGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cCapacityAssignment_8_1 = (Assignment)cGroup_8.eContents().get(1);
 		private final RuleCall cCapacityEIntParserRuleCall_8_1_0 = (RuleCall)cCapacityAssignment_8_1.eContents().get(0);
 		private final Group cGroup_9 = (Group)cGroup.eContents().get(9);
-		private final Keyword cExecutionModeKeyword_9_0 = (Keyword)cGroup_9.eContents().get(0);
-		private final Assignment cExecutionModeAssignment_9_1 = (Assignment)cGroup_9.eContents().get(1);
-		private final RuleCall cExecutionModeExecutionModeEnumRuleCall_9_1_0 = (RuleCall)cExecutionModeAssignment_9_1.eContents().get(0);
+		private final Keyword cInputLinksKeyword_9_0 = (Keyword)cGroup_9.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_9_1 = (Keyword)cGroup_9.eContents().get(1);
+		private final Assignment cInputLinksAssignment_9_2 = (Assignment)cGroup_9.eContents().get(2);
+		private final CrossReference cInputLinksLinkCrossReference_9_2_0 = (CrossReference)cInputLinksAssignment_9_2.eContents().get(0);
+		private final RuleCall cInputLinksLinkEStringParserRuleCall_9_2_0_1 = (RuleCall)cInputLinksLinkCrossReference_9_2_0.eContents().get(1);
+		private final Group cGroup_9_3 = (Group)cGroup_9.eContents().get(3);
+		private final Keyword cCommaKeyword_9_3_0 = (Keyword)cGroup_9_3.eContents().get(0);
+		private final Assignment cInputLinksAssignment_9_3_1 = (Assignment)cGroup_9_3.eContents().get(1);
+		private final CrossReference cInputLinksLinkCrossReference_9_3_1_0 = (CrossReference)cInputLinksAssignment_9_3_1.eContents().get(0);
+		private final RuleCall cInputLinksLinkEStringParserRuleCall_9_3_1_0_1 = (RuleCall)cInputLinksLinkCrossReference_9_3_1_0.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_9_4 = (Keyword)cGroup_9.eContents().get(4);
 		private final Group cGroup_10 = (Group)cGroup.eContents().get(10);
-		private final Keyword cInputLinksKeyword_10_0 = (Keyword)cGroup_10.eContents().get(0);
+		private final Keyword cProceduresKeyword_10_0 = (Keyword)cGroup_10.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_10_1 = (Keyword)cGroup_10.eContents().get(1);
-		private final Assignment cInputLinksAssignment_10_2 = (Assignment)cGroup_10.eContents().get(2);
-		private final CrossReference cInputLinksLinkCrossReference_10_2_0 = (CrossReference)cInputLinksAssignment_10_2.eContents().get(0);
-		private final RuleCall cInputLinksLinkEStringParserRuleCall_10_2_0_1 = (RuleCall)cInputLinksLinkCrossReference_10_2_0.eContents().get(1);
+		private final Assignment cProceduresAssignment_10_2 = (Assignment)cGroup_10.eContents().get(2);
+		private final CrossReference cProceduresProcedureCrossReference_10_2_0 = (CrossReference)cProceduresAssignment_10_2.eContents().get(0);
+		private final RuleCall cProceduresProcedureEStringParserRuleCall_10_2_0_1 = (RuleCall)cProceduresProcedureCrossReference_10_2_0.eContents().get(1);
 		private final Group cGroup_10_3 = (Group)cGroup_10.eContents().get(3);
 		private final Keyword cCommaKeyword_10_3_0 = (Keyword)cGroup_10_3.eContents().get(0);
-		private final Assignment cInputLinksAssignment_10_3_1 = (Assignment)cGroup_10_3.eContents().get(1);
-		private final CrossReference cInputLinksLinkCrossReference_10_3_1_0 = (CrossReference)cInputLinksAssignment_10_3_1.eContents().get(0);
-		private final RuleCall cInputLinksLinkEStringParserRuleCall_10_3_1_0_1 = (RuleCall)cInputLinksLinkCrossReference_10_3_1_0.eContents().get(1);
+		private final Assignment cProceduresAssignment_10_3_1 = (Assignment)cGroup_10_3.eContents().get(1);
+		private final CrossReference cProceduresProcedureCrossReference_10_3_1_0 = (CrossReference)cProceduresAssignment_10_3_1.eContents().get(0);
+		private final RuleCall cProceduresProcedureEStringParserRuleCall_10_3_1_0_1 = (RuleCall)cProceduresProcedureCrossReference_10_3_1_0.eContents().get(1);
 		private final Keyword cRightParenthesisKeyword_10_4 = (Keyword)cGroup_10.eContents().get(4);
 		private final Group cGroup_11 = (Group)cGroup.eContents().get(11);
-		private final Keyword cProceduresKeyword_11_0 = (Keyword)cGroup_11.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_11_1 = (Keyword)cGroup_11.eContents().get(1);
-		private final Assignment cProceduresAssignment_11_2 = (Assignment)cGroup_11.eContents().get(2);
-		private final CrossReference cProceduresProcedureCrossReference_11_2_0 = (CrossReference)cProceduresAssignment_11_2.eContents().get(0);
-		private final RuleCall cProceduresProcedureEStringParserRuleCall_11_2_0_1 = (RuleCall)cProceduresProcedureCrossReference_11_2_0.eContents().get(1);
+		private final Keyword cOutputLinksKeyword_11_0 = (Keyword)cGroup_11.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_11_1 = (Keyword)cGroup_11.eContents().get(1);
+		private final Assignment cOutputLinksAssignment_11_2 = (Assignment)cGroup_11.eContents().get(2);
+		private final RuleCall cOutputLinksLinkParserRuleCall_11_2_0 = (RuleCall)cOutputLinksAssignment_11_2.eContents().get(0);
 		private final Group cGroup_11_3 = (Group)cGroup_11.eContents().get(3);
 		private final Keyword cCommaKeyword_11_3_0 = (Keyword)cGroup_11_3.eContents().get(0);
-		private final Assignment cProceduresAssignment_11_3_1 = (Assignment)cGroup_11_3.eContents().get(1);
-		private final CrossReference cProceduresProcedureCrossReference_11_3_1_0 = (CrossReference)cProceduresAssignment_11_3_1.eContents().get(0);
-		private final RuleCall cProceduresProcedureEStringParserRuleCall_11_3_1_0_1 = (RuleCall)cProceduresProcedureCrossReference_11_3_1_0.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_11_4 = (Keyword)cGroup_11.eContents().get(4);
-		private final Group cGroup_12 = (Group)cGroup.eContents().get(12);
-		private final Keyword cOutputLinksKeyword_12_0 = (Keyword)cGroup_12.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_12_1 = (Keyword)cGroup_12.eContents().get(1);
-		private final Assignment cOutputLinksAssignment_12_2 = (Assignment)cGroup_12.eContents().get(2);
-		private final RuleCall cOutputLinksLinkParserRuleCall_12_2_0 = (RuleCall)cOutputLinksAssignment_12_2.eContents().get(0);
-		private final Group cGroup_12_3 = (Group)cGroup_12.eContents().get(3);
-		private final Keyword cCommaKeyword_12_3_0 = (Keyword)cGroup_12_3.eContents().get(0);
-		private final Assignment cOutputLinksAssignment_12_3_1 = (Assignment)cGroup_12_3.eContents().get(1);
-		private final RuleCall cOutputLinksLinkParserRuleCall_12_3_1_0 = (RuleCall)cOutputLinksAssignment_12_3_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_12_4 = (Keyword)cGroup_12.eContents().get(4);
-		private final Keyword cRightCurlyBracketKeyword_13 = (Keyword)cGroup.eContents().get(13);
+		private final Assignment cOutputLinksAssignment_11_3_1 = (Assignment)cGroup_11_3.eContents().get(1);
+		private final RuleCall cOutputLinksLinkParserRuleCall_11_3_1_0 = (RuleCall)cOutputLinksAssignment_11_3_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_11_4 = (Keyword)cGroup_11.eContents().get(4);
+		private final Keyword cRightCurlyBracketKeyword_12 = (Keyword)cGroup.eContents().get(12);
 		
 		//Handler:
+		//
 		//	{Handler} "Handler" name=EString "{" ("description" description=EString)? ("executable" executable=EString)? ("join"
-		//	join=JoinType)? ("split" split=SplitType)? ("capacity" capacity=EInt)? ("executionMode" executionMode=ExecutionMode)?
-		//	("inputLinks" "(" inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")? ("procedures" "("
-		//	procedures+=[Procedure|EString] ("," procedures+=[Procedure|EString])* ")")? ("outputLinks" "{" outputLinks+=Link (","
-		//	outputLinks+=Link)* "}")? "}";
+		//
+		//	join=JoinType)? ("split" split=SplitType)? ("capacity" capacity=EInt)? ("inputLinks" "(" inputLinks+=[Link|EString]
+		//
+		//	("," inputLinks+=[Link|EString])* ")")? ("procedures" "(" procedures+=[Procedure|EString] (","
+		//
+		//	procedures+=[Procedure|EString])* ")")? ("outputLinks" "{" outputLinks+=Link ("," outputLinks+=Link)* "}")? "}";
 		public ParserRule getRule() { return rule; }
 
 		//{Handler} "Handler" name=EString "{" ("description" description=EString)? ("executable" executable=EString)? ("join"
-		//join=JoinType)? ("split" split=SplitType)? ("capacity" capacity=EInt)? ("executionMode" executionMode=ExecutionMode)?
-		//("inputLinks" "(" inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")? ("procedures" "("
-		//procedures+=[Procedure|EString] ("," procedures+=[Procedure|EString])* ")")? ("outputLinks" "{" outputLinks+=Link (","
-		//outputLinks+=Link)* "}")? "}"
+		//
+		//join=JoinType)? ("split" split=SplitType)? ("capacity" capacity=EInt)? ("inputLinks" "(" inputLinks+=[Link|EString]
+		//
+		//("," inputLinks+=[Link|EString])* ")")? ("procedures" "(" procedures+=[Procedure|EString] (","
+		//
+		//procedures+=[Procedure|EString])* ")")? ("outputLinks" "{" outputLinks+=Link ("," outputLinks+=Link)* "}")? "}"
 		public Group getGroup() { return cGroup; }
 
 		//{Handler}
@@ -2129,168 +2316,155 @@ public class PjlGrammarAccess extends AbstractGrammarElementFinder {
 		//EInt
 		public RuleCall getCapacityEIntParserRuleCall_8_1_0() { return cCapacityEIntParserRuleCall_8_1_0; }
 
-		//("executionMode" executionMode=ExecutionMode)?
+		//("inputLinks" "(" inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")?
 		public Group getGroup_9() { return cGroup_9; }
 
-		//"executionMode"
-		public Keyword getExecutionModeKeyword_9_0() { return cExecutionModeKeyword_9_0; }
+		//"inputLinks"
+		public Keyword getInputLinksKeyword_9_0() { return cInputLinksKeyword_9_0; }
 
-		//executionMode=ExecutionMode
-		public Assignment getExecutionModeAssignment_9_1() { return cExecutionModeAssignment_9_1; }
+		//"("
+		public Keyword getLeftParenthesisKeyword_9_1() { return cLeftParenthesisKeyword_9_1; }
 
-		//ExecutionMode
-		public RuleCall getExecutionModeExecutionModeEnumRuleCall_9_1_0() { return cExecutionModeExecutionModeEnumRuleCall_9_1_0; }
+		//inputLinks+=[Link|EString]
+		public Assignment getInputLinksAssignment_9_2() { return cInputLinksAssignment_9_2; }
 
-		//("inputLinks" "(" inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")?
+		//[Link|EString]
+		public CrossReference getInputLinksLinkCrossReference_9_2_0() { return cInputLinksLinkCrossReference_9_2_0; }
+
+		//EString
+		public RuleCall getInputLinksLinkEStringParserRuleCall_9_2_0_1() { return cInputLinksLinkEStringParserRuleCall_9_2_0_1; }
+
+		//("," inputLinks+=[Link|EString])*
+		public Group getGroup_9_3() { return cGroup_9_3; }
+
+		//","
+		public Keyword getCommaKeyword_9_3_0() { return cCommaKeyword_9_3_0; }
+
+		//inputLinks+=[Link|EString]
+		public Assignment getInputLinksAssignment_9_3_1() { return cInputLinksAssignment_9_3_1; }
+
+		//[Link|EString]
+		public CrossReference getInputLinksLinkCrossReference_9_3_1_0() { return cInputLinksLinkCrossReference_9_3_1_0; }
+
+		//EString
+		public RuleCall getInputLinksLinkEStringParserRuleCall_9_3_1_0_1() { return cInputLinksLinkEStringParserRuleCall_9_3_1_0_1; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_9_4() { return cRightParenthesisKeyword_9_4; }
+
+		//("procedures" "(" procedures+=[Procedure|EString] ("," procedures+=[Procedure|EString])* ")")?
 		public Group getGroup_10() { return cGroup_10; }
 
-		//"inputLinks"
-		public Keyword getInputLinksKeyword_10_0() { return cInputLinksKeyword_10_0; }
+		//"procedures"
+		public Keyword getProceduresKeyword_10_0() { return cProceduresKeyword_10_0; }
 
 		//"("
 		public Keyword getLeftParenthesisKeyword_10_1() { return cLeftParenthesisKeyword_10_1; }
 
-		//inputLinks+=[Link|EString]
-		public Assignment getInputLinksAssignment_10_2() { return cInputLinksAssignment_10_2; }
+		//procedures+=[Procedure|EString]
+		public Assignment getProceduresAssignment_10_2() { return cProceduresAssignment_10_2; }
 
-		//[Link|EString]
-		public CrossReference getInputLinksLinkCrossReference_10_2_0() { return cInputLinksLinkCrossReference_10_2_0; }
+		//[Procedure|EString]
+		public CrossReference getProceduresProcedureCrossReference_10_2_0() { return cProceduresProcedureCrossReference_10_2_0; }
 
 		//EString
-		public RuleCall getInputLinksLinkEStringParserRuleCall_10_2_0_1() { return cInputLinksLinkEStringParserRuleCall_10_2_0_1; }
+		public RuleCall getProceduresProcedureEStringParserRuleCall_10_2_0_1() { return cProceduresProcedureEStringParserRuleCall_10_2_0_1; }
 
-		//("," inputLinks+=[Link|EString])*
+		//("," procedures+=[Procedure|EString])*
 		public Group getGroup_10_3() { return cGroup_10_3; }
 
 		//","
 		public Keyword getCommaKeyword_10_3_0() { return cCommaKeyword_10_3_0; }
 
-		//inputLinks+=[Link|EString]
-		public Assignment getInputLinksAssignment_10_3_1() { return cInputLinksAssignment_10_3_1; }
+		//procedures+=[Procedure|EString]
+		public Assignment getProceduresAssignment_10_3_1() { return cProceduresAssignment_10_3_1; }
 
-		//[Link|EString]
-		public CrossReference getInputLinksLinkCrossReference_10_3_1_0() { return cInputLinksLinkCrossReference_10_3_1_0; }
+		//[Procedure|EString]
+		public CrossReference getProceduresProcedureCrossReference_10_3_1_0() { return cProceduresProcedureCrossReference_10_3_1_0; }
 
 		//EString
-		public RuleCall getInputLinksLinkEStringParserRuleCall_10_3_1_0_1() { return cInputLinksLinkEStringParserRuleCall_10_3_1_0_1; }
+		public RuleCall getProceduresProcedureEStringParserRuleCall_10_3_1_0_1() { return cProceduresProcedureEStringParserRuleCall_10_3_1_0_1; }
 
 		//")"
 		public Keyword getRightParenthesisKeyword_10_4() { return cRightParenthesisKeyword_10_4; }
 
-		//("procedures" "(" procedures+=[Procedure|EString] ("," procedures+=[Procedure|EString])* ")")?
+		//("outputLinks" "{" outputLinks+=Link ("," outputLinks+=Link)* "}")?
 		public Group getGroup_11() { return cGroup_11; }
 
-		//"procedures"
-		public Keyword getProceduresKeyword_11_0() { return cProceduresKeyword_11_0; }
+		//"outputLinks"
+		public Keyword getOutputLinksKeyword_11_0() { return cOutputLinksKeyword_11_0; }
 
-		//"("
-		public Keyword getLeftParenthesisKeyword_11_1() { return cLeftParenthesisKeyword_11_1; }
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_11_1() { return cLeftCurlyBracketKeyword_11_1; }
 
-		//procedures+=[Procedure|EString]
-		public Assignment getProceduresAssignment_11_2() { return cProceduresAssignment_11_2; }
+		//outputLinks+=Link
+		public Assignment getOutputLinksAssignment_11_2() { return cOutputLinksAssignment_11_2; }
 
-		//[Procedure|EString]
-		public CrossReference getProceduresProcedureCrossReference_11_2_0() { return cProceduresProcedureCrossReference_11_2_0; }
+		//Link
+		public RuleCall getOutputLinksLinkParserRuleCall_11_2_0() { return cOutputLinksLinkParserRuleCall_11_2_0; }
 
-		//EString
-		public RuleCall getProceduresProcedureEStringParserRuleCall_11_2_0_1() { return cProceduresProcedureEStringParserRuleCall_11_2_0_1; }
-
-		//("," procedures+=[Procedure|EString])*
+		//("," outputLinks+=Link)*
 		public Group getGroup_11_3() { return cGroup_11_3; }
 
 		//","
 		public Keyword getCommaKeyword_11_3_0() { return cCommaKeyword_11_3_0; }
 
-		//procedures+=[Procedure|EString]
-		public Assignment getProceduresAssignment_11_3_1() { return cProceduresAssignment_11_3_1; }
-
-		//[Procedure|EString]
-		public CrossReference getProceduresProcedureCrossReference_11_3_1_0() { return cProceduresProcedureCrossReference_11_3_1_0; }
-
-		//EString
-		public RuleCall getProceduresProcedureEStringParserRuleCall_11_3_1_0_1() { return cProceduresProcedureEStringParserRuleCall_11_3_1_0_1; }
-
-		//")"
-		public Keyword getRightParenthesisKeyword_11_4() { return cRightParenthesisKeyword_11_4; }
-
-		//("outputLinks" "{" outputLinks+=Link ("," outputLinks+=Link)* "}")?
-		public Group getGroup_12() { return cGroup_12; }
-
-		//"outputLinks"
-		public Keyword getOutputLinksKeyword_12_0() { return cOutputLinksKeyword_12_0; }
-
-		//"{"
-		public Keyword getLeftCurlyBracketKeyword_12_1() { return cLeftCurlyBracketKeyword_12_1; }
-
 		//outputLinks+=Link
-		public Assignment getOutputLinksAssignment_12_2() { return cOutputLinksAssignment_12_2; }
+		public Assignment getOutputLinksAssignment_11_3_1() { return cOutputLinksAssignment_11_3_1; }
 
 		//Link
-		public RuleCall getOutputLinksLinkParserRuleCall_12_2_0() { return cOutputLinksLinkParserRuleCall_12_2_0; }
-
-		//("," outputLinks+=Link)*
-		public Group getGroup_12_3() { return cGroup_12_3; }
-
-		//","
-		public Keyword getCommaKeyword_12_3_0() { return cCommaKeyword_12_3_0; }
-
-		//outputLinks+=Link
-		public Assignment getOutputLinksAssignment_12_3_1() { return cOutputLinksAssignment_12_3_1; }
-
-		//Link
-		public RuleCall getOutputLinksLinkParserRuleCall_12_3_1_0() { return cOutputLinksLinkParserRuleCall_12_3_1_0; }
+		public RuleCall getOutputLinksLinkParserRuleCall_11_3_1_0() { return cOutputLinksLinkParserRuleCall_11_3_1_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_12_4() { return cRightCurlyBracketKeyword_12_4; }
+		public Keyword getRightCurlyBracketKeyword_11_4() { return cRightCurlyBracketKeyword_11_4; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_13() { return cRightCurlyBracketKeyword_13; }
+		public Keyword getRightCurlyBracketKeyword_12() { return cRightCurlyBracketKeyword_12; }
 	}
 
-	public class BlockElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Block");
+	public class PipelineElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Pipeline");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cBlockAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cBlockKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNameEStringParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Keyword cPipelineKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameEStringParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cDescriptionKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Assignment cDescriptionAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final RuleCall cDescriptionEStringParserRuleCall_3_1_0 = (RuleCall)cDescriptionAssignment_3_1.eContents().get(0);
 		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cDescriptionKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Assignment cDescriptionAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
-		private final RuleCall cDescriptionEStringParserRuleCall_4_1_0 = (RuleCall)cDescriptionAssignment_4_1.eContents().get(0);
+		private final Keyword cExecutableKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Assignment cExecutableAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final RuleCall cExecutableEStringParserRuleCall_4_1_0 = (RuleCall)cExecutableAssignment_4_1.eContents().get(0);
 		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
-		private final Keyword cExecutableKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
-		private final Assignment cExecutableAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
-		private final RuleCall cExecutableEStringParserRuleCall_5_1_0 = (RuleCall)cExecutableAssignment_5_1.eContents().get(0);
+		private final Keyword cJoinKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
+		private final Assignment cJoinAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
+		private final RuleCall cJoinJoinTypeEnumRuleCall_5_1_0 = (RuleCall)cJoinAssignment_5_1.eContents().get(0);
 		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
-		private final Keyword cJoinKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
-		private final Assignment cJoinAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
-		private final RuleCall cJoinJoinTypeEnumRuleCall_6_1_0 = (RuleCall)cJoinAssignment_6_1.eContents().get(0);
+		private final Keyword cSplitKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
+		private final Assignment cSplitAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
+		private final RuleCall cSplitSplitTypeEnumRuleCall_6_1_0 = (RuleCall)cSplitAssignment_6_1.eContents().get(0);
 		private final Group cGroup_7 = (Group)cGroup.eContents().get(7);
-		private final Keyword cSplitKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
-		private final Assignment cSplitAssignment_7_1 = (Assignment)cGroup_7.eContents().get(1);
-		private final RuleCall cSplitSplitTypeEnumRuleCall_7_1_0 = (RuleCall)cSplitAssignment_7_1.eContents().get(0);
+		private final Keyword cCapacityKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
+		private final Assignment cCapacityAssignment_7_1 = (Assignment)cGroup_7.eContents().get(1);
+		private final RuleCall cCapacityEIntParserRuleCall_7_1_0 = (RuleCall)cCapacityAssignment_7_1.eContents().get(0);
 		private final Group cGroup_8 = (Group)cGroup.eContents().get(8);
-		private final Keyword cCapacityKeyword_8_0 = (Keyword)cGroup_8.eContents().get(0);
-		private final Assignment cCapacityAssignment_8_1 = (Assignment)cGroup_8.eContents().get(1);
-		private final RuleCall cCapacityEIntParserRuleCall_8_1_0 = (RuleCall)cCapacityAssignment_8_1.eContents().get(0);
-		private final Group cGroup_9 = (Group)cGroup.eContents().get(9);
-		private final Keyword cExecutionModeKeyword_9_0 = (Keyword)cGroup_9.eContents().get(0);
-		private final Assignment cExecutionModeAssignment_9_1 = (Assignment)cGroup_9.eContents().get(1);
-		private final RuleCall cExecutionModeExecutionModeEnumRuleCall_9_1_0 = (RuleCall)cExecutionModeAssignment_9_1.eContents().get(0);
-		private final Group cGroup_10 = (Group)cGroup.eContents().get(10);
-		private final Keyword cInputLinksKeyword_10_0 = (Keyword)cGroup_10.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_10_1 = (Keyword)cGroup_10.eContents().get(1);
-		private final Assignment cInputLinksAssignment_10_2 = (Assignment)cGroup_10.eContents().get(2);
-		private final CrossReference cInputLinksLinkCrossReference_10_2_0 = (CrossReference)cInputLinksAssignment_10_2.eContents().get(0);
-		private final RuleCall cInputLinksLinkEStringParserRuleCall_10_2_0_1 = (RuleCall)cInputLinksLinkCrossReference_10_2_0.eContents().get(1);
-		private final Group cGroup_10_3 = (Group)cGroup_10.eContents().get(3);
-		private final Keyword cCommaKeyword_10_3_0 = (Keyword)cGroup_10_3.eContents().get(0);
-		private final Assignment cInputLinksAssignment_10_3_1 = (Assignment)cGroup_10_3.eContents().get(1);
-		private final CrossReference cInputLinksLinkCrossReference_10_3_1_0 = (CrossReference)cInputLinksAssignment_10_3_1.eContents().get(0);
-		private final RuleCall cInputLinksLinkEStringParserRuleCall_10_3_1_0_1 = (RuleCall)cInputLinksLinkCrossReference_10_3_1_0.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_10_4 = (Keyword)cGroup_10.eContents().get(4);
+		private final Keyword cInputLinksKeyword_8_0 = (Keyword)cGroup_8.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_8_1 = (Keyword)cGroup_8.eContents().get(1);
+		private final Assignment cInputLinksAssignment_8_2 = (Assignment)cGroup_8.eContents().get(2);
+		private final CrossReference cInputLinksLinkCrossReference_8_2_0 = (CrossReference)cInputLinksAssignment_8_2.eContents().get(0);
+		private final RuleCall cInputLinksLinkEStringParserRuleCall_8_2_0_1 = (RuleCall)cInputLinksLinkCrossReference_8_2_0.eContents().get(1);
+		private final Group cGroup_8_3 = (Group)cGroup_8.eContents().get(3);
+		private final Keyword cCommaKeyword_8_3_0 = (Keyword)cGroup_8_3.eContents().get(0);
+		private final Assignment cInputLinksAssignment_8_3_1 = (Assignment)cGroup_8_3.eContents().get(1);
+		private final CrossReference cInputLinksLinkCrossReference_8_3_1_0 = (CrossReference)cInputLinksAssignment_8_3_1.eContents().get(0);
+		private final RuleCall cInputLinksLinkEStringParserRuleCall_8_3_1_0_1 = (RuleCall)cInputLinksLinkCrossReference_8_3_1_0.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_8_4 = (Keyword)cGroup_8.eContents().get(4);
+		private final Keyword cIterableKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Assignment cIterableAssignment_10 = (Assignment)cGroup.eContents().get(10);
+		private final CrossReference cIterableDataCrossReference_10_0 = (CrossReference)cIterableAssignment_10.eContents().get(0);
+		private final RuleCall cIterableDataEStringParserRuleCall_10_0_1 = (RuleCall)cIterableDataCrossReference_10_0.eContents().get(1);
 		private final Group cGroup_11 = (Group)cGroup.eContents().get(11);
 		private final Keyword cOutputLinksKeyword_11_0 = (Keyword)cGroup_11.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_11_1 = (Keyword)cGroup_11.eContents().get(1);
@@ -2313,143 +2487,145 @@ public class PjlGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_12_4 = (Keyword)cGroup_12.eContents().get(4);
 		private final Keyword cRightCurlyBracketKeyword_13 = (Keyword)cGroup.eContents().get(13);
 		
-		//Block:
-		//	{Block} "Block" name=EString "{" ("description" description=EString)? ("executable" executable=EString)? ("join"
-		//	join=JoinType)? ("split" split=SplitType)? ("capacity" capacity=EInt)? ("executionMode" executionMode=ExecutionMode)?
-		//	("inputLinks" "(" inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")? ("outputLinks" "{"
-		//	outputLinks+=Link ("," outputLinks+=Link)* "}")? ("procedures" "{" procedures+=Procedure ("," procedures+=Procedure)*
-		//	"}")? "}";
+		//Pipeline:
+		//
+		//	"Pipeline" name=EString "{" ("description" description=EString)? ("executable" executable=EString)? ("join"
+		//
+		//	join=JoinType)? ("split" split=SplitType)? ("capacity" capacity=EInt)? ("inputLinks" "(" inputLinks+=[Link|EString]
+		//
+		//	("," inputLinks+=[Link|EString])* ")")? "iterable" iterable=[Data|EString] ("outputLinks" "{" outputLinks+=Link (","
+		//
+		//	outputLinks+=Link)* "}")? ("procedures" "{" procedures+=Procedure ("," procedures+=Procedure)* "}")? "}";
 		public ParserRule getRule() { return rule; }
 
-		//{Block} "Block" name=EString "{" ("description" description=EString)? ("executable" executable=EString)? ("join"
-		//join=JoinType)? ("split" split=SplitType)? ("capacity" capacity=EInt)? ("executionMode" executionMode=ExecutionMode)?
-		//("inputLinks" "(" inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")? ("outputLinks" "{"
-		//outputLinks+=Link ("," outputLinks+=Link)* "}")? ("procedures" "{" procedures+=Procedure ("," procedures+=Procedure)*
-		//"}")? "}"
+		//"Pipeline" name=EString "{" ("description" description=EString)? ("executable" executable=EString)? ("join"
+		//
+		//join=JoinType)? ("split" split=SplitType)? ("capacity" capacity=EInt)? ("inputLinks" "(" inputLinks+=[Link|EString]
+		//
+		//("," inputLinks+=[Link|EString])* ")")? "iterable" iterable=[Data|EString] ("outputLinks" "{" outputLinks+=Link (","
+		//
+		//outputLinks+=Link)* "}")? ("procedures" "{" procedures+=Procedure ("," procedures+=Procedure)* "}")? "}"
 		public Group getGroup() { return cGroup; }
 
-		//{Block}
-		public Action getBlockAction_0() { return cBlockAction_0; }
-
-		//"Block"
-		public Keyword getBlockKeyword_1() { return cBlockKeyword_1; }
+		//"Pipeline"
+		public Keyword getPipelineKeyword_0() { return cPipelineKeyword_0; }
 
 		//name=EString
-		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 
 		//EString
-		public RuleCall getNameEStringParserRuleCall_2_0() { return cNameEStringParserRuleCall_2_0; }
+		public RuleCall getNameEStringParserRuleCall_1_0() { return cNameEStringParserRuleCall_1_0; }
 
 		//"{"
-		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 
 		//("description" description=EString)?
-		public Group getGroup_4() { return cGroup_4; }
+		public Group getGroup_3() { return cGroup_3; }
 
 		//"description"
-		public Keyword getDescriptionKeyword_4_0() { return cDescriptionKeyword_4_0; }
+		public Keyword getDescriptionKeyword_3_0() { return cDescriptionKeyword_3_0; }
 
 		//description=EString
-		public Assignment getDescriptionAssignment_4_1() { return cDescriptionAssignment_4_1; }
+		public Assignment getDescriptionAssignment_3_1() { return cDescriptionAssignment_3_1; }
 
 		//EString
-		public RuleCall getDescriptionEStringParserRuleCall_4_1_0() { return cDescriptionEStringParserRuleCall_4_1_0; }
+		public RuleCall getDescriptionEStringParserRuleCall_3_1_0() { return cDescriptionEStringParserRuleCall_3_1_0; }
 
 		//("executable" executable=EString)?
-		public Group getGroup_5() { return cGroup_5; }
+		public Group getGroup_4() { return cGroup_4; }
 
 		//"executable"
-		public Keyword getExecutableKeyword_5_0() { return cExecutableKeyword_5_0; }
+		public Keyword getExecutableKeyword_4_0() { return cExecutableKeyword_4_0; }
 
 		//executable=EString
-		public Assignment getExecutableAssignment_5_1() { return cExecutableAssignment_5_1; }
+		public Assignment getExecutableAssignment_4_1() { return cExecutableAssignment_4_1; }
 
 		//EString
-		public RuleCall getExecutableEStringParserRuleCall_5_1_0() { return cExecutableEStringParserRuleCall_5_1_0; }
+		public RuleCall getExecutableEStringParserRuleCall_4_1_0() { return cExecutableEStringParserRuleCall_4_1_0; }
 
 		//("join" join=JoinType)?
-		public Group getGroup_6() { return cGroup_6; }
+		public Group getGroup_5() { return cGroup_5; }
 
 		//"join"
-		public Keyword getJoinKeyword_6_0() { return cJoinKeyword_6_0; }
+		public Keyword getJoinKeyword_5_0() { return cJoinKeyword_5_0; }
 
 		//join=JoinType
-		public Assignment getJoinAssignment_6_1() { return cJoinAssignment_6_1; }
+		public Assignment getJoinAssignment_5_1() { return cJoinAssignment_5_1; }
 
 		//JoinType
-		public RuleCall getJoinJoinTypeEnumRuleCall_6_1_0() { return cJoinJoinTypeEnumRuleCall_6_1_0; }
+		public RuleCall getJoinJoinTypeEnumRuleCall_5_1_0() { return cJoinJoinTypeEnumRuleCall_5_1_0; }
 
 		//("split" split=SplitType)?
-		public Group getGroup_7() { return cGroup_7; }
+		public Group getGroup_6() { return cGroup_6; }
 
 		//"split"
-		public Keyword getSplitKeyword_7_0() { return cSplitKeyword_7_0; }
+		public Keyword getSplitKeyword_6_0() { return cSplitKeyword_6_0; }
 
 		//split=SplitType
-		public Assignment getSplitAssignment_7_1() { return cSplitAssignment_7_1; }
+		public Assignment getSplitAssignment_6_1() { return cSplitAssignment_6_1; }
 
 		//SplitType
-		public RuleCall getSplitSplitTypeEnumRuleCall_7_1_0() { return cSplitSplitTypeEnumRuleCall_7_1_0; }
+		public RuleCall getSplitSplitTypeEnumRuleCall_6_1_0() { return cSplitSplitTypeEnumRuleCall_6_1_0; }
 
 		//("capacity" capacity=EInt)?
-		public Group getGroup_8() { return cGroup_8; }
+		public Group getGroup_7() { return cGroup_7; }
 
 		//"capacity"
-		public Keyword getCapacityKeyword_8_0() { return cCapacityKeyword_8_0; }
+		public Keyword getCapacityKeyword_7_0() { return cCapacityKeyword_7_0; }
 
 		//capacity=EInt
-		public Assignment getCapacityAssignment_8_1() { return cCapacityAssignment_8_1; }
+		public Assignment getCapacityAssignment_7_1() { return cCapacityAssignment_7_1; }
 
 		//EInt
-		public RuleCall getCapacityEIntParserRuleCall_8_1_0() { return cCapacityEIntParserRuleCall_8_1_0; }
-
-		//("executionMode" executionMode=ExecutionMode)?
-		public Group getGroup_9() { return cGroup_9; }
-
-		//"executionMode"
-		public Keyword getExecutionModeKeyword_9_0() { return cExecutionModeKeyword_9_0; }
-
-		//executionMode=ExecutionMode
-		public Assignment getExecutionModeAssignment_9_1() { return cExecutionModeAssignment_9_1; }
-
-		//ExecutionMode
-		public RuleCall getExecutionModeExecutionModeEnumRuleCall_9_1_0() { return cExecutionModeExecutionModeEnumRuleCall_9_1_0; }
+		public RuleCall getCapacityEIntParserRuleCall_7_1_0() { return cCapacityEIntParserRuleCall_7_1_0; }
 
 		//("inputLinks" "(" inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")?
-		public Group getGroup_10() { return cGroup_10; }
+		public Group getGroup_8() { return cGroup_8; }
 
 		//"inputLinks"
-		public Keyword getInputLinksKeyword_10_0() { return cInputLinksKeyword_10_0; }
+		public Keyword getInputLinksKeyword_8_0() { return cInputLinksKeyword_8_0; }
 
 		//"("
-		public Keyword getLeftParenthesisKeyword_10_1() { return cLeftParenthesisKeyword_10_1; }
+		public Keyword getLeftParenthesisKeyword_8_1() { return cLeftParenthesisKeyword_8_1; }
 
 		//inputLinks+=[Link|EString]
-		public Assignment getInputLinksAssignment_10_2() { return cInputLinksAssignment_10_2; }
+		public Assignment getInputLinksAssignment_8_2() { return cInputLinksAssignment_8_2; }
 
 		//[Link|EString]
-		public CrossReference getInputLinksLinkCrossReference_10_2_0() { return cInputLinksLinkCrossReference_10_2_0; }
+		public CrossReference getInputLinksLinkCrossReference_8_2_0() { return cInputLinksLinkCrossReference_8_2_0; }
 
 		//EString
-		public RuleCall getInputLinksLinkEStringParserRuleCall_10_2_0_1() { return cInputLinksLinkEStringParserRuleCall_10_2_0_1; }
+		public RuleCall getInputLinksLinkEStringParserRuleCall_8_2_0_1() { return cInputLinksLinkEStringParserRuleCall_8_2_0_1; }
 
 		//("," inputLinks+=[Link|EString])*
-		public Group getGroup_10_3() { return cGroup_10_3; }
+		public Group getGroup_8_3() { return cGroup_8_3; }
 
 		//","
-		public Keyword getCommaKeyword_10_3_0() { return cCommaKeyword_10_3_0; }
+		public Keyword getCommaKeyword_8_3_0() { return cCommaKeyword_8_3_0; }
 
 		//inputLinks+=[Link|EString]
-		public Assignment getInputLinksAssignment_10_3_1() { return cInputLinksAssignment_10_3_1; }
+		public Assignment getInputLinksAssignment_8_3_1() { return cInputLinksAssignment_8_3_1; }
 
 		//[Link|EString]
-		public CrossReference getInputLinksLinkCrossReference_10_3_1_0() { return cInputLinksLinkCrossReference_10_3_1_0; }
+		public CrossReference getInputLinksLinkCrossReference_8_3_1_0() { return cInputLinksLinkCrossReference_8_3_1_0; }
 
 		//EString
-		public RuleCall getInputLinksLinkEStringParserRuleCall_10_3_1_0_1() { return cInputLinksLinkEStringParserRuleCall_10_3_1_0_1; }
+		public RuleCall getInputLinksLinkEStringParserRuleCall_8_3_1_0_1() { return cInputLinksLinkEStringParserRuleCall_8_3_1_0_1; }
 
 		//")"
-		public Keyword getRightParenthesisKeyword_10_4() { return cRightParenthesisKeyword_10_4; }
+		public Keyword getRightParenthesisKeyword_8_4() { return cRightParenthesisKeyword_8_4; }
+
+		//"iterable"
+		public Keyword getIterableKeyword_9() { return cIterableKeyword_9; }
+
+		//iterable=[Data|EString]
+		public Assignment getIterableAssignment_10() { return cIterableAssignment_10; }
+
+		//[Data|EString]
+		public CrossReference getIterableDataCrossReference_10_0() { return cIterableDataCrossReference_10_0; }
+
+		//EString
+		public RuleCall getIterableDataEStringParserRuleCall_10_0_1() { return cIterableDataEStringParserRuleCall_10_0_1; }
 
 		//("outputLinks" "{" outputLinks+=Link ("," outputLinks+=Link)* "}")?
 		public Group getGroup_11() { return cGroup_11; }
@@ -2515,11 +2691,11 @@ public class PjlGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getRightCurlyBracketKeyword_13() { return cRightCurlyBracketKeyword_13; }
 	}
 
-	public class BusinessProcedureElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "BusinessProcedure");
+	public class DataElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Data");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cBusinessProcedureAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cBusinessProcedureKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Action cDataAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cDataKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cNameEStringParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
@@ -2528,67 +2704,24 @@ public class PjlGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cDescriptionAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
 		private final RuleCall cDescriptionEStringParserRuleCall_4_1_0 = (RuleCall)cDescriptionAssignment_4_1.eContents().get(0);
 		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
-		private final Keyword cExecutableKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
-		private final Assignment cExecutableAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
-		private final RuleCall cExecutableEStringParserRuleCall_5_1_0 = (RuleCall)cExecutableAssignment_5_1.eContents().get(0);
-		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
-		private final Keyword cJoinKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
-		private final Assignment cJoinAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
-		private final RuleCall cJoinJoinTypeEnumRuleCall_6_1_0 = (RuleCall)cJoinAssignment_6_1.eContents().get(0);
-		private final Group cGroup_7 = (Group)cGroup.eContents().get(7);
-		private final Keyword cSplitKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
-		private final Assignment cSplitAssignment_7_1 = (Assignment)cGroup_7.eContents().get(1);
-		private final RuleCall cSplitSplitTypeEnumRuleCall_7_1_0 = (RuleCall)cSplitAssignment_7_1.eContents().get(0);
-		private final Group cGroup_8 = (Group)cGroup.eContents().get(8);
-		private final Keyword cCapacityKeyword_8_0 = (Keyword)cGroup_8.eContents().get(0);
-		private final Assignment cCapacityAssignment_8_1 = (Assignment)cGroup_8.eContents().get(1);
-		private final RuleCall cCapacityEIntParserRuleCall_8_1_0 = (RuleCall)cCapacityAssignment_8_1.eContents().get(0);
-		private final Group cGroup_9 = (Group)cGroup.eContents().get(9);
-		private final Keyword cExecutionModeKeyword_9_0 = (Keyword)cGroup_9.eContents().get(0);
-		private final Assignment cExecutionModeAssignment_9_1 = (Assignment)cGroup_9.eContents().get(1);
-		private final RuleCall cExecutionModeExecutionModeEnumRuleCall_9_1_0 = (RuleCall)cExecutionModeAssignment_9_1.eContents().get(0);
-		private final Group cGroup_10 = (Group)cGroup.eContents().get(10);
-		private final Keyword cInputLinksKeyword_10_0 = (Keyword)cGroup_10.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_10_1 = (Keyword)cGroup_10.eContents().get(1);
-		private final Assignment cInputLinksAssignment_10_2 = (Assignment)cGroup_10.eContents().get(2);
-		private final CrossReference cInputLinksLinkCrossReference_10_2_0 = (CrossReference)cInputLinksAssignment_10_2.eContents().get(0);
-		private final RuleCall cInputLinksLinkEStringParserRuleCall_10_2_0_1 = (RuleCall)cInputLinksLinkCrossReference_10_2_0.eContents().get(1);
-		private final Group cGroup_10_3 = (Group)cGroup_10.eContents().get(3);
-		private final Keyword cCommaKeyword_10_3_0 = (Keyword)cGroup_10_3.eContents().get(0);
-		private final Assignment cInputLinksAssignment_10_3_1 = (Assignment)cGroup_10_3.eContents().get(1);
-		private final CrossReference cInputLinksLinkCrossReference_10_3_1_0 = (CrossReference)cInputLinksAssignment_10_3_1.eContents().get(0);
-		private final RuleCall cInputLinksLinkEStringParserRuleCall_10_3_1_0_1 = (RuleCall)cInputLinksLinkCrossReference_10_3_1_0.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_10_4 = (Keyword)cGroup_10.eContents().get(4);
-		private final Group cGroup_11 = (Group)cGroup.eContents().get(11);
-		private final Keyword cOutputLinksKeyword_11_0 = (Keyword)cGroup_11.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_11_1 = (Keyword)cGroup_11.eContents().get(1);
-		private final Assignment cOutputLinksAssignment_11_2 = (Assignment)cGroup_11.eContents().get(2);
-		private final RuleCall cOutputLinksLinkParserRuleCall_11_2_0 = (RuleCall)cOutputLinksAssignment_11_2.eContents().get(0);
-		private final Group cGroup_11_3 = (Group)cGroup_11.eContents().get(3);
-		private final Keyword cCommaKeyword_11_3_0 = (Keyword)cGroup_11_3.eContents().get(0);
-		private final Assignment cOutputLinksAssignment_11_3_1 = (Assignment)cGroup_11_3.eContents().get(1);
-		private final RuleCall cOutputLinksLinkParserRuleCall_11_3_1_0 = (RuleCall)cOutputLinksAssignment_11_3_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_11_4 = (Keyword)cGroup_11.eContents().get(4);
-		private final Keyword cRightCurlyBracketKeyword_12 = (Keyword)cGroup.eContents().get(12);
+		private final Keyword cTypeKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
+		private final Assignment cTypeAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
+		private final RuleCall cTypeEStringParserRuleCall_5_1_0 = (RuleCall)cTypeAssignment_5_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
-		//BusinessProcedure:
-		//	{BusinessProcedure} "BusinessProcedure" name=EString "{" ("description" description=EString)? ("executable"
-		//	executable=EString)? ("join" join=JoinType)? ("split" split=SplitType)? ("capacity" capacity=EInt)? ("executionMode"
-		//	executionMode=ExecutionMode)? ("inputLinks" "(" inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")?
-		//	("outputLinks" "{" outputLinks+=Link ("," outputLinks+=Link)* "}")? "}";
+		//Data:
+		//
+		//	{Data} "Data" name=EString "{" ("description" description=EString)? ("type" type=EString)? "}";
 		public ParserRule getRule() { return rule; }
 
-		//{BusinessProcedure} "BusinessProcedure" name=EString "{" ("description" description=EString)? ("executable"
-		//executable=EString)? ("join" join=JoinType)? ("split" split=SplitType)? ("capacity" capacity=EInt)? ("executionMode"
-		//executionMode=ExecutionMode)? ("inputLinks" "(" inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")?
-		//("outputLinks" "{" outputLinks+=Link ("," outputLinks+=Link)* "}")? "}"
+		//{Data} "Data" name=EString "{" ("description" description=EString)? ("type" type=EString)? "}"
 		public Group getGroup() { return cGroup; }
 
-		//{BusinessProcedure}
-		public Action getBusinessProcedureAction_0() { return cBusinessProcedureAction_0; }
+		//{Data}
+		public Action getDataAction_0() { return cDataAction_0; }
 
-		//"BusinessProcedure"
-		public Keyword getBusinessProcedureKeyword_1() { return cBusinessProcedureKeyword_1; }
+		//"Data"
+		public Keyword getDataKeyword_1() { return cDataKeyword_1; }
 
 		//name=EString
 		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
@@ -2611,154 +2744,20 @@ public class PjlGrammarAccess extends AbstractGrammarElementFinder {
 		//EString
 		public RuleCall getDescriptionEStringParserRuleCall_4_1_0() { return cDescriptionEStringParserRuleCall_4_1_0; }
 
-		//("executable" executable=EString)?
+		//("type" type=EString)?
 		public Group getGroup_5() { return cGroup_5; }
 
-		//"executable"
-		public Keyword getExecutableKeyword_5_0() { return cExecutableKeyword_5_0; }
+		//"type"
+		public Keyword getTypeKeyword_5_0() { return cTypeKeyword_5_0; }
 
-		//executable=EString
-		public Assignment getExecutableAssignment_5_1() { return cExecutableAssignment_5_1; }
-
-		//EString
-		public RuleCall getExecutableEStringParserRuleCall_5_1_0() { return cExecutableEStringParserRuleCall_5_1_0; }
-
-		//("join" join=JoinType)?
-		public Group getGroup_6() { return cGroup_6; }
-
-		//"join"
-		public Keyword getJoinKeyword_6_0() { return cJoinKeyword_6_0; }
-
-		//join=JoinType
-		public Assignment getJoinAssignment_6_1() { return cJoinAssignment_6_1; }
-
-		//JoinType
-		public RuleCall getJoinJoinTypeEnumRuleCall_6_1_0() { return cJoinJoinTypeEnumRuleCall_6_1_0; }
-
-		//("split" split=SplitType)?
-		public Group getGroup_7() { return cGroup_7; }
-
-		//"split"
-		public Keyword getSplitKeyword_7_0() { return cSplitKeyword_7_0; }
-
-		//split=SplitType
-		public Assignment getSplitAssignment_7_1() { return cSplitAssignment_7_1; }
-
-		//SplitType
-		public RuleCall getSplitSplitTypeEnumRuleCall_7_1_0() { return cSplitSplitTypeEnumRuleCall_7_1_0; }
-
-		//("capacity" capacity=EInt)?
-		public Group getGroup_8() { return cGroup_8; }
-
-		//"capacity"
-		public Keyword getCapacityKeyword_8_0() { return cCapacityKeyword_8_0; }
-
-		//capacity=EInt
-		public Assignment getCapacityAssignment_8_1() { return cCapacityAssignment_8_1; }
-
-		//EInt
-		public RuleCall getCapacityEIntParserRuleCall_8_1_0() { return cCapacityEIntParserRuleCall_8_1_0; }
-
-		//("executionMode" executionMode=ExecutionMode)?
-		public Group getGroup_9() { return cGroup_9; }
-
-		//"executionMode"
-		public Keyword getExecutionModeKeyword_9_0() { return cExecutionModeKeyword_9_0; }
-
-		//executionMode=ExecutionMode
-		public Assignment getExecutionModeAssignment_9_1() { return cExecutionModeAssignment_9_1; }
-
-		//ExecutionMode
-		public RuleCall getExecutionModeExecutionModeEnumRuleCall_9_1_0() { return cExecutionModeExecutionModeEnumRuleCall_9_1_0; }
-
-		//("inputLinks" "(" inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")?
-		public Group getGroup_10() { return cGroup_10; }
-
-		//"inputLinks"
-		public Keyword getInputLinksKeyword_10_0() { return cInputLinksKeyword_10_0; }
-
-		//"("
-		public Keyword getLeftParenthesisKeyword_10_1() { return cLeftParenthesisKeyword_10_1; }
-
-		//inputLinks+=[Link|EString]
-		public Assignment getInputLinksAssignment_10_2() { return cInputLinksAssignment_10_2; }
-
-		//[Link|EString]
-		public CrossReference getInputLinksLinkCrossReference_10_2_0() { return cInputLinksLinkCrossReference_10_2_0; }
+		//type=EString
+		public Assignment getTypeAssignment_5_1() { return cTypeAssignment_5_1; }
 
 		//EString
-		public RuleCall getInputLinksLinkEStringParserRuleCall_10_2_0_1() { return cInputLinksLinkEStringParserRuleCall_10_2_0_1; }
-
-		//("," inputLinks+=[Link|EString])*
-		public Group getGroup_10_3() { return cGroup_10_3; }
-
-		//","
-		public Keyword getCommaKeyword_10_3_0() { return cCommaKeyword_10_3_0; }
-
-		//inputLinks+=[Link|EString]
-		public Assignment getInputLinksAssignment_10_3_1() { return cInputLinksAssignment_10_3_1; }
-
-		//[Link|EString]
-		public CrossReference getInputLinksLinkCrossReference_10_3_1_0() { return cInputLinksLinkCrossReference_10_3_1_0; }
-
-		//EString
-		public RuleCall getInputLinksLinkEStringParserRuleCall_10_3_1_0_1() { return cInputLinksLinkEStringParserRuleCall_10_3_1_0_1; }
-
-		//")"
-		public Keyword getRightParenthesisKeyword_10_4() { return cRightParenthesisKeyword_10_4; }
-
-		//("outputLinks" "{" outputLinks+=Link ("," outputLinks+=Link)* "}")?
-		public Group getGroup_11() { return cGroup_11; }
-
-		//"outputLinks"
-		public Keyword getOutputLinksKeyword_11_0() { return cOutputLinksKeyword_11_0; }
-
-		//"{"
-		public Keyword getLeftCurlyBracketKeyword_11_1() { return cLeftCurlyBracketKeyword_11_1; }
-
-		//outputLinks+=Link
-		public Assignment getOutputLinksAssignment_11_2() { return cOutputLinksAssignment_11_2; }
-
-		//Link
-		public RuleCall getOutputLinksLinkParserRuleCall_11_2_0() { return cOutputLinksLinkParserRuleCall_11_2_0; }
-
-		//("," outputLinks+=Link)*
-		public Group getGroup_11_3() { return cGroup_11_3; }
-
-		//","
-		public Keyword getCommaKeyword_11_3_0() { return cCommaKeyword_11_3_0; }
-
-		//outputLinks+=Link
-		public Assignment getOutputLinksAssignment_11_3_1() { return cOutputLinksAssignment_11_3_1; }
-
-		//Link
-		public RuleCall getOutputLinksLinkParserRuleCall_11_3_1_0() { return cOutputLinksLinkParserRuleCall_11_3_1_0; }
+		public RuleCall getTypeEStringParserRuleCall_5_1_0() { return cTypeEStringParserRuleCall_5_1_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_11_4() { return cRightCurlyBracketKeyword_11_4; }
-
-		//"}"
-		public Keyword getRightCurlyBracketKeyword_12() { return cRightCurlyBracketKeyword_12; }
-	}
-
-	public class MetaInformationElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MetaInformation");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cMetaInformationAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cMetaInformationKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		
-		//MetaInformation:
-		//	{MetaInformation} "MetaInformation";
-		public ParserRule getRule() { return rule; }
-
-		//{MetaInformation} "MetaInformation"
-		public Group getGroup() { return cGroup; }
-
-		//{MetaInformation}
-		public Action getMetaInformationAction_0() { return cMetaInformationAction_0; }
-
-		//"MetaInformation"
-		public Keyword getMetaInformationKeyword_1() { return cMetaInformationKeyword_1; }
+		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
 	}
 	
 	
@@ -2773,6 +2772,7 @@ public class PjlGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cXORXORKeyword_2_0 = (Keyword)cXOREnumLiteralDeclaration_2.eContents().get(0);
 		
 		//enum JoinType:
+		//
 		//	AND | OR | XOR;
 		public EnumRule getRule() { return rule; }
 
@@ -2809,6 +2809,7 @@ public class PjlGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cXORXORKeyword_2_0 = (Keyword)cXOREnumLiteralDeclaration_2.eContents().get(0);
 		
 		//enum SplitType:
+		//
 		//	AND | OR | XOR;
 		public EnumRule getRule() { return rule; }
 
@@ -2833,81 +2834,61 @@ public class PjlGrammarAccess extends AbstractGrammarElementFinder {
 		//"XOR"
 		public Keyword getXORXORKeyword_2_0() { return cXORXORKeyword_2_0; }
 	}
-
-	public class ExecutionModeElements extends AbstractEnumRuleElementFinder {
-		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "ExecutionMode");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final EnumLiteralDeclaration cPARALLELEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
-		private final Keyword cPARALLELPARALLELKeyword_0_0 = (Keyword)cPARALLELEnumLiteralDeclaration_0.eContents().get(0);
-		private final EnumLiteralDeclaration cITERATIVEEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
-		private final Keyword cITERATIVEITERATIVEKeyword_1_0 = (Keyword)cITERATIVEEnumLiteralDeclaration_1.eContents().get(0);
-		private final EnumLiteralDeclaration cSTREAMEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
-		private final Keyword cSTREAMSTREAMKeyword_2_0 = (Keyword)cSTREAMEnumLiteralDeclaration_2.eContents().get(0);
-		
-		//enum ExecutionMode:
-		//	PARALLEL | ITERATIVE | STREAM;
-		public EnumRule getRule() { return rule; }
-
-		//PARALLEL | ITERATIVE | STREAM
-		public Alternatives getAlternatives() { return cAlternatives; }
-
-		//PARALLEL
-		public EnumLiteralDeclaration getPARALLELEnumLiteralDeclaration_0() { return cPARALLELEnumLiteralDeclaration_0; }
-
-		//"PARALLEL"
-		public Keyword getPARALLELPARALLELKeyword_0_0() { return cPARALLELPARALLELKeyword_0_0; }
-
-		//ITERATIVE
-		public EnumLiteralDeclaration getITERATIVEEnumLiteralDeclaration_1() { return cITERATIVEEnumLiteralDeclaration_1; }
-
-		//"ITERATIVE"
-		public Keyword getITERATIVEITERATIVEKeyword_1_0() { return cITERATIVEITERATIVEKeyword_1_0; }
-
-		//STREAM
-		public EnumLiteralDeclaration getSTREAMEnumLiteralDeclaration_2() { return cSTREAMEnumLiteralDeclaration_2; }
-
-		//"STREAM"
-		public Keyword getSTREAMSTREAMKeyword_2_0() { return cSTREAMSTREAMKeyword_2_0; }
-	}
 	
 	private SpecificationElements pSpecification;
-	private ElementElements pElement;
-	private ProcedureElements pProcedure;
 	private ProgramElements pProgram;
 	private MetaInformationContainerElements pMetaInformationContainer;
+	private MetaInformationElements pMetaInformation;
+	private BusinessProcedureElements pBusinessProcedure;
+	private ElementElements pElement;
+	private ProcedureElements pProcedure;
 	private EStringElements pEString;
-	private InputConditionElements pInputCondition;
-	private OutputConditionElements pOutputCondition;
+	private LinkElements pLink;
+	private JoinTypeElements unknownRuleJoinType;
+	private SplitTypeElements unknownRuleSplitType;
+	private EIntElements pEInt;
 	private PredicateElements pPredicate;
 	private Element_ImplElements pElement_Impl;
-	private DataElements pData;
-	private EIntElements pEInt;
-	private LinkElements pLink;
+	private InputConditionElements pInputCondition;
+	private OutputConditionElements pOutputCondition;
 	private Condition_ImplElements pCondition_Impl;
 	private Procedure_ImplElements pProcedure_Impl;
 	private ForEachLoopElements pForEachLoop;
 	private WhileLoopElements pWhileLoop;
 	private HandlerElements pHandler;
-	private BlockElements pBlock;
-	private BusinessProcedureElements pBusinessProcedure;
-	private JoinTypeElements unknownRuleJoinType;
-	private SplitTypeElements unknownRuleSplitType;
-	private ExecutionModeElements unknownRuleExecutionMode;
-	private MetaInformationElements pMetaInformation;
+	private PipelineElements pPipeline;
+	private DataElements pData;
 	
-	private final GrammarProvider grammarProvider;
+	private final Grammar grammar;
 
 	private TerminalsGrammarAccess gaTerminals;
 
 	@Inject
 	public PjlGrammarAccess(GrammarProvider grammarProvider,
 		TerminalsGrammarAccess gaTerminals) {
-		this.grammarProvider = grammarProvider;
+		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
 	}
 	
-	public Grammar getGrammar() {	
-		return grammarProvider.getGrammar(this);
+	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
+		Grammar grammar = grammarProvider.getGrammar(this);
+		while (grammar != null) {
+			if ("org.parallelj.Pjl".equals(grammar.getName())) {
+				return grammar;
+			}
+			List<Grammar> grammars = grammar.getUsedGrammars();
+			if (!grammars.isEmpty()) {
+				grammar = grammars.iterator().next();
+			} else {
+				return null;
+			}
+		}
+		return grammar;
+	}
+	
+	
+	public Grammar getGrammar() {
+		return grammar;
 	}
 	
 
@@ -2917,7 +2898,9 @@ public class PjlGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//Specification:
+	//
 	//	{Specification} (programs+=Program ("," programs+=Program)*)? ("metaInformationContainer"
+	//
 	//	metaInformationContainer=MetaInformationContainer)?;
 	public SpecificationElements getSpecificationAccess() {
 		return (pSpecification != null) ? pSpecification : (pSpecification = new SpecificationElements());
@@ -2927,31 +2910,14 @@ public class PjlGrammarAccess extends AbstractGrammarElementFinder {
 		return getSpecificationAccess().getRule();
 	}
 
-	//Element:
-	//	Element_Impl | InputCondition | OutputCondition | Condition_Impl | Procedure_Impl | ForEachLoop | WhileLoop | Handler
-	//	| Block | BusinessProcedure;
-	public ElementElements getElementAccess() {
-		return (pElement != null) ? pElement : (pElement = new ElementElements());
-	}
-	
-	public ParserRule getElementRule() {
-		return getElementAccess().getRule();
-	}
-
-	//Procedure:
-	//	Procedure_Impl | ForEachLoop | WhileLoop | Handler | Block | BusinessProcedure;
-	public ProcedureElements getProcedureAccess() {
-		return (pProcedure != null) ? pProcedure : (pProcedure = new ProcedureElements());
-	}
-	
-	public ParserRule getProcedureRule() {
-		return getProcedureAccess().getRule();
-	}
-
 	//Program:
+	//
 	//	"Program" name=EString "{" ("description" description=EString)? ("capacity" capacity=EInt)? "inputCondition"
+	//
 	//	inputCondition=[InputCondition|EString] "outputCondition" outputCondition=[OutputCondition|EString] ("predicates" "{"
+	//
 	//	predicates+=Predicate ("," predicates+=Predicate)* "}")? (elements+=Element ("," elements+=Element)*)? ("data" "{"
+	//
 	//	data+=Data ("," data+=Data)* "}")? "}";
 	public ProgramElements getProgramAccess() {
 		return (pProgram != null) ? pProgram : (pProgram = new ProgramElements());
@@ -2962,8 +2928,10 @@ public class PjlGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//MetaInformationContainer:
-	//	{MetaInformationContainer} "MetaInformationContainer" "{" ("metaInformation" "{" metaInformation+=MetaInformation (","
-	//	metaInformation+=MetaInformation)* "}")? "}";
+	//
+	//	{MetaInformationContainer} "MetaInformationContainer" "{" ("metaInformation" "{" metaInformation+=MetaInformation
+	//
+	//	("," metaInformation+=MetaInformation)* "}")? "}";
 	public MetaInformationContainerElements getMetaInformationContainerAccess() {
 		return (pMetaInformationContainer != null) ? pMetaInformationContainer : (pMetaInformationContainer = new MetaInformationContainerElements());
 	}
@@ -2972,7 +2940,60 @@ public class PjlGrammarAccess extends AbstractGrammarElementFinder {
 		return getMetaInformationContainerAccess().getRule();
 	}
 
+	//MetaInformation:
+	//
+	//	{MetaInformation} "MetaInformation";
+	public MetaInformationElements getMetaInformationAccess() {
+		return (pMetaInformation != null) ? pMetaInformation : (pMetaInformation = new MetaInformationElements());
+	}
+	
+	public ParserRule getMetaInformationRule() {
+		return getMetaInformationAccess().getRule();
+	}
+
+	//BusinessProcedure:
+	//
+	//	{BusinessProcedure} "BusinessProcedure" name=EString "{" ("description" description=EString)? ("executable"
+	//
+	//	executable=EString)? ("join" join=JoinType)? ("split" split=SplitType)? ("capacity" capacity=EInt)? ("inputLinks" "("
+	//
+	//	inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")? ("outputLinks" "{" outputLinks+=Link (","
+	//
+	//	outputLinks+=Link)* "}")? "}";
+	public BusinessProcedureElements getBusinessProcedureAccess() {
+		return (pBusinessProcedure != null) ? pBusinessProcedure : (pBusinessProcedure = new BusinessProcedureElements());
+	}
+	
+	public ParserRule getBusinessProcedureRule() {
+		return getBusinessProcedureAccess().getRule();
+	}
+
+	//Element:
+	//
+	//	Element_Impl | InputCondition | OutputCondition | Condition_Impl | Procedure_Impl | ForEachLoop | WhileLoop | Handler
+	//
+	//	| Pipeline | BusinessProcedure;
+	public ElementElements getElementAccess() {
+		return (pElement != null) ? pElement : (pElement = new ElementElements());
+	}
+	
+	public ParserRule getElementRule() {
+		return getElementAccess().getRule();
+	}
+
+	//Procedure:
+	//
+	//	Procedure_Impl | ForEachLoop | WhileLoop | Handler | Pipeline | BusinessProcedure;
+	public ProcedureElements getProcedureAccess() {
+		return (pProcedure != null) ? pProcedure : (pProcedure = new ProcedureElements());
+	}
+	
+	public ParserRule getProcedureRule() {
+		return getProcedureAccess().getRule();
+	}
+
 	//EString returns ecore::EString:
+	//
 	//	STRING | ID;
 	public EStringElements getEStringAccess() {
 		return (pEString != null) ? pEString : (pEString = new EStringElements());
@@ -2982,73 +3003,10 @@ public class PjlGrammarAccess extends AbstractGrammarElementFinder {
 		return getEStringAccess().getRule();
 	}
 
-	//InputCondition:
-	//	{InputCondition} "InputCondition" name=EString "{" ("description" description=EString)? ("inputLinks" "("
-	//	inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")? ("outputLinks" "{" outputLinks+=Link (","
-	//	outputLinks+=Link)* "}")? "}";
-	public InputConditionElements getInputConditionAccess() {
-		return (pInputCondition != null) ? pInputCondition : (pInputCondition = new InputConditionElements());
-	}
-	
-	public ParserRule getInputConditionRule() {
-		return getInputConditionAccess().getRule();
-	}
-
-	//OutputCondition:
-	//	{OutputCondition} "OutputCondition" name=EString "{" ("description" description=EString)? ("inputLinks" "("
-	//	inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")? ("outputLinks" "{" outputLinks+=Link (","
-	//	outputLinks+=Link)* "}")? "}";
-	public OutputConditionElements getOutputConditionAccess() {
-		return (pOutputCondition != null) ? pOutputCondition : (pOutputCondition = new OutputConditionElements());
-	}
-	
-	public ParserRule getOutputConditionRule() {
-		return getOutputConditionAccess().getRule();
-	}
-
-	//Predicate:
-	//	{Predicate} "Predicate" name=EString "{" ("description" description=EString)? "}";
-	public PredicateElements getPredicateAccess() {
-		return (pPredicate != null) ? pPredicate : (pPredicate = new PredicateElements());
-	}
-	
-	public ParserRule getPredicateRule() {
-		return getPredicateAccess().getRule();
-	}
-
-	//Element_Impl returns Element:
-	//	{Element} "Element" name=EString "{" ("description" description=EString)? ("inputLinks" "(" inputLinks+=[Link|EString]
-	//	("," inputLinks+=[Link|EString])* ")")? ("outputLinks" "{" outputLinks+=Link ("," outputLinks+=Link)* "}")? "}";
-	public Element_ImplElements getElement_ImplAccess() {
-		return (pElement_Impl != null) ? pElement_Impl : (pElement_Impl = new Element_ImplElements());
-	}
-	
-	public ParserRule getElement_ImplRule() {
-		return getElement_ImplAccess().getRule();
-	}
-
-	//Data:
-	//	{Data} "Data" name=EString "{" ("description" description=EString)? ("type" type=EString)? "}";
-	public DataElements getDataAccess() {
-		return (pData != null) ? pData : (pData = new DataElements());
-	}
-	
-	public ParserRule getDataRule() {
-		return getDataAccess().getRule();
-	}
-
-	//EInt returns ecore::EInt:
-	//	"-"? INT;
-	public EIntElements getEIntAccess() {
-		return (pEInt != null) ? pEInt : (pEInt = new EIntElements());
-	}
-	
-	public ParserRule getEIntRule() {
-		return getEIntAccess().getRule();
-	}
-
 	//Link:
+	//
 	//	"Link" name=EString "{" ("description" description=EString)? ("predicate" predicate=[Predicate|EString])?
+	//
 	//	"destination" destination=[Element|EString] "}";
 	public LinkElements getLinkAccess() {
 		return (pLink != null) ? pLink : (pLink = new LinkElements());
@@ -3058,99 +3016,8 @@ public class PjlGrammarAccess extends AbstractGrammarElementFinder {
 		return getLinkAccess().getRule();
 	}
 
-	//Condition_Impl returns Condition:
-	//	{Condition} "Condition" name=EString "{" ("description" description=EString)? ("inputLinks" "("
-	//	inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")? ("outputLinks" "{" outputLinks+=Link (","
-	//	outputLinks+=Link)* "}")? "}";
-	public Condition_ImplElements getCondition_ImplAccess() {
-		return (pCondition_Impl != null) ? pCondition_Impl : (pCondition_Impl = new Condition_ImplElements());
-	}
-	
-	public ParserRule getCondition_ImplRule() {
-		return getCondition_ImplAccess().getRule();
-	}
-
-	//Procedure_Impl returns Procedure:
-	//	{Procedure} "Procedure" name=EString "{" ("description" description=EString)? ("executable" executable=EString)?
-	//	("join" join=JoinType)? ("split" split=SplitType)? ("capacity" capacity=EInt)? ("executionMode"
-	//	executionMode=ExecutionMode)? ("inputLinks" "(" inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")?
-	//	("outputLinks" "{" outputLinks+=Link ("," outputLinks+=Link)* "}")? "}";
-	public Procedure_ImplElements getProcedure_ImplAccess() {
-		return (pProcedure_Impl != null) ? pProcedure_Impl : (pProcedure_Impl = new Procedure_ImplElements());
-	}
-	
-	public ParserRule getProcedure_ImplRule() {
-		return getProcedure_ImplAccess().getRule();
-	}
-
-	//ForEachLoop:
-	//	"ForEachLoop" name=EString "{" ("description" description=EString)? ("executable" executable=EString)? ("join"
-	//	join=JoinType)? ("split" split=SplitType)? ("capacity" capacity=EInt)? ("executionMode" executionMode=ExecutionMode)?
-	//	("inputLinks" "(" inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")? "iterable"
-	//	iterable=[Data|EString] ("outputLinks" "{" outputLinks+=Link ("," outputLinks+=Link)* "}")? "}";
-	public ForEachLoopElements getForEachLoopAccess() {
-		return (pForEachLoop != null) ? pForEachLoop : (pForEachLoop = new ForEachLoopElements());
-	}
-	
-	public ParserRule getForEachLoopRule() {
-		return getForEachLoopAccess().getRule();
-	}
-
-	//WhileLoop:
-	//	"WhileLoop" name=EString "{" ("description" description=EString)? ("executable" executable=EString)? ("join"
-	//	join=JoinType)? ("split" split=SplitType)? ("capacity" capacity=EInt)? ("executionMode" executionMode=ExecutionMode)?
-	//	("inputLinks" "(" inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")? "predicate"
-	//	predicate=[Predicate|EString] ("outputLinks" "{" outputLinks+=Link ("," outputLinks+=Link)* "}")? "}";
-	public WhileLoopElements getWhileLoopAccess() {
-		return (pWhileLoop != null) ? pWhileLoop : (pWhileLoop = new WhileLoopElements());
-	}
-	
-	public ParserRule getWhileLoopRule() {
-		return getWhileLoopAccess().getRule();
-	}
-
-	//Handler:
-	//	{Handler} "Handler" name=EString "{" ("description" description=EString)? ("executable" executable=EString)? ("join"
-	//	join=JoinType)? ("split" split=SplitType)? ("capacity" capacity=EInt)? ("executionMode" executionMode=ExecutionMode)?
-	//	("inputLinks" "(" inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")? ("procedures" "("
-	//	procedures+=[Procedure|EString] ("," procedures+=[Procedure|EString])* ")")? ("outputLinks" "{" outputLinks+=Link (","
-	//	outputLinks+=Link)* "}")? "}";
-	public HandlerElements getHandlerAccess() {
-		return (pHandler != null) ? pHandler : (pHandler = new HandlerElements());
-	}
-	
-	public ParserRule getHandlerRule() {
-		return getHandlerAccess().getRule();
-	}
-
-	//Block:
-	//	{Block} "Block" name=EString "{" ("description" description=EString)? ("executable" executable=EString)? ("join"
-	//	join=JoinType)? ("split" split=SplitType)? ("capacity" capacity=EInt)? ("executionMode" executionMode=ExecutionMode)?
-	//	("inputLinks" "(" inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")? ("outputLinks" "{"
-	//	outputLinks+=Link ("," outputLinks+=Link)* "}")? ("procedures" "{" procedures+=Procedure ("," procedures+=Procedure)*
-	//	"}")? "}";
-	public BlockElements getBlockAccess() {
-		return (pBlock != null) ? pBlock : (pBlock = new BlockElements());
-	}
-	
-	public ParserRule getBlockRule() {
-		return getBlockAccess().getRule();
-	}
-
-	//BusinessProcedure:
-	//	{BusinessProcedure} "BusinessProcedure" name=EString "{" ("description" description=EString)? ("executable"
-	//	executable=EString)? ("join" join=JoinType)? ("split" split=SplitType)? ("capacity" capacity=EInt)? ("executionMode"
-	//	executionMode=ExecutionMode)? ("inputLinks" "(" inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")?
-	//	("outputLinks" "{" outputLinks+=Link ("," outputLinks+=Link)* "}")? "}";
-	public BusinessProcedureElements getBusinessProcedureAccess() {
-		return (pBusinessProcedure != null) ? pBusinessProcedure : (pBusinessProcedure = new BusinessProcedureElements());
-	}
-	
-	public ParserRule getBusinessProcedureRule() {
-		return getBusinessProcedureAccess().getRule();
-	}
-
 	//enum JoinType:
+	//
 	//	AND | OR | XOR;
 	public JoinTypeElements getJoinTypeAccess() {
 		return (unknownRuleJoinType != null) ? unknownRuleJoinType : (unknownRuleJoinType = new JoinTypeElements());
@@ -3161,6 +3028,7 @@ public class PjlGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//enum SplitType:
+	//
 	//	AND | OR | XOR;
 	public SplitTypeElements getSplitTypeAccess() {
 		return (unknownRuleSplitType != null) ? unknownRuleSplitType : (unknownRuleSplitType = new SplitTypeElements());
@@ -3170,64 +3038,230 @@ public class PjlGrammarAccess extends AbstractGrammarElementFinder {
 		return getSplitTypeAccess().getRule();
 	}
 
-	//enum ExecutionMode:
-	//	PARALLEL | ITERATIVE | STREAM;
-	public ExecutionModeElements getExecutionModeAccess() {
-		return (unknownRuleExecutionMode != null) ? unknownRuleExecutionMode : (unknownRuleExecutionMode = new ExecutionModeElements());
+	//EInt returns ecore::EInt:
+	//
+	//	"-"? INT;
+	public EIntElements getEIntAccess() {
+		return (pEInt != null) ? pEInt : (pEInt = new EIntElements());
 	}
 	
-	public EnumRule getExecutionModeRule() {
-		return getExecutionModeAccess().getRule();
+	public ParserRule getEIntRule() {
+		return getEIntAccess().getRule();
 	}
 
-	//MetaInformation:
-	//	{MetaInformation} "MetaInformation";
-	public MetaInformationElements getMetaInformationAccess() {
-		return (pMetaInformation != null) ? pMetaInformation : (pMetaInformation = new MetaInformationElements());
+	//Predicate:
+	//
+	//	{Predicate} "Predicate" name=EString "{" ("description" description=EString)? "}";
+	public PredicateElements getPredicateAccess() {
+		return (pPredicate != null) ? pPredicate : (pPredicate = new PredicateElements());
 	}
 	
-	public ParserRule getMetaInformationRule() {
-		return getMetaInformationAccess().getRule();
+	public ParserRule getPredicateRule() {
+		return getPredicateAccess().getRule();
+	}
+
+	//Element_Impl returns Element:
+	//
+	//	{Element} "Element" name=EString "{" ("description" description=EString)? ("inputLinks" "("
+	//
+	//	inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")? ("outputLinks" "{" outputLinks+=Link (","
+	//
+	//	outputLinks+=Link)* "}")? "}";
+	public Element_ImplElements getElement_ImplAccess() {
+		return (pElement_Impl != null) ? pElement_Impl : (pElement_Impl = new Element_ImplElements());
+	}
+	
+	public ParserRule getElement_ImplRule() {
+		return getElement_ImplAccess().getRule();
+	}
+
+	//InputCondition:
+	//
+	//	{InputCondition} "InputCondition" name=EString "{" ("description" description=EString)? ("inputLinks" "("
+	//
+	//	inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")? ("outputLinks" "{" outputLinks+=Link (","
+	//
+	//	outputLinks+=Link)* "}")? "}";
+	public InputConditionElements getInputConditionAccess() {
+		return (pInputCondition != null) ? pInputCondition : (pInputCondition = new InputConditionElements());
+	}
+	
+	public ParserRule getInputConditionRule() {
+		return getInputConditionAccess().getRule();
+	}
+
+	//OutputCondition:
+	//
+	//	{OutputCondition} "OutputCondition" name=EString "{" ("description" description=EString)? ("inputLinks" "("
+	//
+	//	inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")? ("outputLinks" "{" outputLinks+=Link (","
+	//
+	//	outputLinks+=Link)* "}")? "}";
+	public OutputConditionElements getOutputConditionAccess() {
+		return (pOutputCondition != null) ? pOutputCondition : (pOutputCondition = new OutputConditionElements());
+	}
+	
+	public ParserRule getOutputConditionRule() {
+		return getOutputConditionAccess().getRule();
+	}
+
+	//Condition_Impl returns Condition:
+	//
+	//	{Condition} "Condition" name=EString "{" ("description" description=EString)? ("inputLinks" "("
+	//
+	//	inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")? ("outputLinks" "{" outputLinks+=Link (","
+	//
+	//	outputLinks+=Link)* "}")? "}";
+	public Condition_ImplElements getCondition_ImplAccess() {
+		return (pCondition_Impl != null) ? pCondition_Impl : (pCondition_Impl = new Condition_ImplElements());
+	}
+	
+	public ParserRule getCondition_ImplRule() {
+		return getCondition_ImplAccess().getRule();
+	}
+
+	//Procedure_Impl returns Procedure:
+	//
+	//	{Procedure} "Procedure" name=EString "{" ("description" description=EString)? ("executable" executable=EString)?
+	//
+	//	("join" join=JoinType)? ("split" split=SplitType)? ("capacity" capacity=EInt)? ("inputLinks" "("
+	//
+	//	inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ")")? ("outputLinks" "{" outputLinks+=Link (","
+	//
+	//	outputLinks+=Link)* "}")? "}";
+	public Procedure_ImplElements getProcedure_ImplAccess() {
+		return (pProcedure_Impl != null) ? pProcedure_Impl : (pProcedure_Impl = new Procedure_ImplElements());
+	}
+	
+	public ParserRule getProcedure_ImplRule() {
+		return getProcedure_ImplAccess().getRule();
+	}
+
+	//ForEachLoop:
+	//
+	//	"ForEachLoop" name=EString "{" ("description" description=EString)? ("executable" executable=EString)? ("join"
+	//
+	//	join=JoinType)? ("split" split=SplitType)? ("capacity" capacity=EInt)? ("inputLinks" "(" inputLinks+=[Link|EString]
+	//
+	//	("," inputLinks+=[Link|EString])* ")")? "iterable" iterable=[Data|EString] ("outputLinks" "{" outputLinks+=Link (","
+	//
+	//	outputLinks+=Link)* "}")? "}";
+	public ForEachLoopElements getForEachLoopAccess() {
+		return (pForEachLoop != null) ? pForEachLoop : (pForEachLoop = new ForEachLoopElements());
+	}
+	
+	public ParserRule getForEachLoopRule() {
+		return getForEachLoopAccess().getRule();
+	}
+
+	//WhileLoop:
+	//
+	//	"WhileLoop" name=EString "{" ("description" description=EString)? ("executable" executable=EString)? ("join"
+	//
+	//	join=JoinType)? ("split" split=SplitType)? ("capacity" capacity=EInt)? ("inputLinks" "(" inputLinks+=[Link|EString]
+	//
+	//	("," inputLinks+=[Link|EString])* ")")? "predicate" predicate=[Predicate|EString] ("outputLinks" "{"
+	//
+	//	outputLinks+=Link ("," outputLinks+=Link)* "}")? "}";
+	public WhileLoopElements getWhileLoopAccess() {
+		return (pWhileLoop != null) ? pWhileLoop : (pWhileLoop = new WhileLoopElements());
+	}
+	
+	public ParserRule getWhileLoopRule() {
+		return getWhileLoopAccess().getRule();
+	}
+
+	//Handler:
+	//
+	//	{Handler} "Handler" name=EString "{" ("description" description=EString)? ("executable" executable=EString)? ("join"
+	//
+	//	join=JoinType)? ("split" split=SplitType)? ("capacity" capacity=EInt)? ("inputLinks" "(" inputLinks+=[Link|EString]
+	//
+	//	("," inputLinks+=[Link|EString])* ")")? ("procedures" "(" procedures+=[Procedure|EString] (","
+	//
+	//	procedures+=[Procedure|EString])* ")")? ("outputLinks" "{" outputLinks+=Link ("," outputLinks+=Link)* "}")? "}";
+	public HandlerElements getHandlerAccess() {
+		return (pHandler != null) ? pHandler : (pHandler = new HandlerElements());
+	}
+	
+	public ParserRule getHandlerRule() {
+		return getHandlerAccess().getRule();
+	}
+
+	//Pipeline:
+	//
+	//	"Pipeline" name=EString "{" ("description" description=EString)? ("executable" executable=EString)? ("join"
+	//
+	//	join=JoinType)? ("split" split=SplitType)? ("capacity" capacity=EInt)? ("inputLinks" "(" inputLinks+=[Link|EString]
+	//
+	//	("," inputLinks+=[Link|EString])* ")")? "iterable" iterable=[Data|EString] ("outputLinks" "{" outputLinks+=Link (","
+	//
+	//	outputLinks+=Link)* "}")? ("procedures" "{" procedures+=Procedure ("," procedures+=Procedure)* "}")? "}";
+	public PipelineElements getPipelineAccess() {
+		return (pPipeline != null) ? pPipeline : (pPipeline = new PipelineElements());
+	}
+	
+	public ParserRule getPipelineRule() {
+		return getPipelineAccess().getRule();
+	}
+
+	//Data:
+	//
+	//	{Data} "Data" name=EString "{" ("description" description=EString)? ("type" type=EString)? "}";
+	public DataElements getDataAccess() {
+		return (pData != null) ? pData : (pData = new DataElements());
+	}
+	
+	public ParserRule getDataRule() {
+		return getDataAccess().getRule();
 	}
 
 	//terminal ID:
+	//
 	//	"^"? ("a".."z" | "A".."Z" | "_") ("a".."z" | "A".."Z" | "_" | "0".."9")*;
 	public TerminalRule getIDRule() {
 		return gaTerminals.getIDRule();
 	} 
 
 	//terminal INT returns ecore::EInt:
+	//
 	//	"0".."9"+;
 	public TerminalRule getINTRule() {
 		return gaTerminals.getINTRule();
 	} 
 
 	//terminal STRING:
+	//
 	//	"\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\""))* "\"" | "\'" ("\\" ("b" | "t" |
+	//
 	//	"n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\'"))* "\'";
 	public TerminalRule getSTRINGRule() {
 		return gaTerminals.getSTRINGRule();
 	} 
 
 	//terminal ML_COMMENT:
+	//
 	//	"/ *"->"* /";
 	public TerminalRule getML_COMMENTRule() {
 		return gaTerminals.getML_COMMENTRule();
 	} 
 
 	//terminal SL_COMMENT:
+	//
 	//	"//" !("\n" | "\r")* ("\r"? "\n")?;
 	public TerminalRule getSL_COMMENTRule() {
 		return gaTerminals.getSL_COMMENTRule();
 	} 
 
 	//terminal WS:
+	//
 	//	(" " | "\t" | "\r" | "\n")+;
 	public TerminalRule getWSRule() {
 		return gaTerminals.getWSRule();
 	} 
 
 	//terminal ANY_OTHER:
+	//
 	//	.;
 	public TerminalRule getANY_OTHERRule() {
 		return gaTerminals.getANY_OTHERRule();

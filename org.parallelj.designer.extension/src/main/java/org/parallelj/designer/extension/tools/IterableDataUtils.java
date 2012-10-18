@@ -27,7 +27,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
-import org.parallelj.designer.extension.Activator;
 import org.parallelj.model.Data;
 
 /**

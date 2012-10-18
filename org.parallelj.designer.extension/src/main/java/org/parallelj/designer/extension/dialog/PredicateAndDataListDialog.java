@@ -62,6 +62,7 @@ import org.parallelj.model.Data;
 import org.parallelj.model.Element;
 import org.parallelj.model.ForEachLoop;
 import org.parallelj.model.Link;
+import org.parallelj.model.Pipeline;
 import org.parallelj.model.Predicate;
 import org.parallelj.model.Program;
 import org.parallelj.model.provider.ParallelJEditPlugin;
@@ -382,7 +383,7 @@ public class PredicateAndDataListDialog {
 			}
 		}
 		if (program != null) {
-			if (this.inputEObject instanceof ForEachLoop) {
+			if (this.inputEObject instanceof ForEachLoop || this.inputEObject instanceof Pipeline) {
 				EList<Data> datas = program.getData();
 				for (Data data : datas) {
 					IterableDataUtils.populateIterableData(contents, data);

@@ -201,12 +201,12 @@ public class ParallelJSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ParallelJPackage.BLOCK: {
-				Block block = (Block)theEObject;
-				T result = caseBlock(block);
-				if (result == null) result = caseProcedure(block);
-				if (result == null) result = caseElement(block);
-				if (result == null) result = caseNamedElement(block);
+			case ParallelJPackage.PIPELINE: {
+				Pipeline pipeline = (Pipeline)theEObject;
+				T result = casePipeline(pipeline);
+				if (result == null) result = caseProcedure(pipeline);
+				if (result == null) result = caseElement(pipeline);
+				if (result == null) result = caseNamedElement(pipeline);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -455,17 +455,17 @@ public class ParallelJSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Block</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Pipeline</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Block</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Pipeline</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseBlock(Block object) {
+	public T casePipeline(Pipeline object) {
 		return null;
 	}
 

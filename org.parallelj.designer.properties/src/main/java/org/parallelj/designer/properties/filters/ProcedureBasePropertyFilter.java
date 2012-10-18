@@ -24,6 +24,7 @@ package org.parallelj.designer.properties.filters;
 import org.eclipse.emf.ecore.EObject;
 import org.parallelj.ixea.Filter;
 import org.parallelj.model.ParallelJPackage;
+import org.parallelj.model.Pipeline;
 
 public class ProcedureBasePropertyFilter extends Filter {
 
@@ -32,7 +33,8 @@ public class ProcedureBasePropertyFilter extends Filter {
 		EObject eObjectToTest = this.convertToEMF(toTest);
 		return eObjectToTest != null
 				&& eObjectToTest.eClass() == ParallelJPackage.eINSTANCE
-						.getProcedure();
+						.getProcedure()
+				&& !(eObjectToTest.eContainer() instanceof Pipeline);
 	}
 
 }

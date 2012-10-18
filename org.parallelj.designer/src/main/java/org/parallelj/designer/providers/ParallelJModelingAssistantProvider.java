@@ -41,15 +41,15 @@ import org.eclipse.jface.window.Window;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.dialogs.ElementListSelectionDialog;
-import org.parallelj.designer.edit.parts.BlockBlockCompartmentEditPart;
-import org.parallelj.designer.edit.parts.BlockEditPart;
-import org.parallelj.designer.edit.parts.BlockProcedureEditPart;
 import org.parallelj.designer.edit.parts.BusinessProcedureEditPart;
 import org.parallelj.designer.edit.parts.ConditionEditPart;
 import org.parallelj.designer.edit.parts.ForEachLoopEditPart;
 import org.parallelj.designer.edit.parts.HandlerEditPart;
 import org.parallelj.designer.edit.parts.InputConditionEditPart;
 import org.parallelj.designer.edit.parts.OutputConditionEditPart;
+import org.parallelj.designer.edit.parts.PipelineEditPart;
+import org.parallelj.designer.edit.parts.PipelinePipelineCompartmentEditPart;
+import org.parallelj.designer.edit.parts.PipelineProcedureEditPart;
 import org.parallelj.designer.edit.parts.ProcedureEditPart;
 import org.parallelj.designer.edit.parts.ProgramProgramCompartmentEditPart;
 import org.parallelj.designer.edit.parts.SpecificationEditPart;
@@ -84,14 +84,14 @@ public class ParallelJModelingAssistantProvider extends
 			types.add(ParallelJElementTypes.ForEachLoop_3006);
 			types.add(ParallelJElementTypes.WhileLoop_3007);
 			types.add(ParallelJElementTypes.Handler_3008);
-			types.add(ParallelJElementTypes.Block_3012);
+			types.add(ParallelJElementTypes.Pipeline_3015);
 			types.add(ParallelJElementTypes.Data_3011);
 			types.add(ParallelJElementTypes.BusinessProcedure_3014);
 			return types;
 		}
-		if (editPart instanceof BlockBlockCompartmentEditPart) {
+		if (editPart instanceof PipelinePipelineCompartmentEditPart) {
 			ArrayList<IElementType> types = new ArrayList<IElementType>(1);
-			types.add(ParallelJElementTypes.Procedure_3013);
+			types.add(ParallelJElementTypes.Procedure_3016);
 			return types;
 		}
 		return Collections.EMPTY_LIST;
@@ -127,11 +127,11 @@ public class ParallelJModelingAssistantProvider extends
 		if (sourceEditPart instanceof HandlerEditPart) {
 			return ((HandlerEditPart) sourceEditPart).getMARelTypesOnSource();
 		}
-		if (sourceEditPart instanceof BlockEditPart) {
-			return ((BlockEditPart) sourceEditPart).getMARelTypesOnSource();
+		if (sourceEditPart instanceof PipelineEditPart) {
+			return ((PipelineEditPart) sourceEditPart).getMARelTypesOnSource();
 		}
-		if (sourceEditPart instanceof BlockProcedureEditPart) {
-			return ((BlockProcedureEditPart) sourceEditPart)
+		if (sourceEditPart instanceof PipelineProcedureEditPart) {
+			return ((PipelineProcedureEditPart) sourceEditPart)
 					.getMARelTypesOnSource();
 		}
 		if (sourceEditPart instanceof BusinessProcedureEditPart) {
@@ -171,11 +171,11 @@ public class ParallelJModelingAssistantProvider extends
 		if (targetEditPart instanceof HandlerEditPart) {
 			return ((HandlerEditPart) targetEditPart).getMARelTypesOnTarget();
 		}
-		if (targetEditPart instanceof BlockEditPart) {
-			return ((BlockEditPart) targetEditPart).getMARelTypesOnTarget();
+		if (targetEditPart instanceof PipelineEditPart) {
+			return ((PipelineEditPart) targetEditPart).getMARelTypesOnTarget();
 		}
-		if (targetEditPart instanceof BlockProcedureEditPart) {
-			return ((BlockProcedureEditPart) targetEditPart)
+		if (targetEditPart instanceof PipelineProcedureEditPart) {
+			return ((PipelineProcedureEditPart) targetEditPart)
 					.getMARelTypesOnTarget();
 		}
 		if (targetEditPart instanceof BusinessProcedureEditPart) {
@@ -222,12 +222,12 @@ public class ParallelJModelingAssistantProvider extends
 			return ((HandlerEditPart) sourceEditPart)
 					.getMARelTypesOnSourceAndTarget(targetEditPart);
 		}
-		if (sourceEditPart instanceof BlockEditPart) {
-			return ((BlockEditPart) sourceEditPart)
+		if (sourceEditPart instanceof PipelineEditPart) {
+			return ((PipelineEditPart) sourceEditPart)
 					.getMARelTypesOnSourceAndTarget(targetEditPart);
 		}
-		if (sourceEditPart instanceof BlockProcedureEditPart) {
-			return ((BlockProcedureEditPart) sourceEditPart)
+		if (sourceEditPart instanceof PipelineProcedureEditPart) {
+			return ((PipelineProcedureEditPart) sourceEditPart)
 					.getMARelTypesOnSourceAndTarget(targetEditPart);
 		}
 		if (sourceEditPart instanceof BusinessProcedureEditPart) {
@@ -272,12 +272,12 @@ public class ParallelJModelingAssistantProvider extends
 			return ((HandlerEditPart) targetEditPart)
 					.getMATypesForSource(relationshipType);
 		}
-		if (targetEditPart instanceof BlockEditPart) {
-			return ((BlockEditPart) targetEditPart)
+		if (targetEditPart instanceof PipelineEditPart) {
+			return ((PipelineEditPart) targetEditPart)
 					.getMATypesForSource(relationshipType);
 		}
-		if (targetEditPart instanceof BlockProcedureEditPart) {
-			return ((BlockProcedureEditPart) targetEditPart)
+		if (targetEditPart instanceof PipelineProcedureEditPart) {
+			return ((PipelineProcedureEditPart) targetEditPart)
 					.getMATypesForSource(relationshipType);
 		}
 		if (targetEditPart instanceof BusinessProcedureEditPart) {
@@ -322,12 +322,12 @@ public class ParallelJModelingAssistantProvider extends
 			return ((HandlerEditPart) sourceEditPart)
 					.getMATypesForTarget(relationshipType);
 		}
-		if (sourceEditPart instanceof BlockEditPart) {
-			return ((BlockEditPart) sourceEditPart)
+		if (sourceEditPart instanceof PipelineEditPart) {
+			return ((PipelineEditPart) sourceEditPart)
 					.getMATypesForTarget(relationshipType);
 		}
-		if (sourceEditPart instanceof BlockProcedureEditPart) {
-			return ((BlockProcedureEditPart) sourceEditPart)
+		if (sourceEditPart instanceof PipelineProcedureEditPart) {
+			return ((PipelineProcedureEditPart) sourceEditPart)
 					.getMATypesForTarget(relationshipType);
 		}
 		if (sourceEditPart instanceof BusinessProcedureEditPart) {

@@ -26,10 +26,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
-import org.parallelj.model.Block;
 import org.parallelj.model.BusinessProcedure;
 import org.parallelj.model.Condition;
 import org.parallelj.model.Data;
@@ -46,6 +43,7 @@ import org.parallelj.model.NamedElement;
 import org.parallelj.model.OutputCondition;
 import org.parallelj.model.ParallelJFactory;
 import org.parallelj.model.ParallelJPackage;
+import org.parallelj.model.Pipeline;
 import org.parallelj.model.Predicate;
 import org.parallelj.model.Procedure;
 import org.parallelj.model.Program;
@@ -170,7 +168,7 @@ public class ParallelJPackageImpl extends EPackageImpl implements ParallelJPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass blockEClass = null;
+	private EClass pipelineEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -199,13 +197,6 @@ public class ParallelJPackageImpl extends EPackageImpl implements ParallelJPacka
 	 * @generated
 	 */
 	private EEnum joinTypeEEnum = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EEnum executionModeEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -498,15 +489,6 @@ public class ParallelJPackageImpl extends EPackageImpl implements ParallelJPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getProcedure_ExecutionMode() {
-		return (EAttribute)procedureEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getForEachLoop() {
 		return forEachLoopEClass;
 	}
@@ -606,8 +588,8 @@ public class ParallelJPackageImpl extends EPackageImpl implements ParallelJPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getBlock() {
-		return blockEClass;
+	public EClass getPipeline() {
+		return pipelineEClass;
 	}
 
 	/**
@@ -615,8 +597,17 @@ public class ParallelJPackageImpl extends EPackageImpl implements ParallelJPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getBlock_Procedures() {
-		return (EReference)blockEClass.getEStructuralFeatures().get(0);
+	public EReference getPipeline_Procedures() {
+		return (EReference)pipelineEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPipeline_Iterable() {
+		return (EReference)pipelineEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -671,15 +662,6 @@ public class ParallelJPackageImpl extends EPackageImpl implements ParallelJPacka
 	 */
 	public EEnum getJoinType() {
 		return joinTypeEEnum;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EEnum getExecutionMode() {
-		return executionModeEEnum;
 	}
 
 	/**
@@ -743,7 +725,6 @@ public class ParallelJPackageImpl extends EPackageImpl implements ParallelJPacka
 		createEAttribute(procedureEClass, PROCEDURE__JOIN);
 		createEAttribute(procedureEClass, PROCEDURE__SPLIT);
 		createEAttribute(procedureEClass, PROCEDURE__CAPACITY);
-		createEAttribute(procedureEClass, PROCEDURE__EXECUTION_MODE);
 
 		forEachLoopEClass = createEClass(FOR_EACH_LOOP);
 		createEReference(forEachLoopEClass, FOR_EACH_LOOP__ITERABLE);
@@ -762,8 +743,9 @@ public class ParallelJPackageImpl extends EPackageImpl implements ParallelJPacka
 		handlerEClass = createEClass(HANDLER);
 		createEReference(handlerEClass, HANDLER__PROCEDURES);
 
-		blockEClass = createEClass(BLOCK);
-		createEReference(blockEClass, BLOCK__PROCEDURES);
+		pipelineEClass = createEClass(PIPELINE);
+		createEReference(pipelineEClass, PIPELINE__PROCEDURES);
+		createEReference(pipelineEClass, PIPELINE__ITERABLE);
 
 		namedElementEClass = createEClass(NAMED_ELEMENT);
 		createEAttribute(namedElementEClass, NAMED_ELEMENT__NAME);
@@ -774,7 +756,6 @@ public class ParallelJPackageImpl extends EPackageImpl implements ParallelJPacka
 		// Create enums
 		splitTypeEEnum = createEEnum(SPLIT_TYPE);
 		joinTypeEEnum = createEEnum(JOIN_TYPE);
-		executionModeEEnum = createEEnum(EXECUTION_MODE);
 	}
 
 	/**
@@ -817,7 +798,7 @@ public class ParallelJPackageImpl extends EPackageImpl implements ParallelJPacka
 		whileLoopEClass.getESuperTypes().add(this.getProcedure());
 		dataEClass.getESuperTypes().add(this.getNamedElement());
 		handlerEClass.getESuperTypes().add(this.getProcedure());
-		blockEClass.getESuperTypes().add(this.getProcedure());
+		pipelineEClass.getESuperTypes().add(this.getProcedure());
 		businessProcedureEClass.getESuperTypes().add(this.getProcedure());
 
 		// Initialize classes and features; add operations and parameters
@@ -854,7 +835,6 @@ public class ParallelJPackageImpl extends EPackageImpl implements ParallelJPacka
 		initEAttribute(getProcedure_Join(), this.getJoinType(), "join", "", 0, 1, Procedure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProcedure_Split(), this.getSplitType(), "split", null, 0, 1, Procedure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProcedure_Capacity(), ecorePackage.getEInt(), "capacity", "1", 0, 1, Procedure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getProcedure_ExecutionMode(), this.getExecutionMode(), "executionMode", null, 0, 1, Procedure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(forEachLoopEClass, ForEachLoop.class, "ForEachLoop", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getForEachLoop_Iterable(), this.getData(), null, "iterable", null, 1, 1, ForEachLoop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -873,8 +853,9 @@ public class ParallelJPackageImpl extends EPackageImpl implements ParallelJPacka
 		initEClass(handlerEClass, Handler.class, "Handler", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getHandler_Procedures(), this.getProcedure(), null, "procedures", null, 0, -1, Handler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(blockEClass, Block.class, "Block", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getBlock_Procedures(), this.getProcedure(), null, "procedures", null, 0, -1, Block.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(pipelineEClass, Pipeline.class, "Pipeline", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getPipeline_Procedures(), this.getProcedure(), null, "procedures", null, 0, -1, Pipeline.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPipeline_Iterable(), this.getData(), null, "iterable", null, 1, 1, Pipeline.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(namedElementEClass, NamedElement.class, "NamedElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNamedElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -892,11 +873,6 @@ public class ParallelJPackageImpl extends EPackageImpl implements ParallelJPacka
 		addEEnumLiteral(joinTypeEEnum, JoinType.AND);
 		addEEnumLiteral(joinTypeEEnum, JoinType.OR);
 		addEEnumLiteral(joinTypeEEnum, JoinType.XOR);
-
-		initEEnum(executionModeEEnum, ExecutionMode.class, "ExecutionMode");
-		addEEnumLiteral(executionModeEEnum, ExecutionMode.PARALLEL);
-		addEEnumLiteral(executionModeEEnum, ExecutionMode.ITERATIVE);
-		addEEnumLiteral(executionModeEEnum, ExecutionMode.STREAM);
 
 		// Create resource
 		createResource(eNS_URI);

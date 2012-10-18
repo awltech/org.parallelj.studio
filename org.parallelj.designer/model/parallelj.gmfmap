@@ -120,7 +120,7 @@
           <domainMetaElement
               href="../../org.parallelj.model/model/parallelj.ecore#//Procedure"/>
           <domainSpecialization
-              body="not self.oclIsTypeOf(ForEachLoop) and not self.oclIsTypeOf(WhileLoop) and not self.oclIsTypeOf(Handler) and not self.oclIsTypeOf(Block) and not self.oclIsTypeOf(BusinessProcedure)"/>
+              body="not self.oclIsTypeOf(ForEachLoop) and not self.oclIsTypeOf(WhileLoop) and not self.oclIsTypeOf(Handler) and not self.oclIsTypeOf(Pipeline) and not self.oclIsTypeOf(BusinessProcedure)"/>
           <labelMappings
               xsi:type="gmfmap:FeatureLabelMapping">
             <diagramLabel
@@ -240,28 +240,33 @@
             href="../../org.parallelj.model/model/parallelj.ecore#//Program/elements"/>
         <ownedChild>
           <domainMetaElement
-              href="../../org.parallelj.model/model/parallelj.ecore#//Block"/>
+              href="../../org.parallelj.model/model/parallelj.ecore#//Pipeline"/>
           <labelMappings
               xsi:type="gmfmap:FeatureLabelMapping">
             <diagramLabel
-                href="parallelj.gmfgraph#BlockName"/>
+                href="parallelj.gmfgraph#PipelineName"/>
             <features
                 href="../../org.parallelj.model/model/parallelj.ecore#//NamedElement/name"/>
           </labelMappings>
           <labelMappings>
             <diagramLabel
-                href="parallelj.gmfgraph#BlockIcon"/>
+                href="parallelj.gmfgraph#PipelineIterable"/>
+          </labelMappings>
+          <labelMappings
+              readOnly="true">
+            <diagramLabel
+                href="parallelj.gmfgraph#PipelineIcon"/>
           </labelMappings>
           <tool
               xsi:type="gmftool:CreationTool"
               href="parallelj.gmftool#//@palette/@tools.2/@tools.0"/>
           <diagramNode
-              href="parallelj.gmfgraph#Block"/>
+              href="parallelj.gmfgraph#Pipeline"/>
           <children
               compartment="//@nodes.0/@ownedChild/@children.8/@ownedChild/@compartments.0"
               referencedChild="//@nodes.0/@ownedChild/@children.8/@ownedChild">
             <containmentFeature
-                href="../../org.parallelj.model/model/parallelj.ecore#//Block/procedures"/>
+                href="../../org.parallelj.model/model/parallelj.ecore#//Pipeline/procedures"/>
             <ownedChild>
               <domainMetaElement
                   href="../../org.parallelj.model/model/parallelj.ecore#//Procedure"/>
@@ -290,7 +295,7 @@
           <compartments
               children="//@nodes.0/@ownedChild/@children.8/@ownedChild/@children.0">
             <compartment
-                href="parallelj.gmfgraph#BlockCompartment"/>
+                href="parallelj.gmfgraph#PipelineCompartment"/>
           </compartments>
         </ownedChild>
       </children>
@@ -370,9 +375,9 @@
         href="../../org.parallelj.model/model/parallelj.ecore#//Link/destination"/>
     <creationConstraints>
       <sourceEnd
-          body="not oclIsKindOf(OutputCondition) and not eContainer().oclIsKindOf(Block) and not oclIsKindOf(Data) and not oclIsKindOf(Predicate) and not oclIsKindOf(Block)"/>
+          body="not oclIsKindOf(OutputCondition) and not eContainer().oclIsKindOf(Pipeline) and not oclIsKindOf(Data) and not oclIsKindOf(Predicate)"/>
       <targetEnd
-          body="not oclIsKindOf(InputCondition) and not oclIsKindOf(Handler) and if oclIsKindOf(Condition) then not oppositeEnd.oclIsKindOf(Condition) else true endif and oppositeEnd.outputLinks -> select (p | p.destination = self ) -> size() &lt;> 1 and not eContainer().oclIsKindOf(Block) and not oclIsKindOf(Data) and not oclIsKindOf(Predicate) and not oclIsKindOf(Block)"/>
+          body="not oclIsKindOf(InputCondition) and not oclIsKindOf(Handler) and if oclIsKindOf(Condition) then not oppositeEnd.oclIsKindOf(Condition) else true endif and oppositeEnd.outputLinks -> select (p | p.destination = self ) -> size() &lt;> 1 and not eContainer().oclIsKindOf(Pipeline) and not oclIsKindOf(Data) and not oclIsKindOf(Predicate)"/>
     </creationConstraints>
   </links>
   <diagram>

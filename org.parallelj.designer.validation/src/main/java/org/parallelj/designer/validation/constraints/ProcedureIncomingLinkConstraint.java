@@ -26,12 +26,12 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.AbstractModelConstraint;
 import org.eclipse.emf.validation.IValidationContext;
 import org.parallelj.model.Handler;
-import org.parallelj.model.Block;
+import org.parallelj.model.Pipeline;
 import org.parallelj.model.Procedure;
 
 /**
  * Constraint: Checks if Procedure has at least one incoming links except the
- * Handler, Block and Procedures from Block.
+ * Handler, Pipeline and Procedures from Pipeline.
  * 
  */
 public class ProcedureIncomingLinkConstraint extends AbstractModelConstraint {
@@ -48,8 +48,7 @@ public class ProcedureIncomingLinkConstraint extends AbstractModelConstraint {
 		EObject eObject = ctx.getTarget();
 		if (eObject instanceof Procedure) {
 			Procedure procedure = (Procedure) eObject;
-			if (!(procedure instanceof Block)
-					&& !(procedure.eContainer() instanceof Block)
+			if (!(procedure.eContainer() instanceof Pipeline)
 					&& !(procedure instanceof Handler)
 					&& (procedure.getInputLinks() == null || procedure
 							.getInputLinks().size() == 0)) {

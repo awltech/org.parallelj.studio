@@ -677,10 +677,6 @@
                 left="1"/>
           </border>
         </children>
-        <children
-            xsi:type="gmfgraph:Label"
-            name="ForEachLoopExecutionModeFigure"
-            text="&lt;...>"/>
       </actualFigure>
       <accessors
           figure="//@figures.0/@descriptors.6/@actualFigure/@children.1/@children.0"/>
@@ -703,8 +699,6 @@
       <accessors
           accessor="getFigureForEachLoopIterablePrecedingFigure"
           figure="//@figures.0/@descriptors.6/@actualFigure/@children.1/@children.2/@children.0"/>
-      <accessors
-          figure="//@figures.0/@descriptors.6/@actualFigure/@children.3"/>
     </descriptors>
     <descriptors
         name="WhileLoopFigure">
@@ -943,10 +937,6 @@
                 left="1"/>
           </border>
         </children>
-        <children
-            xsi:type="gmfgraph:Label"
-            name="WhileLoopExecutionModeFigure"
-            text="&lt;...>"/>
       </actualFigure>
       <accessors
           figure="//@figures.0/@descriptors.7/@actualFigure/@children.1/@children.0"/>
@@ -969,8 +959,6 @@
       <accessors
           accessor="getFigureWhileLoopPredicatePrecedingFigure"
           figure="//@figures.0/@descriptors.7/@actualFigure/@children.1/@children.2/@children.0"/>
-      <accessors
-          figure="//@figures.0/@descriptors.7/@actualFigure/@children.3"/>
     </descriptors>
     <descriptors
         name="ConditionFigure">
@@ -1131,10 +1119,10 @@
           figure="//@figures.0/@descriptors.10/@actualFigure/@children.1"/>
     </descriptors>
     <descriptors
-        name="BlockFigure">
+        name="PipelineFigure">
       <actualFigure
           xsi:type="gmfgraph:Rectangle"
-          name="BlockFigure"
+          name="PipelineFigure"
           outline="false">
         <layout
             xsi:type="gmfgraph:GridLayout">
@@ -1146,7 +1134,7 @@
             dy="89"/>
         <children
             xsi:type="gmfgraph:Rectangle"
-            name="BlockUpperFigure"
+            name="PipelineUpperFigure"
             outline="false"
             fill="false">
           <layoutData
@@ -1165,13 +1153,13 @@
           </layout>
           <children
               xsi:type="gmfgraph:Label"
-              name="BlockLeftFigure">
+              name="PipelineJoinFigure">
             <layoutData
                 xsi:type="gmfgraph:GridLayoutData"
                 horizontalAlignment="BEGINNING">
               <sizeHint
                   dx="43"
-                  dy="32"/>
+                  dy="40"/>
             </layoutData>
             <border
                 xsi:type="gmfgraph:MarginBorder">
@@ -1182,7 +1170,7 @@
           </children>
           <children
               xsi:type="gmfgraph:Rectangle"
-              name="BlockNameHolder"
+              name="PipelineNameHolder"
               outline="false"
               fill="false">
             <layoutData
@@ -1191,7 +1179,6 @@
                 verticalAlignment="BEGINNING"/>
             <layout
                 xsi:type="gmfgraph:GridLayout"
-                numColumns="2"
                 equalWidth="false">
               <margins/>
               <spacing/>
@@ -1199,53 +1186,136 @@
             <border
                 xsi:type="gmfgraph:MarginBorder">
               <insets
-                  top="5"/>
+                  top="4"/>
             </border>
             <children
-                xsi:type="gmfgraph:Label"
-                name="BlockIconFigure">
+                xsi:type="gmfgraph:Rectangle"
+                name="PipelineNameHolderFigure"
+                outline="false"
+                fill="false">
               <layoutData
                   xsi:type="gmfgraph:GridLayoutData"
                   grabExcessHorizontalSpace="true"
                   verticalSpan="0"
                   horizontalSpan="0"/>
+              <layout
+                  xsi:type="gmfgraph:GridLayout"
+                  numColumns="2"
+                  equalWidth="false">
+                <margins/>
+                <spacing/>
+              </layout>
+              <border
+                  xsi:type="gmfgraph:MarginBorder">
+                <insets/>
+              </border>
+              <children
+                  xsi:type="gmfgraph:Label"
+                  name="PipelineIconFigure">
+                <layoutData
+                    xsi:type="gmfgraph:GridLayoutData"
+                    grabExcessHorizontalSpace="true"
+                    verticalSpan="0"
+                    horizontalSpan="0">
+                  <sizeHint
+                      dx="26"
+                      dy="25"/>
+                </layoutData>
+              </children>
+              <children
+                  xsi:type="gmfgraph:Label"
+                  name="PipelineNameFigure"
+                  text="&lt;...>">
+                <layoutData
+                    xsi:type="gmfgraph:GridLayoutData"
+                    grabExcessHorizontalSpace="true"
+                    verticalSpan="0"
+                    horizontalSpan="0"/>
+                <font
+                    xsi:type="gmfgraph:BasicFont"
+                    height="10"
+                    style="BOLD"/>
+              </children>
             </children>
             <children
-                xsi:type="gmfgraph:Label"
-                name="BlockNameFigure"
-                text="&lt;...>">
+                xsi:type="gmfgraph:Rectangle"
+                name="PipelineIterableHolderFigure"
+                outline="false"
+                fill="false">
               <layoutData
                   xsi:type="gmfgraph:GridLayoutData"
                   grabExcessHorizontalSpace="true"
                   verticalSpan="0"
                   horizontalSpan="0"/>
-              <font
-                  xsi:type="gmfgraph:BasicFont"
-                  height="10"
-                  style="BOLD"/>
+              <layout
+                  xsi:type="gmfgraph:GridLayout"
+                  numColumns="2"
+                  equalWidth="false">
+                <margins/>
+                <spacing/>
+              </layout>
+              <border
+                  xsi:type="gmfgraph:MarginBorder">
+                <insets
+                    top="-3"
+                    bottom="-1"/>
+              </border>
+              <children
+                  xsi:type="gmfgraph:Label"
+                  name="PipelineIterablePrecedingFigure"
+                  text="">
+                <layoutData
+                    xsi:type="gmfgraph:GridLayoutData"
+                    grabExcessHorizontalSpace="true"
+                    verticalSpan="0"
+                    horizontalSpan="0">
+                  <sizeHint
+                      dx="21"
+                      dy="15"/>
+                </layoutData>
+                <foregroundColor
+                    xsi:type="gmfgraph:ConstantColor"
+                    value="black"/>
+                <font
+                    xsi:type="gmfgraph:BasicFont"
+                    height="8"
+                    style="BOLD"/>
+              </children>
+              <children
+                  xsi:type="gmfgraph:Label"
+                  name="PipelineIterableFigure">
+                <layoutData
+                    xsi:type="gmfgraph:GridLayoutData"
+                    grabExcessHorizontalSpace="true"
+                    verticalSpan="0"
+                    horizontalSpan="0"/>
+                <font
+                    xsi:type="gmfgraph:BasicFont"
+                    height="8"/>
+              </children>
             </children>
           </children>
           <children
               xsi:type="gmfgraph:Label"
-              name="BlockRightFigure">
+              name="PipelineSplitFigure">
             <layoutData
                 xsi:type="gmfgraph:GridLayoutData"
                 horizontalAlignment="END">
               <sizeHint
                   dx="43"
-                  dy="32"/>
+                  dy="40"/>
             </layoutData>
             <border
                 xsi:type="gmfgraph:MarginBorder">
               <insets
                   top="1"
-                  left="1"/>
+                  left="5"/>
             </border>
           </children>
         </children>
         <children
             xsi:type="gmfgraph:Rectangle"
-            name="BlockCompartmentHolder"
+            name="PipelineCompartmentHolder"
             outline="false"
             fill="false">
           <layoutData
@@ -1263,7 +1333,7 @@
           </layout>
           <children
               xsi:type="gmfgraph:Rectangle"
-              name="BlockCompartmentFigure">
+              name="PipelineCompartmentFigure">
             <layoutData
                 xsi:type="gmfgraph:GridLayoutData"
                 grabExcessHorizontalSpace="true"
@@ -1282,18 +1352,26 @@
         </children>
       </actualFigure>
       <accessors
-          accessor="getFigureBlockRightFigure"
+          accessor="getFigurePipelineSplitFigure"
           figure="//@figures.0/@descriptors.11/@actualFigure/@children.0/@children.2"/>
       <accessors
+          accessor="getFigurePipelineJoinFigure"
           figure="//@figures.0/@descriptors.11/@actualFigure/@children.0/@children.0"/>
       <accessors
-          accessor="getFigureBlockIconFigure"
-          figure="//@figures.0/@descriptors.11/@actualFigure/@children.0/@children.1/@children.0"/>
+          accessor="getFigurePipelineNameFigure"
+          figure="//@figures.0/@descriptors.11/@actualFigure/@children.0/@children.1/@children.0/@children.1"/>
       <accessors
-          figure="//@figures.0/@descriptors.11/@actualFigure/@children.0/@children.1/@children.1"/>
-      <accessors
-          accessor="getFigureBlockCompartmentFigure"
+          accessor="getFigurePipelineCompartmentFigure"
           figure="//@figures.0/@descriptors.11/@actualFigure/@children.1/@children.0"/>
+      <accessors
+          accessor="getFigurePipelineIterablePrecedingFigure"
+          figure="//@figures.0/@descriptors.11/@actualFigure/@children.0/@children.1/@children.1/@children.0"/>
+      <accessors
+          accessor="getFigurePipelineIterableFigure"
+          figure="//@figures.0/@descriptors.11/@actualFigure/@children.0/@children.1/@children.1/@children.1"/>
+      <accessors
+          accessor="getFigurePipelineIconFigure"
+          figure="//@figures.0/@descriptors.11/@actualFigure/@children.0/@children.1/@children.0/@children.0"/>
     </descriptors>
     <descriptors
         name="BusinessProcedureFigure">
@@ -1431,8 +1509,8 @@
       figure="HandlerFigure"
       resizeConstraint="EAST_WEST"/>
   <nodes
-      name="Block"
-      figure="BlockFigure"
+      name="Pipeline"
+      figure="PipelineFigure"
       resizeConstraint="EAST_WEST"/>
   <nodes
       name="BusinessProcedure"
@@ -1446,8 +1524,22 @@
       figure="ProgramFigure"
       accessor="//@figures.0/@descriptors.0/@accessors.0"/>
   <compartments
-      name="BlockCompartment"
-      figure="BlockFigure"
+      name="PipelineCompartment"
+      figure="PipelineFigure"
+      accessor="//@figures.0/@descriptors.11/@accessors.3"/>
+  <labels
+      name="PipelineIcon"
+      figure="PipelineFigure"
+      accessor="//@figures.0/@descriptors.11/@accessors.6"/>
+  <labels
+      name="PipelineIterable"
+      figure="PipelineFigure"
+      elementIcon="false"
+      accessor="//@figures.0/@descriptors.11/@accessors.5"/>
+  <labels
+      name="PipelineIterablePreceding"
+      figure="PipelineFigure"
+      elementIcon="false"
       accessor="//@figures.0/@descriptors.11/@accessors.4"/>
   <labels
       name="LinkPredicateInfo"
@@ -1601,24 +1693,18 @@
       affixedParentSide="EAST"
       accessor="//@figures.0/@descriptors.10/@accessors.1"/>
   <labels
-      name="BlockIcon"
-      figure="BlockFigure"
-      accessor="//@figures.0/@descriptors.11/@accessors.2"/>
-  <labels
-      name="BlockName"
-      figure="BlockFigure"
+      name="PipelineName"
+      figure="PipelineFigure"
       elementIcon="false"
-      accessor="//@figures.0/@descriptors.11/@accessors.3"/>
+      accessor="//@figures.0/@descriptors.11/@accessors.2"/>
   <labels
       name="ForEachLoopExecutionMode"
       figure="ForEachLoopFigure"
-      elementIcon="false"
-      accessor="//@figures.0/@descriptors.6/@accessors.8"/>
+      elementIcon="false"/>
   <labels
       name="WhileLoopExecutionMode"
       figure="WhileLoopFigure"
-      elementIcon="false"
-      accessor="//@figures.0/@descriptors.7/@accessors.8"/>
+      elementIcon="false"/>
   <labels
       name="BusinessProcedureName"
       figure="BusinessProcedureFigure"

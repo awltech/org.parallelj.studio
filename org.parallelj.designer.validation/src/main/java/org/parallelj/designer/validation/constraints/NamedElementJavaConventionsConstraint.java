@@ -114,7 +114,7 @@ public class NamedElementJavaConventionsConstraint extends
 				Formatting.METHOD);
 		formattingPerClass.put(ParallelJPackage.eINSTANCE.getWhileLoop(),
 				Formatting.METHOD);
-		formattingPerClass.put(ParallelJPackage.eINSTANCE.getBlock(),
+		formattingPerClass.put(ParallelJPackage.eINSTANCE.getPipeline(),
 				Formatting.METHOD);
 		formattingPerClass.put(ParallelJPackage.eINSTANCE.getCondition(),
 				Formatting.FIELD);

@@ -97,7 +97,7 @@ public class HandlerExtendedEditPart extends HandlerEditPart {
 
 	/**
 	 * This will find the all the managed
-	 * procedures/forEachLoops/whileLoops/handlers/blocks and based on parameter
+	 * procedures/forEachLoops/whileLoops/handlers/pipelines and based on parameter
 	 * it will show object highlighted or will clear.
 	 * 
 	 */
@@ -181,20 +181,20 @@ public class HandlerExtendedEditPart extends HandlerEditPart {
 							handlerExtendedEditPart.clearSelection();
 						}
 					}
-				} else if (object instanceof BlockExtendedEditPart) {
-					BlockExtendedEditPart blockExtendedEditPart = (BlockExtendedEditPart) object;
-					EObject element = ((View) blockExtendedEditPart.getModel())
+				} else if (object instanceof PipelineExtendedEditPart) {
+					PipelineExtendedEditPart pipelineExtendedEditPart = (PipelineExtendedEditPart) object;
+					EObject element = ((View) pipelineExtendedEditPart.getModel())
 							.getElement();
 					if (element instanceof Procedure) {
 						innerProcedure = (Procedure) element;
 						if (checkMatch(procedures, innerProcedure)) {
 							if (isSelected) {
-								blockExtendedEditPart.showSelected();
+								pipelineExtendedEditPart.showSelected();
 							} else {
-								blockExtendedEditPart.clearSelection();
+								pipelineExtendedEditPart.clearSelection();
 							}
 						} else {
-							blockExtendedEditPart.clearSelection();
+							pipelineExtendedEditPart.clearSelection();
 						}
 					}
 				} else if (object instanceof BusinessProcedureExtendedEditPart) {
@@ -237,8 +237,8 @@ public class HandlerExtendedEditPart extends HandlerEditPart {
 				((ForEachLoopExtendedEditPart) object).clearSelection();
 			} else if (object instanceof HandlerExtendedEditPart) {
 				((HandlerExtendedEditPart) object).clearSelection();
-			} else if (object instanceof BlockExtendedEditPart) {
-				((BlockExtendedEditPart) object).clearSelection();
+			} else if (object instanceof PipelineExtendedEditPart) {
+				((PipelineExtendedEditPart) object).clearSelection();
 			} else if (object instanceof BusinessProcedureExtendedEditPart) {
 				((BusinessProcedureExtendedEditPart) object).clearSelection();
 			}

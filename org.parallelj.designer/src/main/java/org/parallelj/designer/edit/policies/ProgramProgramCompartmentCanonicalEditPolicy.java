@@ -43,7 +43,6 @@ import org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewRequest;
 import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
-import org.parallelj.designer.edit.parts.BlockEditPart;
 import org.parallelj.designer.edit.parts.BusinessProcedureEditPart;
 import org.parallelj.designer.edit.parts.ConditionEditPart;
 import org.parallelj.designer.edit.parts.DataEditPart;
@@ -51,6 +50,7 @@ import org.parallelj.designer.edit.parts.ForEachLoopEditPart;
 import org.parallelj.designer.edit.parts.HandlerEditPart;
 import org.parallelj.designer.edit.parts.InputConditionEditPart;
 import org.parallelj.designer.edit.parts.OutputConditionEditPart;
+import org.parallelj.designer.edit.parts.PipelineEditPart;
 import org.parallelj.designer.edit.parts.PredicateEditPart;
 import org.parallelj.designer.edit.parts.ProcedureEditPart;
 import org.parallelj.designer.edit.parts.WhileLoopEditPart;
@@ -136,7 +136,7 @@ public class ProgramProgramCompartmentCanonicalEditPolicy extends
 		case ForEachLoopEditPart.VISUAL_ID:
 		case WhileLoopEditPart.VISUAL_ID:
 		case HandlerEditPart.VISUAL_ID:
-		case BlockEditPart.VISUAL_ID:
+		case PipelineEditPart.VISUAL_ID:
 		case DataEditPart.VISUAL_ID:
 		case BusinessProcedureEditPart.VISUAL_ID:
 			return true;

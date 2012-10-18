@@ -332,10 +332,10 @@ public class BusinessProcedureEditPart extends ShapeNodeEditPart {
 		if (targetEditPart instanceof HandlerEditPart) {
 			types.add(ParallelJElementTypes.Link_4001);
 		}
-		if (targetEditPart instanceof BlockEditPart) {
+		if (targetEditPart instanceof PipelineEditPart) {
 			types.add(ParallelJElementTypes.Link_4001);
 		}
-		if (targetEditPart instanceof BlockProcedureEditPart) {
+		if (targetEditPart instanceof PipelineProcedureEditPart) {
 			types.add(ParallelJElementTypes.Link_4001);
 		}
 		if (targetEditPart instanceof org.parallelj.designer.edit.parts.BusinessProcedureEditPart) {
@@ -357,8 +357,8 @@ public class BusinessProcedureEditPart extends ShapeNodeEditPart {
 			types.add(ParallelJElementTypes.ForEachLoop_3006);
 			types.add(ParallelJElementTypes.WhileLoop_3007);
 			types.add(ParallelJElementTypes.Handler_3008);
-			types.add(ParallelJElementTypes.Block_3012);
-			types.add(ParallelJElementTypes.Procedure_3013);
+			types.add(ParallelJElementTypes.Pipeline_3015);
+			types.add(ParallelJElementTypes.Procedure_3016);
 			types.add(ParallelJElementTypes.BusinessProcedure_3014);
 		}
 		return types;
@@ -386,8 +386,8 @@ public class BusinessProcedureEditPart extends ShapeNodeEditPart {
 			types.add(ParallelJElementTypes.ForEachLoop_3006);
 			types.add(ParallelJElementTypes.WhileLoop_3007);
 			types.add(ParallelJElementTypes.Handler_3008);
-			types.add(ParallelJElementTypes.Block_3012);
-			types.add(ParallelJElementTypes.Procedure_3013);
+			types.add(ParallelJElementTypes.Pipeline_3015);
+			types.add(ParallelJElementTypes.Procedure_3016);
 			types.add(ParallelJElementTypes.BusinessProcedure_3014);
 		}
 		return types;

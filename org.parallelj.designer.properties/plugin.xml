@@ -100,9 +100,9 @@
 				tab="Base">
 			</propertySection>
 			<propertySection
-				class="org.parallelj.designer.properties.sections.BlockBasePropertySection"
-				filter="org.parallelj.designer.properties.filters.BlockBasePropertyFilter"
-				id="org.parallelj.section.BlockBasePropertySection"
+				class="org.parallelj.designer.properties.sections.PipelineBasePropertySection"
+				filter="org.parallelj.designer.properties.filters.PipelineBasePropertyFilter"
+				id="org.parallelj.section.PipelineBasePropertySection"
 				tab="Base">
 			</propertySection>
   			<propertySection
@@ -116,6 +116,12 @@
            class="org.parallelj.designer.properties.sections.BusinessProcedureBasePropertySection"
            filter="org.parallelj.designer.properties.filters.BusinessProcedureBasePropertyFilter"
            id="org.parallelj.section.BusinessProcedureBasePropertySection"
+           tab="Base">
+     </propertySection>
+     <propertySection
+           class="org.parallelj.designer.properties.sections.PipelineProcedureBasePropertySection"
+           filter="org.parallelj.designer.properties.filters.PipelineProcedureBasePropertyFilter"
+           id="org.parallelj.section.PipelineProcedureBasePropertySection"
            tab="Base">
      </propertySection>			
 		</propertySections>

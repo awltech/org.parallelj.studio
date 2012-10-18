@@ -289,7 +289,7 @@ public class ProgramItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(ParallelJPackage.Literals.PROGRAM__ELEMENTS,
-				 ParallelJFactory.eINSTANCE.createBlock()));
+				 ParallelJFactory.eINSTANCE.createPipeline()));
 
 		newChildDescriptors.add
 			(createChildParameter

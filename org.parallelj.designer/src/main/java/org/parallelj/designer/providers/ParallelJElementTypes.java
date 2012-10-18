@@ -36,8 +36,6 @@ import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.swt.graphics.Image;
-import org.parallelj.designer.edit.parts.BlockEditPart;
-import org.parallelj.designer.edit.parts.BlockProcedureEditPart;
 import org.parallelj.designer.edit.parts.BusinessProcedureEditPart;
 import org.parallelj.designer.edit.parts.ConditionEditPart;
 import org.parallelj.designer.edit.parts.DataEditPart;
@@ -46,6 +44,8 @@ import org.parallelj.designer.edit.parts.HandlerEditPart;
 import org.parallelj.designer.edit.parts.InputConditionEditPart;
 import org.parallelj.designer.edit.parts.LinkEditPart;
 import org.parallelj.designer.edit.parts.OutputConditionEditPart;
+import org.parallelj.designer.edit.parts.PipelineEditPart;
+import org.parallelj.designer.edit.parts.PipelineProcedureEditPart;
 import org.parallelj.designer.edit.parts.PredicateEditPart;
 import org.parallelj.designer.edit.parts.ProcedureEditPart;
 import org.parallelj.designer.edit.parts.ProgramEditPart;
@@ -123,12 +123,12 @@ public class ParallelJElementTypes {
 	/**
 	 * @generated
 	 */
-	public static final IElementType Block_3012 = getElementType("org.parallelj.designer.Block_3012"); //$NON-NLS-1$
+	public static final IElementType Pipeline_3015 = getElementType("org.parallelj.designer.Pipeline_3015"); //$NON-NLS-1$
 
 	/**
 	 * @generated
 	 */
-	public static final IElementType Procedure_3013 = getElementType("org.parallelj.designer.Procedure_3013"); //$NON-NLS-1$
+	public static final IElementType Procedure_3016 = getElementType("org.parallelj.designer.Procedure_3016"); //$NON-NLS-1$
 
 	/**
 	 * @generated
@@ -283,9 +283,10 @@ public class ParallelJElementTypes {
 
 			elements.put(Handler_3008, ParallelJPackage.eINSTANCE.getHandler());
 
-			elements.put(Block_3012, ParallelJPackage.eINSTANCE.getBlock());
+			elements.put(Pipeline_3015,
+					ParallelJPackage.eINSTANCE.getPipeline());
 
-			elements.put(Procedure_3013,
+			elements.put(Procedure_3016,
 					ParallelJPackage.eINSTANCE.getProcedure());
 
 			elements.put(Data_3011, ParallelJPackage.eINSTANCE.getData());
@@ -321,8 +322,8 @@ public class ParallelJElementTypes {
 			KNOWN_ELEMENT_TYPES.add(ForEachLoop_3006);
 			KNOWN_ELEMENT_TYPES.add(WhileLoop_3007);
 			KNOWN_ELEMENT_TYPES.add(Handler_3008);
-			KNOWN_ELEMENT_TYPES.add(Block_3012);
-			KNOWN_ELEMENT_TYPES.add(Procedure_3013);
+			KNOWN_ELEMENT_TYPES.add(Pipeline_3015);
+			KNOWN_ELEMENT_TYPES.add(Procedure_3016);
 			KNOWN_ELEMENT_TYPES.add(Data_3011);
 			KNOWN_ELEMENT_TYPES.add(BusinessProcedure_3014);
 			KNOWN_ELEMENT_TYPES.add(Link_4001);
@@ -355,10 +356,10 @@ public class ParallelJElementTypes {
 			return WhileLoop_3007;
 		case HandlerEditPart.VISUAL_ID:
 			return Handler_3008;
-		case BlockEditPart.VISUAL_ID:
-			return Block_3012;
-		case BlockProcedureEditPart.VISUAL_ID:
-			return Procedure_3013;
+		case PipelineEditPart.VISUAL_ID:
+			return Pipeline_3015;
+		case PipelineProcedureEditPart.VISUAL_ID:
+			return Procedure_3016;
 		case DataEditPart.VISUAL_ID:
 			return Data_3011;
 		case BusinessProcedureEditPart.VISUAL_ID:

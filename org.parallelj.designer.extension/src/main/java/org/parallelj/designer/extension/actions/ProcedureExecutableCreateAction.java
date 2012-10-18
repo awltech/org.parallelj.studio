@@ -35,7 +35,7 @@ import org.parallelj.model.ParallelJPackage;
 
 /**
  * Action based on AbstractDiagramPopupAction, for creating Executable for
- * Procedure and sub-type (but the Handler and Block)
+ * Procedure and sub-type (but the Handler and Pipeline)
  */
 public class ProcedureExecutableCreateAction extends AbstractDiagramPopupAction {
 

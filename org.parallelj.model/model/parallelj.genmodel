@@ -21,11 +21,6 @@
       <genEnumLiterals ecoreEnumLiteral="parallelj.ecore#//JoinType/OR"/>
       <genEnumLiterals ecoreEnumLiteral="parallelj.ecore#//JoinType/XOR"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="parallelj.ecore#//ExecutionMode">
-      <genEnumLiterals ecoreEnumLiteral="parallelj.ecore#//ExecutionMode/PARALLEL"/>
-      <genEnumLiterals ecoreEnumLiteral="parallelj.ecore#//ExecutionMode/ITERATIVE"/>
-      <genEnumLiterals ecoreEnumLiteral="parallelj.ecore#//ExecutionMode/STREAM"/>
-    </genEnums>
     <genClasses ecoreClass="parallelj.ecore#//Program">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference parallelj.ecore#//Program/inputCondition"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference parallelj.ecore#//Program/outputCondition"/>
@@ -55,7 +50,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute parallelj.ecore#//Procedure/join"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute parallelj.ecore#//Procedure/split"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute parallelj.ecore#//Procedure/capacity"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute parallelj.ecore#//Procedure/executionMode"/>
     </genClasses>
     <genClasses ecoreClass="parallelj.ecore#//ForEachLoop">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference parallelj.ecore#//ForEachLoop/iterable"/>
@@ -73,8 +67,9 @@
     <genClasses ecoreClass="parallelj.ecore#//Handler">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference parallelj.ecore#//Handler/procedures"/>
     </genClasses>
-    <genClasses ecoreClass="parallelj.ecore#//Block">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference parallelj.ecore#//Block/procedures"/>
+    <genClasses ecoreClass="parallelj.ecore#//Pipeline">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference parallelj.ecore#//Pipeline/procedures"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference parallelj.ecore#//Pipeline/iterable"/>
     </genClasses>
     <genClasses ecoreClass="parallelj.ecore#//NamedElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute parallelj.ecore#//NamedElement/name"/>

@@ -25,7 +25,6 @@ import org.parallelj.designer.properties.helpers.ParallelJPropertiesMessages;
 import org.parallelj.designer.properties.zones.CapacityZone;
 import org.parallelj.designer.properties.zones.DescriptionZone;
 import org.parallelj.designer.properties.zones.ExecutableZone;
-import org.parallelj.designer.properties.zones.ExecutionModeZone;
 import org.parallelj.designer.properties.zones.HelpZone;
 import org.parallelj.designer.properties.zones.IterableZone;
 import org.parallelj.designer.properties.zones.JoinZone;
@@ -72,13 +71,6 @@ public class ForEachLoopBasePropertySection extends Section {
 				"helpIterable",
 				new HelpZone(getBackGround(), false,
 						ParallelJPropertiesMessages.help_iterable.message()));
-		getZones().put("executionModeZone",
-				new ExecutionModeZone(getBackGround(), false));
-		getZones().put(
-				"helpExecutionMode",
-				new HelpZone(getBackGround(), false,
-						ParallelJPropertiesMessages.help_execution_mode
-								.message()));
 		getZones().put("outputLinksZone",
 				new OutputLinksZone(getBackGround(), false));
 		getZones()
@@ -128,14 +120,8 @@ public class ForEachLoopBasePropertySection extends Section {
 				.right(getZone("helpIterable")).apply(getZone("iterableZone"));
 
 		new FormDataBuilder().top(getZone("helpIterable")).right()
-				.apply(getZone("helpExecutionMode"));
-		new FormDataBuilder().top(getZone("helpIterable")).left()
-				.right(getZone("helpExecutionMode"))
-				.apply(getZone("executionModeZone"));
-
-		new FormDataBuilder().top(getZone("helpExecutionMode")).right()
 				.apply(getZone("helpOutputLinks"));
-		new FormDataBuilder().top(getZone("helpExecutionMode")).left()
+		new FormDataBuilder().top(getZone("helpIterable")).left()
 				.right(getZone("helpOutputLinks"))
 				.apply(getZone("outputLinksZone"));
 

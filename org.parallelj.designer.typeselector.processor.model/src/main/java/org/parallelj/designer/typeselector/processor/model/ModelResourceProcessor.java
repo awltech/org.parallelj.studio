@@ -29,14 +29,9 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.parallelj.model.Block;
-import org.parallelj.model.Element;
 import org.parallelj.model.ParallelJPackage;
 import org.parallelj.model.Program;
 import org.parallelj.model.Specification;
-import org.parallelj.model.impl.BlockImpl;
-import org.parallelj.model.impl.ForEachLoopImpl;
-import org.parallelj.model.impl.WhileLoopImpl;
 
 /**
  * Class to extracts all Parallel J Model Types from Resource
@@ -96,33 +91,6 @@ public class ModelResourceProcessor {
 				break;
 			}
 		}
-
-		Program program = selectedObject.eContainer() instanceof Program ? (Program) selectedObject
-				.eContainer() : null;
-		if (program != null) {
-			for (Element e : program.getElements()) {
-				if (e instanceof BlockImpl
-						&& !isAlreadyUsed((BlockImpl) e, selectedObject)) {
-					Block block = (BlockImpl) e;
-					String typePatternAsString = block.getName();
-					String packagePatternAsString = "";
-					if (typePatternAsString.contains(".")) {
-						packagePatternAsString = typePatternAsString.substring(
-								0, typePatternAsString.lastIndexOf("."));
-						typePatternAsString = typePatternAsString
-								.substring(typePatternAsString.lastIndexOf(".") + 1);
-					}
-
-					ModelTypeInfo blockType = new ModelTypeInfo(
-							typePatternAsString, packagePatternAsString,
-							ModelType.create(block.eClass()));
-
-					if (!typeInfos.contains(blockType.getElementName())) {
-						typeInfos.add(blockType);
-					}
-				}
-			}
-		}
 		return typeInfos;
 	}
 
@@ -133,28 +101,7 @@ public class ModelResourceProcessor {
 			ModelResourceProcessor.validEClasses.add(ParallelJPackage.eINSTANCE
 					.getProgram());
 			ModelResourceProcessor.validEClasses.add(ParallelJPackage.eINSTANCE
-					.getBlock());
-		}
-
-	}
-
-	private boolean isAlreadyUsed(Block p, EObject selectedObject) {
-		if (selectedObject instanceof ForEachLoopImpl) {
-			if (((ForEachLoopImpl) selectedObject).getExecutable() == null) {
-				return false;
-			} else {
-				return ((ForEachLoopImpl) selectedObject).getExecutable()
-						.equals(p.getName());
-			}
-		} else if (selectedObject instanceof WhileLoopImpl) {
-			if (((WhileLoopImpl) selectedObject).getExecutable() == null) {
-				return false;
-			} else {
-				return ((WhileLoopImpl) selectedObject).getExecutable().equals(
-						p.getName());
-			}
-		} else {
-			return true;
+					.getPipeline());
 		}
 	}
 }

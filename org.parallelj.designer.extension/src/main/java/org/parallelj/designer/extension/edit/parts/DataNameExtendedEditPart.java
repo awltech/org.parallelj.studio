@@ -25,7 +25,6 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.swt.graphics.Image;
 import org.parallelj.designer.edit.parts.DataEditPart;
 import org.parallelj.designer.edit.parts.DataNameEditPart;
-import org.parallelj.designer.extension.Activator;
 import org.parallelj.designer.extension.tools.ImageLoader;
 import org.parallelj.designer.extension.tools.IterableDataUtils;
 import org.parallelj.model.Data;

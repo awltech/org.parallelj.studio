@@ -437,26 +437,26 @@ public class ParallelJItemProviderAdapterFactory extends ParallelJAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.parallelj.model.Block} instances.
+	 * This keeps track of the one adapter used for all {@link org.parallelj.model.Pipeline} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected BlockItemProvider blockItemProvider;
+	protected PipelineItemProvider pipelineItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.parallelj.model.Block}.
+	 * This creates an adapter for a {@link org.parallelj.model.Pipeline}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createBlockAdapter() {
-		if (blockItemProvider == null) {
-			blockItemProvider = new BlockItemProvider(this);
+	public Adapter createPipelineAdapter() {
+		if (pipelineItemProvider == null) {
+			pipelineItemProvider = new PipelineItemProvider(this);
 		}
 
-		return blockItemProvider;
+		return pipelineItemProvider;
 	}
 
 	/**
@@ -619,7 +619,7 @@ public class ParallelJItemProviderAdapterFactory extends ParallelJAdapterFactory
 		if (metaInformationContainerItemProvider != null) metaInformationContainerItemProvider.dispose();
 		if (metaInformationItemProvider != null) metaInformationItemProvider.dispose();
 		if (handlerItemProvider != null) handlerItemProvider.dispose();
-		if (blockItemProvider != null) blockItemProvider.dispose();
+		if (pipelineItemProvider != null) pipelineItemProvider.dispose();
 		if (namedElementItemProvider != null) namedElementItemProvider.dispose();
 		if (businessProcedureItemProvider != null) businessProcedureItemProvider.dispose();
 	}

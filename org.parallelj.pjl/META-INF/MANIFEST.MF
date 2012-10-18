@@ -23,4 +23,6 @@ Export-Package: org.parallelj,
  org.parallelj.parseTreeConstruction,
  org.parallelj.parser.antlr,
  org.parallelj.parser.antlr.internal,
- org.parallelj.validation
+ org.parallelj.validation,
+ org.parallelj.scoping,
+ org.parallelj.formatting

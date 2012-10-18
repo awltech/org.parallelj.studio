@@ -354,12 +354,12 @@ public class Messages extends NLS {
 	/**
 	 * @generated
 	 */
-	public static String Block1CreationTool_title;
+	public static String Pipeline1CreationTool_title;
 
 	/**
 	 * @generated
 	 */
-	public static String Block1CreationTool_desc;
+	public static String Pipeline1CreationTool_desc;
 
 	/**
 	 * @generated
@@ -399,7 +399,7 @@ public class Messages extends NLS {
 	/**
 	 * @generated
 	 */
-	public static String BlockBlockCompartmentEditPart_title;
+	public static String PipelinePipelineCompartmentEditPart_title;
 
 	/**
 	 * @generated
@@ -449,16 +449,6 @@ public class Messages extends NLS {
 	/**
 	 * @generated
 	 */
-	public static String NavigatorGroupName_Procedure_3013_incominglinks;
-
-	/**
-	 * @generated
-	 */
-	public static String NavigatorGroupName_Procedure_3013_outgoinglinks;
-
-	/**
-	 * @generated
-	 */
 	public static String NavigatorGroupName_BusinessProcedure_3014_incominglinks;
 
 	/**
@@ -475,6 +465,16 @@ public class Messages extends NLS {
 	 * @generated
 	 */
 	public static String NavigatorGroupName_WhileLoop_3007_outgoinglinks;
+
+	/**
+	 * @generated
+	 */
+	public static String NavigatorGroupName_Pipeline_3015_incominglinks;
+
+	/**
+	 * @generated
+	 */
+	public static String NavigatorGroupName_Pipeline_3015_outgoinglinks;
 
 	/**
 	 * @generated
@@ -504,22 +504,22 @@ public class Messages extends NLS {
 	/**
 	 * @generated
 	 */
-	public static String NavigatorGroupName_Block_3012_incominglinks;
-
-	/**
-	 * @generated
-	 */
-	public static String NavigatorGroupName_Block_3012_outgoinglinks;
-
-	/**
-	 * @generated
-	 */
 	public static String NavigatorGroupName_InputCondition_3001_incominglinks;
 
 	/**
 	 * @generated
 	 */
 	public static String NavigatorGroupName_InputCondition_3001_outgoinglinks;
+
+	/**
+	 * @generated
+	 */
+	public static String NavigatorGroupName_Procedure_3016_incominglinks;
+
+	/**
+	 * @generated
+	 */
+	public static String NavigatorGroupName_Procedure_3016_outgoinglinks;
 
 	/**
 	 * @generated

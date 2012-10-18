@@ -176,13 +176,13 @@ public interface ParallelJFactory extends EFactory {
 	Handler createHandler();
 
 	/**
-	 * Returns a new object of class '<em>Block</em>'.
+	 * Returns a new object of class '<em>Pipeline</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Block</em>'.
+	 * @return a new object of class '<em>Pipeline</em>'.
 	 * @generated
 	 */
-	Block createBlock();
+	Pipeline createPipeline();
 
 	/**
 	 * Returns a new object of class '<em>Named Element</em>'.

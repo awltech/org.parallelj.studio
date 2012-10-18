@@ -29,6 +29,7 @@ import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.GridData;
 import org.eclipse.draw2d.GridLayout;
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.LineBorder;
 import org.eclipse.draw2d.MarginBorder;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.RectangleFigure;
@@ -351,10 +352,10 @@ public class ForEachLoopEditPart extends ShapeNodeEditPart {
 		if (targetEditPart instanceof HandlerEditPart) {
 			types.add(ParallelJElementTypes.Link_4001);
 		}
-		if (targetEditPart instanceof BlockEditPart) {
+		if (targetEditPart instanceof PipelineEditPart) {
 			types.add(ParallelJElementTypes.Link_4001);
 		}
-		if (targetEditPart instanceof BlockProcedureEditPart) {
+		if (targetEditPart instanceof PipelineProcedureEditPart) {
 			types.add(ParallelJElementTypes.Link_4001);
 		}
 		if (targetEditPart instanceof BusinessProcedureEditPart) {
@@ -376,8 +377,8 @@ public class ForEachLoopEditPart extends ShapeNodeEditPart {
 			types.add(ParallelJElementTypes.ForEachLoop_3006);
 			types.add(ParallelJElementTypes.WhileLoop_3007);
 			types.add(ParallelJElementTypes.Handler_3008);
-			types.add(ParallelJElementTypes.Block_3012);
-			types.add(ParallelJElementTypes.Procedure_3013);
+			types.add(ParallelJElementTypes.Pipeline_3015);
+			types.add(ParallelJElementTypes.Procedure_3016);
 			types.add(ParallelJElementTypes.BusinessProcedure_3014);
 		}
 		return types;
@@ -405,8 +406,8 @@ public class ForEachLoopEditPart extends ShapeNodeEditPart {
 			types.add(ParallelJElementTypes.ForEachLoop_3006);
 			types.add(ParallelJElementTypes.WhileLoop_3007);
 			types.add(ParallelJElementTypes.Handler_3008);
-			types.add(ParallelJElementTypes.Block_3012);
-			types.add(ParallelJElementTypes.Procedure_3013);
+			types.add(ParallelJElementTypes.Pipeline_3015);
+			types.add(ParallelJElementTypes.Procedure_3016);
 			types.add(ParallelJElementTypes.BusinessProcedure_3014);
 		}
 		return types;
@@ -450,11 +451,6 @@ public class ForEachLoopEditPart extends ShapeNodeEditPart {
 		 * @generated
 		 */
 		private WrappingLabel fFigureForEachLoopIterablePrecedingFigure;
-
-		/**
-		 * @generated
-		 */
-		private WrappingLabel fFigureForEachLoopExecutionModeFigure;
 
 		/**
 		 * @generated
@@ -741,11 +737,6 @@ public class ForEachLoopEditPart extends ShapeNodeEditPart {
 			this.add(fFigureForEachLoopSplitFigure,
 					constraintFFigureForEachLoopSplitFigure);
 
-			fFigureForEachLoopExecutionModeFigure = new WrappingLabel();
-			fFigureForEachLoopExecutionModeFigure.setText("<...>");
-
-			this.add(fFigureForEachLoopExecutionModeFigure);
-
 		}
 
 		/**
@@ -802,13 +793,6 @@ public class ForEachLoopEditPart extends ShapeNodeEditPart {
 		 */
 		public WrappingLabel getFigureForEachLoopIterablePrecedingFigure() {
 			return fFigureForEachLoopIterablePrecedingFigure;
-		}
-
-		/**
-		 * @generated
-		 */
-		public WrappingLabel getFigureForEachLoopExecutionModeFigure() {
-			return fFigureForEachLoopExecutionModeFigure;
 		}
 
 	}

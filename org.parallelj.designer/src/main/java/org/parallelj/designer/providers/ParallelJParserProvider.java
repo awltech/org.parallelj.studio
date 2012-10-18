@@ -33,9 +33,6 @@ import org.eclipse.gmf.runtime.common.ui.services.parser.ParserService;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.emf.ui.services.parser.ParserHintAdapter;
 import org.eclipse.gmf.runtime.notation.View;
-import org.parallelj.designer.edit.parts.BlockNameEditPart;
-import org.parallelj.designer.edit.parts.BlockProcedureExecutableEditPart;
-import org.parallelj.designer.edit.parts.BlockProcedureNameEditPart;
 import org.parallelj.designer.edit.parts.BusinessProcedureNameEditPart;
 import org.parallelj.designer.edit.parts.ConditionNameEditPart;
 import org.parallelj.designer.edit.parts.DataNameEditPart;
@@ -43,6 +40,9 @@ import org.parallelj.designer.edit.parts.DataTypeEditPart;
 import org.parallelj.designer.edit.parts.ForEachLoopExecutableEditPart;
 import org.parallelj.designer.edit.parts.ForEachLoopNameEditPart;
 import org.parallelj.designer.edit.parts.HandlerNameEditPart;
+import org.parallelj.designer.edit.parts.PipelineNameEditPart;
+import org.parallelj.designer.edit.parts.PipelineProcedureExecutableEditPart;
+import org.parallelj.designer.edit.parts.PipelineProcedureNameEditPart;
 import org.parallelj.designer.edit.parts.PredicateNameEditPart;
 import org.parallelj.designer.edit.parts.ProcedureExecutableEditPart;
 import org.parallelj.designer.edit.parts.ProcedureNameEditPart;
@@ -242,55 +242,55 @@ public class ParallelJParserProvider extends AbstractProvider implements
 	/**
 	 * @generated
 	 */
-	private IParser blockName_5023Parser;
+	private IParser pipelineName_5028Parser;
 
 	/**
 	 * @generated
 	 */
-	private IParser getBlockName_5023Parser() {
-		if (blockName_5023Parser == null) {
+	private IParser getPipelineName_5028Parser() {
+		if (pipelineName_5028Parser == null) {
 			EAttribute[] features = new EAttribute[] { ParallelJPackage.eINSTANCE
 					.getNamedElement_Name() };
 			MessageFormatParser parser = new MessageFormatParser(features);
-			blockName_5023Parser = parser;
+			pipelineName_5028Parser = parser;
 		}
-		return blockName_5023Parser;
+		return pipelineName_5028Parser;
 	}
 
 	/**
 	 * @generated
 	 */
-	private IParser procedureName_5021Parser;
+	private IParser procedureName_5026Parser;
 
 	/**
 	 * @generated
 	 */
-	private IParser getProcedureName_5021Parser() {
-		if (procedureName_5021Parser == null) {
+	private IParser getProcedureName_5026Parser() {
+		if (procedureName_5026Parser == null) {
 			EAttribute[] features = new EAttribute[] { ParallelJPackage.eINSTANCE
 					.getNamedElement_Name() };
 			MessageFormatParser parser = new MessageFormatParser(features);
-			procedureName_5021Parser = parser;
+			procedureName_5026Parser = parser;
 		}
-		return procedureName_5021Parser;
+		return procedureName_5026Parser;
 	}
 
 	/**
 	 * @generated
 	 */
-	private IParser procedureExecutable_5022Parser;
+	private IParser procedureExecutable_5027Parser;
 
 	/**
 	 * @generated
 	 */
-	private IParser getProcedureExecutable_5022Parser() {
-		if (procedureExecutable_5022Parser == null) {
+	private IParser getProcedureExecutable_5027Parser() {
+		if (procedureExecutable_5027Parser == null) {
 			EAttribute[] features = new EAttribute[] { ParallelJPackage.eINSTANCE
 					.getProcedure_Executable() };
 			MessageFormatParser parser = new MessageFormatParser(features);
-			procedureExecutable_5022Parser = parser;
+			procedureExecutable_5027Parser = parser;
 		}
-		return procedureExecutable_5022Parser;
+		return procedureExecutable_5027Parser;
 	}
 
 	/**
@@ -372,12 +372,12 @@ public class ParallelJParserProvider extends AbstractProvider implements
 			return getWhileLoopExecutable_5011Parser();
 		case HandlerNameEditPart.VISUAL_ID:
 			return getHandlerName_5013Parser();
-		case BlockNameEditPart.VISUAL_ID:
-			return getBlockName_5023Parser();
-		case BlockProcedureNameEditPart.VISUAL_ID:
-			return getProcedureName_5021Parser();
-		case BlockProcedureExecutableEditPart.VISUAL_ID:
-			return getProcedureExecutable_5022Parser();
+		case PipelineNameEditPart.VISUAL_ID:
+			return getPipelineName_5028Parser();
+		case PipelineProcedureNameEditPart.VISUAL_ID:
+			return getProcedureName_5026Parser();
+		case PipelineProcedureExecutableEditPart.VISUAL_ID:
+			return getProcedureExecutable_5027Parser();
 		case DataNameEditPart.VISUAL_ID:
 			return getDataName_5018Parser();
 		case DataTypeEditPart.VISUAL_ID:

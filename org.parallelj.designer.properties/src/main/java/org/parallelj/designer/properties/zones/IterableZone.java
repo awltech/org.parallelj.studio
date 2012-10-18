@@ -24,6 +24,7 @@ package org.parallelj.designer.properties.zones;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -45,6 +46,7 @@ import org.parallelj.ixea.tools.FormDataBuilder;
 import org.parallelj.model.Data;
 import org.parallelj.model.ForEachLoop;
 import org.parallelj.model.ParallelJPackage;
+import org.parallelj.model.Pipeline;
 import org.parallelj.model.Program;
 
 public class IterableZone extends Zone {
@@ -85,14 +87,27 @@ public class IterableZone extends Zone {
 						&& !IterableZone.this.listenerLock) {
 					Object o = ((IStructuredSelection) event.getSelection())
 							.getFirstElement();
-					ForEachLoop fel = (ForEachLoop) getEObject();
-					if (o instanceof Data) {
-						Data dataOfTask = (Data) o;
-						Commands.doSetValue(getEditingDomain(), fel,
-								ParallelJPackage.eINSTANCE
-										.getForEachLoop_Iterable(), dataOfTask,
-								getEditPart());
+
+					if (getEObject() instanceof ForEachLoop) {
+						ForEachLoop fel = (ForEachLoop) getEObject();
+						if (o instanceof Data) {
+							Data dataOfTask = (Data) o;
+							Commands.doSetValue(getEditingDomain(), fel,
+									ParallelJPackage.eINSTANCE
+											.getForEachLoop_Iterable(),
+									dataOfTask, getEditPart());
+						}
+					} else if (getEObject() instanceof Pipeline) {
+						Pipeline pipe = (Pipeline) getEObject();
+						if (o instanceof Data) {
+							Data dataOfTask = (Data) o;
+							Commands.doSetValue(getEditingDomain(), pipe,
+									ParallelJPackage.eINSTANCE
+											.getPipeline_Iterable(),
+									dataOfTask, getEditPart());
+						}
 					}
+
 				}
 			}
 		};
@@ -104,13 +119,24 @@ public class IterableZone extends Zone {
 	@Override
 	public void updateItemsValues() {
 		iterableComboViewer.refresh();
-		ForEachLoop fel = (ForEachLoop) getEObject();
-		this.listenerLock = true;
-		iterableComboViewer.setInput(fel);
-		if (fel.getIterable() != null)
-			iterableComboViewer.setSelection(new StructuredSelection(fel
-					.getIterable()));
-		this.listenerLock = false;
+
+		if (getEObject() instanceof ForEachLoop) {
+			ForEachLoop fel = (ForEachLoop) getEObject();
+			this.listenerLock = true;
+			iterableComboViewer.setInput(fel);
+			if (fel.getIterable() != null)
+				iterableComboViewer.setSelection(new StructuredSelection(fel
+						.getIterable()));
+			this.listenerLock = false;
+		} else if (getEObject() instanceof Pipeline) {
+			Pipeline pipeline = (Pipeline) getEObject();
+			this.listenerLock = true;
+			iterableComboViewer.setInput(pipeline);
+			if (pipeline.getIterable() != null)
+				iterableComboViewer.setSelection(new StructuredSelection(
+						pipeline.getIterable()));
+			this.listenerLock = false;
+		}
 	}
 
 	private class LabelProvider implements ILabelProvider {
@@ -160,19 +186,30 @@ public class IterableZone extends Zone {
 		@Override
 		public Object[] getElements(Object inputElement) {
 			List<Data> iterableData = new ArrayList<Data>();
-			ForEachLoop currentForEach = (ForEachLoop) inputElement;
-			if (currentForEach.eContainer() instanceof Program) {
-				Program parentProgram = (Program) currentForEach.eContainer();
-				if (parentProgram.getData() != null) {
-					for (Data d : parentProgram.getData()) {
-						try {
-							if (d != null
-									&& d.getType() != null
-									&& IterableDataUtils
-											.isIterable(d.getType())) {
-								iterableData.add(d);
+
+			EObject obj = null;
+
+			if (getEObject() instanceof ForEachLoop) {
+				obj = (ForEachLoop) getEObject();
+			} else if (getEObject() instanceof Pipeline) {
+				obj = (Pipeline) getEObject();
+			}
+
+			if (obj != null) {
+				// ForEachLoop currentForEach = (ForEachLoop) inputElement;
+				if (obj.eContainer() instanceof Program) {
+					Program parentProgram = (Program) obj.eContainer();
+					if (parentProgram.getData() != null) {
+						for (Data d : parentProgram.getData()) {
+							try {
+								if (d != null
+										&& d.getType() != null
+										&& IterableDataUtils.isIterable(d
+												.getType())) {
+									iterableData.add(d);
+								}
+							} catch (ClassNotFoundException e) {
 							}
-						} catch (ClassNotFoundException e) {
 						}
 					}
 				}

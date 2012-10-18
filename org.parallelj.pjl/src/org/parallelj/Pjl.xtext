@@ -9,13 +9,6 @@ Specification returns Specification:
 	(programs+=Program ("," programs+=Program)*)?
 	('metaInformationContainer' metaInformationContainer=MetaInformationContainer)?;
 
-Element returns Element:
-	Element_Impl | InputCondition | OutputCondition | Condition_Impl | Procedure_Impl | ForEachLoop | WhileLoop | Handler
-	| Block | BusinessProcedure;
-
-Procedure returns Procedure:
-	Procedure_Impl | ForEachLoop | WhileLoop | Handler | Block | BusinessProcedure;
-
 Program returns Program:
 	'Program'
 	name=EString
@@ -36,28 +29,51 @@ MetaInformationContainer returns MetaInformationContainer:
 	('metaInformation' '{' metaInformation+=MetaInformation ("," metaInformation+=MetaInformation)* '}')?
 	'}';
 
+MetaInformation returns MetaInformation:
+	{MetaInformation}
+	'MetaInformation';
+
+BusinessProcedure returns BusinessProcedure:
+	{BusinessProcedure}
+	'BusinessProcedure'
+	name=EString
+	'{'
+	('description' description=EString)?
+	('executable' executable=EString)?
+	('join' join=JoinType)?
+	('split' split=SplitType)?
+	('capacity' capacity=EInt)?
+	('inputLinks' '(' inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ')')?
+	('outputLinks' '{' outputLinks+=Link ("," outputLinks+=Link)* '}')?
+	'}';
+
+Element returns Element:
+	Element_Impl | InputCondition | OutputCondition | Condition_Impl | Procedure_Impl | ForEachLoop | WhileLoop | Handler
+	| Pipeline | BusinessProcedure;
+
+Procedure returns Procedure:
+	Procedure_Impl | ForEachLoop | WhileLoop | Handler | Pipeline | BusinessProcedure;
+
 EString returns ecore::EString:
 	STRING | ID;
 
-InputCondition returns InputCondition:
-	{InputCondition}
-	'InputCondition'
+Link returns Link:
+	'Link'
 	name=EString
 	'{'
 	('description' description=EString)?
-	('inputLinks' '(' inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ')')?
-	('outputLinks' '{' outputLinks+=Link ("," outputLinks+=Link)* '}')?
+	('predicate' predicate=[Predicate|EString])?
+	'destination' destination=[Element|EString]
 	'}';
 
-OutputCondition returns OutputCondition:
-	{OutputCondition}
-	'OutputCondition'
-	name=EString
-	'{'
-	('description' description=EString)?
-	('inputLinks' '(' inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ')')?
-	('outputLinks' '{' outputLinks+=Link ("," outputLinks+=Link)* '}')?
-	'}';
+enum JoinType returns JoinType:
+	AND='AND' | OR='OR' | XOR='XOR';
+
+enum SplitType returns SplitType:
+	AND='AND' | OR='OR' | XOR='XOR';
+
+EInt returns ecore::EInt:
+	'-'? INT;
 
 Predicate returns Predicate:
 	{Predicate}
@@ -77,25 +93,24 @@ Element_Impl returns Element:
 	('outputLinks' '{' outputLinks+=Link ("," outputLinks+=Link)* '}')?
 	'}';
 
-Data returns Data:
-	{Data}
-	'Data'
+InputCondition returns InputCondition:
+	{InputCondition}
+	'InputCondition'
 	name=EString
 	'{'
 	('description' description=EString)?
-	('type' type=EString)?
+	('inputLinks' '(' inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ')')?
+	('outputLinks' '{' outputLinks+=Link ("," outputLinks+=Link)* '}')?
 	'}';
 
-EInt returns ecore::EInt:
-	'-'? INT;
-
-Link returns Link:
-	'Link'
+OutputCondition returns OutputCondition:
+	{OutputCondition}
+	'OutputCondition'
 	name=EString
 	'{'
 	('description' description=EString)?
-	('predicate' predicate=[Predicate|EString])?
-	'destination' destination=[Element|EString]
+	('inputLinks' '(' inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ')')?
+	('outputLinks' '{' outputLinks+=Link ("," outputLinks+=Link)* '}')?
 	'}';
 
 Condition_Impl returns Condition:
@@ -118,7 +133,6 @@ Procedure_Impl returns Procedure:
 	('join' join=JoinType)?
 	('split' split=SplitType)?
 	('capacity' capacity=EInt)?
-	('executionMode' executionMode=ExecutionMode)?
 	('inputLinks' '(' inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ')')?
 	('outputLinks' '{' outputLinks+=Link ("," outputLinks+=Link)* '}')?
 	'}';
@@ -132,7 +146,6 @@ ForEachLoop returns ForEachLoop:
 	('join' join=JoinType)?
 	('split' split=SplitType)?
 	('capacity' capacity=EInt)?
-	('executionMode' executionMode=ExecutionMode)?
 	('inputLinks' '(' inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ')')?
 	'iterable' iterable=[Data|EString]
 	('outputLinks' '{' outputLinks+=Link ("," outputLinks+=Link)* '}')?
@@ -147,7 +160,6 @@ WhileLoop returns WhileLoop:
 	('join' join=JoinType)?
 	('split' split=SplitType)?
 	('capacity' capacity=EInt)?
-	('executionMode' executionMode=ExecutionMode)?
 	('inputLinks' '(' inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ')')?
 	'predicate' predicate=[Predicate|EString]
 	('outputLinks' '{' outputLinks+=Link ("," outputLinks+=Link)* '}')?
@@ -163,15 +175,13 @@ Handler returns Handler:
 	('join' join=JoinType)?
 	('split' split=SplitType)?
 	('capacity' capacity=EInt)?
-	('executionMode' executionMode=ExecutionMode)?
 	('inputLinks' '(' inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ')')?
 	('procedures' '(' procedures+=[Procedure|EString] ("," procedures+=[Procedure|EString])* ')')?
 	('outputLinks' '{' outputLinks+=Link ("," outputLinks+=Link)* '}')?
 	'}';
 
-Block returns Block:
-	{Block}
-	'Block'
+Pipeline returns Pipeline:
+	'Pipeline'
 	name=EString
 	'{'
 	('description' description=EString)?
@@ -179,36 +189,17 @@ Block returns Block:
 	('join' join=JoinType)?
 	('split' split=SplitType)?
 	('capacity' capacity=EInt)?
-	('executionMode' executionMode=ExecutionMode)?
 	('inputLinks' '(' inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ')')?
+	'iterable' iterable=[Data|EString]
 	('outputLinks' '{' outputLinks+=Link ("," outputLinks+=Link)* '}')?
 	('procedures' '{' procedures+=Procedure ("," procedures+=Procedure)* '}')?
 	'}';
 
-BusinessProcedure returns BusinessProcedure:
-	{BusinessProcedure}
-	'BusinessProcedure'
+Data returns Data:
+	{Data}
+	'Data'
 	name=EString
 	'{'
 	('description' description=EString)?
-	('executable' executable=EString)?
-	('join' join=JoinType)?
-	('split' split=SplitType)?
-	('capacity' capacity=EInt)?
-	('executionMode' executionMode=ExecutionMode)?
-	('inputLinks' '(' inputLinks+=[Link|EString] ("," inputLinks+=[Link|EString])* ')')?
-	('outputLinks' '{' outputLinks+=Link ("," outputLinks+=Link)* '}')?
+	('type' type=EString)?
 	'}';
-
-enum JoinType returns JoinType:
-	AND='AND' | OR='OR' | XOR='XOR';
-
-enum SplitType returns SplitType:
-	AND='AND' | OR='OR' | XOR='XOR';
-
-enum ExecutionMode returns ExecutionMode:
-	PARALLEL='PARALLEL' | ITERATIVE='ITERATIVE' | STREAM='STREAM';
-
-MetaInformation returns MetaInformation:
-	{MetaInformation}
-	'MetaInformation';

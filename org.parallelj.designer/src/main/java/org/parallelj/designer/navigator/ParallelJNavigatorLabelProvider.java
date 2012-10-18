@@ -36,10 +36,6 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.IMemento;
 import org.eclipse.ui.navigator.ICommonContentExtensionSite;
 import org.eclipse.ui.navigator.ICommonLabelProvider;
-import org.parallelj.designer.edit.parts.BlockEditPart;
-import org.parallelj.designer.edit.parts.BlockNameEditPart;
-import org.parallelj.designer.edit.parts.BlockProcedureEditPart;
-import org.parallelj.designer.edit.parts.BlockProcedureNameEditPart;
 import org.parallelj.designer.edit.parts.BusinessProcedureEditPart;
 import org.parallelj.designer.edit.parts.BusinessProcedureNameEditPart;
 import org.parallelj.designer.edit.parts.ConditionEditPart;
@@ -56,6 +52,10 @@ import org.parallelj.designer.edit.parts.LinkEditPart;
 import org.parallelj.designer.edit.parts.LinkPredicateInfoEditPart;
 import org.parallelj.designer.edit.parts.OutputConditionEditPart;
 import org.parallelj.designer.edit.parts.OutputConditionNameEditPart;
+import org.parallelj.designer.edit.parts.PipelineEditPart;
+import org.parallelj.designer.edit.parts.PipelineNameEditPart;
+import org.parallelj.designer.edit.parts.PipelineProcedureEditPart;
+import org.parallelj.designer.edit.parts.PipelineProcedureNameEditPart;
 import org.parallelj.designer.edit.parts.PredicateEditPart;
 import org.parallelj.designer.edit.parts.PredicateNameEditPart;
 import org.parallelj.designer.edit.parts.ProcedureEditPart;
@@ -129,51 +129,51 @@ public class ParallelJNavigatorLabelProvider extends LabelProvider implements
 	 */
 	public Image getImage(View view) {
 		switch (ParallelJVisualIDRegistry.getVisualID(view)) {
-		case HandlerEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http://www.parallelj.org/0.5.0?Handler", ParallelJElementTypes.Handler_3008); //$NON-NLS-1$
-		case InputConditionEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http://www.parallelj.org/0.5.0?InputCondition", ParallelJElementTypes.InputCondition_3001); //$NON-NLS-1$
-		case DataEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http://www.parallelj.org/0.5.0?Data", ParallelJElementTypes.Data_3011); //$NON-NLS-1$
 		case WhileLoopEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?Node?http://www.parallelj.org/0.5.0?WhileLoop", ParallelJElementTypes.WhileLoop_3007); //$NON-NLS-1$
-		case ConditionEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http://www.parallelj.org/0.5.0?Condition", ParallelJElementTypes.Condition_3003); //$NON-NLS-1$
-		case BlockProcedureEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http://www.parallelj.org/0.5.0?Procedure", ParallelJElementTypes.Procedure_3013); //$NON-NLS-1$
-		case BusinessProcedureEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http://www.parallelj.org/0.5.0?BusinessProcedure", ParallelJElementTypes.BusinessProcedure_3014); //$NON-NLS-1$
-		case ProcedureEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Node?http://www.parallelj.org/0.5.0?Procedure", ParallelJElementTypes.Procedure_3005); //$NON-NLS-1$
-		case SpecificationEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Diagram?http://www.parallelj.org/0.5.0?Specification", ParallelJElementTypes.Specification_1000); //$NON-NLS-1$
-		case LinkEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Link?http://www.parallelj.org/0.5.0?Link", ParallelJElementTypes.Link_4001); //$NON-NLS-1$
 		case PredicateEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?Node?http://www.parallelj.org/0.5.0?Predicate", ParallelJElementTypes.Predicate_3004); //$NON-NLS-1$
+		case LinkEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Link?http://www.parallelj.org/0.5.0?Link", ParallelJElementTypes.Link_4001); //$NON-NLS-1$
+		case DataEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http://www.parallelj.org/0.5.0?Data", ParallelJElementTypes.Data_3011); //$NON-NLS-1$
 		case OutputConditionEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?Node?http://www.parallelj.org/0.5.0?OutputCondition", ParallelJElementTypes.OutputCondition_3002); //$NON-NLS-1$
-		case ProgramEditPart.VISUAL_ID:
+		case ProcedureEditPart.VISUAL_ID:
 			return getImage(
-					"Navigator?TopLevelNode?http://www.parallelj.org/0.5.0?Program", ParallelJElementTypes.Program_2001); //$NON-NLS-1$
-		case BlockEditPart.VISUAL_ID:
+					"Navigator?Node?http://www.parallelj.org/0.5.0?Procedure", ParallelJElementTypes.Procedure_3005); //$NON-NLS-1$
+		case InputConditionEditPart.VISUAL_ID:
 			return getImage(
-					"Navigator?Node?http://www.parallelj.org/0.5.0?Block", ParallelJElementTypes.Block_3012); //$NON-NLS-1$
+					"Navigator?Node?http://www.parallelj.org/0.5.0?InputCondition", ParallelJElementTypes.InputCondition_3001); //$NON-NLS-1$
+		case SpecificationEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Diagram?http://www.parallelj.org/0.5.0?Specification", ParallelJElementTypes.Specification_1000); //$NON-NLS-1$
+		case HandlerEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http://www.parallelj.org/0.5.0?Handler", ParallelJElementTypes.Handler_3008); //$NON-NLS-1$
+		case PipelineEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http://www.parallelj.org/0.5.0?Pipeline", ParallelJElementTypes.Pipeline_3015); //$NON-NLS-1$
 		case ForEachLoopEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?Node?http://www.parallelj.org/0.5.0?ForEachLoop", ParallelJElementTypes.ForEachLoop_3006); //$NON-NLS-1$
+		case BusinessProcedureEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http://www.parallelj.org/0.5.0?BusinessProcedure", ParallelJElementTypes.BusinessProcedure_3014); //$NON-NLS-1$
+		case PipelineProcedureEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http://www.parallelj.org/0.5.0?Procedure", ParallelJElementTypes.Procedure_3016); //$NON-NLS-1$
+		case ProgramEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?TopLevelNode?http://www.parallelj.org/0.5.0?Program", ParallelJElementTypes.Program_2001); //$NON-NLS-1$
+		case ConditionEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Node?http://www.parallelj.org/0.5.0?Condition", ParallelJElementTypes.Condition_3003); //$NON-NLS-1$
 		}
 		return getImage("Navigator?UnknownElement", null); //$NON-NLS-1$
 	}
@@ -226,36 +226,36 @@ public class ParallelJNavigatorLabelProvider extends LabelProvider implements
 			return getUnresolvedDomainElementProxyText(view);
 		}
 		switch (ParallelJVisualIDRegistry.getVisualID(view)) {
-		case HandlerEditPart.VISUAL_ID:
-			return getHandler_3008Text(view);
-		case InputConditionEditPart.VISUAL_ID:
-			return getInputCondition_3001Text(view);
-		case DataEditPart.VISUAL_ID:
-			return getData_3011Text(view);
 		case WhileLoopEditPart.VISUAL_ID:
 			return getWhileLoop_3007Text(view);
-		case ConditionEditPart.VISUAL_ID:
-			return getCondition_3003Text(view);
-		case BlockProcedureEditPart.VISUAL_ID:
-			return getProcedure_3013Text(view);
-		case BusinessProcedureEditPart.VISUAL_ID:
-			return getBusinessProcedure_3014Text(view);
-		case ProcedureEditPart.VISUAL_ID:
-			return getProcedure_3005Text(view);
-		case SpecificationEditPart.VISUAL_ID:
-			return getSpecification_1000Text(view);
-		case LinkEditPart.VISUAL_ID:
-			return getLink_4001Text(view);
 		case PredicateEditPart.VISUAL_ID:
 			return getPredicate_3004Text(view);
+		case LinkEditPart.VISUAL_ID:
+			return getLink_4001Text(view);
+		case DataEditPart.VISUAL_ID:
+			return getData_3011Text(view);
 		case OutputConditionEditPart.VISUAL_ID:
 			return getOutputCondition_3002Text(view);
-		case ProgramEditPart.VISUAL_ID:
-			return getProgram_2001Text(view);
-		case BlockEditPart.VISUAL_ID:
-			return getBlock_3012Text(view);
+		case ProcedureEditPart.VISUAL_ID:
+			return getProcedure_3005Text(view);
+		case InputConditionEditPart.VISUAL_ID:
+			return getInputCondition_3001Text(view);
+		case SpecificationEditPart.VISUAL_ID:
+			return getSpecification_1000Text(view);
+		case HandlerEditPart.VISUAL_ID:
+			return getHandler_3008Text(view);
+		case PipelineEditPart.VISUAL_ID:
+			return getPipeline_3015Text(view);
 		case ForEachLoopEditPart.VISUAL_ID:
 			return getForEachLoop_3006Text(view);
+		case BusinessProcedureEditPart.VISUAL_ID:
+			return getBusinessProcedure_3014Text(view);
+		case PipelineProcedureEditPart.VISUAL_ID:
+			return getProcedure_3016Text(view);
+		case ProgramEditPart.VISUAL_ID:
+			return getProgram_2001Text(view);
+		case ConditionEditPart.VISUAL_ID:
+			return getCondition_3003Text(view);
 		}
 		return getUnknownElementText(view);
 	}
@@ -382,26 +382,6 @@ public class ParallelJNavigatorLabelProvider extends LabelProvider implements
 	/**
 	 * @generated
 	 */
-	private String getProcedure_3013Text(View view) {
-		IParser parser = ParallelJParserProvider.getParser(
-				ParallelJElementTypes.Procedure_3013,
-				view.getElement() != null ? view.getElement() : view,
-				ParallelJVisualIDRegistry
-						.getType(BlockProcedureNameEditPart.VISUAL_ID));
-		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
-					ParserOptions.NONE.intValue());
-		} else {
-			ParallelJDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5021); //$NON-NLS-1$
-			return ""; //$NON-NLS-1$
-		}
-	}
-
-	/**
-	 * @generated
-	 */
 	private String getBusinessProcedure_3014Text(View view) {
 		IParser parser = ParallelJParserProvider.getParser(
 				ParallelJElementTypes.BusinessProcedure_3014,
@@ -435,6 +415,26 @@ public class ParallelJNavigatorLabelProvider extends LabelProvider implements
 		} else {
 			ParallelJDiagramEditorPlugin.getInstance().logError(
 					"Parser was not found for label " + 5010); //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
+		}
+	}
+
+	/**
+	 * @generated
+	 */
+	private String getPipeline_3015Text(View view) {
+		IParser parser = ParallelJParserProvider.getParser(
+				ParallelJElementTypes.Pipeline_3015,
+				view.getElement() != null ? view.getElement() : view,
+				ParallelJVisualIDRegistry
+						.getType(PipelineNameEditPart.VISUAL_ID));
+		if (parser != null) {
+			return parser.getPrintString(new EObjectAdapter(
+					view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
+		} else {
+			ParallelJDiagramEditorPlugin.getInstance().logError(
+					"Parser was not found for label " + 5028); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}
@@ -509,25 +509,6 @@ public class ParallelJNavigatorLabelProvider extends LabelProvider implements
 	/**
 	 * @generated
 	 */
-	private String getBlock_3012Text(View view) {
-		IParser parser = ParallelJParserProvider.getParser(
-				ParallelJElementTypes.Block_3012,
-				view.getElement() != null ? view.getElement() : view,
-				ParallelJVisualIDRegistry.getType(BlockNameEditPart.VISUAL_ID));
-		if (parser != null) {
-			return parser.getPrintString(new EObjectAdapter(
-					view.getElement() != null ? view.getElement() : view),
-					ParserOptions.NONE.intValue());
-		} else {
-			ParallelJDiagramEditorPlugin.getInstance().logError(
-					"Parser was not found for label " + 5023); //$NON-NLS-1$
-			return ""; //$NON-NLS-1$
-		}
-	}
-
-	/**
-	 * @generated
-	 */
 	private String getInputCondition_3001Text(View view) {
 		IParser parser = ParallelJParserProvider.getParser(
 				ParallelJElementTypes.InputCondition_3001,
@@ -541,6 +522,26 @@ public class ParallelJNavigatorLabelProvider extends LabelProvider implements
 		} else {
 			ParallelJDiagramEditorPlugin.getInstance().logError(
 					"Parser was not found for label " + 5001); //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
+		}
+	}
+
+	/**
+	 * @generated
+	 */
+	private String getProcedure_3016Text(View view) {
+		IParser parser = ParallelJParserProvider.getParser(
+				ParallelJElementTypes.Procedure_3016,
+				view.getElement() != null ? view.getElement() : view,
+				ParallelJVisualIDRegistry
+						.getType(PipelineProcedureNameEditPart.VISUAL_ID));
+		if (parser != null) {
+			return parser.getPrintString(new EObjectAdapter(
+					view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
+		} else {
+			ParallelJDiagramEditorPlugin.getInstance().logError(
+					"Parser was not found for label " + 5026); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
 	}

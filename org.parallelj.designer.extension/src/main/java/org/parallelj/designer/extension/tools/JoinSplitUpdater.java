@@ -25,7 +25,7 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.swt.graphics.Image;
 import org.parallelj.model.ForEachLoop;
 import org.parallelj.model.Handler;
-import org.parallelj.model.Block;
+import org.parallelj.model.Pipeline;
 import org.parallelj.model.Procedure;
 import org.parallelj.model.WhileLoop;
 import org.parallelj.model.provider.ParallelJEditPlugin;

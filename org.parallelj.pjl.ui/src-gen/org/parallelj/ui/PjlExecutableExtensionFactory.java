@@ -8,6 +8,8 @@ import org.osgi.framework.Bundle;
 
 import com.google.inject.Injector;
 
+import org.parallelj.ui.internal.PjlActivator;
+
 /**
  * This class was generated. Customizations should only happen in a newly
  * introduced subclass. 
@@ -16,12 +18,12 @@ public class PjlExecutableExtensionFactory extends AbstractGuiceAwareExecutableE
 
 	@Override
 	protected Bundle getBundle() {
-		return org.parallelj.ui.internal.PjlActivator.getInstance().getBundle();
+		return PjlActivator.getInstance().getBundle();
 	}
 	
 	@Override
 	protected Injector getInjector() {
-		return org.parallelj.ui.internal.PjlActivator.getInstance().getInjector("org.parallelj.Pjl");
+		return PjlActivator.getInstance().getInjector(PjlActivator.ORG_PARALLELJ_PJL);
 	}
 	
 }

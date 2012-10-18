@@ -24,12 +24,15 @@ package org.parallelj.designer.extension.adapters;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.parallelj.designer.edit.parts.ForEachLoopIterableEditPart;
+import org.parallelj.designer.edit.parts.PipelineIterableEditPart;
 import org.parallelj.model.ParallelJPackage;
 
 public class DataNameRefreshmentAdapter extends AbstractRefreshmentAdapter {
 
 	// Visual id that suppose to refresh on notify
-	private static final int[] VISUAL_ID_TO_REFRESH = new int[] { ForEachLoopIterableEditPart.VISUAL_ID, };
+	private static final int[] VISUAL_ID_TO_REFRESH = new int[] {
+			ForEachLoopIterableEditPart.VISUAL_ID,
+			PipelineIterableEditPart.VISUAL_ID };
 
 	public DataNameRefreshmentAdapter(AbstractGraphicalEditPart editPart) {
 		super(editPart);

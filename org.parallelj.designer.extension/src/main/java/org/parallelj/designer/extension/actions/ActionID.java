@@ -34,7 +34,8 @@ public enum ActionID {
 			"JoinAnd"), JOIN_OR("JoinOr"), JOIN_XOR("JoinXor"), SET_LINK_PREDICATE(
 			"SetLinkPredicate"), SET_WHILELOOP_PREDICATE(
 			"SetWhileLoopPredicate"), FOREACHLOOP_ITERABLE(
-			"ForEachLoopIterable"), GENERATE_CODE("GenerateCode");
+			"ForEachLoopIterable"), PIPELINE_ITERABLE("PipelineIterable"), GENERATE_CODE(
+			"GenerateCode");
 
 	/**
 	 * Action Label
@@ -78,9 +79,12 @@ public enum ActionID {
 			return ParallelJPackage.eINSTANCE.getWhileLoop_Predicate();
 		case FOREACHLOOP_ITERABLE:
 			return ParallelJPackage.eINSTANCE.getForEachLoop_Iterable();
+		case PIPELINE_ITERABLE:
+			return ParallelJPackage.eINSTANCE.getPipeline_Iterable();
 		case GENERATE_CODE:
-				return ParallelJPackage.eINSTANCE.getMetaInformationContainer_MetaInformation();
-			
+			return ParallelJPackage.eINSTANCE
+					.getMetaInformationContainer_MetaInformation();
+
 		default:
 			return null;
 		}

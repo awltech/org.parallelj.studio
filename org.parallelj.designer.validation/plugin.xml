@@ -133,7 +133,7 @@
                    class="Data"></target>
           </constraint>
           <constraint
-                class="org.parallelj.designer.validation.constraints.BlockNameDuplicationConstraint"
+                class="org.parallelj.designer.validation.constraints.PipelineNameDuplicationConstraint"
                 id="ProcedureNameDuplicationConstraint"
                 lang="Java"
                 mode="Live"
@@ -169,21 +169,21 @@
              </target>
           </constraint>
           <constraint
-                class="org.parallelj.designer.validation.constraints.BlockProcedureConstraint"
-                id="BlockProcedureConstraint"
+                class="org.parallelj.designer.validation.constraints.PipelineProcedureConstraint"
+                id="PipelineProcedureConstraint"
                 lang="Java"
                 mode="Live"
-                name="BlockProcedureConstraint"
+                name="PipelineProcedureConstraint"
                 severity="ERROR"
                 statusCode="200">
              <message>
-                A Block &quot;{0}&quot; must contain at least one Procedure.
+                A Pipeline&quot;{0}&quot; must contain at least two Procedures.
              </message>
              <description>
                 description body text
              </description>
              <target
-                   class="Block">
+                   class="Pipeline">
              </target>
           </constraint>
           <constraint
@@ -354,6 +354,24 @@
              <target class="Predicate"/>
              <target class="Condition"/>
           </constraint>
+          <constraint
+                class="org.parallelj.designer.validation.constraints.PipelineIterableConstraint"
+                id="PipelineIterableConstraint"
+                lang="Java"
+                mode="Live"
+                name="PipelineIterableConstraint"
+                severity="ERROR"
+                statusCode="200">
+             <message>
+                Pipeline &quot;{0}&quot; must specify a Data as its iterable.
+             </message>
+             <description>
+                description body text
+             </description>
+             <target
+                   class="Pipeline">
+             </target>
+          </constraint>
          		
             </constraints>
       </constraintProvider>
@@ -387,7 +405,7 @@
                ref="org.parallelj.designer.validation.ProgramNameDuplicationConstraint">
          </constraint>
          <constraint
-               ref="org.parallelj.designer.validation.BlockProcedureConstraint">
+               ref="org.parallelj.designer.validation.PipelineProcedureConstraint">
          </constraint>
          <constraint
                ref="org.parallelj.designer.validation.ProgramNameConstraint">
@@ -412,6 +430,9 @@
          </constraint>
          <constraint
                ref="org.parallelj.designer.validation.ProcedureOutgoingPathsConsistenceConstraint">
+         </constraint>
+         <constraint
+               ref="org.parallelj.designer.validation.PipelineIterableConstraint">
          </constraint>
      </binding>
    </extension>

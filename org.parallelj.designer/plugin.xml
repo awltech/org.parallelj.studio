@@ -208,7 +208,7 @@
       <viewProvider class="org.parallelj.designer.providers.ParallelJViewProvider">
          <Priority name="Lowest"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="ParallelJ"/>
-         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2001,3001,3002,3003,3004,3005,3006,3007,3008,3012,3013,3011,3014"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2001,3001,3002,3003,3004,3005,3006,3007,3008,3015,3016,3011,3014"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="4001"/>
       </viewProvider>
    </extension>
@@ -221,16 +221,16 @@
             <method name="getType()" value="ParallelJ"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-nodes">
-            <method name="getType()" value="2001,3001,3002,3003,3004,3005,3006,3007,3008,3012,3013,3011,3014"/>
+            <method name="getType()" value="2001,3001,3002,3003,3004,3005,3006,3007,3008,3015,3016,3011,3014"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Edge" id="generated-links">
             <method name="getType()" value="4001"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-labels">
-            <method name="getType()" value="5020,5001,5002,5003,5004,5005,5006,5007,5008,5009,5010,5011,5012,5013,5023,5024,5021,5022,5018,5019,5025"/>
+            <method name="getType()" value="5020,5001,5002,5003,5004,5005,5006,5007,5008,5009,5010,5011,5012,5013,5028,5029,5030,5026,5027,5018,5019,5025"/>
          </object>
          <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-compartments">
-            <method name="getType()" value="7001,7003"/>
+            <method name="getType()" value="7001,7004"/>
          </object>
          <context views="generated-diagram,generated-nodes,generated-links,generated-labels,generated-compartments"/>
       </editpartProvider>
@@ -364,21 +364,21 @@
       </metamodel>
       <metamodel nsURI="http://www.parallelj.org/0.5.0">
          <metamodelType
-               id="org.parallelj.designer.Block_3012"
-               name="%metatype.name.Block_3012"
+               id="org.parallelj.designer.Pipeline_3015"
+               name="%metatype.name.Pipeline_3015"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
-               eclass="Block"
-               edithelper="org.parallelj.designer.edit.helpers.BlockEditHelper">
-            <param name="semanticHint" value="3012"/>
+               eclass="Pipeline"
+               edithelper="org.parallelj.designer.edit.helpers.PipelineEditHelper">
+            <param name="semanticHint" value="3015"/>
          </metamodelType>
       </metamodel>
       <metamodel nsURI="http://www.parallelj.org/0.5.0">
          <specializationType
-               id="org.parallelj.designer.Procedure_3013"
-               name="%metatype.name.Procedure_3013"
+               id="org.parallelj.designer.Procedure_3016"
+               name="%metatype.name.Procedure_3016"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
             <specializes id="org.parallelj.designer.Procedure_3005"/>
-            <param name="semanticHint" value="3013"/>
+            <param name="semanticHint" value="3016"/>
          </specializationType>
       </metamodel>
       <metamodel nsURI="http://www.parallelj.org/0.5.0">
@@ -433,8 +433,8 @@
          <elementType ref="org.parallelj.designer.ForEachLoop_3006"/>
          <elementType ref="org.parallelj.designer.WhileLoop_3007"/>
          <elementType ref="org.parallelj.designer.Handler_3008"/>
-         <elementType ref="org.parallelj.designer.Block_3012"/>
-         <elementType ref="org.parallelj.designer.Procedure_3013"/>
+         <elementType ref="org.parallelj.designer.Pipeline_3015"/>
+         <elementType ref="org.parallelj.designer.Procedure_3016"/>
          <elementType ref="org.parallelj.designer.Data_3011"/>
          <elementType ref="org.parallelj.designer.BusinessProcedure_3014"/>
          <elementType ref="org.parallelj.designer.Link_4001"/>
@@ -627,6 +627,16 @@
          <context decoratorTargets="PRIMARY_VIEW"/>
       </decoratorProvider>
    </extension>
+
+
+
+
+
+
+
+
+
+
 
 <!--extension point="org.eclipse.ui.editors" id="gmf-editor">
       <?gmfgen generated="true"?>

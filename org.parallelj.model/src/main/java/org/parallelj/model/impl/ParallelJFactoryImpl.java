@@ -91,7 +91,7 @@ public class ParallelJFactoryImpl extends EFactoryImpl implements ParallelJFacto
 			case ParallelJPackage.META_INFORMATION_CONTAINER: return createMetaInformationContainer();
 			case ParallelJPackage.META_INFORMATION: return createMetaInformation();
 			case ParallelJPackage.HANDLER: return createHandler();
-			case ParallelJPackage.BLOCK: return createBlock();
+			case ParallelJPackage.PIPELINE: return createPipeline();
 			case ParallelJPackage.NAMED_ELEMENT: return createNamedElement();
 			case ParallelJPackage.BUSINESS_PROCEDURE: return createBusinessProcedure();
 			default:
@@ -111,8 +111,6 @@ public class ParallelJFactoryImpl extends EFactoryImpl implements ParallelJFacto
 				return createSplitTypeFromString(eDataType, initialValue);
 			case ParallelJPackage.JOIN_TYPE:
 				return createJoinTypeFromString(eDataType, initialValue);
-			case ParallelJPackage.EXECUTION_MODE:
-				return createExecutionModeFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -130,8 +128,6 @@ public class ParallelJFactoryImpl extends EFactoryImpl implements ParallelJFacto
 				return convertSplitTypeToString(eDataType, instanceValue);
 			case ParallelJPackage.JOIN_TYPE:
 				return convertJoinTypeToString(eDataType, instanceValue);
-			case ParallelJPackage.EXECUTION_MODE:
-				return convertExecutionModeToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -292,9 +288,9 @@ public class ParallelJFactoryImpl extends EFactoryImpl implements ParallelJFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Block createBlock() {
-		BlockImpl block = new BlockImpl();
-		return block;
+	public Pipeline createPipeline() {
+		PipelineImpl pipeline = new PipelineImpl();
+		return pipeline;
 	}
 
 	/**
@@ -354,26 +350,6 @@ public class ParallelJFactoryImpl extends EFactoryImpl implements ParallelJFacto
 	 * @generated
 	 */
 	public String convertJoinTypeToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ExecutionMode createExecutionModeFromString(EDataType eDataType, String initialValue) {
-		ExecutionMode result = ExecutionMode.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertExecutionModeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

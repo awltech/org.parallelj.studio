@@ -49,28 +49,28 @@
    <extension
          point="org.eclipse.gmf.runtime.diagram.ui.editpolicyProviders">
       <editpolicyProvider
-            class="org.parallelj.designer.extension.providers.BlockProcedureEditPolicyProvider">
+            class="org.parallelj.designer.extension.providers.PipelineProcedureEditPolicyProvider">
          <Priority
                name="Medium">
          </Priority>
          <context
-               editparts="org.parallelj.designer.edit.parts.BlockProcedureEditPart">
+               editparts="org.parallelj.designer.edit.parts.PipelineProcedureEditPart">
          </context>
          <object
-               class="org.parallelj.designer.edit.parts.BlockProcedureEditPart"
-               id="org.parallelj.designer.edit.parts.BlockProcedureEditPart">
+               class="org.parallelj.designer.edit.parts.PipelineProcedureEditPart"
+               id="org.parallelj.designer.edit.parts.PipelineProcedureEditPart">
          </object>
       </editpolicyProvider>
       <editpolicyProvider
-            class="org.parallelj.designer.extension.providers.BlockIconEditPolicyProvider">
+            class="org.parallelj.designer.extension.providers.PipelineIconEditPolicyProvider">
          <Priority
                name="Medium">
          </Priority>
          <context
-               editparts="org.parallelj.designer.edit.parts.BlockIconEditPart"></context>
+               editparts="org.parallelj.designer.edit.parts.PipelineIconEditPart"></context>
          <object
-               class="org.parallelj.designer.edit.parts.BlockIconEditPart"
-               id="org.parallelj.designer.edit.parts.BlockIconEditPart">
+               class="org.parallelj.designer.edit.parts.PipelineIconEditPart"
+               id="org.parallelj.designer.edit.parts.PipelineIconEditPart">
          </object>
       </editpolicyProvider>
    </extension>
@@ -120,7 +120,7 @@
                      name="org.parallelj.designer.edit.parts.ForEachLoopEditPart">
                </objectClass>
                <objectClass
-                     name="org.parallelj.designer.edit.parts.BlockEditPart">
+                     name="org.parallelj.designer.edit.parts.PipelineEditPart">
                </objectClass>
             </or>
          </visibility>
@@ -169,7 +169,7 @@
                      name="org.parallelj.designer.edit.parts.ForEachLoopEditPart">
                </objectClass>
                <objectClass
-                     name="org.parallelj.designer.edit.parts.BlockEditPart">
+                     name="org.parallelj.designer.edit.parts.PipelineEditPart">
                </objectClass>
                <objectClass
                      name="org.parallelj.designer.edit.parts.HandlerEditPart">
@@ -286,7 +286,7 @@
                      name="org.parallelj.designer.edit.parts.ForEachLoopEditPart">
                </objectClass>
                <objectClass
-                     name="org.parallelj.designer.edit.parts.BlockProcedureEditPart">
+                     name="org.parallelj.designer.edit.parts.PipelineProcedureEditPart">
                </objectClass>
             </or>
          </visibility>
@@ -339,6 +339,30 @@
                <objectClass
                      name="org.parallelj.designer.edit.parts.ProgramEditPart">
                </objectClass>
+         </visibility>
+      </objectContribution>
+      <objectContribution
+            adaptable="false"
+            id="ObjectContributionPipelineIterable"
+            objectClass="org.eclipse.gef.GraphicalEditPart">
+         <menu
+               id="org.eclipse.emf.validationMenuID"
+               label="ParallelJ">
+            <separator
+                  name="PipelineIterableSeparator">
+            </separator>
+         </menu>
+         <action
+               class="org.parallelj.designer.extension.actions.PredicateAndDataAction"
+               id="PipelineIterable"
+               label="Set Pipeline Iterable"
+               menubarPath="org.eclipse.emf.validationMenuID/PipelineIterableSeparator"
+               style="push">
+         </action>
+         <visibility>
+            <objectClass
+                  name="org.parallelj.designer.edit.parts.PipelineEditPart">
+            </objectClass>
          </visibility>
       </objectContribution>
     </extension>
