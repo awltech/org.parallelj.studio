@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/org.parallelj.feature_1.1.0.qualifier.jar" id="org.parallelj.feature" version="1.1.0.qualifier">
+   <feature url="features/org.parallelj.feature_1.2.0.qualifier.jar" id="org.parallelj.feature" version="1.2.0.qualifier">
       <category name="ParallelJ Components"/>
    </feature>
-   <feature url="features/org.parallelj.feature.pjl_1.1.0.qualifier.jar" id="org.parallelj.feature.pjl" version="1.1.0.qualifier">
+   <feature url="features/org.parallelj.feature.pjl_1.2.0.qualifier.jar" id="org.parallelj.feature.pjl" version="1.2.0.qualifier">
       <category name="ParallelJ Components"/>
    </feature>
-   <feature url="features/org.parallelj.feature.all_1.1.0.qualifier.jar" id="org.parallelj.feature.all" version="1.1.0.qualifier">
+   <feature url="features/org.parallelj.feature.all_1.2.0.qualifier.jar" id="org.parallelj.feature.all" version="1.2.0.qualifier">
       <category name="ParallelJ Studio"/>
    </feature>
-   <feature url="features/org.parallelj.feature.codegen_1.1.0.qualifier.jar" id="org.parallelj.feature.codegen" version="1.1.0.qualifier">
+   <feature url="features/org.parallelj.feature.codegen_1.2.0.qualifier.jar" id="org.parallelj.feature.codegen" version="1.2.0.qualifier">
       <category name="ParallelJ Components"/>
    </feature>
-   <feature url="features/org.parallelj.feature.tools_1.1.0.qualifier.jar" id="org.parallelj.feature.tools" version="1.1.0.qualifier">
+   <feature url="features/org.parallelj.feature.tools_1.2.0.qualifier.jar" id="org.parallelj.feature.tools" version="1.2.0.qualifier">
       <category name="ParallelJ Components"/>
    </feature>
    <category-def name="ParallelJ Studio" label="ParallelJ Studio">

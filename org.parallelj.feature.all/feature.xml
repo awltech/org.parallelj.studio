@@ -2,7 +2,7 @@
 <feature
       id="org.parallelj.feature.all"
       label="ParallelJ Studio (all components)"
-      version="1.1.0.qualifier"
+      version="1.2.0.qualifier"
       provider-name="Parallelj.org">
 
    <description url="http://www.parallelj.org">
@@ -537,9 +537,9 @@ That&apos;s all there is to it!
    </license>
 
    <requires>
-      <import feature="org.parallelj.feature" version="1.1.0"/>
-      <import feature="org.parallelj.feature.codegen" version="1.1.0"/>
-      <import feature="org.parallelj.feature.tools" version="1.1.0"/>
+      <import feature="org.parallelj.feature" version="1.2.0"/>
+      <import feature="org.parallelj.feature.codegen" version="1.2.0"/>
+      <import feature="org.parallelj.feature.tools" version="1.2.0"/>
    </requires>
 
 </feature>
