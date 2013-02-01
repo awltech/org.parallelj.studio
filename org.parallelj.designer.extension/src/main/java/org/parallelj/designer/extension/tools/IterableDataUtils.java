@@ -22,7 +22,6 @@
 package org.parallelj.designer.extension.tools;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -88,7 +87,7 @@ public class IterableDataUtils {
 			return false;
 		} else {
 			Class classDefinition = Class.forName(type);
-			return Collection.class.isAssignableFrom(classDefinition);
+			return Iterable.class.isAssignableFrom(classDefinition);
 		}
 	}
 }
