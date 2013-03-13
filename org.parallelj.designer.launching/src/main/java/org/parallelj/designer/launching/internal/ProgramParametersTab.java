@@ -349,7 +349,18 @@ public class ProgramParametersTab extends JavaLaunchTab {
 	 * .core.ILaunchConfigurationWorkingCopy)
 	 */
 	public void activated(ILaunchConfigurationWorkingCopy workingCopy) {
-		// do nothing when activated
+		@SuppressWarnings("unchecked")
+		Map<Object, Object> finput = (Map<Object, Object>)fViewer.getInput();
+
+		if (this.mainTab.getMainProject()!= null
+				&& this.mainTab.getMainProject().length()>0
+				&& this.mainTab.getMainType()!=null
+				&& this.mainTab.getMainType().length()>0
+				&&finput.size()==0
+				) {
+			Map<Object, Object> map = ProgramUtils.getProgramParameters(this.mainTab.getMainProject(), this.mainTab.getMainType(), null);
+			fViewer.setInput(map);
+		}
 	}
 
 	/*
