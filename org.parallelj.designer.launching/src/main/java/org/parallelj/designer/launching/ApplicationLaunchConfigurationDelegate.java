@@ -26,6 +26,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -74,6 +75,13 @@ public class ApplicationLaunchConfigurationDelegate extends JavaLaunchDelegate {
 		String workingDirName = null;
 		if (workingDir != null) {
 			workingDirName = workingDir.getAbsolutePath();
+		}
+		
+		// Build the Project before launch
+		try {
+			this.getJavaProject(configuration).getProject().build(IncrementalProjectBuilder.CLEAN_BUILD, new NullProgressMonitor());
+		} catch (Exception e) {
+			// Do nothing..
 		}
 		
 		// Environment variables
