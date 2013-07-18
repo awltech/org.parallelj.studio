@@ -541,8 +541,8 @@ That&apos;s all there is to it!
       <import feature="org.eclipse.xtext.runtime" version="2.0.0"/>
       <import feature="org.eclipse.xtext.ui" version="2.0.0"/>
       <import feature="org.eclipse.xtext.xbase" version="2.0.0"/>
-      <import feature="org.eclipse.xtext.xtend2.sdk" version="2.0.0"/>
       <import feature="org.eclipse.xtext.xtext.ui" version="2.0.0"/>
+      <import plugin="org.eclipse.xtend2.lib"/>
    </requires>
 
    <plugin

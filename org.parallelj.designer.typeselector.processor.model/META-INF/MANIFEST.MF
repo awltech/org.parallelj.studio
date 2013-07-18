@@ -17,5 +17,5 @@ Bundle-SymbolicName: org.parallelj.designer.typeselector.processor.mod
  el;singleton:=true
 Import-Package: org.eclipse.jface.resource,org.eclipse.swt.graphics,or
  g.eclipse.ui.plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 

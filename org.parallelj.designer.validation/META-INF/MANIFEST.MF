@@ -23,5 +23,5 @@ Bundle-Activator: org.parallelj.designer.validation.DiagramValidationP
 Bundle-SymbolicName: org.parallelj.designer.validation;singleton:=true
 Import-Package: org.eclipse.gmf.runtime.notation,org.eclipse.ui.naviga
  tor.resources
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 

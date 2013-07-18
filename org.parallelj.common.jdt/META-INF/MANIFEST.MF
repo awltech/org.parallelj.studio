@@ -15,5 +15,5 @@ Bundle-Name: //J Common JDT
 Bundle-ManifestVersion: 2
 Bundle-Activator: org.parallelj.common.jdt.Activator
 Bundle-SymbolicName: org.parallelj.common.jdt
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 

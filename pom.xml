@@ -96,13 +96,15 @@
 
 
 	<properties>
-		<tycho-version>0.15.0</tycho-version>
+		<tycho-version>0.18.0</tycho-version>
 		<eclipse-mirror>http://eclipse.ialto.com</eclipse-mirror>
 		<eclipse-site>${eclipse-mirror}/releases/${platform-version-name}</eclipse-site>
 		<resourceselector-site>http://awltech.github.com/ResourceSelector/site</resourceselector-site>
 		<release-type>final</release-type>
 		<ajdt-connector-site>http://dist.springsource.org/release/AJDT/configurator/</ajdt-connector-site>
-		<ajdt-site>http://download.eclipse.org/tools/ajdt/37/update</ajdt-site>
+		<ajdt-site>http://download.eclipse.org/tools/ajdt/43/update</ajdt-site>
+		<java.source>1.7</java.source>
+		<java.target>1.7</java.target>
 	</properties>
 
 	<profiles>
@@ -116,8 +118,9 @@
 				</property>
 			</activation>
 			<properties>
-				<platform-version>[3.7,3.8)</platform-version>
-				<platform-version-name>indigo</platform-version-name>
+<!-- 				<platform-version>[3.7,3.8)</platform-version> -->
+				<platform-version>[4.3,)</platform-version>
+				<platform-version-name>kepler</platform-version-name>
 			</properties>
 		</profile>
 		<profile>
@@ -258,8 +261,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.5.1</version>
 				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
+					<source>${java.source}</source>
+					<target>${java.target}</target>
 				</configuration>
 			</plugin>
 		</plugins>

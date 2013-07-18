@@ -18,5 +18,5 @@ Bundle-Name: //J Properties View
 Bundle-ManifestVersion: 2
 Bundle-Activator: org.parallelj.designer.properties.Activator
 Bundle-SymbolicName: org.parallelj.designer.properties;singleton:=true
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 
