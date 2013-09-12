@@ -1,5 +1,0 @@
-«IMPORT parallelj»
-
-«DEFINE javaClass FOR Program»
-	«EXPAND Program::program FOR (Program)this»
-«ENDDEFINE» 

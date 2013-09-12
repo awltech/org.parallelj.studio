@@ -159,13 +159,14 @@
 		<module>org.parallelj.feature</module>
 		<module>org.parallelj.feature.pjl</module>
 		<module>org.parallelj.feature.tools</module>
-		<module>org.parallelj.feature.codegen</module>
+<!-- 		<module>org.parallelj.feature.codegen</module> -->
+		<module>org.parallelj.feature.code.generator</module>
 		<module>org.parallelj.feature.all</module>
 
 		<!-- XPAND Codegen -->
 
-		<module>org.parallelj.codegen</module>
-		<module>org.parallelj.common.jdt</module>
+<!-- 		<module>org.parallelj.codegen</module> -->
+<!-- 		<module>org.parallelj.common.jdt</module> -->
 
 		<!-- EMF/GMF part -->
 
@@ -204,6 +205,7 @@
 		<!-- Update site -->
 
 		<module>org.parallelj.studio.updatesite</module>
+		<module>org.parallelj.code.generator</module>
 	</modules>
 
 	<build>

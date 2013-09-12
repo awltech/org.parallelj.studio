@@ -2,24 +2,25 @@
 <aggregator:Aggregation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:aggregator="http://www.eclipse.org/b3/2011/aggregator/1.1.0" description="ParallelJ Studio aggregator project. This b3 aggregator script allows to generate a complete update site for ParallelJ Studio, including the aggregation of external dependencies. It allows to valide the structure of the update site, and the availability of the dependencies." buildmaster="//@contacts[email='parallelj-dev@googlegroups.com']" label="ParallelJ-Aggregator" buildRoot="./build">
   <validationSets description="This validation set allows to define all the rules to validate in order to ensure that ParallelJ Studio can be properly installed on some specified configurations." label="parallelj">
     <contributions description="This contribution contains actually all the external dependencies related to ParallelJ." label="ParallelJ-Dependencies" contacts="//@contacts[email='parallelj-dev@googlegroups.com']">
-      <repositories location="http://awltech.github.com/ResourceSelector/site/" description="This update site contains the ResourceSelector project, used by ParallelJ. All the features except the sources ones are used in ParallelJ." mirrorArtifacts="false">
+      <repositories location="http://xa.priv.atos.fr:8080/indivXAPluginsUpdSite/org.eclipselabs.resourceselector" description="This update site contains the ResourceSelector project, used by ParallelJ. All the features except the sources ones are used in ParallelJ." mirrorArtifacts="false">
         <features name="org.eclipselabs.resourceselector.core.feature.group" validConfigurations="//@configurations.2 //@configurations.3 //@configurations.4 //@configurations.5 //@configurations.0 //@configurations.1"/>
         <features name="org.eclipselabs.resourceselector.processor.java.feature.group" validConfigurations="//@configurations.2 //@configurations.3 //@configurations.4 //@configurations.5 //@configurations.0 //@configurations.1"/>
         <features name="org.eclipselabs.resourceselector.processor.uml.feature.group" validConfigurations="//@configurations.2 //@configurations.3 //@configurations.4 //@configurations.5 //@configurations.0 //@configurations.1"/>
       </repositories>
-      <repositories location="http://dist.springsource.org/release/AJDT/configurator/" description="This repository hosts the m2e connector for AJDT which is used by ParallelJ projects. Using this, users won't face any problem when invoking parallelj archetype in a fresh Eclipse.">
+      <repositories location="http://dist.springsource.org/release/AJDT/configurator" description="This repository hosts the m2e connector for AJDT which is used by ParallelJ projects. Using this, users won't face any problem when invoking parallelj archetype in a fresh Eclipse.">
         <features name="org.maven.ide.eclipse.ajdt.feature.feature.group" validConfigurations="//@configurations.2 //@configurations.3 //@configurations.4 //@configurations.5 //@configurations.0 //@configurations.1"/>
       </repositories>
-      <repositories location="http://download.eclipse.org/tools/ajdt/37/update" description="This repository contains all the dependencies related to AspectJ in Eclipse (AJDT).">
+      <repositories location="http://download.eclipse.org/tools/ajdt/43/update" description="This repository contains all the dependencies related to AspectJ in Eclipse (AJDT).">
         <features name="org.eclipse.ajdt.feature.group" versionRange="2.1.3.e37x-20110628-1900"/>
         <features name="org.eclipse.contribution.weaving.feature.group" versionRange="2.1.3.e37x-20110628-1900"/>
         <features name="org.eclipse.equinox.weaving.sdk.feature.group" versionRange="1.0.100.HEAD"/>
       </repositories>
+      <repositories location="http://xa.priv.atos.fr:8080/indivXAPluginsUpdSite/net.atos.optimus/aggregated" description="Optimus continuous Integration Update Site" mirrorArtifacts="false"/>
     </contributions>
     <contributions description="This contribution set corresponds actually to all the internal deliveries from ParallelJ. It stores all the ParallelJ components references." label="ParallelJ-Contribution" contacts="//@contacts[email='parallelj-dev@googlegroups.com']">
-      <repositories location="http://www.parallelj.org/repository/eclipse/binaries/e37x/1.2.0.201210191142-indigo-final" description="This repository is actually the ParallelJ Studio one, which contains all the ParallelJ binaries for Eclipse. Regarding our release process, we don't build complete metadatas for this repository, and let b3 aggregator manage this part of the job." mirrorArtifacts="false"/>
+      <repositories location="http://localhost/repository" description="LocalRepository..." mirrorArtifacts="false"/>
     </contributions>
-    <validationRepositories location="http://download.eclipse.org/releases/indigo"/>
+    <validationRepositories location="http://download.eclipse.org/releases/kepler"/>
   </validationSets>
   <configurations/>
   <configurations architecture="x86_64"/>
