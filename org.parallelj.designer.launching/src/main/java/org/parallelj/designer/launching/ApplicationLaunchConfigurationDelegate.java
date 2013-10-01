@@ -26,6 +26,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -79,7 +80,7 @@ public class ApplicationLaunchConfigurationDelegate extends JavaLaunchDelegate {
 		
 		// Build the Project before launch
 		try {
-			this.getJavaProject(configuration).getProject().build(IncrementalProjectBuilder.CLEAN_BUILD, new NullProgressMonitor());
+			this.getJavaProject(configuration).getProject().refreshLocal(IResource.DEPTH_ONE, new NullProgressMonitor());
 		} catch (Exception e) {
 			// Do nothing..
 		}
