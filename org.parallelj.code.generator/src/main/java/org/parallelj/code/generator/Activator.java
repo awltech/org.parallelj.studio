@@ -17,13 +17,13 @@ public class Activator extends AbstractUIPlugin {
 	/**
 	 * The plugin ID
 	 */
-	public static final String PLUGIN_ID = "org.parallelj.codegenerator"; //$NON-NLS-1$
+	public static final String PLUGIN_ID = "org.parallelj.code.generator"; //$NON-NLS-1$
 
 	/**
 	 * This property can be used in order to activate the DEBUG mode on this
 	 * plugin: {@value #PARALLELJ_DEBUG_SYSTEM_PROPERTY}
 	 */
-	public static final String PARALLELJ_DEBUG_SYSTEM_PROPERTY = "org.parallelj.codegenerator.Debug";
+	public static final String PARALLELJ_DEBUG_SYSTEM_PROPERTY = "org.parallelj.code.generator.Debug";
 
 	/**
 	 * Shared instance
