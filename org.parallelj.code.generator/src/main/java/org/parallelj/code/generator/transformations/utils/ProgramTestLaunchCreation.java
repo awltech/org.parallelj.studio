@@ -76,7 +76,7 @@ public class ProgramTestLaunchCreation extends AbstractTransformation<Program> {
 
 		TypeAccess launcherAccess = JavaFactory.eINSTANCE.createTypeAccess();
 		Type launcherType = JavaFactory.eINSTANCE.createPrimitiveType();
-		launcherType.setName("org.parallelj.launching.quartz.Launcher");
+		launcherType.setName("org.parallelj.launching.Launcher");
 		launcherAccess.setType(launcherType);
 
 		TypeAccess programTypeAccess = JavaFactory.eINSTANCE.createTypeAccess();
@@ -103,15 +103,8 @@ public class ProgramTestLaunchCreation extends AbstractTransformation<Program> {
 		TypeAccess launcherAccess2 = JavaFactory.eINSTANCE.createTypeAccess();
 		launcherAccess2.setType(launcherType);
 
-		MethodInvocation invocation2 = callMethod(
-				callMethod(launcherAccess2, "getLauncher"), "complete");
-		ExpressionStatement statement2 = JavaFactory.eINSTANCE
-				.createExpressionStatement();
-		statement2.setExpression(invocation2);
-
 		Block block = JavaFactory.eINSTANCE.createBlock();
 		block.getStatements().add(statement);
-		block.getStatements().add(statement2);
 
 		declaration.setBody(block);
 
