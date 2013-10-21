@@ -539,21 +539,21 @@ That&apos;s all there is to it!
    <requires>
       <import plugin="org.eclipse.ui"/>
       <import plugin="org.eclipse.core.runtime"/>
-      <import plugin="org.eclipse.core.resources" version="3.7.0" match="greaterOrEqual"/>
-      <import plugin="org.parallelj.model" version="0.9.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.emf.workspace" version="1.5.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.jdt.core" version="3.7.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.gmt.modisco.java" version="0.9.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.ui.console" version="3.5.0" match="greaterOrEqual"/>
-      <import plugin="org.parallelj.designer.extension" version="1.1.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.gmf.runtime.diagram.ui" version="1.5.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.gmf.runtime.diagram.ui.resources.editor" version="1.4.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.ui.ide" version="3.7.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.gmt.modisco.java.generation" version="0.11.0" match="greaterOrEqual"/>
-      <import feature="net.atos.optimus.m2m.engine.feature" version="1.0.0.qualifier"/>
-      <import feature="net.atos.optimus.m2m.javaxmi.feature" version="1.0.0.qualifier"/>
-      <import feature="net.atos.optimus.m2t.java.feature" version="1.0.0.qualifier"/>
-      <import feature="net.atos.optimus.m2t.merger.java.feature" version="1.0.0.qualifier"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="org.parallelj.model" version="1.3.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.workspace"/>
+      <import plugin="org.eclipse.jdt.core"/>
+      <import plugin="org.eclipse.gmt.modisco.java"/>
+      <import plugin="org.eclipse.ui.console"/>
+      <import plugin="org.parallelj.designer.extension" version="1.3.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.gmf.runtime.diagram.ui"/>
+      <import plugin="org.eclipse.gmf.runtime.diagram.ui.resources.editor"/>
+      <import plugin="org.eclipse.ui.ide"/>
+      <import plugin="org.eclipse.gmt.modisco.java.generation"/>
+      <import feature="net.atos.optimus.m2m.engine.feature"/>
+      <import feature="net.atos.optimus.m2m.javaxmi.feature"/>
+      <import feature="net.atos.optimus.m2t.java.feature"/>
+      <import feature="net.atos.optimus.m2t.merger.java.feature"/>
    </requires>
 
    <plugin
