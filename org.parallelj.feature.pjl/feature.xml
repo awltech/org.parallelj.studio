@@ -538,10 +538,10 @@ That&apos;s all there is to it!
 
    <requires>
       <import feature="org.parallelj.feature" version="1.3.0"/>
-      <import feature="org.eclipse.xtext.runtime" version="2.0.0"/>
-      <import feature="org.eclipse.xtext.ui" version="2.0.0"/>
-      <import feature="org.eclipse.xtext.xbase" version="2.0.0"/>
-      <import feature="org.eclipse.xtext.xtext.ui" version="2.0.0"/>
+      <import feature="org.eclipse.xtext.runtime"/>
+      <import feature="org.eclipse.xtext.ui"/>
+      <import feature="org.eclipse.xtext.xbase"/>
+      <import feature="org.eclipse.xtext.xtext.ui"/>
       <import plugin="org.eclipse.xtend2.lib"/>
    </requires>
 
