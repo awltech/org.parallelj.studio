@@ -35,15 +35,6 @@
             </objectRequires>
          </transformation>
          <transformation
-               description="This transformation aims at adding the proper execution annotation on an existing ParallelJ program."
-               factory="org.parallelj.code.generator.transformations.utils.ProgramExecutionAnnotationCreationFactory"
-               id="ProgramExecutionAnnotationCreation"
-               priority="0">
-            <objectRequires
-                  id="ProgramClassCreation">
-            </objectRequires>
-         </transformation>
-         <transformation
                description="This transformation aims at adding the @Capacity annotation on an existing Parallelj program."
                factory="org.parallelj.code.generator.transformations.utils.ProgramCapacityAnnotationCreationFactory"
                id="ProgramCapacityAnnotationCreation"
