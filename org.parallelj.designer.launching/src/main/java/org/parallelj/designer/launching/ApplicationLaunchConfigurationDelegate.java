@@ -80,7 +80,7 @@ public class ApplicationLaunchConfigurationDelegate extends JavaLaunchDelegate {
 		
 		// Build the Project before launch
 		try {
-			this.getJavaProject(configuration).getProject().refreshLocal(IResource.DEPTH_ONE, new NullProgressMonitor());
+			this.getJavaProject(configuration).getProject().refreshLocal(IResource.DEPTH_ZERO, new NullProgressMonitor());
 		} catch (Exception e) {
 			// Do nothing..
 		}
