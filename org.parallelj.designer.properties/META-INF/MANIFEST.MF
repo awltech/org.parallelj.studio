@@ -13,7 +13,7 @@ Require-Bundle: org.eclipse.ui,
  org.parallelj.model.editor
 Bundle-Vendor: Parallelj.org
 Bundle-ActivationPolicy: lazy
-Bundle-Version: 1.3.0.qualifier
+Bundle-Version: 1.3.1.qualifier
 Bundle-Name: //J Properties View
 Bundle-ManifestVersion: 2
 Bundle-Activator: org.parallelj.designer.properties.Activator
