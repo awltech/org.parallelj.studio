@@ -43,7 +43,7 @@ Export-Package: org.parallelj.designer.extension.dialog,org.parallelj.
  s
 Bundle-Vendor: Parallelj.org
 Bundle-ActivationPolicy: lazy
-Bundle-Version: 1.3.0.qualifier
+Bundle-Version: 1.3.1.qualifier
 Bundle-Name: //J Diagram Editor Extension
 Bundle-ManifestVersion: 2
 Bundle-Activator: org.parallelj.designer.extension.Activator
