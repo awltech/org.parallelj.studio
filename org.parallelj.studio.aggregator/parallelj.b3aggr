@@ -18,7 +18,7 @@
       <repositories location="http://xa.priv.atos.fr:8080/indivXAPluginsUpdSite/net.atos.optimus/aggregated" description="Optimus continuous Integration Update Site" mirrorArtifacts="false"/>
     </contributions>
     <contributions description="This contribution set corresponds actually to all the internal deliveries from ParallelJ. It stores all the ParallelJ components references." label="ParallelJ-Contribution" contacts="//@contacts[email='parallelj-dev@googlegroups.com']">
-      <repositories location="http://localhost/repository" description="LocalRepository..." mirrorArtifacts="false"/>
+      <repositories location="http://www.parallelj.org/repository/eclipse/binaries/e43x/1.3.0.201310291045-kepler-final" description="LocalRepository..."/>
     </contributions>
     <validationRepositories location="http://download.eclipse.org/releases/kepler"/>
   </validationSets>
