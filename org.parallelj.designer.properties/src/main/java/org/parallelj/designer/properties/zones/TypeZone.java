@@ -21,6 +21,7 @@
  */
 package org.parallelj.designer.properties.zones;
 
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.eclipse.jdt.core.IJavaElement;
@@ -42,8 +43,10 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.dialogs.SelectionDialog;
 import org.parallelj.designer.properties.helpers.ParallelJPropertiesMessages;
+import org.parallelj.designer.properties.tool.ComplexTypeReplacer;
+import org.parallelj.designer.properties.tool.TypePackageCompletion;
 import org.parallelj.ixea.Zone;
-import org.parallelj.ixea.helpers.TextChangeHelper;
+import org.parallelj.ixea.helpers.TypeChangeHelper;
 import org.parallelj.ixea.tools.Commands;
 import org.parallelj.ixea.tools.FormDataBuilder;
 import org.parallelj.model.ParallelJPackage;
@@ -66,7 +69,8 @@ public class TypeZone extends Zone {
 				ParallelJPropertiesMessages.element_type.message());
 		typeText = this.getWidgetFactory().createText(getZone(), "",
 				SWT.READ_ONLY);
-		typeText.setEditable(false);
+		// typeText.setEditable(false);
+		typeText.setEditable(true);
 		typeSelector = this.getWidgetFactory().createButton(getZone(),
 				ParallelJPropertiesMessages.button_select.message(), SWT.PUSH);
 	}
@@ -81,19 +85,64 @@ public class TypeZone extends Zone {
 
 	@Override
 	public void addListenersToItems() {
-		TextChangeHelper typeTextListener = new TextChangeHelper() {
+		TypeChangeHelper typeTextListener = new TypeChangeHelper() {
 			@Override
 			public void textChanged(Control control) {
+
 				String value = ((Text) control).getText();
-				String formattedValue = value;
+
+				final String LT = "<";
+				final String GT = ">";
+				final String COMMA = ",";
+				final String DOT = ".";
+				String replaceWithFQNs = null;
+
+				// validation call method can be called to finish and validate
+				// type
+
+				IFile file = WorkspaceSynchronizer.getFile(getEObject()
+						.eResource());
+				IProject project = file.getProject();
+				IJavaProject javaProject = JavaCore.create(project);
+
+				// if generic type string is passed
+				try {
+					if (value.indexOf(LT) > -1 || value.indexOf(GT) > -1
+							|| value.indexOf(COMMA) > -1) {
+						replaceWithFQNs = new ComplexTypeReplacer()
+								.replaceWithFQNs(value.trim(), javaProject);
+					} else {
+
+						replaceWithFQNs = TypePackageCompletion.getPackage(
+								value.trim(), javaProject);
+					}
+				} catch (JavaModelException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					// return ctx.createFailureStatus(e.getMessage());
+					// file.getProject().
+				}
+
+				/*
+				 * replaceWithFQNs = (replaceWithFQNs == null ? "NA" :
+				 * replaceWithFQNs);
+				 * 
+				 * if (!replaceWithFQNs.equals("NA")) { ((Text)
+				 * control).setText(replaceWithFQNs);
+				 * Commands.doSetValue(getEditingDomain(), getEObject(),
+				 * ParallelJPackage.eINSTANCE.getData_Type(), replaceWithFQNs,
+				 * getEditPart()); }
+				 */
+				((Text) control).setText(replaceWithFQNs);
 				Commands.doSetValue(getEditingDomain(), getEObject(),
 						ParallelJPackage.eINSTANCE.getData_Type(),
-						formattedValue, getEditPart());
+						replaceWithFQNs, getEditPart());
 			}
 		};
 		typeTextListener.startListeningTo(typeText);
 		typeTextListener.startListeningForEnter(typeText);
 		typeSelector.addSelectionListener(new SelectionAdapter() {
+			@Override
 			public void widgetSelected(SelectionEvent event) {
 				TypeZone.this.askForType();
 			}

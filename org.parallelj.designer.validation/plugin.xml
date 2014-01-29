@@ -372,6 +372,24 @@
                    class="Pipeline">
              </target>
           </constraint>
+          <constraint
+                class="org.parallelj.designer.validation.constraints.DataTypeGenericConstraint"
+                id="DataTypeGenericConstraint"
+                lang="Java"
+                mode="Live"
+                name="DataTypeGenericConstraint"
+                severity="ERROR"
+                statusCode="200">
+             <message>
+                {0}
+             </message>
+             <description>
+                description body text
+             </description>
+             <target
+                   class="Data">
+             </target>
+          </constraint>
          		
             </constraints>
       </constraintProvider>
@@ -433,6 +451,9 @@
          </constraint>
          <constraint
                ref="org.parallelj.designer.validation.PipelineIterableConstraint">
+         </constraint>
+         <constraint
+               ref="org.parallelj.designer.validation.DataTypeGenericConstraint">
          </constraint>
      </binding>
    </extension>
