@@ -2,6 +2,7 @@ package org.parallelj.designer.properties.tool;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jdt.core.IJavaProject;
@@ -21,12 +22,12 @@ import org.eclipse.ui.dialogs.ElementListSelectionDialog;
 
 public class TypePackageCompletion {
 
-	private static final String[] PRIMITIVE_TYPES = new String[] { "byte",
-			"char", "long", "short", "int", "boolean", "float", "double",
-			"void" };
+	private static final String JAVA_UTIL = "java.util";
+	private static final String JAVA_LANG = "java.lang";
+	private static final String[] PRIMITIVE_TYPES = new String[] { "byte", "char", "long", "short", "int", "boolean",
+			"float", "double", "void" };
 
-	public static String[] getPackages(String type, IJavaProject javaProject)
-			throws JavaModelException {
+	public static String[] getPackages(String type, IJavaProject javaProject) throws JavaModelException {
 
 		// Validation, just in case...
 		if (type == null || javaProject == null || !javaProject.exists())
@@ -52,30 +53,35 @@ public class TypePackageCompletion {
 		IJavaSearchScope createdJavaSearchScope = SearchEngine
 				.createJavaSearchScope(new IJavaProject[] { javaProject });
 
-		new SearchEngine().searchAllTypeNames(null,
-				SearchPattern.R_PATTERN_MATCH, type.toCharArray(),
-				SearchPattern.R_EXACT_MATCH, IJavaSearchConstants.TYPE,
-				createdJavaSearchScope, new TypeNameRequestor() {
+		new SearchEngine().searchAllTypeNames(null, SearchPattern.R_PATTERN_MATCH, type.toCharArray(),
+				SearchPattern.R_EXACT_MATCH, IJavaSearchConstants.TYPE, createdJavaSearchScope,
+				new TypeNameRequestor() {
 					@Override
-					public void acceptType(int modifiers, char[] packageName,
-							char[] simpleTypeName, char[][] enclosingTypeNames,
-							String path) {
-						packages.add(String.valueOf(packageName) + "."
-								+ String.valueOf(simpleTypeName));
+					public void acceptType(int modifiers, char[] packageName, char[] simpleTypeName,
+							char[][] enclosingTypeNames, String path) {
+						packages.add(String.valueOf(packageName) + "." + String.valueOf(simpleTypeName));
 					}
-				}, IJavaSearchConstants.FORCE_IMMEDIATE_SEARCH,
-				new NullProgressMonitor());
+				}, IJavaSearchConstants.FORCE_IMMEDIATE_SEARCH, new NullProgressMonitor());
 		return packages.toArray(new String[packages.size()]);
 	}
 
-	public static String getPackage(String type, IJavaProject javaProject)
-			throws JavaModelException {
+	public static String getPackage(String type, IJavaProject javaProject) throws JavaModelException {
 		String[] packages = getPackages(type, javaProject);
 		if (packages.length == 0)
 			return null;
 		if (packages.length == 1)
 			return packages[0];
 
+		List<String> restrictedPackages = new ArrayList<String>();
+		for (String pack : packages) {
+			if (pack != null && (pack.startsWith(JAVA_LANG) || pack.startsWith(JAVA_UTIL))) {
+				restrictedPackages.add(pack);
+			}
+		}
+
+		if (restrictedPackages.size() == 1)
+			return restrictedPackages.get(0);
+		
 		return openDialogForUserSelection(packages, type);
 	}
 
@@ -90,8 +96,7 @@ public class TypePackageCompletion {
 	 *            : Results from Search
 	 * @return type selected by User
 	 */
-	private static String openDialogForUserSelection(String[] results,
-			String pattern) {
+	private static String openDialogForUserSelection(String[] results, String pattern) {
 
 		final Shell shell = new Shell(Display.getDefault());
 		final ILabelProvider labelProvider = new ILabelProvider() {
@@ -125,23 +130,21 @@ public class TypePackageCompletion {
 			}
 
 		};
-		final ElementListSelectionDialog elementListSelectionDialog = new ElementListSelectionDialog(
-				shell, labelProvider);
+		final ElementListSelectionDialog elementListSelectionDialog = new ElementListSelectionDialog(shell,
+				labelProvider);
 		elementListSelectionDialog.setElements(results);
 
 		elementListSelectionDialog.setTitle("Type Selection Dialog");
 		// elementListSelectionDialog.setImage(AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID,
 		// "/icons/pattern_explorer_view.gif").createImage());
 		StringBuffer message = new StringBuffer();
-		message.append("Please select the type you would like to use for "
-				+ pattern);
+		message.append("Please select the type you would like to use for " + pattern);
 
 		elementListSelectionDialog.setMessage(message.toString());
 		elementListSelectionDialog.open();
 		if (elementListSelectionDialog.getReturnCode() == Window.OK)
-			return elementListSelectionDialog.getFirstResult() == null ? null
-					: String.valueOf(elementListSelectionDialog
-							.getFirstResult());
+			return elementListSelectionDialog.getFirstResult() == null ? null : String
+					.valueOf(elementListSelectionDialog.getFirstResult());
 		else
 			return null;
 
