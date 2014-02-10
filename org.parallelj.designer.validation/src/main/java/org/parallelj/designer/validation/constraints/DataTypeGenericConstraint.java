@@ -31,7 +31,7 @@ import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.core.JavaModelException;
-import org.parallelj.designer.validation.providers.JavaTypeValidatorProvider;
+import org.parallelj.designer.validation.tools.JavaTypeValidator;
 import org.parallelj.designer.validation.tools.StringTool;
 import org.parallelj.model.Data;
 
@@ -59,7 +59,7 @@ public class DataTypeGenericConstraint extends AbstractModelConstraint {
 				IJavaProject javaProject = JavaCore.create(project);
 
 				try {
-					IStatus status = new JavaTypeValidatorProvider(
+					IStatus status = new JavaTypeValidator(
 							data.getType()).validate(javaProject);
 
 					if (status.isOK()) {
