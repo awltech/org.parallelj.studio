@@ -63,9 +63,17 @@ public class ParallelJConfigHelper {
 			ResourceSet sharedResourceSet, IProject project)
 			throws IOException, CoreException, JDOMException {
 
-		// At first, we load the resource
-		final IResource foundMember = project.getProject().findMember(
-				CONFIG_FILENAME);
+		// At first, we load the resources.
+		IResource foundMember = project.getProject()
+				.findMember(CONFIG_FILENAME);
+
+		if (foundMember == null) {
+			ConfigFilePathManager configFilePathManager = new ConfigFilePathManager();
+			foundMember = configFilePathManager.loadFilePath();
+
+			if (configFilePathManager.getProject() != null)
+				project = configFilePathManager.getProject();
+		}
 
 		if (foundMember != null && foundMember instanceof IFile) {
 
@@ -126,6 +134,7 @@ public class ParallelJConfigHelper {
 
 		// refresh
 		project.getProject().refreshLocal(IResource.DEPTH_INFINITE, null);
+
 	}
 
 	/**
