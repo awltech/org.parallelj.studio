@@ -103,6 +103,7 @@
 		<release-type>SNAPSHOT</release-type>
 		<ajdt-connector-site>http://dist.springsource.org/release/AJDT/configurator/</ajdt-connector-site>
 		<ajdt-site>http://download.eclipse.org/tools/ajdt/43/update</ajdt-site>
+		<optimus-site>http://eclipse.worldline.com/releases/kepler/optimus</optimus-site>
 		<java.source>1.7</java.source>
 		<java.target>1.7</java.target>
 	</properties>
@@ -290,6 +291,11 @@
 			<id>ajdt</id>
 			<layout>p2</layout>
 			<url>${ajdt-site}</url>
+		</repository>
+		<repository>
+			<id>optimus-site</id>
+			<layout>p2</layout>
+			<url>${optimus-site}</url>
 		</repository>
 	</repositories>
 </project>
