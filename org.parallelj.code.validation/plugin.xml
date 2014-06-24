@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="net.atos.jdt.ast.validation.engine.ASTValidationRules">
+      <repository
+            id="org.parallelj.code.validation.rule-repository"
+            markerId="org.parallelj.code.validation.marker">
+            <rule
+                  description="Validate the values in AndSplit annotations have corresponding Procedure"
+                  implementation="org.parallelj.code.validation.rules.AndSplitValidValuesConstraint">
+      </rule>
+      <rule
+            description="Validate that Exit Methods have correct amount of parameters according to Procedure type"
+            implementation="org.parallelj.code.validation.rules.ExitMethodsParametersConstraint">
+      </rule>
+      <rule
+            description="Validate the type of field in OnError annotations must be ProceduresOnError"
+            implementation="org.parallelj.code.validation.rules.OnErrorFieldTypeConstraint">
+      </rule>
+      <rule
+            description="Validate the field in OnError annotation has getter method"
+            implementation="org.parallelj.code.validation.rules.OnErrorFieldGetterMethodConstraint">
+      </rule>
+      <rule
+            description="Validate that handlers methods are available"
+            implementation="org.parallelj.code.validation.rules.HandlerMethodsConstraint">
+      </rule>
+      <rule
+            description="Validate that In annotations field  must have a setter method available"
+            implementation="org.parallelj.code.validation.rules.InSetterMethodConstraint">
+      </rule>
+      <rule
+            description="Validate that Out annotation field must have a getter method available"
+            implementation="org.parallelj.code.validation.rules.OutGetterMethodConstraint">
+      </rule>
+      <rule
+            description="Validate that Capacity value are non zero and non negative"
+            implementation="org.parallelj.code.validation.rules.CapacityValidValueConstraint">
+      </rule>
+      <rule
+            description="Validate predicate field annotated with While is typed with boolean"
+            implementation="org.parallelj.code.validation.rules.WhileLoopFieldTypeConstraint">
+      </rule>
+      <rule
+            description="Validate that the property which name is passed to ForEach annotation must inherits from Iterable "
+            implementation="org.parallelj.code.validation.rules.ForEachPropertyTypeConstraint">
+      </rule>
+      <rule
+            description="Validate that if OnError annotation field is present then ExceptionPolicy is RESUME "
+            implementation="org.parallelj.code.validation.rules.OnErrorExceptionPolicyConstraint">
+      </rule>
+      <rule
+            description="Validate the Link&apos;s &quot;to&quot; used in OrSplit annotations match entry methods of the program"
+            implementation="org.parallelj.code.validation.rules.OrSplitLinkToValidEntryMethodConstraint">
+      </rule>
+      <rule
+            description="Validate the Link&apos;s &quot;to&quot; used in XorSplit annotations match entry methods of the program"
+            implementation="org.parallelj.code.validation.rules.XorSplitLinkToValidEntryMethodConstraint">
+      </rule>
+      <rule
+            description="validate that the Link&apos;s predicates values used in OrSplit annotations corresponds to a predicate method in the program"
+            implementation="org.parallelj.code.validation.rules.OrSplitLinkPredicateValueValidMethodConstraint">
+      </rule>
+      <rule
+            description="validate that the Link&apos;s predicates values used in XorSplit annotations corresponds to a predicate method in the program"
+            implementation="org.parallelj.code.validation.rules.XorSplitLinkPredicateValueValidMethodConstraint">
+      </rule>
+      <rule
+            description="Validation of Initial State (either Begin annotation or XXXJoin(begin)) should be present in program"
+            implementation="org.parallelj.code.validation.rules.InitialStateValidationConstraint">
+      </rule>
+      <rule
+            description="Validate that a entry/exit method doesn&apos;t have two inconsistent annotations"
+            implementation="org.parallelj.code.validation.rules.NoDuplicateTransitionAnnotationConstraint">
+      </rule>
+      <rule
+            description="Validate that a Program has its default constructor accessible."
+            implementation="org.parallelj.code.validation.rules.DefaultConstructorAvailableConstraint">
+      </rule>
+      <rule
+            description="Validate that ReturnCode is correctly defined in the code (type / accessors...)"
+            implementation="org.parallelj.code.validation.rules.ReturnCodePropertyConstraint">
+      </rule>
+      <rule
+            description="Validate the values in AndSplit and XorSplit annotations have corresponding Procedure"
+            implementation="org.parallelj.code.validation.rules.ValidationOfFinalState">
+      </rule>
+      </repository>
+   </extension>
+   <extension
+         id="org.parallelj.code.validation.marker"
+         name="ParallelJ Source Code Problem"
+         point="org.eclipse.core.resources.markers">
+      <super
+            type="org.eclipse.core.resources.problemmarker">
+      </super>
+      <persistent
+            value="true">
+      </persistent>
+   </extension>
+   <extension
+         id="ParallelJCodeValidationBuilder"
+         name="Parallel Source Code Validation Builder"
+         point="org.eclipse.core.resources.builders">
+      <builder
+            callOnEmptyDelta="false"
+            hasNature="false"
+            isConfigurable="true"
+            supportsConfigurations="true">
+         <run
+               class="org.parallelj.code.validation.project.ParallelJSourceValidatorBuilder">
+         </run>
+      </builder>
+   </extension>
+   <!--<extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="false"
+            id="org.parallelj.code.validation.objectContribution1"
+            objectClass="org.eclipse.jdt.core.IJavaProject">
+         <action
+               class="org.parallelj.code.validation.project.ToggleSourceValidationBuilder"
+               id="org.parallelj.code.validation.action1"
+               label="Toggle Source Code Validation"
+               menubarPath="org.eclipse.emf.validationMenuID/ValidationSeparator">
+         </action>
+         <menu
+               id="org.eclipse.emf.validationMenuID"
+               label="ParallelJ">
+            <separator
+                  name="ValidationSeparator">
+            </separator>
+         </menu>
+      </objectContribution>
+   </extension>-->
+
+</plugin>

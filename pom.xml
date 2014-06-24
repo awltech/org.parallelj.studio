@@ -206,6 +206,7 @@
 		<!-- Update site -->
 
 		<module>org.parallelj.studio.updatesite</module>
+		<module>org.parallelj.code.validation</module>
 		<module>org.parallelj.code.generator</module>
 	</modules>
 
