@@ -104,6 +104,7 @@
 		<ajdt-connector-site>http://dist.springsource.org/release/AJDT/configurator/</ajdt-connector-site>
 		<ajdt-site>http://download.eclipse.org/tools/ajdt/43/update</ajdt-site>
 		<optimus-site>http://eclipse.worldline.com/releases/kepler/optimus</optimus-site>
+		<jdt-ast-validation-site>http://eclipse.worldline.com/nightly/jdt-ast-validation</jdt-ast-validation-site>
 		<java.source>1.7</java.source>
 		<java.target>1.7</java.target>
 	</properties>
@@ -297,6 +298,11 @@
 			<id>optimus-site</id>
 			<layout>p2</layout>
 			<url>${optimus-site}</url>
+		</repository>
+		<repository>
+			<id>jdt-ast-validation-site</id>
+			<layout>p2</layout>
+			<url>${jdt-ast-validation-site}</url>
 		</repository>
 	</repositories>
 </project>

@@ -2,6 +2,7 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension-point id="ParallelJCodeGeneratorJobChangeListeners" name="ParallelJCodeGeneratorJobChangeListeners" schema="schema/ParallelJCodeGeneratorJobChangeListeners.exsd"/>
+   <extension-point id="ParallelJCodeGeneratorConfigFilePath" name="ParallelJCodeGeneratorConfigFilePath" schema="schema/ParallelJCodeGeneratorConfigFilePath.exsd"/>
    <extension
          id="org.parallelj.code.generator.Transformations"
          name="ParallelJ code generator transformations"
