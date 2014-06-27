@@ -15,3 +15,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.net
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
+Export-Package: org.parallelj.code.validation,
+ org.parallelj.code.validation.core,
+ org.parallelj.code.validation.project,
+ org.parallelj.code.validation.rules
