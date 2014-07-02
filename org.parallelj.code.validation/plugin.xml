@@ -5,7 +5,8 @@
          point="net.atos.jdt.ast.validation.engine.ASTValidationRules">
       <repository
             id="org.parallelj.code.validation.rule-repository"
-            markerId="org.parallelj.code.validation.marker">
+            markerId="org.parallelj.code.validation.marker"
+            name="ParallelJ Validation Rules ">
             <rule
                   description="Validate the values in AndSplit annotations have corresponding Procedure"
                   implementation="org.parallelj.code.validation.rules.AndSplitValidValuesConstraint">
