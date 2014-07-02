@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Validation
+Bundle-Name: //J Code Validation
 Bundle-SymbolicName: org.parallelj.code.validation;singleton:=true
 Bundle-Version: 1.3.1.qualifier
 Bundle-Activator: org.parallelj.code.validation.Activator
@@ -17,3 +17,4 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: org.parallelj.code.validation.core,
  org.parallelj.code.validation.rules
+Bundle-Vendor: Parallelj.org
