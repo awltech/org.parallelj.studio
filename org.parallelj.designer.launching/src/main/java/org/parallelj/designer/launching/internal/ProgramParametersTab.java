@@ -306,7 +306,7 @@ public class ProgramParametersTab extends JavaLaunchTab {
 		//set
 		try {
 			@SuppressWarnings("unchecked")
-			Map<Object, Object> savedParams = config.getAttribute(
+			Map<String, String> savedParams = config.getAttribute(
 					"org.parallelj.studio.launching.PARALLELJ_PARAMETERS",
 					(Map) null);
 			Map input = ProgramUtils.getProgramParameters(

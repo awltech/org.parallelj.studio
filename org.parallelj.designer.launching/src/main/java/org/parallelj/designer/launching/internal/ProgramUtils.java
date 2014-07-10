@@ -37,7 +37,7 @@ import org.parallelj.designer.launching.ConfigurationConstants;
 public class ProgramUtils {
 
 	public static Map<Object, Object> getProgramParameters(String project,
-			String mainJavaType, Map<Object, Object> parametersFromConfig) {
+			String mainJavaType, Map<String, String> parametersFromConfig) {
 		Map<Object, Object> input = new HashMap<Object, Object>();
 		IType mainType = null;
 		if (project != null && !project.equals("")) {
