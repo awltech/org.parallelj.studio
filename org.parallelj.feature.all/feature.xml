@@ -540,9 +540,9 @@ That&apos;s all there is to it!
          id="org.parallelj.feature"
          version="0.0.0"/>
 
-   <includes
+   <!--includes
          id="org.parallelj.feature.code.generator"
-         version="0.0.0"/>
+         version="0.0.0"/-->
 
    <includes
          id="org.parallelj.feature.pjl"
