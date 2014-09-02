@@ -563,11 +563,4 @@ That&apos;s all there is to it!
          version="0.0.0"
          unpack="false"/>
 
-   <plugin
-         id="net.atos.jdt.ast.validation.engine"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
 </feature>
