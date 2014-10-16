@@ -35,6 +35,7 @@
                   id="ProgramClassCreation">
             </objectRequires>
          </transformation>
+         <!--
          <transformation
                description="This transformation aims at adding the @Capacity annotation on an existing Parallelj program."
                factory="org.parallelj.code.generator.transformations.utils.ProgramCapacityAnnotationCreationFactory"
@@ -44,6 +45,7 @@
                   id="ProgramClassCreation">
             </objectRequires>
          </transformation>
+         -->
          <transformation
                description="This transformation aims at creating the data in a ParallelJ program."
                factory="org.parallelj.code.generator.transformations.structure.DataCreationFactory"
@@ -92,6 +94,7 @@
                   id="ProgramClassCreation">
             </parentRequires>
          </transformation>
+         <!--
          <transformation
                description="This transformation aims at adding the @Capacity annotation on an existing procedure entry method in a ParallelJ program."
                factory="org.parallelj.code.generator.transformations.utils.ProcedureCapacityAnnotationCreationFactory"
@@ -101,6 +104,7 @@
                   id="ProcedureEntryMethodCreation">
             </objectRequires>
          </transformation>
+         -->
          <transformation
                description="This transformation aims at adding the @Begin annotation on the first procedure of a ParallelJ program."
                factory="org.parallelj.code.generator.transformations.flow.BeginAnnotationCreationFactory"
@@ -385,6 +389,7 @@
                   id="GenericExitMethodCreation">
             </objectRequires>
          </transformation>
+         <!--
          <transformation
                description="This transformation aims at adding the @Capacity annotation on an existing pipeline entry method in a ParallelJ program."
                factory="org.parallelj.code.generator.transformations.utils.PipelineCapacityAnnotationCreationFactory"
@@ -394,6 +399,8 @@
                   id="PipelineEntryMethodCreation">
             </objectRequires>
          </transformation>
+         -->
+         <!--
          <transformation
                description="This transformation aims at adding the @Capacity annotation on an existing Parallelj pipeline class."
                factory="org.parallelj.code.generator.transformations.utils.PipelineClassCapacityAnnotationCreationFactory"
@@ -403,6 +410,7 @@
                   id="PipelineClassCreation">
             </objectRequires>
          </transformation>
+         -->
       </transformationSet>
    </extension>
 <extension
