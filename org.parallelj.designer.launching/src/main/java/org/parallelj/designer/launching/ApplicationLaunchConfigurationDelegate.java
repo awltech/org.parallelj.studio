@@ -27,7 +27,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.IncrementalProjectBuilder;
+//import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -46,8 +46,8 @@ public class ApplicationLaunchConfigurationDelegate extends JavaLaunchDelegate {
 
 	private static final String defaultLauncherClass = "org.parallelj.launching.internal.DefaultLauncher";
 	
-	private static String defaultAspectjWeaverJavaagentOption = "-javaagent:";
-	private String aspectWeaverPath;
+//	private static String defaultAspectjWeaverJavaagentOption = "-javaagent:";
+//	private String aspectWeaverPath;
 
 
 	/* (non-Javadoc)
@@ -66,110 +66,94 @@ public class ApplicationLaunchConfigurationDelegate extends JavaLaunchDelegate {
 			return;
 		}
 		
-		monitor.subTask(LaunchingMessages.JavaLocalApplicationLaunchConfigurationDelegate_Verifying_launch_attributes____1);
-						
-		String mainTypeName = defaultLauncherClass;
-		String programFullName = verifyMainTypeName(configuration);
-		IVMRunner runner = getVMRunner(configuration, mode);
-
-		File workingDir = verifyWorkingDirectory(configuration);
-		String workingDirName = null;
-		if (workingDir != null) {
-			workingDirName = workingDir.getAbsolutePath();
-		}
-		
-		// Build the Project before launch
 		try {
-			this.getJavaProject(configuration).getProject().refreshLocal(IResource.DEPTH_ZERO, new NullProgressMonitor());
-		} catch (Exception e) {
-			// Do nothing..
-		}
-		
-		// Environment variables
-		String[] envp= getEnvironment(configuration);
-		
-		// Classpath
-		String[] classpath = getClasspath(configuration);
-		
-		// Program & VM args
-		String pgmArgs = getProgramArguments(configuration);
-		String vmArgs = getVMArguments(configuration);
-		ExecutionArguments execArgs = new ExecutionArguments(vmArgs, pgmArgs);
-		
-		// VM-specific attributes
-		Map vmAttributesMap = getVMSpecificAttributesMap(configuration);
-		
-		// Create VM config
-		VMRunnerConfiguration runConfig = new VMRunnerConfiguration(mainTypeName, classpath);
-		Map programArguments = configuration.getAttribute(ConfigurationConstants.PARALLELJ_PARAMETERS, new HashMap());
-
-		@SuppressWarnings("unchecked")
-		Map finalProgramArguments = ProgramUtils.getProgramParameters(this.getJavaProject(configuration).getProject().getName() ,programFullName, programArguments);
-		
-		String[] finalProgramArgumentsAsArray = new String[finalProgramArguments.size()+1];
-		if (finalProgramArguments.size() != 0) {
-			int cpt=1;
-			Iterator iterator= finalProgramArguments.entrySet().iterator();
-			while(iterator.hasNext()) {
-	 			Map.Entry next = (Map.Entry) iterator.next();
-	 			Object[] arg = new Object[]{next.getKey(), next.getValue()};
-	 			finalProgramArgumentsAsArray[cpt++]= String.format("%s=%s", arg); 
+			monitor.subTask(LaunchingMessages.JavaLocalApplicationLaunchConfigurationDelegate_Verifying_launch_attributes____1); 
+			
+			String mainTypeName = defaultLauncherClass;
+			String programFullName = verifyMainTypeName(configuration);
+			IVMRunner runner = getVMRunner(configuration, mode);
+	
+			File workingDir = verifyWorkingDirectory(configuration);
+			String workingDirName = null;
+			if (workingDir != null) {
+				workingDirName = workingDir.getAbsolutePath();
 			}
+			
+			// Environment variables
+			String[] envp= getEnvironment(configuration);
+			
+			// Program & VM arguments
+			String pgmArgs = getProgramArguments(configuration);
+			String vmArgs = getVMArguments(configuration);
+			ExecutionArguments execArgs = new ExecutionArguments(vmArgs, pgmArgs);
+			
+			// VM-specific attributes
+			Map<String, Object> vmAttributesMap = getVMSpecificAttributesMap(configuration);
+			
+			// Classpath
+			String[] classpath = getClasspath(configuration);
+			
+			// Create VM config
+			VMRunnerConfiguration runConfig = new VMRunnerConfiguration(mainTypeName, classpath);
+			
+			Map programArguments = configuration.getAttribute(ConfigurationConstants.PARALLELJ_PARAMETERS, new HashMap());
+			Map finalProgramArguments = ProgramUtils.getProgramParameters(this.getJavaProject(configuration).getProject().getName() ,programFullName, programArguments);
+			String[] finalProgramArgumentsAsArray = new String[finalProgramArguments.size()+1];
+			if (finalProgramArguments.size() != 0) {
+				int cpt=1;
+				Iterator iterator= finalProgramArguments.entrySet().iterator();
+				while(iterator.hasNext()) {
+		 			Map.Entry next = (Map.Entry) iterator.next();
+		 			Object[] arg = new Object[]{next.getKey(), next.getValue()};
+		 			finalProgramArgumentsAsArray[cpt++]= String.format("%s=%s", arg); 
+				}
+			}
+			finalProgramArgumentsAsArray[0] =  programFullName;
+			//runConfig.setProgramArguments(execArgs.getProgramArgumentsArray());
+			runConfig.setProgramArguments(finalProgramArgumentsAsArray);
+
+			runConfig.setEnvironment(envp);
+			runConfig.setVMArguments(execArgs.getVMArgumentsArray());
+			runConfig.setWorkingDirectory(workingDirName);
+			runConfig.setVMSpecificAttributesMap(vmAttributesMap);
+	
+			// Bootpath
+			runConfig.setBootClassPath(getBootpath(configuration));
+			
+			// check for cancellation
+			if (monitor.isCanceled()) {
+				return;
+			}		
+			
+			// stop in main
+			prepareStopInMain(configuration);
+			
+			// done the verification phase
+			monitor.worked(1);
+			
+			monitor.subTask(LaunchingMessages.JavaLocalApplicationLaunchConfigurationDelegate_Creating_source_locator____2); 
+			// set the default source locator if required
+			setDefaultSourceLocator(launch, configuration);
+			monitor.worked(1);		
+			
+			// Launch the configuration - 1 unit of work
+			runner.run(runConfig, launch, monitor);
+			
+			// check for cancellation
+			if (monitor.isCanceled()) {
+				return;
+			}	
 		}
-		
-		finalProgramArgumentsAsArray[0] =  programFullName;
-
-		runConfig.setProgramArguments(finalProgramArgumentsAsArray);
-		runConfig.setEnvironment(envp);
-
-		runConfig.setWorkingDirectory(workingDirName);
-		runConfig.setVMSpecificAttributesMap(vmAttributesMap);
-		
-		// Set the VM arguments: add aspectjwearver...
-		String[] actualVmArgs =  execArgs.getVMArgumentsArray();
-		String[] finalVmArgs = new String[actualVmArgs.length+1];
-		int i=0;
-		for (; i<actualVmArgs.length; i++) {
-			finalVmArgs[i]=actualVmArgs[i];
+		finally {
+			monitor.done();
 		}
-		finalVmArgs[i]=defaultAspectjWeaverJavaagentOption+aspectWeaverPath;
-		
-		runConfig.setVMArguments(finalVmArgs);
-
-		// Bootpath
-		runConfig.setBootClassPath(getBootpath(configuration));
-		
-		// check for cancellation
-		if (monitor.isCanceled()) {
-			return;
-		}		
-		
-		// stop in main
-		prepareStopInMain(configuration);
-		
-		// done the verification phase
-		monitor.worked(1);
-		
-		monitor.subTask(LaunchingMessages.JavaLocalApplicationLaunchConfigurationDelegate_Creating_source_locator____2);
-		// set the default source locator if required
-		setDefaultSourceLocator(launch, configuration);
-		monitor.worked(1);		
-		
-		// Launch the configuration - 1 unit of work
-		runner.run(runConfig, launch, monitor);
-		
-		// check for cancellation
-		if (monitor.isCanceled()) {
-			return;
-		}	
-		
-		monitor.done();
 	}
 
 	/**
 	 * Override getClasspath so that we also include the load time weaving
 	 * aspectpath
 	 */
+	/*
 	public String[] getClasspath(ILaunchConfiguration configuration)
 			throws CoreException {
 		String[] javaClasspath=super.getClasspath(configuration);
@@ -183,5 +167,6 @@ public class ApplicationLaunchConfigurationDelegate extends JavaLaunchDelegate {
 		}
 		return javaClasspath;
 	}
+	*/
 
 }
