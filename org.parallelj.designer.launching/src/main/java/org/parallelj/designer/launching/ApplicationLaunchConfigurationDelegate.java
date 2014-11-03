@@ -26,8 +26,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import org.eclipse.core.resources.IResource;
-//import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -46,10 +44,6 @@ public class ApplicationLaunchConfigurationDelegate extends JavaLaunchDelegate {
 
 	private static final String defaultLauncherClass = "org.parallelj.launching.internal.DefaultLauncher";
 	
-//	private static String defaultAspectjWeaverJavaagentOption = "-javaagent:";
-//	private String aspectWeaverPath;
-
-
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.ILaunchConfigurationDelegate#launch(org.eclipse.debug.core.ILaunchConfiguration, java.lang.String, org.eclipse.debug.core.ILaunch, org.eclipse.core.runtime.IProgressMonitor)
 	 */
@@ -96,7 +90,9 @@ public class ApplicationLaunchConfigurationDelegate extends JavaLaunchDelegate {
 			// Create VM config
 			VMRunnerConfiguration runConfig = new VMRunnerConfiguration(mainTypeName, classpath);
 			
+			@SuppressWarnings("unchecked")
 			Map programArguments = configuration.getAttribute(ConfigurationConstants.PARALLELJ_PARAMETERS, new HashMap());
+			@SuppressWarnings("unchecked")
 			Map finalProgramArguments = ProgramUtils.getProgramParameters(this.getJavaProject(configuration).getProject().getName() ,programFullName, programArguments);
 			String[] finalProgramArgumentsAsArray = new String[finalProgramArguments.size()+1];
 			if (finalProgramArguments.size() != 0) {
