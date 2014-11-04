@@ -253,9 +253,11 @@
                factory="org.parallelj.code.generator.transformations.utils.ProgramTestClassCreationFactory"
                id="ProgramTestClassCreation"
                priority="0">
+<!--
             <objectRequires
                   id="ProgramExecutionAnnotationCreation">
             </objectRequires>
+-->
          </transformation>
          <transformation
                description="This transformation aims at creating the test&apos;s content for launching a program."
