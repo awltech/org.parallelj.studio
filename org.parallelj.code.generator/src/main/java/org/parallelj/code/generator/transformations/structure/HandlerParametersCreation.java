@@ -34,6 +34,7 @@ public class HandlerParametersCreation extends AbstractTransformation<Handler> {
 		AbstractTypeDeclaration parent = (AbstractTypeDeclaration) context.get(
 				getEObject().eContainer(), "self");
 
+		// Exception
 		SingleVariableDeclaration declaration = JavaFactory.eINSTANCE
 				.createSingleVariableDeclaration();
 		declaration.setMethodDeclaration(exitMethod);
@@ -50,6 +51,21 @@ public class HandlerParametersCreation extends AbstractTransformation<Handler> {
 		declaration.setName("e");
 		declaration.setOriginalCompilationUnit(parent
 				.getOriginalCompilationUnit());
+		
+		// Procedure
+		SingleVariableDeclaration contextDeclaration = JavaFactory.eINSTANCE.createSingleVariableDeclaration() ;
+		contextDeclaration.setMethodDeclaration(exitMethod);
+		contextDeclaration.setModifier(JavaFactory.eINSTANCE.createModifier());
+		contextDeclaration.setVarargs(false);
+
+		TypeAccess contextParameterTypeAccess = JavaFactory.eINSTANCE.createTypeAccess();
+		Type contextParameterType = JavaFactory.eINSTANCE.createPrimitiveType();
+		contextParameterType.setName("Object");
+		contextParameterTypeAccess.setType(contextParameterType);
+
+		contextDeclaration.setType(contextParameterTypeAccess);
+		contextDeclaration.setName("context");
+		contextDeclaration.setOriginalCompilationUnit(parent.getOriginalCompilationUnit()) ;
 
 		context.put(handler, "exit", exitMethod);
 	}
