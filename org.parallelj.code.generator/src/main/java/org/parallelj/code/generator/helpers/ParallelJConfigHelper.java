@@ -11,7 +11,9 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.eclipse.gmt.modisco.java.AbstractTypeDeclaration;
 import org.eclipse.gmt.modisco.java.Annotation;
 import org.eclipse.gmt.modisco.java.AnnotationTypeDeclaration;
@@ -69,10 +71,7 @@ public class ParallelJConfigHelper {
 
 		if (foundMember == null) {
 			ConfigFilePathManager configFilePathManager = new ConfigFilePathManager();
-			foundMember = configFilePathManager.loadFilePath();
-
-			if (configFilePathManager.getProject() != null)
-				project = configFilePathManager.getProject();
+			foundMember = configFilePathManager.loadFilePath(project);
 		}
 
 		if (foundMember != null && foundMember instanceof IFile) {
