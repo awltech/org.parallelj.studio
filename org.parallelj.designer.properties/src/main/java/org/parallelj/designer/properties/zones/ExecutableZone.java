@@ -21,8 +21,6 @@
  */
 package org.parallelj.designer.properties.zones;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.Callable;
 
 import org.eclipse.core.runtime.CoreException;
@@ -189,7 +187,7 @@ public class ExecutableZone extends Zone {
 			setDialogSettings(JavaPlugin.getDefault().getDialogSettings());
 			setWindowTitle(NewWizardMessages.NewClassCreationWizard_title);
 			page = new NewClassWizardPage();
-			page.addSuperInterface(Runnable.class.getCanonicalName());
+			page.addSuperInterface(Callable.class.getCanonicalName()+"<?>");
 			page.setMethodStubSelection(false, true, true, false);
 		}
 
