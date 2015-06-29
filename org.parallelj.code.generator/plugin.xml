@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-   <extension-point id="ParallelJCodeGeneratorJobChangeListeners" name="ParallelJCodeGeneratorJobChangeListeners" schema="schema/ParallelJCodeGeneratorJobChangeListeners.exsd"/>
-   <extension-point id="ParallelJCodeGeneratorConfigFilePath" name="ParallelJCodeGeneratorConfigFilePath" schema="schema/ParallelJCodeGeneratorConfigFilePath.exsd"/>
-   <extension
+  <extension-point id="ParallelJCodeGeneratorJobChangeListeners" name="ParallelJCodeGeneratorJobChangeListeners" schema="schema/ParallelJCodeGeneratorJobChangeListeners.exsd" />
+  <extension-point id="ParallelJCodeGeneratorConfigFilePath" name="ParallelJCodeGeneratorConfigFilePath" schema="schema/ParallelJCodeGeneratorConfigFilePath.exsd" />
+  <!--<extension
          id="org.parallelj.code.generator.Transformations"
          name="ParallelJ code generator transformations"
          point="net.atos.optimus.m2m.engine.core.Transformations">
@@ -34,8 +34,8 @@
             <objectRequires
                   id="ProgramClassCreation">
             </objectRequires>
-         </transformation>
-         <!--
+         </transformation>-->
+  <!--
          <transformation
                description="This transformation aims at adding the @Capacity annotation on an existing Parallelj program."
                factory="org.parallelj.code.generator.transformations.utils.ProgramCapacityAnnotationCreationFactory"
@@ -46,7 +46,7 @@
             </objectRequires>
          </transformation>
          -->
-         <transformation
+  <!--<transformation
                description="This transformation aims at creating the data in a ParallelJ program."
                factory="org.parallelj.code.generator.transformations.structure.DataCreationFactory"
                id="DataCreation"
@@ -93,8 +93,8 @@
             <parentRequires
                   id="ProgramClassCreation">
             </parentRequires>
-         </transformation>
-         <!--
+         </transformation>-->
+  <!--
          <transformation
                description="This transformation aims at adding the @Capacity annotation on an existing procedure entry method in a ParallelJ program."
                factory="org.parallelj.code.generator.transformations.utils.ProcedureCapacityAnnotationCreationFactory"
@@ -105,7 +105,7 @@
             </objectRequires>
          </transformation>
          -->
-         <transformation
+  <!--<transformation
                description="This transformation aims at adding the @Begin annotation on the first procedure of a ParallelJ program."
                factory="org.parallelj.code.generator.transformations.flow.BeginAnnotationCreationFactory"
                id="BeginAnnotationCreation"
@@ -252,13 +252,13 @@
                description="This transformation aims at adding a test class for each program."
                factory="org.parallelj.code.generator.transformations.utils.ProgramTestClassCreationFactory"
                id="ProgramTestClassCreation"
-               priority="0">
-<!--
+               priority="0">-->
+  <!--
             <objectRequires
                   id="ProgramExecutionAnnotationCreation">
             </objectRequires>
 -->
-         </transformation>
+  <!-- </transformation>
          <transformation
                description="This transformation aims at creating the test&apos;s content for launching a program."
                factory="org.parallelj.code.generator.transformations.utils.ProgramTestLaunchCreationFactory"
@@ -390,8 +390,8 @@
             <objectRequires
                   id="GenericExitMethodCreation">
             </objectRequires>
-         </transformation>
-         <!--
+         </transformation>-->
+  <!--
          <transformation
                description="This transformation aims at adding the @Capacity annotation on an existing pipeline entry method in a ParallelJ program."
                factory="org.parallelj.code.generator.transformations.utils.PipelineCapacityAnnotationCreationFactory"
@@ -402,7 +402,7 @@
             </objectRequires>
          </transformation>
          -->
-         <!--
+  <!--
          <transformation
                description="This transformation aims at adding the @Capacity annotation on an existing Parallelj pipeline class."
                factory="org.parallelj.code.generator.transformations.utils.PipelineClassCapacityAnnotationCreationFactory"
@@ -413,140 +413,73 @@
             </objectRequires>
          </transformation>
          -->
-      </transformationSet>
-   </extension>
-<extension
-         point="org.eclipse.ui.bindings">
-         <key
-            commandId="GenerateEffCodeFromShortCut"
-            contextId="org.parallelj.designer.ui.diagramContext"
-            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
-            sequence="M1+M2+G">
-      </key>
-   </extension>
-   <extension
-         point="org.eclipse.ui.commands">
-      <command
-            defaultHandler="org.parallelj.code.generator.actions.GenerateEffCodeFromShortCutKey"
-            id="GenerateEffCodeFromShortCut"
-            name="Generate Code From KeyBoard ShortCut">
-      </command>
-   </extension>
-   <extension
-         point="org.eclipse.ui.popupMenus">
-         <objectContribution
-            adaptable="false"
-            id="ObjectContributionGenerateCode"
-            objectClass="org.eclipse.gef.GraphicalEditPart">
-         <menu
-               id="org.eclipse.emf.validationMenuID"
-               label="ParallelJ">
-            <separator
-                  name="CodeGenSeparator">
-            </separator>
-         </menu>
-         <action
-               class="org.parallelj.code.generator.actions.GenerateCodeAction"
-               icon="icons/obj16/pjgen-16.png"
-               id="GenerateCode"
-               label="Generate Code"
-               menubarPath="org.eclipse.emf.validationMenuID/CodeGenSeparator"
-               style="push">
-         </action>
-         <visibility>
-               <objectClass
-                     name="org.parallelj.designer.edit.parts.SpecificationEditPart">
-               </objectClass>
-         </visibility>
-      </objectContribution>
-      <objectContribution
-            adaptable="false"
-            id="DiagramRoot"
-            nameFilter="*.pjd"
-            objectClass="org.eclipse.core.resources.IFile">
-         <action
-               class="org.parallelj.code.generator.actions.GenerateCodeFromFilesAction"
-               icon="icons/elcl16/pjgen-16.png"
-               id="generateJavaCodeFromFile"
-               label="Generate Code From File"
-               menubarPath="org.eclipse.emf.validationMenuID/forGeneration">
-         </action>
-         <menu
-               id="org.eclipse.emf.validationMenuID"
-               label="ParallelJ">
-            <separator
-                  name="forGeneration">
-            </separator>
-         </menu>
-      </objectContribution>
-          <objectContribution
-            objectClass="org.eclipse.core.resources.IProject"
-            id="ProjectRoot">
-         <menu
-               id="org.eclipse.emf.validationMenuID"
-               label="ParallelJ">
-            <separator
-                  name="forGeneration">
-            </separator>
-         </menu>
-         <action
-               class="org.parallelj.code.generator.actions.GenerateCodeFromProjectAction"
-               enablesFor="1"
-               icon="icons/elcl16/pjgen-16.png"
-               id="generateJavaCodeFromProject"
-               label="Generate Code From Diagrams"
-               menubarPath="org.eclipse.emf.validationMenuID/forGeneration">
-         </action>
-         <visibility>
-            <objectState
-                  name="projectNature"
-                  value="org.parallelj.designer.validation.ParallelJNature"/>
-         </visibility>
-      </objectContribution>
-    <objectContribution
-          id="ProjectRoot"
-          objectClass="org.eclipse.jdt.core.IJavaProject">
-       <menu
-             id="org.eclipse.emf.validationMenuID"
-             label="ParallelJ">
-          <separator
-                name="forGeneration">
-          </separator>
-       </menu>
-       <action
-             class="org.parallelj.code.generator.actions.GenerateCodeFromProjectAction"
-             enablesFor="1"
-             icon="icons/elcl16/pjgen-16.png"
-             id="generateJavaCodeFromProject"
-             label="Generate Code From Diagrams"
-             menubarPath="org.eclipse.emf.validationMenuID/forGeneration">
-       </action>
-       <visibility>
-          <objectState
-                name="projectNature"
-                value="org.parallelj.designer.validation.ParallelJNature">
-          </objectState>
-       </visibility>
+  <!-- </transformationSet>
+   </extension>-->
+  <extension point="org.eclipse.ui.bindings">
+    <key commandId="GenerateEffCodeFromShortCut" contextId="org.parallelj.designer.ui.diagramContext" schemeId="org.eclipse.ui.defaultAcceleratorConfiguration" sequence="M1+M2+G" />
+  </extension>
+  <extension point="org.eclipse.ui.commands">
+    <command defaultHandler="org.parallelj.code.generator.actions.GenerateEffCodeFromShortCutKey" id="GenerateEffCodeFromShortCut" name="Generate Code From KeyBoard ShortCut" />
+  </extension>
+  <extension point="org.eclipse.ui.popupMenus">
+    <objectContribution adaptable="false" id="ObjectContributionGenerateCode" objectClass="org.eclipse.gef.GraphicalEditPart">
+      <menu id="org.eclipse.emf.validationMenuID" label="ParallelJ">
+        <separator name="CodeGenSeparator" />
+      </menu>
+      <action class="org.parallelj.code.generator.actions.GenerateCodeAction" icon="icons/obj16/pjgen-16.png" id="GenerateCode" label="Generate Code" menubarPath="org.eclipse.emf.validationMenuID/CodeGenSeparator" style="push" />
+      <visibility>
+        <objectClass name="org.parallelj.designer.edit.parts.SpecificationEditPart" />
+      </visibility>
     </objectContribution>
-    <objectContribution
-          adaptable="false"
-          id="DiagramRoot"
-          nameFilter="*.pjl"
-          objectClass="org.eclipse.core.resources.IFile">
-       <action
-             class="org.parallelj.code.generator.actions.GenerateCodeFromFilesAction"
-             icon="icons/elcl16/pjgen-16.png"
-             id="generateJavaCodeFromFile"
-             label="Generate Code From File"
-             menubarPath="org.eclipse.emf.validationMenuID/forGeneration">
-       </action>
-       <menu
-             id="org.eclipse.emf.validationMenuID"
-             label="ParallelJ">
-          <separator
-                name="forGeneration">
-          </separator>
-       </menu>
+    <objectContribution adaptable="false" id="DiagramRoot" nameFilter="*.pjd" objectClass="org.eclipse.core.resources.IFile">
+      <action class="org.parallelj.code.generator.actions.GenerateCodeFromFilesAction" icon="icons/elcl16/pjgen-16.png" id="generateJavaCodeFromFile" label="Generate Code From File" menubarPath="org.eclipse.emf.validationMenuID/forGeneration" />
+      <menu id="org.eclipse.emf.validationMenuID" label="ParallelJ">
+        <separator name="forGeneration" />
+      </menu>
     </objectContribution>
-   </extension>
+    <objectContribution objectClass="org.eclipse.core.resources.IProject" id="ProjectRoot">
+      <menu id="org.eclipse.emf.validationMenuID" label="ParallelJ">
+        <separator name="forGeneration" />
+      </menu>
+      <action class="org.parallelj.code.generator.actions.GenerateCodeFromProjectAction" enablesFor="1" icon="icons/elcl16/pjgen-16.png" id="generateJavaCodeFromProject" label="Generate Code From Diagrams" menubarPath="org.eclipse.emf.validationMenuID/forGeneration" />
+      <visibility>
+        <objectState name="projectNature" value="org.parallelj.designer.validation.ParallelJNature" />
+      </visibility>
+    </objectContribution>
+    <objectContribution id="ProjectRoot" objectClass="org.eclipse.jdt.core.IJavaProject">
+      <menu id="org.eclipse.emf.validationMenuID" label="ParallelJ">
+        <separator name="forGeneration" />
+      </menu>
+      <action class="org.parallelj.code.generator.actions.GenerateCodeFromProjectAction" enablesFor="1" icon="icons/elcl16/pjgen-16.png" id="generateJavaCodeFromProject" label="Generate Code From Diagrams" menubarPath="org.eclipse.emf.validationMenuID/forGeneration" />
+      <visibility>
+        <objectState name="projectNature" value="org.parallelj.designer.validation.ParallelJNature" />
+      </visibility>
+    </objectContribution>
+    <objectContribution adaptable="false" id="DiagramRoot" nameFilter="*.pjl" objectClass="org.eclipse.core.resources.IFile">
+      <action class="org.parallelj.code.generator.actions.GenerateCodeFromFilesAction" icon="icons/elcl16/pjgen-16.png" id="generateJavaCodeFromFile" label="Generate Code From File" menubarPath="org.eclipse.emf.validationMenuID/forGeneration" />
+      <menu id="org.eclipse.emf.validationMenuID" label="ParallelJ">
+        <separator name="forGeneration" />
+      </menu>
+    </objectContribution>
+  </extension>
+  <extension point="net.atos.optimus.m2m.engine.masks.TransformationMasks">
+    <exclusiveMask description="Disables the pipeline creation transformations" name="Without pipeline mask">
+      <excludes transformationId="PipelineClassCreation" />
+      <excludes transformationId="PipelineProcedureEntryMethodCreation" />
+      <excludes transformationId="PipelineGenericExitMethodCreation" />
+      <excludes transformationId="PipelineProcedureAndSplitAnnotationCreation" />
+      <excludes transformationId="PipelineAnnotationCreation" />
+    </exclusiveMask>
+    <inclusiveMask description="Enables only the pipeline creation transformations" name="Only pipeline mask">
+      <includes transformationId="PipelineClassCreation" />
+      <includes transformationId="PipelineProcedureEntryMethodCreation" />
+      <includes transformationId="PipelineGenericExitMethodCreation" />
+      <includes transformationId="PipelineProcedureAndSplitAnnotationCreation" />
+      <includes transformationId="PipelineAnnotationCreation" />
+    </inclusiveMask>
+  </extension>
+  <extension point="net.atos.optimus.m2m.engine.sdk.tom.extension.TransformationDependencyDiagrams">
+    <transformationDependencyDiagram diagram="model/parallelj.tom" />
+  </extension>
 </plugin>
+
