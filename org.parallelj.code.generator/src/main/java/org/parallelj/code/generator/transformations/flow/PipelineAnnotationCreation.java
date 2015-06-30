@@ -2,7 +2,9 @@ package org.parallelj.code.generator.transformations.flow;
 
 import net.atos.optimus.m2m.engine.core.transformations.AbstractTransformation;
 import net.atos.optimus.m2m.engine.core.transformations.ITransformationContext;
-import net.atos.optimus.m2m.javaxmi.core.annotations.JavaAnnotationHelper;
+import net.atos.optimus.m2m.engine.ctxinject.api.ContextElementVisibility;
+import net.atos.optimus.m2m.engine.ctxinject.api.ObjectContextElement;
+import net.atos.optimus.m2m.javaxmi.operation.classes.JavaClass;
 
 import org.eclipse.gmt.modisco.java.ClassDeclaration;
 import org.parallelj.model.Pipeline;
@@ -17,20 +19,16 @@ import org.parallelj.model.Pipeline;
  */
 public class PipelineAnnotationCreation extends AbstractTransformation<Pipeline> {
 
+	@ObjectContextElement(value = "self", visibility = ContextElementVisibility.INOUT, nullable = false)
+	private ClassDeclaration classDeclaration;
+
 	public PipelineAnnotationCreation(Pipeline eObject, String id) {
 		super(eObject, id);
 	}
 
 	@Override
 	protected void transform(ITransformationContext context) {
-		Pipeline pipeline = getEObject();
-		ClassDeclaration classDeclaration = (ClassDeclaration) context.get(
-				pipeline, "self");
-
-		JavaAnnotationHelper.addAnnotation(classDeclaration, "org.parallelj",
-				"Pipeline");
-
-		context.put(pipeline, "self", classDeclaration);
+		(new JavaClass(this.classDeclaration)).addAnnotation("org.parallelj", "Pipeline");
 	}
 
 }
