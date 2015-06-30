@@ -2,24 +2,21 @@ package org.parallelj.code.generator.transformations.structure;
 
 import net.atos.optimus.m2m.engine.core.transformations.AbstractTransformation;
 import net.atos.optimus.m2m.engine.core.transformations.ITransformationContext;
+import net.atos.optimus.m2m.engine.ctxinject.api.ContextElementVisibility;
+import net.atos.optimus.m2m.engine.ctxinject.api.ObjectContextElement;
+import net.atos.optimus.m2m.engine.ctxinject.api.ParentContextElement;
 import net.atos.optimus.m2m.javaxmi.core.annotations.GeneratedAnnotationAdder;
-import net.atos.optimus.m2m.javaxmi.core.annotations.JavaAnnotationHelper;
-import net.atos.optimus.m2m.javaxmi.core.javadoc.JavadocHelper;
+import net.atos.optimus.m2m.javaxmi.operation.classes.ClassHelper;
+import net.atos.optimus.m2m.javaxmi.operation.classes.JavaClass;
+import net.atos.optimus.m2m.javaxmi.operation.constructors.ConstructorHelper;
+import net.atos.optimus.m2m.javaxmi.operation.fields.Field;
+import net.atos.optimus.m2m.javaxmi.operation.fields.FieldHelper;
+import net.atos.optimus.m2m.javaxmi.operation.methods.GetterHelper;
+import net.atos.optimus.m2m.javaxmi.operation.methods.SetterHelper;
 
-import org.eclipse.gmt.modisco.java.AbstractTypeDeclaration;
 import org.eclipse.gmt.modisco.java.ClassDeclaration;
-import org.eclipse.gmt.modisco.java.ConstructorDeclaration;
-import org.eclipse.gmt.modisco.java.FieldDeclaration;
-import org.eclipse.gmt.modisco.java.MethodDeclaration;
-import org.eclipse.gmt.modisco.java.Modifier;
-import org.eclipse.gmt.modisco.java.SingleVariableDeclaration;
-import org.eclipse.gmt.modisco.java.Type;
-import org.eclipse.gmt.modisco.java.TypeAccess;
-import org.eclipse.gmt.modisco.java.VariableDeclarationFragment;
 import org.eclipse.gmt.modisco.java.VisibilityKind;
-import org.eclipse.gmt.modisco.java.emf.JavaFactory;
 import org.parallelj.code.generator.core.Messages;
-import org.parallelj.code.generator.helpers.ParallelJModelHelper;
 import org.parallelj.code.generator.helpers.StringFormatHelper;
 import org.parallelj.model.Pipeline;
 
@@ -33,122 +30,48 @@ import org.parallelj.model.Pipeline;
  */
 public class PipelineClassCreation extends AbstractTransformation<Pipeline> {
 
+	@ParentContextElement(value = "self", nullable = false)
+	private ClassDeclaration parent;
+
+	@ObjectContextElement(value = "self", visibility = ContextElementVisibility.OUT, nullable = false)
+	private ClassDeclaration classDeclaration;
+
 	public PipelineClassCreation(Pipeline eObject, String id) {
 		super(eObject, id);
 	}
 
 	@Override
 	protected void transform(ITransformationContext context) {
-
 		Pipeline pipeline = getEObject();
-
 		String iterableName = pipeline.getIterable().getName();
 		String iterableType = pipeline.getIterable().getType();
 
-		ClassDeclaration classDeclaration = JavaFactory.eINSTANCE
-				.createClassDeclaration();
-		classDeclaration.setName(StringFormatHelper.camelCase(
-				pipeline.getName() + "Class", true));
-		classDeclaration.setProxy(false);
+		JavaClass javaClass = ClassHelper
+				.internalClassBuilder(new JavaClass(parent),
+						StringFormatHelper.camelCase(pipeline.getName() + "Class", true))
+				.build()
+				.addJavadoc(
+						Messages.JAVADOC_PIPELINE_CLASS.message(pipeline.getName(),
+								(getEObject().getDescription() != null ? getEObject().getDescription() : "")), true);
+		this.classDeclaration = javaClass.getDelegate();
 
-		Modifier modifier = JavaFactory.eINSTANCE.createModifier();
-		modifier.setVisibility(VisibilityKind.PUBLIC);
-		classDeclaration.setModifier(modifier);
+		Field field = FieldHelper
+				.builder(javaClass, iterableType)
+				.setName(iterableName)
+				.setVisibility(VisibilityKind.NONE)
+				.build()
+				.addAnnotation("org.parallelj", "PipelineData")
+				.addJavadoc(
+						Messages.JAVADOC_DATA.message(getEObject().getName(),
+								(getEObject().getDescription() != null ? getEObject().getDescription() : "")), true);
 
-		AbstractTypeDeclaration parent = (AbstractTypeDeclaration) context.get(
-				getEObject().eContainer(), "self");
+		GetterHelper.builder(javaClass, field).build()
+				.addJavadoc(Messages.JAVADOC_DATA_GETTER_METHOD.message(iterableName, iterableType), true);
+		SetterHelper.builder(javaClass, field).setParameterName(iterableName).build()
+				.addJavadoc(Messages.JAVADOC_DATA_SETTER_METHOD.message(iterableName, iterableType), true);
 
-		classDeclaration.setPackage(parent.getPackage());
+		ConstructorHelper.builder(javaClass).addParameterAndSetAssociatedField(iterableName, field);
 
-		classDeclaration.setOriginalCompilationUnit(parent
-				.getOriginalCompilationUnit());
-		classDeclaration.setAbstractTypeDeclaration(parent);
-
-		// javadoc on class
-		JavadocHelper.addJavadoc(classDeclaration,
-				Messages.JAVADOC_PIPELINE_CLASS.message(pipeline.getName(),
-						(getEObject().getDescription() != null ? getEObject()
-								.getDescription() : "")));
-
-		// generating data field
-		FieldDeclaration fieldDeclaration = JavaFactory.eINSTANCE
-				.createFieldDeclaration();
-
-		fieldDeclaration.setAbstractTypeDeclaration(classDeclaration);
-		fieldDeclaration.setOriginalCompilationUnit(parent
-				.getOriginalCompilationUnit());
-
-		VariableDeclarationFragment fragment = JavaFactory.eINSTANCE
-				.createVariableDeclarationFragment();
-		fragment.setName(iterableName);
-		fieldDeclaration.getFragments().add(fragment);
-
-		Type type = JavaFactory.eINSTANCE.createPrimitiveType();
-		type.setName(iterableType);
-
-		TypeAccess typeAccess = JavaFactory.eINSTANCE.createTypeAccess();
-		typeAccess.setType(type);
-		fieldDeclaration.setType(typeAccess);
-
-		JavadocHelper.addJavadoc(fieldDeclaration, Messages.JAVADOC_DATA
-				.message(getEObject().getName(),
-						(getEObject().getDescription() != null ? getEObject()
-								.getDescription() : "")));
-
-		// adding @PipelineData on iterable data inside pipeline class
-		JavaAnnotationHelper.addAnnotation(fieldDeclaration, "org.parallelj",
-				"PipelineData");
-
-		// generating getter
-		MethodDeclaration generateGetter = ParallelJModelHelper.generateGetter(
-				iterableName, iterableType);
-
-		generateGetter.setAbstractTypeDeclaration(classDeclaration);
-
-		// generating setter
-		MethodDeclaration generateSetter = ParallelJModelHelper.generateSetter(
-				iterableName, iterableType);
-
-		generateSetter.setAbstractTypeDeclaration(classDeclaration);
-
-		// generating constructor
-		ConstructorDeclaration createConstructorDeclaration = JavaFactory.eINSTANCE
-				.createConstructorDeclaration();
-
-		createConstructorDeclaration.setOriginalCompilationUnit(parent
-				.getOriginalCompilationUnit());
-		createConstructorDeclaration
-				.setAbstractTypeDeclaration(classDeclaration);
-		Modifier modifier2 = JavaFactory.eINSTANCE.createModifier();
-		modifier2.setVisibility(VisibilityKind.PUBLIC);
-		createConstructorDeclaration.setModifier(modifier2);
-		createConstructorDeclaration.setName(classDeclaration.getName());
-
-		SingleVariableDeclaration declaration = JavaFactory.eINSTANCE
-				.createSingleVariableDeclaration();
-		declaration.setMethodDeclaration(createConstructorDeclaration);
-		declaration.setModifier(JavaFactory.eINSTANCE.createModifier());
-		declaration.setVarargs(false);
-
-		TypeAccess parameterTypeAccess = JavaFactory.eINSTANCE
-				.createTypeAccess();
-		Type parameterType = JavaFactory.eINSTANCE.createPrimitiveType();
-		parameterType.setName(iterableType);
-		parameterTypeAccess.setType(parameterType);
-
-		declaration.setType(parameterTypeAccess);
-		declaration.setName(iterableName);
-		declaration.setOriginalCompilationUnit(parent
-				.getOriginalCompilationUnit());
-		createConstructorDeclaration.getParameters().add(declaration);
-
-		// adding body to constructor
-		createConstructorDeclaration.setBody(ParallelJModelHelper
-				.getVariableAssignmentBlock(iterableName));
-
-		GeneratedAnnotationAdder.addGenerated(classDeclaration, "//J", false,
-				false);
-
-		context.put(pipeline, "self", classDeclaration);
+		GeneratedAnnotationAdder.addGenerated(classDeclaration, "//J", false, false);
 	}
 }
