@@ -20,16 +20,16 @@ import org.parallelj.model.Program;
  * 
  */
 public class PackageCreation extends AbstractTransformation<Program> {
-
-	public PackageCreation(Program eObject, String id) {
-		super(eObject, id);
-	}
-
-	@RootContextElement(value = "java", visibility = ContextElementVisibility.IN, nullable = true)
+	
+	@RootContextElement(value = "java", nullable = false)
 	private Model javaModel;
 
 	@ObjectContextElement(value = "package", visibility = ContextElementVisibility.OUT, nullable = false)
 	private Package currentPackage;
+
+	public PackageCreation(Program eObject, String id) {
+		super(eObject, id);
+	}
 
 	@Override
 	protected void transform(ITransformationContext context) {

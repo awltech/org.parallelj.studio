@@ -2,14 +2,15 @@ package org.parallelj.code.generator.transformations.structure;
 
 import net.atos.optimus.m2m.engine.core.transformations.AbstractTransformation;
 import net.atos.optimus.m2m.engine.core.transformations.ITransformationContext;
-import net.atos.optimus.m2m.javaxmi.core.javadoc.JavadocHelper;
+import net.atos.optimus.m2m.engine.ctxinject.api.ContextElementVisibility;
+import net.atos.optimus.m2m.engine.ctxinject.api.ObjectContextElement;
+import net.atos.optimus.m2m.engine.ctxinject.api.ParentContextElement;
+import net.atos.optimus.m2m.javaxmi.operation.classes.JavaClass;
+import net.atos.optimus.m2m.javaxmi.operation.fields.FieldHelper;
 
-import org.eclipse.gmt.modisco.java.AbstractTypeDeclaration;
+import org.eclipse.gmt.modisco.java.ClassDeclaration;
 import org.eclipse.gmt.modisco.java.FieldDeclaration;
-import org.eclipse.gmt.modisco.java.Type;
-import org.eclipse.gmt.modisco.java.TypeAccess;
-import org.eclipse.gmt.modisco.java.VariableDeclarationFragment;
-import org.eclipse.gmt.modisco.java.emf.JavaFactory;
+import org.eclipse.gmt.modisco.java.VisibilityKind;
 import org.parallelj.code.generator.core.Messages;
 import org.parallelj.model.Data;
 
@@ -22,39 +23,27 @@ import org.parallelj.model.Data;
  */
 public class DataCreation extends AbstractTransformation<Data> {
 
+	@ParentContextElement(value = "self", nullable = false)
+	private ClassDeclaration classDeclaration;
+
+	@ObjectContextElement(value = "self", visibility = ContextElementVisibility.OUT, nullable = false)
+	private FieldDeclaration declaration;
+
 	public DataCreation(Data eObject, String id) {
 		super(eObject, id);
 	}
 
 	@Override
 	protected void transform(ITransformationContext context) {
-		FieldDeclaration declaration = JavaFactory.eINSTANCE
-				.createFieldDeclaration();
-
-		AbstractTypeDeclaration parentDeclaration = (AbstractTypeDeclaration) context
-				.get(getEObject().eContainer(), "self");
-		declaration.setAbstractTypeDeclaration(parentDeclaration);
-		declaration.setOriginalCompilationUnit(parentDeclaration
-				.getOriginalCompilationUnit());
-
-		VariableDeclarationFragment fragment = JavaFactory.eINSTANCE
-				.createVariableDeclarationFragment();
-		fragment.setName(getEObject().getName());
-		declaration.getFragments().add(fragment);
-
-		Type type = JavaFactory.eINSTANCE.createPrimitiveType();
-		type.setName(getEObject().getType());
-
-		TypeAccess typeAccess = JavaFactory.eINSTANCE.createTypeAccess();
-		typeAccess.setType(type);
-		declaration.setType(typeAccess);
-
-		JavadocHelper.addJavadoc(declaration, Messages.JAVADOC_DATA.message(
-				getEObject().getName(),
-				(getEObject().getDescription() != null ? getEObject()
-						.getDescription() : "")));
-
-		context.put(getEObject(), "self", declaration);
+		this.declaration = FieldHelper
+				.builder(new JavaClass(this.classDeclaration), getEObject().getType())
+				.setName(getEObject().getName())
+				.setVisibility(VisibilityKind.NONE)
+				.build()
+				.addJavadoc(
+						Messages.JAVADOC_DATA.message(getEObject().getName(),
+								(getEObject().getDescription() != null ? getEObject().getDescription() : "")), true)
+				.getDelegate();
 	}
 
 }
