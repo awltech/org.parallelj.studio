@@ -1,14 +1,14 @@
 package org.parallelj.code.generator.transformations.structure;
 
-import java.util.Arrays;
-import java.util.Iterator;
-
 import net.atos.optimus.m2m.engine.core.transformations.AbstractTransformation;
 import net.atos.optimus.m2m.engine.core.transformations.ITransformationContext;
+import net.atos.optimus.m2m.engine.ctxinject.api.ContextElementVisibility;
+import net.atos.optimus.m2m.engine.ctxinject.api.ObjectContextElement;
+import net.atos.optimus.m2m.engine.ctxinject.api.RootContextElement;
+import net.atos.optimus.m2m.javaxmi.operation.packages.PackageHelper;
 
 import org.eclipse.gmt.modisco.java.Model;
 import org.eclipse.gmt.modisco.java.Package;
-import org.eclipse.gmt.modisco.java.emf.JavaFactory;
 import org.parallelj.model.Program;
 
 /**
@@ -25,33 +25,17 @@ public class PackageCreation extends AbstractTransformation<Program> {
 		super(eObject, id);
 	}
 
+	@RootContextElement(value = "java", visibility = ContextElementVisibility.IN, nullable = true)
+	private Model javaModel;
+
+	@ObjectContextElement(value = "package", visibility = ContextElementVisibility.OUT, nullable = false)
+	private Package currentPackage;
+
 	@Override
 	protected void transform(ITransformationContext context) {
-		Model javaModel = (Model) context.getRoot("java");
-
 		Program program = getEObject();
 
-		String packageName = program.getName().substring(0,
-				program.getName().lastIndexOf("."));
-
-		Package currentPackage = null;
-
-		Iterator<String> chunks = Arrays.asList(packageName.split("\\."))
-				.iterator();
-
-		if (chunks.hasNext()) {
-			currentPackage = JavaFactory.eINSTANCE.createPackage();
-			currentPackage.setName(chunks.next());
-			currentPackage.setModel(javaModel);
-		}
-		while (chunks.hasNext()) {
-			Package oldPackage = currentPackage;
-			currentPackage = JavaFactory.eINSTANCE.createPackage();
-			currentPackage.setName(chunks.next());
-			currentPackage.setPackage(oldPackage);
-		}
-
-		context.put(program, "package", currentPackage);
+		this.currentPackage = PackageHelper.createPackage(this.javaModel,
+				program.getName().substring(0, program.getName().lastIndexOf("."))).getDelegate();
 	}
-
 }

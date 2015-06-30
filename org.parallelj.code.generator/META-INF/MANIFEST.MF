@@ -21,7 +21,9 @@ Require-Bundle: org.eclipse.ui,
  net.atos.optimus.m2t.java.core,
  net.atos.optimus.m2t.merger.java.core,
  org.parallelj.model,
- org.parallelj.designer.extension
+ org.parallelj.designer.extension,
+ net.atos.optimus.m2m.engine.ctxinject,
+ net.atos.optimus.m2m.javaxmi.operation
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: org.parallelj.code.generator,
