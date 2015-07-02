@@ -5,8 +5,8 @@ import net.atos.optimus.m2m.engine.core.transformations.ITransformationContext;
 import net.atos.optimus.m2m.engine.ctxinject.api.ContextElementVisibility;
 import net.atos.optimus.m2m.engine.ctxinject.api.ObjectContextElement;
 import net.atos.optimus.m2m.engine.ctxinject.api.ParentContextElement;
-import net.atos.optimus.m2m.javaxmi.operation.annotations.AnnotationHelper;
 import net.atos.optimus.m2m.javaxmi.operation.methods.Method;
+import net.atos.optimus.m2m.javaxmi.operation.parameters.Parameter;
 import net.atos.optimus.m2m.javaxmi.operation.parameters.ParameterHelper;
 
 import org.eclipse.gmt.modisco.java.ClassDeclaration;
@@ -37,17 +37,9 @@ public class ForEachAnnotationCreation extends AbstractTransformation<ForEachLoo
 	@Override
 	protected void transform(ITransformationContext context) {
 		ForEachLoop forEach = getEObject();
-		this.declaration = new Method(this.declaration).addParameters(
-				ParameterHelper
-						.builder("Object")
-						.setName("val")
-						.build()
-						.addAnnotations(
-								AnnotationHelper
-										.builder("org.parallelj", "ForEach")
-										.addAnnotationParameter("value",
-												forEach.getIterable() != null ? forEach.getIterable().getName() : "",
-												true).build())).getDelegate();
+		Parameter parameter = ParameterHelper.builder("Object").setName("val").build();
+		parameter.createAnnotation("org.parallelj", "ForEach").addAnnotationParameter("value",
+				forEach.getIterable() != null ? forEach.getIterable().getName() : "", true);
+		this.declaration = new Method(this.declaration).addParameters(parameter).getDelegate();
 	}
-
 }
