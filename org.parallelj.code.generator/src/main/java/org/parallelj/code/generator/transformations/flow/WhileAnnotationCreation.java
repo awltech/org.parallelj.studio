@@ -2,10 +2,12 @@ package org.parallelj.code.generator.transformations.flow;
 
 import net.atos.optimus.m2m.engine.core.transformations.AbstractTransformation;
 import net.atos.optimus.m2m.engine.core.transformations.ITransformationContext;
-import net.atos.optimus.m2m.javaxmi.core.annotations.JavaAnnotationHelper;
+import net.atos.optimus.m2m.engine.ctxinject.api.ContextElementVisibility;
+import net.atos.optimus.m2m.engine.ctxinject.api.ObjectContextElement;
+import net.atos.optimus.m2m.javaxmi.operation.annotations.AnnotationHelper;
+import net.atos.optimus.m2m.javaxmi.operation.methods.Method;
 
-import org.eclipse.gmt.modisco.java.AbstractMethodDeclaration;
-import org.eclipse.gmt.modisco.java.Annotation;
+import org.eclipse.gmt.modisco.java.MethodDeclaration;
 import org.parallelj.model.WhileLoop;
 
 /**
@@ -18,6 +20,9 @@ import org.parallelj.model.WhileLoop;
  */
 public class WhileAnnotationCreation extends AbstractTransformation<WhileLoop> {
 
+	@ObjectContextElement(value = "self", visibility = ContextElementVisibility.INOUT, nullable = false)
+	private MethodDeclaration declaration;
+
 	public WhileAnnotationCreation(WhileLoop eObject, String id) {
 		super(eObject, id);
 	}
@@ -25,17 +30,12 @@ public class WhileAnnotationCreation extends AbstractTransformation<WhileLoop> {
 	@Override
 	protected void transform(ITransformationContext context) {
 		WhileLoop whileLoop = getEObject();
-		AbstractMethodDeclaration declaration = (AbstractMethodDeclaration) context
-				.get(whileLoop, "self");
-
-		Annotation annotation = JavaAnnotationHelper.addAnnotation(declaration,
-				"org.parallelj", "While");
-
-		JavaAnnotationHelper.addAnnotationParameter(annotation, "value",
-				whileLoop.getPredicate() != null ? whileLoop.getPredicate()
-						.getName() : "");
-
-		context.put(whileLoop, "self", declaration);
+		this.declaration = new Method(this.declaration).addAnnotations(
+				AnnotationHelper
+						.builder("org.parallelj", "While")
+						.addAnnotationParameter("value",
+								whileLoop.getPredicate() != null ? whileLoop.getPredicate().getName() : "", true)
+						.build()).getDelegate();
 	}
 
 }
