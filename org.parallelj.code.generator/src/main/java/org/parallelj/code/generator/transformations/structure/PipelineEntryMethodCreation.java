@@ -26,12 +26,11 @@ import org.parallelj.model.Pipeline;
  */
 public class PipelineEntryMethodCreation extends AbstractTransformation<Pipeline> {
 
-	 @ParentContextElement(value = "self", nullable = false)
-	 private ClassDeclaration parent;
-	
-	 @ObjectContextElement(value = "entry", visibility =
-	 ContextElementVisibility.OUT, nullable = false)
-	 private MethodDeclaration entryMethod;
+	@ParentContextElement(value = "self", nullable = false)
+	private ClassDeclaration parent;
+
+	@ObjectContextElement(value = "entry", visibility = ContextElementVisibility.OUT, nullable = false)
+	private MethodDeclaration entryMethod;
 
 	public PipelineEntryMethodCreation(Pipeline eObject, String id) {
 		super(eObject, id);

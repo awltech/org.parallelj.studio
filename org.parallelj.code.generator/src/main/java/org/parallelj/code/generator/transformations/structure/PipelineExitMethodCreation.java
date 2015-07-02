@@ -2,13 +2,13 @@ package org.parallelj.code.generator.transformations.structure;
 
 import net.atos.optimus.m2m.engine.core.transformations.AbstractTransformation;
 import net.atos.optimus.m2m.engine.core.transformations.ITransformationContext;
+import net.atos.optimus.m2m.engine.ctxinject.api.ContextElementVisibility;
+import net.atos.optimus.m2m.engine.ctxinject.api.ObjectContextElement;
+import net.atos.optimus.m2m.engine.ctxinject.api.ParentContextElement;
+import net.atos.optimus.m2m.javaxmi.operation.methods.Method;
 
-import org.eclipse.gmt.modisco.java.AbstractMethodDeclaration;
-import org.eclipse.gmt.modisco.java.AbstractTypeDeclaration;
-import org.eclipse.gmt.modisco.java.SingleVariableDeclaration;
-import org.eclipse.gmt.modisco.java.Type;
-import org.eclipse.gmt.modisco.java.TypeAccess;
-import org.eclipse.gmt.modisco.java.emf.JavaFactory;
+import org.eclipse.gmt.modisco.java.ClassDeclaration;
+import org.eclipse.gmt.modisco.java.MethodDeclaration;
 import org.parallelj.code.generator.helpers.StringFormatHelper;
 import org.parallelj.model.Pipeline;
 
@@ -20,8 +20,13 @@ import org.parallelj.model.Pipeline;
  * @version 1.0
  * 
  */
-public class PipelineExitMethodCreation extends
-		AbstractTransformation<Pipeline> {
+public class PipelineExitMethodCreation extends AbstractTransformation<Pipeline> {
+
+	@ParentContextElement(value = "self", nullable = false)
+	private ClassDeclaration parent;
+
+	@ObjectContextElement(value = "exit", visibility = ContextElementVisibility.INOUT, nullable = false)
+	private MethodDeclaration exitMethod;
 
 	public PipelineExitMethodCreation(Pipeline eObject, String id) {
 		super(eObject, id);
@@ -30,29 +35,7 @@ public class PipelineExitMethodCreation extends
 	@Override
 	protected void transform(ITransformationContext context) {
 		Pipeline pipeline = getEObject();
-
-		AbstractMethodDeclaration exitMethod = (AbstractMethodDeclaration) context
-				.get(pipeline, "exit");
-		AbstractTypeDeclaration parent = (AbstractTypeDeclaration) context.get(
-				getEObject().eContainer(), "self");
-
-		SingleVariableDeclaration declaration = JavaFactory.eINSTANCE
-				.createSingleVariableDeclaration();
-		declaration.setMethodDeclaration(exitMethod);
-		declaration.setModifier(JavaFactory.eINSTANCE.createModifier());
-		declaration.setVarargs(false);
-
-		TypeAccess parameterTypeAccess = JavaFactory.eINSTANCE
-				.createTypeAccess();
-		Type parameterType = JavaFactory.eINSTANCE.createPrimitiveType();
-		parameterType.setName(StringFormatHelper.camelCase(pipeline.getName() + "Class",true));
-		parameterTypeAccess.setType(parameterType);
-
-		declaration.setType(parameterTypeAccess);
-		declaration.setName("executable");
-		declaration.setOriginalCompilationUnit(parent
-				.getOriginalCompilationUnit());
-
-		context.put(pipeline, "exit", exitMethod);
+		new Method(this.exitMethod).addParameter(StringFormatHelper.camelCase(pipeline.getName() + "Class", true),
+				"executable");
 	}
 }
