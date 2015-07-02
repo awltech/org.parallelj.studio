@@ -2,10 +2,12 @@ package org.parallelj.code.generator.transformations.flow;
 
 import net.atos.optimus.m2m.engine.core.transformations.AbstractTransformation;
 import net.atos.optimus.m2m.engine.core.transformations.ITransformationContext;
-import net.atos.optimus.m2m.javaxmi.core.annotations.JavaAnnotationHelper;
-
-import org.eclipse.gmt.modisco.java.AbstractMethodDeclaration;
-import org.eclipse.gmt.modisco.java.Annotation;
+import net.atos.optimus.m2m.engine.ctxinject.api.ContextElementVisibility;
+import net.atos.optimus.m2m.engine.ctxinject.api.ObjectContextElement;
+import net.atos.optimus.m2m.javaxmi.operation.annotations.JavaAnnotation;
+import net.atos.optimus.m2m.javaxmi.operation.methods.Method;
+	
+import org.eclipse.gmt.modisco.java.MethodDeclaration;
 import org.parallelj.model.Handler;
 import org.parallelj.model.Procedure;
 
@@ -19,24 +21,20 @@ import org.parallelj.model.Procedure;
  */
 public class HandlerAnnotationCreation extends AbstractTransformation<Handler> {
 
+	@ObjectContextElement(value = "exit", visibility = ContextElementVisibility.INOUT, nullable = false)
+	private MethodDeclaration declaration;
+
 	public HandlerAnnotationCreation(Handler eObject, String id) {
 		super(eObject, id);
 	}
 
 	@Override
 	protected void transform(ITransformationContext context) {
+		JavaAnnotation annotation = new Method(this.declaration).createAnnotation("org.parallelj", "Handler");
 		Handler handler = getEObject();
-		AbstractMethodDeclaration declaration = (AbstractMethodDeclaration) context
-				.get(handler, "exit");
-
-		Annotation annotation = JavaAnnotationHelper.addAnnotation(declaration,
-				"org.parallelj", "Handler");
-
-		for (Procedure procedure : handler.getProcedures())
-			JavaAnnotationHelper.addAnnotationParameter(annotation, "value",
-					procedure.getName());
-
-		context.put(handler, "exit", declaration);
+		for (Procedure procedure : handler.getProcedures()) {
+			annotation.addAnnotationParameter("value", procedure.getName(), true);
+		}
 	}
 
 }

@@ -2,13 +2,13 @@ package org.parallelj.code.generator.transformations.structure;
 
 import net.atos.optimus.m2m.engine.core.transformations.AbstractTransformation;
 import net.atos.optimus.m2m.engine.core.transformations.ITransformationContext;
+import net.atos.optimus.m2m.engine.ctxinject.api.ContextElementVisibility;
+import net.atos.optimus.m2m.engine.ctxinject.api.ObjectContextElement;
+import net.atos.optimus.m2m.engine.ctxinject.api.ParentContextElement;
+import net.atos.optimus.m2m.javaxmi.operation.methods.Method;
 
-import org.eclipse.gmt.modisco.java.AbstractMethodDeclaration;
-import org.eclipse.gmt.modisco.java.AbstractTypeDeclaration;
-import org.eclipse.gmt.modisco.java.SingleVariableDeclaration;
-import org.eclipse.gmt.modisco.java.Type;
-import org.eclipse.gmt.modisco.java.TypeAccess;
-import org.eclipse.gmt.modisco.java.emf.JavaFactory;
+import org.eclipse.gmt.modisco.java.ClassDeclaration;
+import org.eclipse.gmt.modisco.java.MethodDeclaration;
 import org.parallelj.model.Handler;
 
 /**
@@ -21,53 +21,19 @@ import org.parallelj.model.Handler;
  */
 public class HandlerParametersCreation extends AbstractTransformation<Handler> {
 
+	@ParentContextElement(value = "self", nullable = false)
+	private ClassDeclaration parent;
+
+	@ObjectContextElement(value = "exit", visibility = ContextElementVisibility.INOUT, nullable = false)
+	private MethodDeclaration exitMethod;
+
 	public HandlerParametersCreation(Handler eObject, String id) {
 		super(eObject, id);
 	}
 
 	@Override
 	protected void transform(ITransformationContext context) {
-		Handler handler = getEObject();
-
-		AbstractMethodDeclaration exitMethod = (AbstractMethodDeclaration) context
-				.get(handler, "exit");
-		AbstractTypeDeclaration parent = (AbstractTypeDeclaration) context.get(
-				getEObject().eContainer(), "self");
-
-		// Exception
-		SingleVariableDeclaration declaration = JavaFactory.eINSTANCE
-				.createSingleVariableDeclaration();
-		declaration.setMethodDeclaration(exitMethod);
-		declaration.setModifier(JavaFactory.eINSTANCE.createModifier());
-		declaration.setVarargs(false);
-
-		TypeAccess parameterTypeAccess = JavaFactory.eINSTANCE
-				.createTypeAccess();
-		Type parameterType = JavaFactory.eINSTANCE.createPrimitiveType();
-		parameterType.setName("Exception");
-		parameterTypeAccess.setType(parameterType);
-
-		declaration.setType(parameterTypeAccess);
-		declaration.setName("e");
-		declaration.setOriginalCompilationUnit(parent
-				.getOriginalCompilationUnit());
-		
-		// Procedure
-		SingleVariableDeclaration contextDeclaration = JavaFactory.eINSTANCE.createSingleVariableDeclaration() ;
-		contextDeclaration.setMethodDeclaration(exitMethod);
-		contextDeclaration.setModifier(JavaFactory.eINSTANCE.createModifier());
-		contextDeclaration.setVarargs(false);
-
-		TypeAccess contextParameterTypeAccess = JavaFactory.eINSTANCE.createTypeAccess();
-		Type contextParameterType = JavaFactory.eINSTANCE.createPrimitiveType();
-		contextParameterType.setName("Object");
-		contextParameterTypeAccess.setType(contextParameterType);
-
-		contextDeclaration.setType(contextParameterTypeAccess);
-		contextDeclaration.setName("context");
-		contextDeclaration.setOriginalCompilationUnit(parent.getOriginalCompilationUnit()) ;
-
-		context.put(handler, "exit", exitMethod);
+		this.exitMethod = new Method(this.exitMethod).addParameter("Exception", "e").addParameter("Object", "context")
+				.getDelegate();
 	}
-
 }
