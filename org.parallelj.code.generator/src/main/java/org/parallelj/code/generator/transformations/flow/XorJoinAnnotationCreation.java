@@ -2,10 +2,10 @@ package org.parallelj.code.generator.transformations.flow;
 
 import net.atos.optimus.m2m.engine.core.transformations.AbstractTransformation;
 import net.atos.optimus.m2m.engine.core.transformations.ITransformationContext;
-import net.atos.optimus.m2m.javaxmi.core.annotations.JavaAnnotationHelper;
+import net.atos.optimus.m2m.javaxmi.operation.annotations.JavaAnnotation;
+import net.atos.optimus.m2m.javaxmi.operation.methods.Method;
 
-import org.eclipse.gmt.modisco.java.AbstractMethodDeclaration;
-import org.eclipse.gmt.modisco.java.Annotation;
+import org.eclipse.gmt.modisco.java.MethodDeclaration;
 import org.parallelj.code.generator.helpers.ParallelJModelHelper;
 import org.parallelj.model.Condition;
 import org.parallelj.model.Element;
@@ -34,41 +34,21 @@ public class XorJoinAnnotationCreation extends
 
 	@Override
 	protected void transform(ITransformationContext context) {
-
-		String key = "self";
-
-		if (isPipeline) {
-			key = "entry";
-		}
-
+		String key = isPipeline ? "entry" : "self";
 		Procedure procedure = getEObject();
-		boolean noop = false;
-		AbstractMethodDeclaration declaration = (AbstractMethodDeclaration) context
-				.get(procedure, key);
-
+		MethodDeclaration declaration = (MethodDeclaration) context.get(procedure, key);
 		if (declaration == null) {
-			noop = true;
-			declaration = (AbstractMethodDeclaration) context.get(procedure,
-					"exit");
+			key = "exit";
+			declaration = (MethodDeclaration) context.get(procedure, key);
 		}
-
-		Annotation annotation = JavaAnnotationHelper.addAnnotation(declaration,
-				"org.parallelj", "XorJoin");
-
+		JavaAnnotation annotation = new Method(declaration).createAnnotation("org.parallelj", "XorJoin");
 		for (Link inputLink : procedure.getInputLinks()) {
-			if (inputLink.eContainer() instanceof Condition
-					&& ((Element) inputLink.eContainer()).getName() != null) {
-				JavaAnnotationHelper.addAnnotationParameter(annotation,
-						"value", ParallelJModelHelper
-								.getConditionName((Element) inputLink
-										.eContainer()));
+			if (inputLink.eContainer() instanceof Condition && ((Element) inputLink.eContainer()).getName() != null) {
+				annotation.addAnnotationParameter("value",
+						ParallelJModelHelper.getConditionName((Element) inputLink.eContainer()), true);
 			}
 		}
-
-		if (!noop)
-			context.put(procedure, key, declaration);
-		else
-			context.put(procedure, "exit", declaration);
+		context.put(procedure, key, declaration);
 	}
 
 }
