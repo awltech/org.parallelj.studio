@@ -2,13 +2,11 @@ package org.parallelj.code.generator.transformations.utils;
 
 import net.atos.optimus.m2m.engine.core.transformations.AbstractTransformation;
 import net.atos.optimus.m2m.engine.core.transformations.ITransformationContext;
-import net.atos.optimus.m2m.javaxmi.core.annotations.JavaAnnotationHelper;
+import net.atos.optimus.m2m.engine.ctxinject.api.ContextElementVisibility;
+import net.atos.optimus.m2m.engine.ctxinject.api.ObjectContextElement;
+import net.atos.optimus.m2m.javaxmi.operation.classes.JavaClass;
 
-import org.eclipse.gmt.modisco.java.Annotation;
-import org.eclipse.gmt.modisco.java.AnnotationMemberValuePair;
 import org.eclipse.gmt.modisco.java.ClassDeclaration;
-import org.eclipse.gmt.modisco.java.NumberLiteral;
-import org.eclipse.gmt.modisco.java.emf.JavaFactory;
 import org.parallelj.model.Program;
 
 /**
@@ -19,8 +17,10 @@ import org.parallelj.model.Program;
  * @version 1.0
  * 
  */
-public class ProgramCapacityAnnotationCreation extends
-		AbstractTransformation<Program> {
+public class ProgramCapacityAnnotationCreation extends AbstractTransformation<Program> {
+
+	@ObjectContextElement(value = "self", visibility = ContextElementVisibility.INOUT, nullable = false)
+	private ClassDeclaration classDeclaration;
 
 	public ProgramCapacityAnnotationCreation(Program eObject, String id) {
 		super(eObject, id);
@@ -29,22 +29,8 @@ public class ProgramCapacityAnnotationCreation extends
 	@Override
 	protected void transform(ITransformationContext context) {
 		Program program = getEObject();
-		ClassDeclaration classDeclaration = (ClassDeclaration) context.get(
-				program, "self");
-
-		Annotation addedAnnotation = JavaAnnotationHelper.addAnnotation(
-				classDeclaration, "org.parallelj", "Capacity");
-
-		AnnotationMemberValuePair mvp = JavaFactory.eINSTANCE
-				.createAnnotationMemberValuePair();
-		mvp.setName("value");
-		NumberLiteral nlt = JavaFactory.eINSTANCE.createNumberLiteral();
-		nlt.setTokenValue(String.valueOf(program.getCapacity()));
-		mvp.setValue(nlt);
-
-		addedAnnotation.getValues().add(mvp);
-
-		context.put(program, "self", classDeclaration);
+		new JavaClass(this.classDeclaration).createAnnotation("org.parallelj", "Capacity").addAnnotationParameter(
+				"value", program.getCapacity());
 	}
 
 }

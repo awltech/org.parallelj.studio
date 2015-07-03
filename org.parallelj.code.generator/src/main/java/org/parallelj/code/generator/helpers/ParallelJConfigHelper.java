@@ -11,9 +11,7 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.eclipse.gmt.modisco.java.AbstractTypeDeclaration;
 import org.eclipse.gmt.modisco.java.Annotation;
 import org.eclipse.gmt.modisco.java.AnnotationTypeDeclaration;
@@ -32,8 +30,7 @@ import org.jdom.output.XMLOutputter;
 
 public class ParallelJConfigHelper {
 
-	private static final String CONFIG_FILENAME = SRC_MAIN_RESOURCES
-			+ "/parallelj.xml";
+	private static final String CONFIG_FILENAME = SRC_MAIN_RESOURCES + "/parallelj.xml";
 
 	private static final String SERVERS = "servers";
 
@@ -61,13 +58,11 @@ public class ParallelJConfigHelper {
 	 * @throws CoreException
 	 * @throws JDOMException
 	 */
-	public static void generateConfig(Model javaModel,
-			ResourceSet sharedResourceSet, IProject project)
+	public static void generateConfig(Model javaModel, ResourceSet sharedResourceSet, IProject project)
 			throws IOException, CoreException, JDOMException {
 
 		// At first, we load the resources.
-		IResource foundMember = project.getProject()
-				.findMember(CONFIG_FILENAME);
+		IResource foundMember = project.getProject().findMember(CONFIG_FILENAME);
 
 		if (foundMember == null) {
 			ConfigFilePathManager configFilePathManager = new ConfigFilePathManager();
@@ -87,13 +82,11 @@ public class ParallelJConfigHelper {
 			// final Element beans = findOrCreateBeans(root);
 			final Element beans = findOrCreateBeans(rootElement);
 
-			EList<CompilationUnit> compilationUnits = javaModel
-					.getCompilationUnits();
+			EList<CompilationUnit> compilationUnits = javaModel.getCompilationUnits();
 
 			// getting compilation unit with @Program
 			for (CompilationUnit compilationUnit : compilationUnits) {
-				EList<AbstractTypeDeclaration> types = compilationUnit
-						.getTypes();
+				EList<AbstractTypeDeclaration> types = compilationUnit.getTypes();
 				for (AbstractTypeDeclaration iType : types) {
 					EList<Annotation> annotations = iType.getAnnotations();
 					for (Annotation annotation : annotations) {
@@ -105,13 +98,10 @@ public class ParallelJConfigHelper {
 								Package packages = compilationUnit.getPackage();
 								while (packages != null) {
 									if (beanName.equals("")) {
-										beanName = packages.getName()
-												+ "."
-												+ compilationUnit.getName()
-														.replace(".java", "");
-									} else {
 										beanName = packages.getName() + "."
-												+ beanName;
+												+ compilationUnit.getName().replace(".java", "");
+									} else {
+										beanName = packages.getName() + "." + beanName;
 									}
 									packages = packages.getPackage();
 								}
@@ -207,8 +197,7 @@ public class ParallelJConfigHelper {
 	 * @param name
 	 * @return
 	 */
-	private static Element createElement(final Element element,
-			final String name) {
+	private static Element createElement(final Element element, final String name) {
 		final Element createdElement = new Element(name, rootNameSpace);
 		element.addContent(createdElement);
 		return createdElement;
@@ -222,10 +211,8 @@ public class ParallelJConfigHelper {
 	 * @param value
 	 * @return
 	 */
-	private static Attribute createAttribute(final Element element,
-			final String name, final String value) {
-		final Attribute attribute = new Attribute(name, value,
-				Namespace.NO_NAMESPACE);
+	private static Attribute createAttribute(final Element element, final String name, final String value) {
+		final Attribute attribute = new Attribute(name, value, Namespace.NO_NAMESPACE);
 		element.setAttribute(attribute);
 		return attribute;
 	}

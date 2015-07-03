@@ -199,6 +199,7 @@ public class ParallelJModelHelper {
 	 *            : data type
 	 * @return getter method
 	 */
+	@Deprecated
 	public static MethodDeclaration generateGetter(String variableName,
 			String variableType) {
 
@@ -258,6 +259,7 @@ public class ParallelJModelHelper {
 	 * @return setter method
 	 * 
 	 */
+	@Deprecated
 	public static MethodDeclaration generateSetter(String variableName,
 			String variableType) {
 
@@ -310,6 +312,7 @@ public class ParallelJModelHelper {
 	 * @return expression block with left and right assignment e.g.
 	 *         this.varaibleName = varaibleName
 	 */
+	@Deprecated
 	public static Block getVariableAssignmentBlock(String variableName) {
 
 		// preparing body block for setter method
@@ -368,6 +371,7 @@ public class ParallelJModelHelper {
 	 * @param variableType
 	 * @return
 	 */
+	@Deprecated
 	public static TypeAccess getVariableDataType(String variableType) {
 
 		org.eclipse.gmt.modisco.java.Type type = JavaFactory.eINSTANCE
@@ -387,6 +391,7 @@ public class ParallelJModelHelper {
 	 * @param name
 	 * @return
 	 */
+	@Deprecated
 	public static FieldAccess getVariableWithThis(String name) {
 
 		// creating variable declaration
