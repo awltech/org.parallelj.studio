@@ -14,7 +14,6 @@ import net.atos.optimus.m2m.javaxmi.operation.fields.FieldHelper;
 import net.atos.optimus.m2m.javaxmi.operation.methods.GetterHelper;
 import net.atos.optimus.m2m.javaxmi.operation.methods.SetterHelper;
 
-import org.eclipse.gmt.modisco.java.ClassDeclaration;
 import org.eclipse.gmt.modisco.java.VisibilityKind;
 import org.parallelj.code.generator.core.Messages;
 import org.parallelj.code.generator.helpers.StringFormatHelper;
@@ -31,10 +30,10 @@ import org.parallelj.model.Pipeline;
 public class PipelineClassCreation extends AbstractTransformation<Pipeline> {
 
 	@ParentContextElement(value = "self", nullable = false)
-	private ClassDeclaration parent;
+	private JavaClass parentClass;
 
 	@ObjectContextElement(value = "self", visibility = ContextElementVisibility.OUT, nullable = false)
-	private ClassDeclaration classDeclaration;
+	private JavaClass javaClass;
 
 	public PipelineClassCreation(Pipeline eObject, String id) {
 		super(eObject, id);
@@ -46,17 +45,16 @@ public class PipelineClassCreation extends AbstractTransformation<Pipeline> {
 		String iterableName = pipeline.getIterable().getName();
 		String iterableType = pipeline.getIterable().getType();
 
-		JavaClass javaClass = ClassHelper
-				.internalClassBuilder(new JavaClass(parent),
+		this.javaClass = ClassHelper
+				.internalClassBuilder(this.parentClass,
 						StringFormatHelper.camelCase(pipeline.getName() + "Class", true))
 				.build()
 				.addJavadoc(
 						Messages.JAVADOC_PIPELINE_CLASS.message(pipeline.getName(),
 								(getEObject().getDescription() != null ? getEObject().getDescription() : "")), true);
-		this.classDeclaration = javaClass.getDelegate();
 
 		Field field = FieldHelper
-				.builder(javaClass, iterableType)
+				.builder(this.javaClass, iterableType)
 				.setName(iterableName)
 				.setVisibility(VisibilityKind.NONE)
 				.build()
@@ -65,13 +63,12 @@ public class PipelineClassCreation extends AbstractTransformation<Pipeline> {
 						Messages.JAVADOC_DATA.message(getEObject().getName(),
 								(getEObject().getDescription() != null ? getEObject().getDescription() : "")), true);
 
-		GetterHelper.builder(javaClass, field).build()
+		GetterHelper.builder(this.javaClass, field).build()
 				.addJavadoc(Messages.JAVADOC_DATA_GETTER_METHOD.message(iterableName, iterableType), true);
-		SetterHelper.builder(javaClass, field).setParameterName(iterableName).build()
+		SetterHelper.builder(this.javaClass, field).setParameterName(iterableName).build()
 				.addJavadoc(Messages.JAVADOC_DATA_SETTER_METHOD.message(iterableName, iterableType), true);
+		ConstructorHelper.builder(this.javaClass).addParameterAndSetAssociatedField(iterableName, field);
 
-		ConstructorHelper.builder(javaClass).addParameterAndSetAssociatedField(iterableName, field);
-
-		GeneratedAnnotationAdder.addGenerated(classDeclaration, "//J", false, false);
+		GeneratedAnnotationAdder.addGenerated(this.javaClass.getDelegate(), "//J", false, false);
 	}
 }

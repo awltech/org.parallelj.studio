@@ -9,8 +9,6 @@ import net.atos.optimus.m2m.javaxmi.operation.classes.JavaClass;
 import net.atos.optimus.m2m.javaxmi.operation.fields.Field;
 import net.atos.optimus.m2m.javaxmi.operation.methods.SetterHelper;
 
-import org.eclipse.gmt.modisco.java.ClassDeclaration;
-import org.eclipse.gmt.modisco.java.FieldDeclaration;
 import org.parallelj.code.generator.core.Messages;
 import org.parallelj.model.Data;
 
@@ -25,10 +23,10 @@ import org.parallelj.model.Data;
 public class DataSetterMethodCreation extends AbstractTransformation<Data> {
 
 	@ParentContextElement(value = "self", nullable = false)
-	private ClassDeclaration classDeclaration;
+	private JavaClass javaClass;
 
 	@ObjectContextElement(value = "self", visibility = ContextElementVisibility.INOUT, nullable = false)
-	private FieldDeclaration declaration;
+	private Field field;
 
 	public DataSetterMethodCreation(Data eObject, String id) {
 		super(eObject, id);
@@ -36,14 +34,12 @@ public class DataSetterMethodCreation extends AbstractTransformation<Data> {
 
 	@Override
 	protected void transform(ITransformationContext context) {
-		if (declaration.getFragments() != null && declaration.getFragments().get(0) != null
-				&& declaration.getType() != null && declaration.getType().getType() != null) {
-			Field field = new Field(this.declaration);
-			SetterHelper
-					.builder(new JavaClass(this.classDeclaration), field)
-					.setParameterName(field.getName())
-					.build()
-					.addJavadoc(Messages.JAVADOC_DATA_SETTER_METHOD.message(field.getName(), field.getTypeName()), true);
-		}
+		SetterHelper
+				.builder(this.javaClass, this.field)
+				.setParameterName(this.field.getName())
+				.build()
+				.addJavadoc(
+						Messages.JAVADOC_DATA_SETTER_METHOD.message(this.field.getName(), this.field.getTypeName()),
+						true);
 	}
 }

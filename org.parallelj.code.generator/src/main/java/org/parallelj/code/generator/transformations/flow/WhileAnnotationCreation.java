@@ -6,7 +6,6 @@ import net.atos.optimus.m2m.engine.ctxinject.api.ContextElementVisibility;
 import net.atos.optimus.m2m.engine.ctxinject.api.ObjectContextElement;
 import net.atos.optimus.m2m.javaxmi.operation.methods.Method;
 
-import org.eclipse.gmt.modisco.java.MethodDeclaration;
 import org.parallelj.model.WhileLoop;
 
 /**
@@ -20,7 +19,7 @@ import org.parallelj.model.WhileLoop;
 public class WhileAnnotationCreation extends AbstractTransformation<WhileLoop> {
 
 	@ObjectContextElement(value = "self", visibility = ContextElementVisibility.INOUT, nullable = false)
-	private MethodDeclaration declaration;
+	private Method method;
 
 	public WhileAnnotationCreation(WhileLoop eObject, String id) {
 		super(eObject, id);
@@ -29,7 +28,7 @@ public class WhileAnnotationCreation extends AbstractTransformation<WhileLoop> {
 	@Override
 	protected void transform(ITransformationContext context) {
 		WhileLoop whileLoop = getEObject();
-		new Method(this.declaration).createAnnotation("org.parallelj", "While").addAnnotationParameter("value",
+		this.method.createAnnotation("org.parallelj", "While").addAnnotationParameter("value",
 				whileLoop.getPredicate() != null ? whileLoop.getPredicate().getName() : "", true);
 	}
 

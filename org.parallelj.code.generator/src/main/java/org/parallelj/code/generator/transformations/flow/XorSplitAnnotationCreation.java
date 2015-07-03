@@ -7,7 +7,6 @@ import net.atos.optimus.m2m.engine.ctxinject.api.ObjectContextElement;
 import net.atos.optimus.m2m.javaxmi.operation.annotations.JavaAnnotation;
 import net.atos.optimus.m2m.javaxmi.operation.methods.Method;
 
-import org.eclipse.gmt.modisco.java.MethodDeclaration;
 import org.parallelj.code.generator.helpers.ParallelJModelHelper;
 import org.parallelj.model.Link;
 import org.parallelj.model.OutputCondition;
@@ -24,7 +23,7 @@ import org.parallelj.model.Procedure;
 public class XorSplitAnnotationCreation extends AbstractTransformation<Procedure> {
 
 	@ObjectContextElement(value = "exit", visibility = ContextElementVisibility.INOUT, nullable = false)
-	private MethodDeclaration declaration;
+	private Method method;
 
 	public XorSplitAnnotationCreation(Procedure eObject, String id) {
 		super(eObject, id);
@@ -33,7 +32,7 @@ public class XorSplitAnnotationCreation extends AbstractTransformation<Procedure
 	@Override
 	protected void transform(ITransformationContext context) {
 		Procedure procedure = getEObject();
-		JavaAnnotation annotation = new Method(this.declaration).createAnnotation("org.parallelj", "XorSplit");
+		JavaAnnotation annotation = this.method.createAnnotation("org.parallelj", "XorSplit");
 		for (Link outputLink : procedure.getOutputLinks()) {
 			JavaAnnotation internalAnnotation = annotation.createAnnotation("org.parallelj", "Link", null);
 			internalAnnotation.addAnnotationParameter("predicate", outputLink.getPredicate() != null ? outputLink

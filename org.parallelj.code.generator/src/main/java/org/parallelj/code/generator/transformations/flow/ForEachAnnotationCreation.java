@@ -4,13 +4,9 @@ import net.atos.optimus.m2m.engine.core.transformations.AbstractTransformation;
 import net.atos.optimus.m2m.engine.core.transformations.ITransformationContext;
 import net.atos.optimus.m2m.engine.ctxinject.api.ContextElementVisibility;
 import net.atos.optimus.m2m.engine.ctxinject.api.ObjectContextElement;
-import net.atos.optimus.m2m.engine.ctxinject.api.ParentContextElement;
 import net.atos.optimus.m2m.javaxmi.operation.methods.Method;
-import net.atos.optimus.m2m.javaxmi.operation.parameters.Parameter;
 import net.atos.optimus.m2m.javaxmi.operation.parameters.ParameterHelper;
 
-import org.eclipse.gmt.modisco.java.ClassDeclaration;
-import org.eclipse.gmt.modisco.java.MethodDeclaration;
 import org.parallelj.model.ForEachLoop;
 
 /**
@@ -24,11 +20,8 @@ import org.parallelj.model.ForEachLoop;
  */
 public class ForEachAnnotationCreation extends AbstractTransformation<ForEachLoop> {
 
-	@ParentContextElement(value = "self", nullable = false)
-	private ClassDeclaration parent;
-
 	@ObjectContextElement(value = "self", visibility = ContextElementVisibility.INOUT, nullable = false)
-	private MethodDeclaration declaration;
+	private Method method;
 
 	public ForEachAnnotationCreation(ForEachLoop eObject, String id) {
 		super(eObject, id);
@@ -37,9 +30,13 @@ public class ForEachAnnotationCreation extends AbstractTransformation<ForEachLoo
 	@Override
 	protected void transform(ITransformationContext context) {
 		ForEachLoop forEach = getEObject();
-		Parameter parameter = ParameterHelper.builder("Object").setName("val").build();
-		parameter.createAnnotation("org.parallelj", "ForEach").addAnnotationParameter("value",
-				forEach.getIterable() != null ? forEach.getIterable().getName() : "", true);
-		this.declaration = new Method(this.declaration).addParameters(parameter).getDelegate();
+		ParameterHelper
+				.builder("Object")
+				.setName("val")
+				.setMethod(this.method)
+				.build()
+				.createAnnotation("org.parallelj", "ForEach")
+				.addAnnotationParameter("value", forEach.getIterable() != null ? forEach.getIterable().getName() : "",
+						true);
 	}
 }

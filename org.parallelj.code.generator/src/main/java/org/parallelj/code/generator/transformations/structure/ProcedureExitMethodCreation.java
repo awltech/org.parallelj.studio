@@ -6,14 +6,11 @@ import net.atos.optimus.m2m.engine.core.transformations.AbstractTransformation;
 import net.atos.optimus.m2m.engine.core.transformations.ITransformationContext;
 import net.atos.optimus.m2m.engine.ctxinject.api.ContextElementVisibility;
 import net.atos.optimus.m2m.engine.ctxinject.api.ObjectContextElement;
-import net.atos.optimus.m2m.engine.ctxinject.api.ParentContextElement;
 import net.atos.optimus.m2m.javaxmi.operation.methods.Method;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
-import org.eclipse.gmt.modisco.java.ClassDeclaration;
-import org.eclipse.gmt.modisco.java.MethodDeclaration;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
@@ -32,11 +29,8 @@ import org.parallelj.model.Procedure;
  */
 public class ProcedureExitMethodCreation extends AbstractTransformation<Procedure> {
 
-	@ParentContextElement(value = "self", nullable = false)
-	private ClassDeclaration parent;
-
 	@ObjectContextElement(value = "exit", visibility = ContextElementVisibility.INOUT, nullable = false)
-	private MethodDeclaration exitMethod;
+	private Method exitMethod;
 
 	public ProcedureExitMethodCreation(Procedure eObject, String id) {
 		super(eObject, id);
@@ -45,8 +39,7 @@ public class ProcedureExitMethodCreation extends AbstractTransformation<Procedur
 	@Override
 	protected void transform(ITransformationContext context) {
 		Procedure procedure = getEObject();
-		Method method = new Method(this.exitMethod).removeParameters().addParameter(procedure.getExecutable(),
-				"executable");
+		this.exitMethod.removeParameters().addParameter(procedure.getExecutable(), "executable");
 
 		// Get the Type of the executable and search if it is a Callable.
 		String executable = procedure.getExecutable();
@@ -63,14 +56,13 @@ public class ProcedureExitMethodCreation extends AbstractTransformation<Procedur
 						// The executable is a Callable, so we have to add the
 						// return value of the executable as a parameter of the
 						// exit method.
-						method.addParameter("Object", "value");
+						exitMethod.addParameter("Object", "value");
 					}
 				}
 			}
 		} catch (JavaModelException e) {
 			Activator.sendErrorToErrorLog("An Exception occurred during generation", e);
 		}
-		this.exitMethod = method.getDelegate();
 	}
 
 }

@@ -7,10 +7,9 @@ import net.atos.optimus.m2m.engine.ctxinject.api.ObjectContextElement;
 import net.atos.optimus.m2m.javaxmi.core.annotations.GeneratedAnnotationAdder;
 import net.atos.optimus.m2m.javaxmi.operation.classes.JavaClass;
 import net.atos.optimus.m2m.javaxmi.operation.instruction.CallInstructionHelper;
+import net.atos.optimus.m2m.javaxmi.operation.methods.Method;
 import net.atos.optimus.m2m.javaxmi.operation.methods.MethodHelper;
 
-import org.eclipse.gmt.modisco.java.ClassDeclaration;
-import org.eclipse.gmt.modisco.java.MethodDeclaration;
 import org.parallelj.model.Program;
 
 /**
@@ -24,10 +23,10 @@ import org.parallelj.model.Program;
 public class ProgramTestLaunchCreation extends AbstractTransformation<Program> {
 
 	@ObjectContextElement(value = "testself", nullable = false)
-	private ClassDeclaration parent;
+	private JavaClass parentClass;
 
 	@ObjectContextElement(value = "testmethod", visibility = ContextElementVisibility.OUT, nullable = false)
-	private MethodDeclaration declaration;
+	private Method method;
 
 	public ProgramTestLaunchCreation(Program eObject, String id) {
 		super(eObject, id);
@@ -36,9 +35,9 @@ public class ProgramTestLaunchCreation extends AbstractTransformation<Program> {
 	@Override
 	protected void transform(ITransformationContext context) {
 		Program program = getEObject();
-		this.declaration = MethodHelper
+		this.method = MethodHelper
 				.builder(
-						new JavaClass(this.parent),
+						this.parentClass,
 						"testLaunch"
 								+ program.getName().substring(program.getName().lastIndexOf(".") + 1,
 										program.getName().length()))
@@ -51,10 +50,9 @@ public class ProgramTestLaunchCreation extends AbstractTransformation<Program> {
 								CallInstructionHelper.createCallMethodInstruction(
 										CallInstructionHelper.createStaticMethodCallInstruction(
 												"org.parallelj.launching.Launcher", "getLauncher"), "newLaunch")
-										.addVariableArgument(program.getName() + ".class"), "synchLaunch"))
-				.getDelegate();
+										.addVariableArgument(program.getName() + ".class"), "synchLaunch"));
 
-		GeneratedAnnotationAdder.addGenerated(declaration, "//J", true, false);
+		GeneratedAnnotationAdder.addGenerated(this.method.getDelegate(), "//J", true, false);
 	}
 
 }

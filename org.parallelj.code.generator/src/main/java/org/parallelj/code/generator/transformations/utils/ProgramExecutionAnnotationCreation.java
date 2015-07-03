@@ -6,7 +6,6 @@ import net.atos.optimus.m2m.engine.ctxinject.api.ContextElementVisibility;
 import net.atos.optimus.m2m.engine.ctxinject.api.ObjectContextElement;
 import net.atos.optimus.m2m.javaxmi.operation.classes.JavaClass;
 
-import org.eclipse.gmt.modisco.java.ClassDeclaration;
 import org.parallelj.model.Program;
 
 /**
@@ -20,7 +19,7 @@ import org.parallelj.model.Program;
 public class ProgramExecutionAnnotationCreation extends AbstractTransformation<Program> {
 
 	@ObjectContextElement(value = "self", visibility = ContextElementVisibility.INOUT, nullable = false)
-	private ClassDeclaration classDeclaration;
+	private JavaClass javaClass;
 
 	public ProgramExecutionAnnotationCreation(Program eObject, String id) {
 		super(eObject, id);
@@ -28,7 +27,7 @@ public class ProgramExecutionAnnotationCreation extends AbstractTransformation<P
 
 	@Override
 	protected void transform(ITransformationContext context) {
-		new JavaClass(this.classDeclaration).addAnnotation("org.parallelj.launching", "QuartzExecution");
+		this.javaClass.addAnnotation("org.parallelj.launching", "QuartzExecution");
 	}
 
 }

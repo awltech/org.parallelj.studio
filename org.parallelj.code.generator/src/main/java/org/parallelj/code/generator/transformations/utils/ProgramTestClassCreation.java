@@ -7,12 +7,11 @@ import net.atos.optimus.m2m.engine.ctxinject.api.ObjectContextElement;
 import net.atos.optimus.m2m.engine.ctxinject.api.RootContextElement;
 import net.atos.optimus.m2m.javaxmi.core.annotations.GeneratedAnnotationAdder;
 import net.atos.optimus.m2m.javaxmi.operation.classes.ClassHelper;
+import net.atos.optimus.m2m.javaxmi.operation.classes.JavaClass;
 import net.atos.optimus.m2m.javaxmi.operation.packages.JavaPackage;
 import net.atos.optimus.m2m.javaxmi.operation.packages.PackageHelper;
 
-import org.eclipse.gmt.modisco.java.ClassDeclaration;
 import org.eclipse.gmt.modisco.java.Model;
-import org.eclipse.gmt.modisco.java.Package;
 import org.parallelj.code.generator.core.Messages;
 import org.parallelj.model.Program;
 
@@ -29,10 +28,10 @@ public class ProgramTestClassCreation extends AbstractTransformation<Program> {
 	private Model javaModel;
 
 	@ObjectContextElement(value = "testpackage", visibility = ContextElementVisibility.OUT, nullable = false)
-	private Package currentPackage;
+	private JavaPackage javaPackage;
 
 	@ObjectContextElement(value = "testself", visibility = ContextElementVisibility.OUT, nullable = false)
-	private ClassDeclaration classDeclaration;
+	private JavaClass javaClass;
 
 	public ProgramTestClassCreation(Program eObject, String id) {
 		super(eObject, id);
@@ -42,11 +41,10 @@ public class ProgramTestClassCreation extends AbstractTransformation<Program> {
 	protected void transform(ITransformationContext context) {
 		Program program = getEObject();
 
-		JavaPackage javaPackage = PackageHelper.createPackage(this.javaModel,
+		this.javaPackage = PackageHelper.createPackage(this.javaModel,
 				program.getName().substring(0, program.getName().lastIndexOf(".")));
-		this.currentPackage = javaPackage.getDelegate();
 
-		this.classDeclaration = ClassHelper
+		this.javaClass = ClassHelper
 				.builder(
 						javaPackage,
 						program.getName().substring(program.getName().lastIndexOf(".") + 1, program.getName().length())
@@ -54,9 +52,8 @@ public class ProgramTestClassCreation extends AbstractTransformation<Program> {
 				.build()
 				.addJavadoc(
 						Messages.JAVADOC_PROGRAM_CLASS.message(program.getName(),
-								(getEObject().getDescription() != null ? getEObject().getDescription() : "")), true)
-				.getDelegate();
+								(getEObject().getDescription() != null ? getEObject().getDescription() : "")), true);
 
-		GeneratedAnnotationAdder.addGenerated(classDeclaration, "//J", false, false);
+		GeneratedAnnotationAdder.addGenerated(this.javaClass.getDelegate(), "//J", false, false);
 	}
 }

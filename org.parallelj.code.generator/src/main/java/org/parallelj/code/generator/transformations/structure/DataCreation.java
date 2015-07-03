@@ -6,10 +6,9 @@ import net.atos.optimus.m2m.engine.ctxinject.api.ContextElementVisibility;
 import net.atos.optimus.m2m.engine.ctxinject.api.ObjectContextElement;
 import net.atos.optimus.m2m.engine.ctxinject.api.ParentContextElement;
 import net.atos.optimus.m2m.javaxmi.operation.classes.JavaClass;
+import net.atos.optimus.m2m.javaxmi.operation.fields.Field;
 import net.atos.optimus.m2m.javaxmi.operation.fields.FieldHelper;
 
-import org.eclipse.gmt.modisco.java.ClassDeclaration;
-import org.eclipse.gmt.modisco.java.FieldDeclaration;
 import org.eclipse.gmt.modisco.java.VisibilityKind;
 import org.parallelj.code.generator.core.Messages;
 import org.parallelj.model.Data;
@@ -24,10 +23,10 @@ import org.parallelj.model.Data;
 public class DataCreation extends AbstractTransformation<Data> {
 
 	@ParentContextElement(value = "self", nullable = false)
-	private ClassDeclaration classDeclaration;
+	private JavaClass javaClass;
 
 	@ObjectContextElement(value = "self", visibility = ContextElementVisibility.OUT, nullable = false)
-	private FieldDeclaration declaration;
+	private Field field;
 
 	public DataCreation(Data eObject, String id) {
 		super(eObject, id);
@@ -35,15 +34,14 @@ public class DataCreation extends AbstractTransformation<Data> {
 
 	@Override
 	protected void transform(ITransformationContext context) {
-		this.declaration = FieldHelper
-				.builder(new JavaClass(this.classDeclaration), getEObject().getType())
+		this.field = FieldHelper
+				.builder(this.javaClass, getEObject().getType())
 				.setName(getEObject().getName())
 				.setVisibility(VisibilityKind.NONE)
 				.build()
 				.addJavadoc(
 						Messages.JAVADOC_DATA.message(getEObject().getName(),
-								(getEObject().getDescription() != null ? getEObject().getDescription() : "")), true)
-				.getDelegate();
+								(getEObject().getDescription() != null ? getEObject().getDescription() : "")), true);
 	}
 
 }

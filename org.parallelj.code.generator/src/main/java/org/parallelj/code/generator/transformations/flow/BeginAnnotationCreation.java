@@ -2,9 +2,9 @@ package org.parallelj.code.generator.transformations.flow;
 
 import net.atos.optimus.m2m.engine.core.transformations.AbstractTransformation;
 import net.atos.optimus.m2m.engine.core.transformations.ITransformationContext;
+import net.atos.optimus.m2m.javaxmi.operation.annotations.JavaAnnotation;
 import net.atos.optimus.m2m.javaxmi.operation.methods.Method;
 
-import org.eclipse.gmt.modisco.java.MethodDeclaration;
 import org.parallelj.model.Procedure;
 
 /**
@@ -20,8 +20,7 @@ public class BeginAnnotationCreation extends AbstractTransformation<Procedure> {
 	// if putting @Begin on pipeline
 	private boolean isPipeline;
 
-	public BeginAnnotationCreation(Procedure eObject, String id,
-			boolean isPipeline) {
+	public BeginAnnotationCreation(Procedure eObject, String id, boolean isPipeline) {
 		super(eObject, id);
 		this.isPipeline = isPipeline;
 	}
@@ -30,12 +29,16 @@ public class BeginAnnotationCreation extends AbstractTransformation<Procedure> {
 	protected void transform(ITransformationContext context) {
 		String key = isPipeline ? "entry" : "self";
 		Procedure procedure = getEObject();
-		MethodDeclaration declaration = (MethodDeclaration) context.get(procedure, key);
-		if (declaration == null) {
+		Method method = (Method) context.get(procedure, key);
+		if (method == null) {
 			key = "exit";
-			declaration = (MethodDeclaration) context.get(procedure, key);
+			method = (Method) context.get(procedure, key);
 		}
-		new Method(declaration).addAnnotation("org.parallelj", "Begin");
-		context.put(procedure, key, declaration);
+		if(method == null){
+			JavaAnnotation.createOrphanAnnotation("org.parallelj", "Begin");
+			return;
+		}
+		method.addAnnotation("org.parallelj", "Begin");
+		context.put(procedure, key, method);
 	}
 }

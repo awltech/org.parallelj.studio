@@ -11,8 +11,6 @@ import net.atos.optimus.m2m.javaxmi.operation.instruction.complex.ComplexInstruc
 import net.atos.optimus.m2m.javaxmi.operation.methods.Method;
 import net.atos.optimus.m2m.javaxmi.operation.methods.MethodHelper;
 
-import org.eclipse.gmt.modisco.java.ClassDeclaration;
-import org.eclipse.gmt.modisco.java.MethodDeclaration;
 import org.parallelj.code.generator.core.Messages;
 import org.parallelj.model.Procedure;
 
@@ -26,10 +24,10 @@ import org.parallelj.model.Procedure;
 public class GenericExitMethodCreation extends AbstractTransformation<Procedure> {
 
 	@ParentContextElement(value = "self", nullable = false)
-	private ClassDeclaration parent;
+	private JavaClass parentClass;
 
 	@ObjectContextElement(value = "exit", visibility = ContextElementVisibility.OUT, nullable = false)
-	private MethodDeclaration exitMethod;
+	private Method exitMethod;
 
 	// if procedure is from pipeline
 	private boolean isPipelineProcedure;
@@ -41,23 +39,22 @@ public class GenericExitMethodCreation extends AbstractTransformation<Procedure>
 
 	@Override
 	protected void transform(ITransformationContext context) {
-		Method method = MethodHelper
-				.builder(new JavaClass(this.parent), getEObject().getName())
+		this.exitMethod = MethodHelper
+				.builder(this.parentClass, getEObject().getName())
 				.build()
 				.addInstructions(
 						ComplexInstruction.createEmptyReturnInstruction().addComment(Messages.COMMENT_TODO.message(),
 								true));
 		if (isPipelineProcedure) {
-			method.addParameter("Object", "next").addJavadoc(
+			exitMethod.addParameter("Object", "next").addJavadoc(
 					Messages.JAVADOC_PIPELINE_EXIT_METHOD.message(getEObject().getName(),
 							getEObject().getExecutable() != null ? getEObject().getExecutable() : "", getEObject()
 									.getDescription() != null ? getEObject().getDescription() : ""), true);
 		} else {
-			method.addJavadoc(Messages.JAVADOC_PROCEDURE_EXIT_METHOD.message(getEObject().getName(), getEObject()
+			exitMethod.addJavadoc(Messages.JAVADOC_PROCEDURE_EXIT_METHOD.message(getEObject().getName(), getEObject()
 					.getExecutable() != null ? getEObject().getExecutable() : "",
 					getEObject().getDescription() != null ? getEObject().getDescription() : ""), true);
 		}
-		this.exitMethod = method.getDelegate();
-		GeneratedAnnotationAdder.addGenerated(exitMethod, "//J", true, false);
+		GeneratedAnnotationAdder.addGenerated(exitMethod.getDelegate(), "//J", true, false);
 	}
 }

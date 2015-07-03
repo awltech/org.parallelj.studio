@@ -6,7 +6,6 @@ import net.atos.optimus.m2m.engine.ctxinject.api.ContextElementVisibility;
 import net.atos.optimus.m2m.engine.ctxinject.api.ObjectContextElement;
 import net.atos.optimus.m2m.javaxmi.operation.classes.JavaClass;
 
-import org.eclipse.gmt.modisco.java.ClassDeclaration;
 import org.parallelj.model.Pipeline;
 
 /**
@@ -20,7 +19,7 @@ import org.parallelj.model.Pipeline;
 public class PipelineClassCapacityAnnotationCreation extends AbstractTransformation<Pipeline> {
 
 	@ObjectContextElement(value = "self", visibility = ContextElementVisibility.INOUT, nullable = false)
-	private ClassDeclaration classDeclaration;
+	private JavaClass javaClass;
 
 	public PipelineClassCapacityAnnotationCreation(Pipeline eObject, String id) {
 		super(eObject, id);
@@ -29,8 +28,8 @@ public class PipelineClassCapacityAnnotationCreation extends AbstractTransformat
 	@Override
 	protected void transform(ITransformationContext context) {
 		Pipeline pipeline = getEObject();
-		new JavaClass(this.classDeclaration).createAnnotation("org.parallelj", "Capacity").addAnnotationParameter(
-				"value", pipeline.getCapacity());
+		this.javaClass.createAnnotation("org.parallelj", "Capacity").addAnnotationParameter("value",
+				pipeline.getCapacity());
 	}
 
 }

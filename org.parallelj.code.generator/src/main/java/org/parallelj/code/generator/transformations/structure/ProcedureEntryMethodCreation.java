@@ -11,8 +11,6 @@ import net.atos.optimus.m2m.javaxmi.operation.instruction.CallInstructionHelper;
 import net.atos.optimus.m2m.javaxmi.operation.methods.Method;
 import net.atos.optimus.m2m.javaxmi.operation.methods.MethodHelper;
 
-import org.eclipse.gmt.modisco.java.ClassDeclaration;
-import org.eclipse.gmt.modisco.java.MethodDeclaration;
 import org.parallelj.code.generator.core.Messages;
 import org.parallelj.model.Procedure;
 
@@ -27,10 +25,10 @@ import org.parallelj.model.Procedure;
 public class ProcedureEntryMethodCreation extends AbstractTransformation<Procedure> {
 
 	@ParentContextElement(value = "self", nullable = false)
-	private ClassDeclaration parent;
+	private JavaClass parentClass;
 
 	@ObjectContextElement(value = "self", visibility = ContextElementVisibility.OUT, nullable = false)
-	private MethodDeclaration entryMethod;
+	private Method entryMethod;
 
 	// if putting entry method for pipeline
 	private boolean isForPipeline;
@@ -43,8 +41,8 @@ public class ProcedureEntryMethodCreation extends AbstractTransformation<Procedu
 	@Override
 	protected void transform(ITransformationContext context) {
 		Procedure procedure = getEObject();
-		Method method = MethodHelper
-				.builder(new JavaClass(this.parent), procedure.getName())
+		this.entryMethod = MethodHelper
+				.builder(this.parentClass, procedure.getName())
 				.setReturnType(procedure.getExecutable())
 				.addInstructions(
 						CallInstructionHelper.createClassInstanciationInstruction(procedure.getExecutable())
@@ -55,10 +53,9 @@ public class ProcedureEntryMethodCreation extends AbstractTransformation<Procedu
 								.getExecutable(), (getEObject().getDescription() != null ? getEObject()
 								.getDescription() : "")), true);
 		if (isForPipeline) {
-			method.addParameter("Object", "next");
+			this.entryMethod.addParameter("Object", "next");
 		}
-		this.entryMethod = method.getDelegate();
-		GeneratedAnnotationAdder.addGenerated(entryMethod, "//J", true, false);
+		GeneratedAnnotationAdder.addGenerated(this.entryMethod.getDelegate(), "//J", true, false);
 	}
 
 }

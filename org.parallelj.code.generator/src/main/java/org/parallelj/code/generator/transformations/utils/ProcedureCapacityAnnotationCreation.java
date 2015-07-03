@@ -4,7 +4,6 @@ import net.atos.optimus.m2m.engine.core.transformations.AbstractTransformation;
 import net.atos.optimus.m2m.engine.core.transformations.ITransformationContext;
 import net.atos.optimus.m2m.javaxmi.operation.methods.Method;
 
-import org.eclipse.gmt.modisco.java.MethodDeclaration;
 import org.parallelj.model.Procedure;
 
 /**
@@ -29,9 +28,8 @@ public class ProcedureCapacityAnnotationCreation extends AbstractTransformation<
 	protected void transform(ITransformationContext context) {
 		String key = isPipeline ? "entry" : "self";
 		Procedure procedure = getEObject();
-		MethodDeclaration declaration = (MethodDeclaration) context.get(procedure, key);
-		new Method(declaration).createAnnotation("org.parallelj", "Capacity").addAnnotationParameter("value",
-				procedure.getCapacity());
+		Method method = (Method) context.get(procedure, key);
+		method.createAnnotation("org.parallelj", "Capacity").addAnnotationParameter("value", procedure.getCapacity());
 	}
 
 }

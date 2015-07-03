@@ -6,8 +6,7 @@ import net.atos.optimus.m2m.engine.ctxinject.api.ContextElementVisibility;
 import net.atos.optimus.m2m.engine.ctxinject.api.ObjectContextElement;
 import net.atos.optimus.m2m.javaxmi.operation.annotations.JavaAnnotation;
 import net.atos.optimus.m2m.javaxmi.operation.methods.Method;
-	
-import org.eclipse.gmt.modisco.java.MethodDeclaration;
+
 import org.parallelj.model.Handler;
 import org.parallelj.model.Procedure;
 
@@ -22,7 +21,7 @@ import org.parallelj.model.Procedure;
 public class HandlerAnnotationCreation extends AbstractTransformation<Handler> {
 
 	@ObjectContextElement(value = "exit", visibility = ContextElementVisibility.INOUT, nullable = false)
-	private MethodDeclaration declaration;
+	private Method method;
 
 	public HandlerAnnotationCreation(Handler eObject, String id) {
 		super(eObject, id);
@@ -30,8 +29,8 @@ public class HandlerAnnotationCreation extends AbstractTransformation<Handler> {
 
 	@Override
 	protected void transform(ITransformationContext context) {
-		JavaAnnotation annotation = new Method(this.declaration).createAnnotation("org.parallelj", "Handler");
 		Handler handler = getEObject();
+		JavaAnnotation annotation = this.method.createAnnotation("org.parallelj", "Handler");
 		for (Procedure procedure : handler.getProcedures()) {
 			annotation.addAnnotationParameter("value", procedure.getName(), true);
 		}

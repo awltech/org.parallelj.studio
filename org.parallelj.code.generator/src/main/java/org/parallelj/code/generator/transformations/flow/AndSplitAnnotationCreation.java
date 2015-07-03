@@ -7,7 +7,6 @@ import net.atos.optimus.m2m.engine.ctxinject.api.ObjectContextElement;
 import net.atos.optimus.m2m.javaxmi.operation.annotations.JavaAnnotation;
 import net.atos.optimus.m2m.javaxmi.operation.methods.Method;
 
-import org.eclipse.gmt.modisco.java.MethodDeclaration;
 import org.parallelj.code.generator.helpers.ParallelJModelHelper;
 import org.parallelj.model.Link;
 import org.parallelj.model.OutputCondition;
@@ -24,7 +23,7 @@ import org.parallelj.model.Procedure;
 public class AndSplitAnnotationCreation extends AbstractTransformation<Procedure> {
 
 	@ObjectContextElement(value = "exit", visibility = ContextElementVisibility.INOUT, nullable = false)
-	private MethodDeclaration declaration;
+	private Method method;
 
 	// if procedure is from pipeline
 	private boolean isPipelineProcedure;
@@ -37,7 +36,7 @@ public class AndSplitAnnotationCreation extends AbstractTransformation<Procedure
 	@Override
 	protected void transform(ITransformationContext context) {
 		Procedure procedure = getEObject();
-		JavaAnnotation annotation = (new Method(this.declaration)).createAnnotation("org.parallelj", "AndSplit");
+		JavaAnnotation annotation = this.method.createAnnotation("org.parallelj", "AndSplit");
 
 		if (!isPipelineProcedure) {
 

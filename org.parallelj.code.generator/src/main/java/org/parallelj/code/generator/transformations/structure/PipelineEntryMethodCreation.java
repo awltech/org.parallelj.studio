@@ -8,10 +8,9 @@ import net.atos.optimus.m2m.engine.ctxinject.api.ParentContextElement;
 import net.atos.optimus.m2m.javaxmi.core.annotations.GeneratedAnnotationAdder;
 import net.atos.optimus.m2m.javaxmi.operation.classes.JavaClass;
 import net.atos.optimus.m2m.javaxmi.operation.instruction.CallInstructionHelper;
+import net.atos.optimus.m2m.javaxmi.operation.methods.Method;
 import net.atos.optimus.m2m.javaxmi.operation.methods.MethodHelper;
 
-import org.eclipse.gmt.modisco.java.ClassDeclaration;
-import org.eclipse.gmt.modisco.java.MethodDeclaration;
 import org.parallelj.code.generator.core.Messages;
 import org.parallelj.code.generator.helpers.StringFormatHelper;
 import org.parallelj.model.Pipeline;
@@ -27,10 +26,10 @@ import org.parallelj.model.Pipeline;
 public class PipelineEntryMethodCreation extends AbstractTransformation<Pipeline> {
 
 	@ParentContextElement(value = "self", nullable = false)
-	private ClassDeclaration parent;
+	private JavaClass parentClass;
 
 	@ObjectContextElement(value = "entry", visibility = ContextElementVisibility.OUT, nullable = false)
-	private MethodDeclaration entryMethod;
+	private Method entryMethod;
 
 	public PipelineEntryMethodCreation(Pipeline eObject, String id) {
 		super(eObject, id);
@@ -40,7 +39,7 @@ public class PipelineEntryMethodCreation extends AbstractTransformation<Pipeline
 	protected void transform(ITransformationContext context) {
 		Pipeline pipeline = getEObject();
 		this.entryMethod = MethodHelper
-				.builder(new JavaClass(this.parent), pipeline.getName())
+				.builder(this.parentClass, pipeline.getName())
 				.setReturnType(StringFormatHelper.camelCase(pipeline.getName() + "Class", true))
 				.build()
 				.addInstructions(
@@ -52,8 +51,8 @@ public class PipelineEntryMethodCreation extends AbstractTransformation<Pipeline
 				.addJavadoc(
 						Messages.JAVADOC_PIPELINE_ENTRY_METHOD.message(getEObject().getName(), getEObject()
 								.getExecutable(), (getEObject().getDescription() != null ? getEObject()
-								.getDescription() : "")), true).getDelegate();
+								.getDescription() : "")), true);
 
-		GeneratedAnnotationAdder.addGenerated(entryMethod, "//J", true, false);
+		GeneratedAnnotationAdder.addGenerated(this.entryMethod.getDelegate(), "//J", true, false);
 	}
 }
