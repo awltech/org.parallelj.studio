@@ -7,7 +7,7 @@ import net.atos.optimus.m2m.engine.ctxinject.api.ObjectContextElement;
 import net.atos.optimus.m2m.engine.ctxinject.api.ParentContextElement;
 import net.atos.optimus.m2m.javaxmi.core.annotations.GeneratedAnnotationAdder;
 import net.atos.optimus.m2m.javaxmi.operation.classes.JavaClass;
-import net.atos.optimus.m2m.javaxmi.operation.instruction.elementary.ElementaryInstructionHelper;
+import net.atos.optimus.m2m.javaxmi.operation.instruction.complex.ReturnInstructionHelper;
 import net.atos.optimus.m2m.javaxmi.operation.methods.Method;
 import net.atos.optimus.m2m.javaxmi.operation.methods.MethodHelper;
 
@@ -41,8 +41,8 @@ public class PredicateCreation extends AbstractTransformation<Predicate> {
 						"is" + predicate.getName().substring(0, 1).toUpperCase() + predicate.getName().substring(1))
 				.setReturnType("boolean")
 				.addInstructions(
-						ElementaryInstructionHelper.createInstruction(false).convertToReturnInstruction()
-								.addComment(Messages.COMMENT_TODO.message(), true))
+						ReturnInstructionHelper.createReturnInstruction(false).addComment(
+								Messages.COMMENT_TODO.message(), true))
 				.build()
 				.addJavadoc(
 						Messages.JAVADOC_PREDICATE.message(getEObject().getName(),

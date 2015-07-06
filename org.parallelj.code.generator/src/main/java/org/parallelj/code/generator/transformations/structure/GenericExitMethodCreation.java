@@ -7,7 +7,7 @@ import net.atos.optimus.m2m.engine.ctxinject.api.ObjectContextElement;
 import net.atos.optimus.m2m.engine.ctxinject.api.ParentContextElement;
 import net.atos.optimus.m2m.javaxmi.core.annotations.GeneratedAnnotationAdder;
 import net.atos.optimus.m2m.javaxmi.operation.classes.JavaClass;
-import net.atos.optimus.m2m.javaxmi.operation.instruction.complex.ComplexInstruction;
+import net.atos.optimus.m2m.javaxmi.operation.instruction.complex.ReturnInstructionHelper;
 import net.atos.optimus.m2m.javaxmi.operation.methods.Method;
 import net.atos.optimus.m2m.javaxmi.operation.methods.MethodHelper;
 
@@ -43,8 +43,8 @@ public class GenericExitMethodCreation extends AbstractTransformation<Procedure>
 				.builder(this.parentClass, getEObject().getName())
 				.build()
 				.addInstructions(
-						ComplexInstruction.createEmptyReturnInstruction().addComment(Messages.COMMENT_TODO.message(),
-								true));
+						ReturnInstructionHelper.createEmptyReturnInstruction().addComment(
+								Messages.COMMENT_TODO.message(), true));
 		if (isPipelineProcedure) {
 			exitMethod.addParameter("Object", "next").addJavadoc(
 					Messages.JAVADOC_PIPELINE_EXIT_METHOD.message(getEObject().getName(),
