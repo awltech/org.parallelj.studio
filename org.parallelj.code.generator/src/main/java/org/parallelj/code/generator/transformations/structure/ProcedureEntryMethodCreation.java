@@ -7,7 +7,7 @@ import net.atos.optimus.m2m.engine.ctxinject.api.ObjectContextElement;
 import net.atos.optimus.m2m.engine.ctxinject.api.ParentContextElement;
 import net.atos.optimus.m2m.javaxmi.core.annotations.GeneratedAnnotationAdder;
 import net.atos.optimus.m2m.javaxmi.operation.classes.JavaClass;
-import net.atos.optimus.m2m.javaxmi.operation.instruction.CallInstructionHelper;
+import net.atos.optimus.m2m.javaxmi.operation.instructions.CallInstructionHelper;
 import net.atos.optimus.m2m.javaxmi.operation.methods.Method;
 import net.atos.optimus.m2m.javaxmi.operation.methods.MethodHelper;
 
