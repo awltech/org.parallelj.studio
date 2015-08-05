@@ -98,7 +98,7 @@
         <requirements xmi:type="net.atos.optimus.m2m.engine.sdk.tom:SelfRequirement" xmi:id="_wryQwPewEeSLBY1hNEh0XQ" reference="_FmZ7cPevEeSLBY1hNEh0XQ"/>
       </transformations>
       <transformations xmi:type="net.atos.optimus.m2m.engine.sdk.tom:Transformation" xmi:id="_tQRBkPevEeSLBY1hNEh0XQ" name="ProgramTestClassCreation" description="This transformation aims at adding a test class for each program." factory="org.parallelj.code.generator.transformations.utils.ProgramTestClassCreationFactory"/>
-      <transformations xmi:type="net.atos.optimus.m2m.engine.sdk.tom:Transformation" xmi:id="_vhXhgPevEeSLBY1hNEh0XQ" name="ProgramTestLaunchCreation" description="This transformation aims at creating the test&amp;apos;s content for launching a program." factory="org.parallelj.code.generator.transformations.utils.ProgramTestLaunchCreationFactory">
+      <transformations xmi:type="net.atos.optimus.m2m.engine.sdk.tom:Transformation" xmi:id="_vhXhgPevEeSLBY1hNEh0XQ" name="ProgramTestLaunchCreation" description="This transformation aims at creating the test's content for launching a program." factory="org.parallelj.code.generator.transformations.utils.ProgramTestLaunchCreationFactory">
         <requirements xmi:type="net.atos.optimus.m2m.engine.sdk.tom:SelfRequirement" xmi:id="_UhY3kPewEeSLBY1hNEh0XQ" reference="_tQRBkPevEeSLBY1hNEh0XQ"/>
       </transformations>
       <transformations xmi:type="net.atos.optimus.m2m.engine.sdk.tom:Transformation" xmi:id="_0KSNYPevEeSLBY1hNEh0XQ" name="PipelineClassCreation" description="This transformation aims at creating a Java Pipeline class from a ParallelJ Pipeline." factory="org.parallelj.code.generator.transformations.structure.PipelineClassCreationFactory">

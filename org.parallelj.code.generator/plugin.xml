@@ -462,22 +462,6 @@
       </menu>
     </objectContribution>
   </extension>
-  <extension point="net.atos.optimus.m2m.engine.masks.TransformationMasks">
-    <exclusiveMask description="Disables the pipeline creation transformations" name="Without pipeline mask">
-      <excludes transformationId="PipelineClassCreation" />
-      <excludes transformationId="PipelineProcedureEntryMethodCreation" />
-      <excludes transformationId="PipelineGenericExitMethodCreation" />
-      <excludes transformationId="PipelineProcedureAndSplitAnnotationCreation" />
-      <excludes transformationId="PipelineAnnotationCreation" />
-    </exclusiveMask>
-    <inclusiveMask description="Enables only the pipeline creation transformations" name="Only pipeline mask">
-      <includes transformationId="PipelineClassCreation" />
-      <includes transformationId="PipelineProcedureEntryMethodCreation" />
-      <includes transformationId="PipelineGenericExitMethodCreation" />
-      <includes transformationId="PipelineProcedureAndSplitAnnotationCreation" />
-      <includes transformationId="PipelineAnnotationCreation" />
-    </inclusiveMask>
-  </extension>
   <extension point="net.atos.optimus.m2m.engine.sdk.tom.extension.TransformationDependencyDiagrams">
     <transformationDependencyDiagram diagram="model/parallelj.tom" />
   </extension>
