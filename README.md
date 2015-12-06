@@ -13,6 +13,12 @@ Sources
 
 Fork on github: https://github.com/awltech/org.parallelj.studio
 
+Binaries & Documentation
+------------------------
+	
+  - Find its documentation at http://www.parallelj.org/xwiki/
+	- Find it packaged in its latest snapshot at http://eclipse.worldline.com/nightly/all
+
 Contact
 -------
 
